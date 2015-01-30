@@ -13,6 +13,7 @@ import org.bc.web.Module;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.entity.Config;
+import com.youwei.fjb.util.ConfigHelper;
 
 @Module(name="/")
 public class PageService {
@@ -26,7 +27,9 @@ public class PageService {
 		//推荐楼盘
 		Page<Map> page = new Page<Map>();
 		page.setPageSize(9);
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.junjia as junjia , est.youhui as youhui, est.img as img from Estate est where est.tuijian=1", true,new Object[]{});
+		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.junjia as junjia , est.youhui as youhui, "
+				+ "img.path as img from Estate est,HouseImage img"
+				+ " where est.uuid=img.estateUUID and est.tuijian=1 and img.type='main'", true,new Object[]{});
 //		for(Map map : page.getResult()){
 //		}
 //		List<Map> tuijianList = new ArrayList<Map>();
@@ -64,12 +67,13 @@ public class PageService {
 	@WebMethod
 	public ModelAndView sale(Page<Map> page){
 		ModelAndView mv = new ModelAndView();
-		mv = queryItems(mv);
+		mv = ConfigHelper.queryItems(mv);
 		mv = tehui(mv);
 		mv.jspData.put("currNav", "sale");
 		page.setPageSize(3);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.sjia as sjia , est.junjia as junjia , "
-				+ "est.youhui as youhui, est.opentime as opendate, est.youhuiEnd as youhuiEnd, est.img as img from Estate est where est.tehui=1", true,new Object[]{});
+				+ "est.youhui as youhui, est.opentime as opendate, est.youhuiEnd as youhuiEnd, img.path as img from Estate est,"
+				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and img.type='main'", true,new Object[]{});
 //		List<Map> youhuiList = new ArrayList<Map>();
 //		for(int i=0;i<6;i++){
 //			Map map = new HashMap();
@@ -101,22 +105,16 @@ public class PageService {
 	@WebMethod
 	public ModelAndView houses(Page<Map> page){
 		ModelAndView mv = new ModelAndView();
-		mv = queryItems(mv);
+		mv = ConfigHelper.queryItems(mv);
 		mv = tehui(mv);
 		mv.jspData.put("currNav", "houses");
 		page.setPageSize(3);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.sjia as sjia , est.junjia as junjia , "
-				+ "est.youhui as youhui, est.opentime as opendate, est.youhuiEnd as youhuiEnd, est.img as img from Estate est ", true,new Object[]{});
+				+ "est.youhui as youhui, est.opentime as opendate, est.youhuiEnd as youhuiEnd, img.path as img from Estate est,"
+				+ "HouseImage img where est.uuid=img.estateUUID and img.type='main'", true,new Object[]{});
 		mv.jspData.put("page", page);
 		return mv;
 	}
 	
-	public ModelAndView queryItems(ModelAndView mv){
-		//查询条件
-		List<Config> quyus = dao.listByParams(Config.class, "from Config where type=? and attr='合肥' ","quyu");
-		List<Config> hxings = dao.listByParams(Config.class, "from Config where type=?","hxing");
-		mv.jspData.put("quyus", quyus);
-		mv.jspData.put("hxings", hxings);
-		return  mv;
-	}
+	
 }

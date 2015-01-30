@@ -49,11 +49,11 @@ public class FileUploadServlet extends HttpServlet {
 		try {
 			out = response.getOutputStream();
 			response.setContentType("text/plain");
-			Integer estateId;
+			String estateId;
 			String type="";
 			try{
-				type = request.getParameter("type");
-				estateId = Integer.valueOf(request.getParameter("estateId"));
+				type = request.getParameter("imgType");
+				estateId = request.getParameter("estateId");
 			}catch(Exception ex){
 				response.setStatus(500);
 				out.write("recordId should be number ".getBytes());
@@ -65,22 +65,26 @@ public class FileUploadServlet extends HttpServlet {
 				if(item.isFormField()){
 					continue;
 				}
+				HouseImage image = new HouseImage();
 				if(item.getSize()<=0){
 					throw new RuntimeException("no file selected.");
 				}else{
+					if("main".equals(type)){
+						//主图片只有一张
+						SimpDaoTool.getGlobalCommonDaoService().execute("delete from HouseImage where estateUUID=? and type='main'" , estateId);
+					}
 					if(item.getSize()>=MAX_SIZE){
 						throw new RuntimeException("file size exceed 5M");
 					}else{
 						LogUtil.info("uploading file "+ item.getName());
-						request.getServletContext().getContextPath();
-						FileUtils.copyInputStreamToFile(item.getInputStream(), new File(BaseFileDir
+						String imgDir = request.getServletContext().getRealPath("/")+File.separator +"upload/"+request.getServletContext().getContextPath();
+						image.path=request.getServletContext().getContextPath()+  File.separator + estateId + File.separator + item.getName();
+						FileUtils.copyInputStreamToFile(item.getInputStream(), new File(imgDir
 								+  File.separator + estateId + File.separator + item.getName()));
 					}
 				}
-				HouseImage image = new HouseImage();
-				image.estateId = estateId;
+				image.estateUUID = estateId;
 				image.type = type;
-				image.path= item.getName();
 				SimpDaoTool.getGlobalCommonDaoService().saveOrUpdate(image);
 			}
 			result.put("msg", "success");

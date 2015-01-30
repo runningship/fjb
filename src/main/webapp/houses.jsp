@@ -61,7 +61,7 @@
                <ul>
                 <c:forEach items="${page.result}" var="house">
                      <li>
-                        <a target="_blank" href="#"><img width="180" height="120" src="${house.img}"></a>
+                        <a target="_blank" href="#"><img width="180" height="120" src="upload/${house.img}"></a>
                         <span class="f_name"><a target="_blank" href="#">[${house.quyu}]${house.name}</a></span>
                         <span class="f_sale">${house.youhui}</span>
                         <span class="f_price"><em>${house.junjia}元/㎡</em>
@@ -86,20 +86,5 @@
 
 
 <jsp:include page="foot.jsp"></jsp:include>
-<div class="warp footerBot">
-
-
-     <div class="main">
-
-          <p><a href="#">关于房金宝</a> | <a href="#">联系我们</a> | <a href="#">在售楼盘</a> | <a href="#">服务申明</a> | <a href="#">微信版</a> | <a href="#">服务电话</a></p>
-          <p>copyright © 2013-2015 www.jinbaohouse.com All Rights Reserved</p>
-          <p>粤ICP备88888888号</p>
-
-     </div>
-
-
-</div>
-
-
 </body>
 </html>

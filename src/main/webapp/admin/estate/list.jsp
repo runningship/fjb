@@ -73,7 +73,7 @@ function doSearch(){
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    <input type="text" name="title"/>
+    楼盘名称：<input type="text" name="name"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
 
@@ -81,19 +81,30 @@ function doSearch(){
     <thead>
     <tr>
     	<th>编号</th>
-        <th>序号</th>
-        <th>栏目名称</th>
-        <th>标题</th>
-        <th>管理操作</th>
+        <th>区域</th>
+        <th>名称</th>
+        <th>建筑类型</th>
+        <th>规划面积</th>
+        <th>地址</th>
+        <th>户数</th>
+        <th>均价</th>
+        <th>开盘</th>
+        <th>操作</th>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
     			<td>$[id]</td>
-                <td>$[orderx]</td>
-                <td>$[bname]</td>
-                <td>$[title]</td>
-                <td><a href="edit.jsp?id=$[id]">编辑</a>
+                <td>$[quyu]</td>
+                <td>$[name]</td>
+                <td>$[lxing]</td>
+                <td>$[ghmj]</td>
+                <td>$[addr]</td>
+                <td>$[hushu]</td>
+                <td>$[junjia]</td>
+                <td>$[opentime]</td>
+                <td><a href="../house/list.jsp?id=$[id]">房源</a>
+                    <a href="edit.jsp?id=$[id]">编辑</a>
                     <a href="#" onclick="delPost($[id])">删除</a>
                 </td>
             </tr>

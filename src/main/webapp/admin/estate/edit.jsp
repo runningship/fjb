@@ -15,13 +15,6 @@
     <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
 	<script type="text/javascript">
-		function cfgChild(radio){
-			if(radio.value==1){
-				$('#tr_conts').css('display','none');
-			}else{
-				$('#tr_conts').css('display','');
-			}
-		}
 		
 		$(function(){
 			setTimeout(function(){
@@ -29,17 +22,19 @@
 				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo');
 				initUploadHouseImage('main_upload' , 'main');
 			},100);
-			
+			getImgList('main');
+			getImgList('xiaoguo');
+			getImgList('hxing');
 		});
 		
 		function save(){
 		    var a=$('form[name=form1]').serialize();
 		    YW.ajax({
 		        type: 'POST',
-		        url: '${projectName}/c/admin/estate/doSave',
+		        url: '${projectName}/c/admin/estate/update',
 		        data:a,
 		        mysuccess: function(data){
-		            alert('添加成功');
+		            alert('修改成功');
 		        }
 		    });
 		}
@@ -47,7 +42,7 @@
 function initUploadHouseImage(id , imgType){
 	  $('#'+id).uploadify({
 	      'swf'      : '${projectName}/js/uploadify/uploadify.swf',
-	      'uploader' : '${projectName}/file/upload?imgType='+imgType+'&estateId=${estate_uuid}',
+	      'uploader' : '${projectName}/file/upload?imgType='+imgType+'&estateId=${estate.uuid}',
 	      'buttonText': '上传图片',
 	      'removeTimeout': 0.1,
 	      'fileSizeLimit' : '5MB',
@@ -75,7 +70,7 @@ function initUploadHouseImage(id , imgType){
 function getImgList(imgType){
 	YW.ajax({
         type: 'get',
-        url: '${projectName}/c/admin/estate/listImage?estateUUID=${estate_uuid}&imgType='+imgType,
+        url: '${projectName}/c/admin/estate/listImage?estateUUID=${estate.uuid}&imgType='+imgType,
         dataType:'json',
         mysuccess: function(data){
         	$('#'+imgType+'_img_container').empty();
@@ -91,12 +86,12 @@ function getImgList(imgType){
 </head>
 <body>
 <form name="form1" method="post" class="definewidth m20">
-	<input type="hidden" name="uuid"  value="${estate_uuid }"/>
+	<input type="hidden" name="id"  value="${estate.id}"/>
 <table class="table table-bordered table-hover m10">
 	
     <tr>
         <td class="tableleft">名称</td>
-        <td><input type="text" name="name"/></td>
+        <td><input type="text" name="name" value="${estate.name }"/></td>
     </tr>
     <tr>
         <td class="tableleft">主图片</td>
@@ -118,7 +113,7 @@ function getImgList(imgType){
     </tr>
     <tr>
         <td class="tableleft">均价</td>
-        <td><input type="text" name="junjia"/>元/平方</td>
+        <td><input type="text" name="junjia" value="${junjia }"/>元/平方</td>
     </tr>
     
     <tr id="tr_conts" >
@@ -156,47 +151,47 @@ function getImgList(imgType){
     </tr>
     <tr>
         <td class="tableleft">建筑面积</td>
-        <td><input type="text" name="jzmj"/>平方</td>
+        <td><input type="text" name="jzmj"  value="${estate.jzmj }" />平方</td>
     </tr>
     <tr>
         <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji"/></td>
+        <td><input type="text" name="rongji" value="${estate.rongji }"/></td>
     </tr>
     <tr>
         <td class="tableleft">规划面积</td>
-        <td><input type="text" name="ghmj"/>平方</td>
+        <td><input type="text" name="ghmj" value="${estate.ghmj }"/>平方</td>
     </tr>
     <tr>
         <td class="tableleft">绿化率</td>
-        <td><input type="text" name="lvhua"/></td>
+        <td><input type="text" name="lvhua" value="${estate.lvhua }"/></td>
     </tr>
     <tr>
         <td class="tableleft">车位数</td>
-        <td><input type="text" name="chewei"/></td>
+        <td><input type="text" name="chewei" value="${estate.chewei }"/></td>
     </tr>
     <tr>
         <td class="tableleft">规划户数</td>
-        <td><input type="text" name="hushu"/></td>
+        <td><input type="text" name="hushu"  value="${estate.hushu }"/></td>
     </tr>
     <tr>
         <td class="tableleft">物业费</td>
-        <td><input type="text" name="wyfee"/>元/平方*月</td>
+        <td><input type="text" name="wyfee" value="${estate.wyfee }"/>元/平方*月</td>
     </tr>
     <tr>
         <td class="tableleft">楼盘特色</td>
-        <td><textarea name="tese" ></textarea></td>
+        <td><textarea name="tese"  >${estate.tese }</textarea></td>
     </tr>
     <tr>
         <td class="tableleft">开发商</td>
-        <td><input type="text" name="developer"/></td>
+        <td><input type="text" name="developer" value="${estate.developer }"/></td>
     </tr>
     <tr>
         <td class="tableleft">物业公司</td>
-        <td><input type="text" name="wyComp"/></td>
+        <td><input type="text" name="wyComp" value="${estate.wyComp }"/></td>
     </tr>
     <tr>
         <td class="tableleft">地址</td>
-        <td><input type="text" name="addr"/></td>
+        <td><input type="text" name="addr" value="${estate.addr }"/></td>
     </tr>
     <tr>
         <td class="tableleft">户型图</td>

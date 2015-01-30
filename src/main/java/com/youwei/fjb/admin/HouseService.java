@@ -2,7 +2,6 @@ package com.youwei.fjb.admin;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.Page;
@@ -12,13 +11,12 @@ import org.bc.web.ModelAndView;
 import org.bc.web.Module;
 import org.bc.web.WebMethod;
 
-import com.youwei.fjb.entity.Estate;
-import com.youwei.fjb.entity.HouseImage;
+import com.youwei.fjb.entity.House;
 import com.youwei.fjb.util.ConfigHelper;
 import com.youwei.fjb.util.DataHelper;
 
-@Module(name="/admin/estate")
-public class EstateService {
+@Module(name="/admin/house")
+public class HouseService {
 
 	CommonDaoService dao = TransactionalServiceHelper.getTransactionalService(CommonDaoService.class);
 	
@@ -32,50 +30,39 @@ public class EstateService {
 	public ModelAndView add(){
 		ModelAndView mv = new ModelAndView();
 		mv = ConfigHelper.queryItems(mv);
-		mv.jspData.put("estate_uuid", UUID.randomUUID().toString());
 		return mv;
 	}
 	
 	@WebMethod
 	public ModelAndView edit(Integer id){
 		ModelAndView mv = new ModelAndView();
-		Estate po = dao.get(Estate.class, id);
+		House po = dao.get(House.class, id);
 		mv = ConfigHelper.queryItems(mv);
-		mv.jspData.put("estate", po);
+		mv.jspData.put("house", po);
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView update(Estate estate){
+	public ModelAndView update(House house){
 		ModelAndView mv = new ModelAndView();
-		Estate po = dao.get(Estate.class, estate.id);
-		po.quyu = estate.quyu;
-		po.name = estate.name;
-		dao.saveOrUpdate(estate);
+		House po = dao.get(House.class, house.id);
+		dao.saveOrUpdate(po);
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView doSave(Estate estate){
+	public ModelAndView doSave(House house){
 		ModelAndView mv = new ModelAndView();
-		dao.saveOrUpdate(estate);
+		dao.saveOrUpdate(house);
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView listData(Page<Estate> page){
+	public ModelAndView listData(Page<House> page){
 		ModelAndView mv = new ModelAndView();
 		List<String> params = new ArrayList<String>();
-		page = dao.findPage(page, "from Estate", params.toArray());
+		page = dao.findPage(page, "from House", params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
-		return mv;
-	}
-	
-	@WebMethod
-	public ModelAndView listImage(String estateUUID , String imgType){
-		ModelAndView mv = new ModelAndView();
-		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where estateUUID=? and type=?", estateUUID , imgType);
-		mv.data.put("images", JSONHelper.toJSONArray(images));
 		return mv;
 	}
 }

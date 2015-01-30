@@ -34,10 +34,10 @@ public class Estate {
 	public String wylx;
 	
 	//建筑面积
-	public String jzmj;
+	public Float jzmj;
 	
 	//规划面积
-	public String ghmj;
+	public Float ghmj;
 	
 	//容积率
 	public Float rongji;
@@ -84,4 +84,6 @@ public class Estate {
 	
 	//1限时特惠
 	public Integer tehui;
+	
+	public String uuid;
 }

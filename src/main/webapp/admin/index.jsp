@@ -54,26 +54,26 @@
                                  }
                              ]
                          },
-                         {
-                             text: '房源管理',
-                             items: [
-                                 {
-                                     id: '4',
-                                     text: '房源信息',
-                                     href: 'house/list.jsp'
-                                 },{
-                                     id: '2',
-                                     text: '添加房源',
-                                     href: 'house/list.jsp'
-                                 }
-                             ]
-                         },
+                         // {
+                         //     text: '房源管理',
+                         //     items: [
+                         //         {
+                         //             id: '4',
+                         //             text: '房源信息',
+                         //             href: 'house/list.jsp'
+                         //         },{
+                         //             id: '2',
+                         //             text: '添加房源',
+                         //             href: 'house/list.jsp'
+                         //         }
+                         //     ]
+                         // },
                          {
                              text: '用户管理',
                              items: [
                                  {
                                      id: '2',
-                                     text: '经纪人信息',
+                                     text: '经纪人',
                                      href: 'user/seller/list.jsp'
                                  },{
                                      id: '2',
@@ -87,6 +87,23 @@
                                  {
                                      id: '2',
                                      text: '预约列表',
+                                     href: 'order/list.jsp'
+                                 }
+                             ]
+                         },{
+                             text: '配置管理',
+                             items: [
+                                 {
+                                     id: '2',
+                                     text: '建筑类型',
+                                     href: 'order/list.jsp'
+                                 },{
+                                     id: '2',
+                                     text: '物业类型',
+                                     href: 'order/list.jsp'
+                                 },{
+                                     id: '2',
+                                     text: '区域',
                                      href: 'order/list.jsp'
                                  }
                              ]

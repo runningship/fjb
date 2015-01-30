@@ -78,7 +78,7 @@
                   <c:forEach items="${tuijianList}"  var="tuijian">
                     <li>
                       <a href="info.jsp">
-                        <span class="img"><img src="${tuijian.img}" /></span>
+                        <span class="img"><img src="upload/${tuijian.img}" /></span>
                       </a>
                        <p><strong>[${tuijian.quyu}]${tuijian.name}</strong></p>
                        <p><em>均价：¥${tuijian.junjia}/m2</em></p>
@@ -101,20 +101,6 @@
 </div>
 
 <jsp:include page="foot.jsp"></jsp:include>
-
-<div class="warp footerBot">
-
-
-     <div class="main">
-
-          <p><a href="#">关于房金宝</a> | <a href="#">联系我们</a> | <a href="#">在售楼盘</a> | <a href="#">服务申明</a> | <a href="#">微信版</a> | <a href="#">服务电话</a></p>
-          <p>copyright © 2013-2015 www.jinbaohouse.com All Rights Reserved</p>
-          <p>粤ICP备88888888号</p>
-
-     </div>
-
-
-</div>
 
 </body>
 </html>

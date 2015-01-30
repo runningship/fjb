@@ -60,7 +60,7 @@
           <div class="teHui">
           
                <h2><span class="title">${youhui.name}<em>[${youhui.quyu}]</em></span></h2>
-               <div class="lpPic"><a href="#"><img src="${youhui.img}" /></a></div>
+               <div class="lpPic"><a href="#"><img style="width:570px;height:310px;" src="upload/${youhui.img}" /></a></div>
                <div class="lpCon">
                    
                     <span class="hYPrice"><em>市场价 ${youhui.sjia} </em>房金宝团购优惠价 </span>
@@ -97,20 +97,5 @@
 
 
 <jsp:include page="foot.jsp"></jsp:include>
-<div class="warp footerBot">
-
-
-     <div class="main">
-
-          <p><a href="#">关于房金宝</a> | <a href="#">联系我们</a> | <a href="#">在售楼盘</a> | <a href="#">服务申明</a> | <a href="#">微信版</a> | <a href="#">服务电话</a></p>
-          <p>copyright © 2013-2015 www.jinbaohouse.com All Rights Reserved</p>
-          <p>粤ICP备88888888号</p>
-
-     </div>
-
-
-</div>
-
-
 </body>
 </html>
