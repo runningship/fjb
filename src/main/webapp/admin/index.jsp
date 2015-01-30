@@ -1,0 +1,103 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title>后台管理系统</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+   <link href="assets/css/main-min.css" rel="stylesheet" type="text/css" />
+   <script type="text/javascript" src="assets/js/jquery-1.8.1.min.js"></script>
+  <script type="text/javascript" src="assets/js/bui-min.js"></script>
+  <script type="text/javascript" src="assets/js/common/main-min.js"></script>
+  <script type="text/javascript" src="assets/js/config-min.js"></script>
+ </head>
+ <body>
+
+  <div class="header" style="height:0px;">
+    
+      <div class="dl-title">
+       <!--<img src="/chinapost/Public/assets/img/top.png">-->
+      </div>
+  </div>
+   <div class="content">
+    <div class="dl-main-nav">
+      <div class="dl-inform"><div class="dl-inform-title"><s class="dl-inform-icon dl-up"></s></div></div>
+      <ul id="J_Nav"  class="nav-list ks-clear">
+        		<li class="nav-item dl-selected"><div class="nav-item-inner nav-home">系统管理</div></li>
+
+      </ul>
+      <div style="position:absolute;right:0px;top:8px;" class="dl-log">欢迎您，<span class="dl-log-user">${user.name }</span><a href="./user/logout.jsp" title="退出系统" class="dl-log-quit">[退出]</a>
+      </div>
+    </div>
+    <ul id="J_NavContent" class="dl-tab-conten"> </ul>
+   </div>
+  
+  <script>
+     BUI.use('common/main',function(){
+       var config =[
+                 {
+                     id: '1',
+                     menu: [
+                         {
+                             text: '楼盘管理',
+                             items: [
+                                 {
+                                     id: '4',
+                                     text: '楼盘信息',
+                                     href: 'estate/list.jsp'
+                                 },{
+                                     id: '2',
+                                     text: '添加楼盘',
+                                     href: 'estate/add.jsp'
+                                 }
+                             ]
+                         },
+                         {
+                             text: '房源管理',
+                             items: [
+                                 {
+                                     id: '4',
+                                     text: '房源信息',
+                                     href: 'house/list.jsp'
+                                 },{
+                                     id: '2',
+                                     text: '添加房源',
+                                     href: 'house/list.jsp'
+                                 }
+                             ]
+                         },
+                         {
+                             text: '用户管理',
+                             items: [
+                                 {
+                                     id: '2',
+                                     text: '经纪人信息',
+                                     href: 'user/seller/list.jsp'
+                                 },{
+                                     id: '2',
+                                     text: '系统用户',
+                                     href: 'user/sys/list.jsp'
+                                 }
+                             ]
+                         },{
+                             text: '预约管理',
+                             items: [
+                                 {
+                                     id: '2',
+                                     text: '预约列表',
+                                     href: 'order/list.jsp'
+                                 }
+                             ]
+                         }
+                     ]
+                 }
+             ];
+       new PageUtil.MainPage({
+         modulesConfig : config
+       });
+     });
+</script>
+ </body>
+</html>
