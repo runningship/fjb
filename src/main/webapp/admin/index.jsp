@@ -12,6 +12,9 @@
   <script type="text/javascript" src="assets/js/bui-min.js"></script>
   <script type="text/javascript" src="assets/js/common/main-min.js"></script>
   <script type="text/javascript" src="assets/js/config-min.js"></script>
+  <script type="text/javascript">
+  var projectName='${projectName}';
+  </script>
  </head>
  <body>
 
@@ -35,7 +38,7 @@
    </div>
   
   <script>
-     BUI.use('common/main',function(){
+     BUI.use('common/main',function(main){
        var config =[
                  {
                      id: '1',
@@ -44,11 +47,11 @@
                              text: '楼盘管理',
                              items: [
                                  {
-                                     id: '4',
+                                     id: 'estate_list',
                                      text: '楼盘信息',
                                      href: 'estate/list.jsp'
                                  },{
-                                     id: '2',
+                                     id: 'estate_add',
                                      text: '添加楼盘',
                                      href: 'estate/add.jsp'
                                  }
@@ -72,20 +75,24 @@
                              text: '用户管理',
                              items: [
                                  {
-                                     id: '2',
+                                     id: 'seller_list',
                                      text: '经纪人',
-                                     href: 'user/seller/list.jsp'
+                                     href: 'user/sellerList.jsp'
                                  },{
-                                     id: '2',
+                                     id: 'admin_list',
                                      text: '系统用户',
-                                     href: 'user/sys/list.jsp'
+                                     href: 'user/adminList.jsp'
+                                 },{
+                                     id: 'password_change',
+                                     text: '修改密码',
+                                     href: 'user/changePwd.jsp'
                                  }
                              ]
                          },{
                              text: '预约管理',
                              items: [
                                  {
-                                     id: '2',
+                                     id: 'order_list',
                                      text: '预约列表',
                                      href: 'order/list.jsp'
                                  }
@@ -94,17 +101,21 @@
                              text: '配置管理',
                              items: [
                                  {
-                                     id: '2',
+                                     id: 'lxing_cfg',
                                      text: '建筑类型',
                                      href: 'order/list.jsp'
                                  },{
-                                     id: '2',
+                                     id: 'wylx_cfg',
                                      text: '物业类型',
-                                     href: 'order/list.jsp'
+                                     href: 'config/wylxList.jsp'
                                  },{
-                                     id: '2',
+                                     id: 'quyu_cfg',
                                      text: '区域',
-                                     href: 'order/list.jsp'
+                                     href: 'config/quyuList.jsp'
+                                 },{
+                                     id: 'huxing_cfg',
+                                     text: '户型',
+                                     href: 'huxing/list.jsp'
                                  }
                              ]
                          }

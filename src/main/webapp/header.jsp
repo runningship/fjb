@@ -6,4 +6,6 @@
 <script src="js/jquery-1.6.4.min.js"></script>
 <script src="js/jquery.nivo.slider.pack.js"></script> 
 <script src="js/jquery.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/buildHtml.js"></script>
+<script type="text/javascript" src="js/artDialog/jquery.artDialog.source.js?skin=default"></script>
+<script type="text/javascript" src="js/artDialog/plugins/iframeTools.source.js"></script>
+<script type="text/javascript" src="js/buildHtml.js"></script>

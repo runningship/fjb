@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 //订单，预约某个具体房源
 @Entity
-public class Order {
+public class HouseOrder {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

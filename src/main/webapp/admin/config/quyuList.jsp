@@ -14,13 +14,13 @@
 	<script type="text/javascript" src="${projectName}/js/artDialog/jquery.artDialog.source.js?skin=default"></script>
 	<script type="text/javascript" src="${projectName}/js/artDialog/plugins/iframeTools.source.js"></script>
 	<script type="text/javascript" src="${projectName}/js/buildHtml.js"></script>
-	<script type="text/javascript" src="${projectName}/js/fjb.js"></script>
+    <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
 <script type="text/javascript">
 function doSearch(){
 	var a=$('form[name=form1]').serialize();
 	YW.ajax({
 	    type: 'get',
-	    url: '${projectName}/c/admin/house/listData?estateId=${estateId}',
+	    url: '${projectName}/c/admin/config/listData?type=quyu',
 	    data: a,
 	    dataType:'json',
 	    mysuccess: function(json){
@@ -29,62 +29,46 @@ function doSearch(){
 	    }
 	  });
 }
+	function del(id){
+		art.dialog.confirm('删除后不可恢复，确定要删除吗？', function () {
+		    YW.ajax({
+		        type: 'POST',
+		        url: '${projectName}/c/admin/config/delete?id='+id,
+		        data:'',
+		        mysuccess: function(data){
+                    doSearch();
+		            alert('删除成功');
+		        }
+		      });
+		  },function(){},'warning');
+	}
 
-function delPost(id){
-	art.dialog.confirm('删除后不可恢复，确定要删除吗？', function () {
-	    YW.ajax({
-	        type: 'POST',
-	        url: '${projectName}/c/admin/house/delete?id='+id,
-	        data:'',
-	        mysuccess: function(data){
-                doSearch();
-	            alert('删除成功');
-	        }
-	      });
-	  },function(){},'warning');
-}
-$(function () {
-	Page.Init();
-	doSearch();
-});
-
+	$(function () {
+		Page.Init();
+		doSearch();
+	});
 </script>
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    房间号<input type="text" name="name"/>
-    <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
-    <button type="button"  onclick="addTab('house_add','添加房源','house/add.jsp?estateId=${estateId}')" class="btn btn-success ">添加房源</button>
+    <button onclick="window.location.href='quyuAdd.jsp'" type="button"  class="btn btn-success ">添加区域</button>
 </form>
 
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th>楼栋</th>
-        <th>单元</th>
-    	<th>房间号</th>
-        <th>面积</th>
-        <th>房型</th>
-        <th>朝向</th>
-        <th>单价</th>
-        <th>折扣</th>
-        <th>折扣后总价</th>
-        <th>操作</th>
+    	<th>编号</th>
+        <th>城市</th>
+        <th>名称</th>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
-    			<td>$[dhao]</td>
-                <td>$[unit]</td>
-                <td>$[fhao]</td>
-                <td>$[mji]</td>
-                <td>$[hxing]</td>
-                <td>$[cxiang]</td>
-                <td>$[djia]</td>
-                <td>$[zkou]</td>
-                <td>$[totalPrice]</td>
-                <td><a href="edit.jsp?id=$[id]">编辑</a>
-                    <a href="#" onclick="delPost($[id])">删除</a>
+    			<td>$[id]</td>
+                <td>$[attr]</td>
+                <td>$[value]</td>
+                <td>
+                    <a href="#" onclick="del($[id])">删除</a>
                 </td>
             </tr>
     </tbody>

@@ -15,18 +15,23 @@
     <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
 	<script type="text/javascript">
+var id;
 		$(function(){
-			
+			setTimeout(function(){
+				initUploadHouseImage('hxing_upload' , 'hxing' ,'${estate.uuid}');
+				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo' ,'${estate.uuid}');
+				initUploadHouseImage('main_upload' , 'main' ,'${estate.uuid}');
+			},100);
 		});
 		
 		function save(){
 		    var a=$('form[name=form1]').serialize();
 		    YW.ajax({
 		        type: 'POST',
-		        url: '${projectName}/c/admin/house/doSave',
+		        url: '${projectName}/c/admin/huxing/doSave',
 		        data:a,
 		        mysuccess: function(data){
-		            alert(data.result);
+		            alert('添加成功');
 		        }
 		    });
 		}
@@ -34,65 +39,19 @@
 </head>
 <body>
 <form name="form1" method="post" class="definewidth m20">
-	<input type="hidden" name="estateId"  value="${estateId }"/>
+<input type="hidden" name="estateId" id="estateId" value="${estateId}">
 <table class="table table-bordered table-hover m10">
 	
     <tr>
-        <td class="tableleft">楼栋</td>
-        <td><input type="text" name="dhao"/></td>
+        <td class="tableleft">户型</td>
+        <td><input type="text" name="name"/></td>
     </tr>
     <tr>
-        <td class="tableleft">单元</td>
-        <td><input type="text" name="unit"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">房间号</td>
-        <td><input  style="width:101px;" type="text" name="fhaoStart"/><input style="width:101px;" type="text" name="fhaoEnd"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">面积</td>
-        <td><input type="text" name="mji"/></td>
-    </tr>
-    <!-- <tr>
-        <td class="tableleft">主图片</td>
+        <td class="tableleft">图片</td>
         <td><input id="main_upload"  style="display:none;margin-top:5px;">
         	<div id="main_img_container">
         	</div>
         </td>
-    </tr> -->
-    <tr>
-        <td class="tableleft">户型</td>
-        <td>
-            <select  class="sortSelect" name="hxing">
-                <option value="" >所有</option>
-                <c:forEach items="${hxings}" var="hxing">
-                  <option value="${hxing.name}">${hxing.name}</option>
-                </c:forEach>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="tableleft">朝向</td>
-        <td>
-            <select  class="sortSelect" name="cxiang">
-                <option value="东" >东</option>
-                <option value="西" >西</option>
-                <option value="南" >南</option>
-                <option value="北" >北</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="tableleft">单价</td>
-        <td><input type="text" name="djia"/>元/平方</td>
-    </tr>
-    <tr>
-        <td class="tableleft">折扣</td>
-        <td><input type="text" name="zkou"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">折后总价</td>
-        <td><input type="text" name="totalPrice"/></td>
     </tr>
     <tr>
         <td class="tableleft"></td>

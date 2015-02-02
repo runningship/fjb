@@ -13,6 +13,7 @@ import org.bc.web.Module;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.entity.Config;
+import com.youwei.fjb.entity.User;
 import com.youwei.fjb.util.ConfigHelper;
 
 @Module(name="/")
@@ -116,5 +117,11 @@ public class PageService {
 		return mv;
 	}
 	
-	
+	@WebMethod
+	public ModelAndView sellerIndex(){
+		ModelAndView mv = new ModelAndView();
+		User seller = ThreadSessionHelper.getUser();
+		mv.jspData.put("seller", seller);
+		return mv;
+	}
 }

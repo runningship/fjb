@@ -17,14 +17,6 @@
 	<script type="text/javascript">
 		
 		$(function(){
-			setTimeout(function(){
-				initUploadHouseImage('hxing_upload' , 'hxing');
-				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo');
-				initUploadHouseImage('main_upload' , 'main');
-			},100);
-			getImgList('main');
-			getImgList('xiaoguo');
-			getImgList('hxing');
 		});
 		
 		function save(){
@@ -38,50 +30,6 @@
 		        }
 		    });
 		}
-		
-function initUploadHouseImage(id , imgType){
-	  $('#'+id).uploadify({
-	      'swf'      : '${projectName}/js/uploadify/uploadify.swf',
-	      'uploader' : '${projectName}/file/upload?imgType='+imgType+'&estateId=${estate.uuid}',
-	      'buttonText': '上传图片',
-	      'removeTimeout': 0.1,
-	      'fileSizeLimit' : '5MB',
-	      'onUploadError' : function(file, errorCode, errorMsg, errorString){
-	          console.log('The file ' + file.name + ' could not be uploaded: ' + errorString);
-	      },
-	      'onUploadComplete':function(file){
-	          console.log('finish:'+file);
-	      },
-	      'onUploadSuccess' : function(file, data, response) {
-	        var json = JSON.parse(data);
-	        if(json['result']!=0){
-	          $('#' + file.id).find('.data').html('-文件上传失败,'+json['msg']);
-	        }else{
-	        	 getImgList(imgType);
-	        }
-	      },
-	      'onQueueComplete' : function(queueData) {
-	        console.log(queueData);
-	      }
-	      // Put your options here
-	  });
-	}
-
-function getImgList(imgType){
-	YW.ajax({
-        type: 'get',
-        url: '${projectName}/c/admin/estate/listImage?estateUUID=${estate.uuid}&imgType='+imgType,
-        dataType:'json',
-        mysuccess: function(data){
-        	$('#'+imgType+'_img_container').empty();
-        	for(var i=0;i<data.images.length;i++){
-        		var img = '<img style="width:120px;height:80px;" src="../../upload/'+data.images[i].path+'" />';
-            	$('#'+imgType+'_img_container').append(img);
-        	}
-        }
-    });
-	
-}
 </script>
 </head>
 <body>
@@ -92,13 +40,6 @@ function getImgList(imgType){
     <tr>
         <td class="tableleft">名称</td>
         <td><input type="text" name="name" value="${estate.name }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">主图片</td>
-        <td><input id="main_upload"  style="display:none;margin-top:5px;">
-        	<div id="main_img_container">
-        	</div>
-        </td>
     </tr>
     <tr>
         <td class="tableleft">区域</td>

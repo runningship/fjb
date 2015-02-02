@@ -8,15 +8,16 @@
   
 function save(){
   var a=$('form[name=form1]').serialize();
-    YW.ajax({
+    $.ajax({
       type: 'POST',
-      url: 'c/user/login',
+      url: 'c/admin/user/login',
       data:a,
-      mysuccess: function(data){
+      success: function(data){
           // $('#saveBtn').removeAttr('disabled');
           //art.dialog.close();
           // art.dialog.opener.doSearchAndSelectFirst();
           alert('登陆成功');
+          window.location = 'sellerIndex.jsp';
       }
   });
 }
@@ -43,7 +44,7 @@ function save(){
                <input type="text" placeholder="请输入手机号" class="name" name="tel">
                
               <p><label for="captcha">密码</label><span class="form-tips">请输入密码</span></p>
-               <input type="text" placeholder="请输入密码" class="password" name="pwd">
+               <input type="password" placeholder="请输入密码" class="password" name="pwd">
                
                <p><label for="captcha">请输入图片验证码</label><span class="form-tips">请输入密码</span></p>
               <div class="form-field">

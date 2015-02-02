@@ -14,26 +14,7 @@
 	<script type="text/javascript" src="${projectName}/js/artDialog/jquery.artDialog.source.js?skin=default"></script>
 	<script type="text/javascript" src="${projectName}/js/artDialog/plugins/iframeTools.source.js"></script>
 	<script type="text/javascript" src="${projectName}/js/buildHtml.js"></script>
-    <style type="text/css">
-        body {
-            padding-bottom: 40px;
-        }
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-
-        @media (max-width: 980px) {
-            /* Enable use of floated navbar text */
-            .navbar-text.pull-right {
-                float: none;
-                padding-left: 5px;
-                padding-right: 5px;
-            }
-        }
-
-
-    </style>
-    
+    <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
 <script type="text/javascript">
 function doSearch(){
 	var a=$('form[name=form1]').serialize();
@@ -103,7 +84,8 @@ function doSearch(){
                 <td>$[hushu]</td>
                 <td>$[junjia]</td>
                 <td>$[opentime]</td>
-                <td><a href="../house/list.jsp?id=$[id]">房源</a>
+                <td><a onclick="addTab('house_list','房源信息','house/list.jsp?estateId=$[id]')" href="#">房源</a>
+                    <a onclick="addTab('house_list','添加户型','huxing/add.jsp?estateId=$[id]')" href="#">添加户型</a>
                     <a href="edit.jsp?id=$[id]">编辑</a>
                     <a href="#" onclick="delPost($[id])">删除</a>
                 </td>

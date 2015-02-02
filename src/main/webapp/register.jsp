@@ -45,7 +45,7 @@ function save(){
                <input type="text" placeholder="请输入手机号" class="name" name="mobile">
                
               <p><label for="captcha">密码</label><span class="form-tips">请输入您的密码</span></p>
-               <input type="text" placeholder="请输入您的密码" class="password" name="pwd">
+               <input type="password" placeholder="请输入您的密码" class="password" name="pwd">
 
               <p><label for="captcha">姓名</label><span class="form-tips">请输入您的姓名</span></p>
                <input type="text" placeholder="请输入您的姓名" class="name" name="name">

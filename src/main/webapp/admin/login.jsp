@@ -17,7 +17,7 @@ function login(){
 	var a=$('form[name=form1]').serialize();
 	YW.ajax({
 	    type: 'post',
-	    url: '${projectName}/c/user/login?type=admin',
+	    url: '${projectName}/c/admin/user/login?type=admin',
 	    data: a,
 	    mysuccess: function(json){
 	        window.location="index.jsp";

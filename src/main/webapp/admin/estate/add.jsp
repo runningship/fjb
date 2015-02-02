@@ -14,20 +14,13 @@
     <script type="text/javascript" src="${projectName }/js/artDialog/plugins/iframeTools.source.js"></script>
     <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
+    <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
 	<script type="text/javascript">
-		function cfgChild(radio){
-			if(radio.value==1){
-				$('#tr_conts').css('display','none');
-			}else{
-				$('#tr_conts').css('display','');
-			}
-		}
-		
 		$(function(){
 			setTimeout(function(){
-				initUploadHouseImage('hxing_upload' , 'hxing');
-				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo');
-				initUploadHouseImage('main_upload' , 'main');
+				initUploadHouseImage('hxing_upload' , 'hxing' , '${estateUUID}');
+				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo' , '${estateUUID}');
+				initUploadHouseImage('main_upload' , 'main' , '${estateUUID}');
 			},100);
 			
 		});
@@ -44,49 +37,6 @@
 		    });
 		}
 		
-function initUploadHouseImage(id , imgType){
-	  $('#'+id).uploadify({
-	      'swf'      : '${projectName}/js/uploadify/uploadify.swf',
-	      'uploader' : '${projectName}/file/upload?imgType='+imgType+'&estateId=${estate_uuid}',
-	      'buttonText': '上传图片',
-	      'removeTimeout': 0.1,
-	      'fileSizeLimit' : '5MB',
-	      'onUploadError' : function(file, errorCode, errorMsg, errorString){
-	          console.log('The file ' + file.name + ' could not be uploaded: ' + errorString);
-	      },
-	      'onUploadComplete':function(file){
-	          console.log('finish:'+file);
-	      },
-	      'onUploadSuccess' : function(file, data, response) {
-	        var json = JSON.parse(data);
-	        if(json['result']!=0){
-	          $('#' + file.id).find('.data').html('-文件上传失败,'+json['msg']);
-	        }else{
-	        	 getImgList(imgType);
-	        }
-	      },
-	      'onQueueComplete' : function(queueData) {
-	        console.log(queueData);
-	      }
-	      // Put your options here
-	  });
-	}
-
-function getImgList(imgType){
-	YW.ajax({
-        type: 'get',
-        url: '${projectName}/c/admin/estate/listImage?estateUUID=${estate_uuid}&imgType='+imgType,
-        dataType:'json',
-        mysuccess: function(data){
-        	$('#'+imgType+'_img_container').empty();
-        	for(var i=0;i<data.images.length;i++){
-        		var img = '<img style="width:120px;height:80px;" src="../../upload/'+data.images[i].path+'" />';
-            	$('#'+imgType+'_img_container').append(img);
-        	}
-        }
-    });
-	
-}
 </script>
 </head>
 <body>

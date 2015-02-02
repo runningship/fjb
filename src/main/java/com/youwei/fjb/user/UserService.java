@@ -1,11 +1,15 @@
 package com.youwei.fjb.user;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.GException;
+import org.bc.sdak.Page;
 import org.bc.sdak.TransactionalServiceHelper;
+import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
 import org.bc.web.PlatformExceptionType;
@@ -13,11 +17,13 @@ import org.bc.web.ThreadSession;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.ThreadSessionHelper;
+import com.youwei.fjb.entity.House;
 import com.youwei.fjb.entity.User;
+import com.youwei.fjb.util.DataHelper;
 import com.youwei.fjb.util.SecurityHelper;
 import com.youwei.fjb.util.VerifyCodeHelper;
 
-@Module(name="/user")
+@Module(name="/admin/user")
 public class UserService {
 	CommonDaoService dao = TransactionalServiceHelper.getTransactionalService(CommonDaoService.class);
 	
@@ -87,6 +93,16 @@ public class UserService {
 	}
 	
 	@WebMethod
+	public ModelAndView doSave(User user){
+		ModelAndView mv = new ModelAndView();
+		user.pwd = SecurityHelper.Md5(user.pwd);
+		//经纪人
+		user.addtime = new Date();
+		dao.saveOrUpdate(user);
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView active(User user){
 		ModelAndView mv = new ModelAndView();
 		User po = dao.get(User.class, user.id);
@@ -97,6 +113,33 @@ public class UserService {
 				//跳转到登录页面
 			}
 		}
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView listData(Page<House> page , String type){
+		ModelAndView mv = new ModelAndView();
+		StringBuilder hql = new StringBuilder("from User where 1=1 ");
+		List<String> params = new ArrayList<String>();
+		if(StringUtils.isNotEmpty(type)){
+			params.add(type);
+			hql.append(" and type=?");
+		}
+		page = dao.findPage(page, hql.toString(), params.toArray());
+		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView toggleShenHe(Integer id){
+		ModelAndView mv = new ModelAndView();
+		User po = dao.get(User.class, id);
+		if(po.valid==1){
+			po.valid = 0 ;
+		}else{
+			po.valid =1;
+		}
+		dao.saveOrUpdate(po);
 		return mv;
 	}
 }

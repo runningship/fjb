@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,56 +13,8 @@
 
 <body>
 
-<div class="warp top">
-     
-     <div class="main">
-      
-          <span class="fr topFr"><a href="#">经纪人登录</a><a href="#">注册</a><a href="#">微信公众账号</a></span>
-      
-     </div>
-
-</div>
-
-<div class="warp">
-     
-     <div class="main">
-      
-          <div class="fl"><a href="#"><img src="images/logo.jpg" /></a></div>
-          
-          <div class="search-wrap fr">
-                <div id="searchBar" class="search-bar">
-                                
-                    
-                    <div class="search-menu">
-                      <div class="search-tab">
-                        <a val="1" href="javascript:;" class="tab-item current">新房</a>
-                        <a val="2" href="javascript:;" class="tab-item">二手房</a>
-                      </div>
-                      <i></i>
-                    </div>
-                    <input type="text" placeholder="楼盘名称 / 地址" value="" name="kw" class="search-input" role="elem">
-                    <button class="search-btn" type="submit">搜索</button>
-                </div>
-            </div>
-          
-          
-      
-     </div>
-
-</div>
-
-<div class="warp nav">
-
-     <ul class="main">
-          
-          <li><a href="#" class="sel">首页</a></li>
-          <li><a href="#">限时特惠</a></li>
-          <li><a href="#">所有楼盘</a></li>
-          <li><a href="#">地图找房</a></li>
-     
-     </ul>
-
-</div>
+<jsp:include page="top.jsp"></jsp:include>
+<jsp:include page="nav.jsp"></jsp:include>
 
 <div class="warp">
 
@@ -132,47 +86,7 @@
 </div>
 
 
-<div class="warp footerTop">
-
-
-     <div class="main">
-     
-           <ul class="safeguard">
-                <li class="sa-1">
-                    <i class="realsrc"><img src="images/xxf.png" /></i>
-                    <h4>在线选新房</h4>
-                    <p>一房一价，在线缴定金选房，可售 房源一览无余！</p>
-                </li>
-                <li class="sa-2">
-                    <i class="realsvc"><img src="images/zfy.png" /></i>
-                    <h4>100%真实房源</h4>
-                    <p>完全业主挂盘，市场上在售房源应有尽有。</p>
-                </li>
-                <li class="sa-3">
-                    <i class="realsaf"><img src="images/hpz.png" /></i>
-                    <h4>选靠谱服务</h4>
-                    <p>基于看房服务的评价体系，靠谱经纪人/<br>置业顾问带你看房，虚假房源不再有！</p>
-                </li>
-            </ul>
-     
-     </div>
-
-
-</div>
-<div class="warp footerBot">
-
-
-     <div class="main">
-
-          <p><a href="#">关于房金宝</a> | <a href="#">联系我们</a> | <a href="#">在售楼盘</a> | <a href="#">服务申明</a> | <a href="#">微信版</a> | <a href="#">服务电话</a></p>
-          <p>copyright © 2013-2015 www.jinbaohouse.com All Rights Reserved</p>
-          <p>粤ICP备88888888号</p>
-
-     </div>
-
-
-</div>
-
+<jsp:include page="foot.jsp"></jsp:include>
 
 </body>
 </html>

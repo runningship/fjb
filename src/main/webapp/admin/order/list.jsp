@@ -20,7 +20,7 @@ function doSearch(){
 	var a=$('form[name=form1]').serialize();
 	YW.ajax({
 	    type: 'get',
-	    url: '${projectName}/c/admin/house/listData?estateId=${estateId}',
+	    url: '${projectName}/c/admin/order/listData',
 	    data: a,
 	    dataType:'json',
 	    mysuccess: function(json){
@@ -34,7 +34,7 @@ function delPost(id){
 	art.dialog.confirm('删除后不可恢复，确定要删除吗？', function () {
 	    YW.ajax({
 	        type: 'POST',
-	        url: '${projectName}/c/admin/house/delete?id='+id,
+	        url: '${projectName}/c/admin/order/delete?id='+id,
 	        data:'',
 	        mysuccess: function(data){
                 doSearch();
@@ -45,6 +45,9 @@ function delPost(id){
 }
 $(function () {
 	Page.Init();
+	$('#addnew').click(function(){
+			window.location.href="add.jsp";
+	 });
 	doSearch();
 });
 
@@ -52,39 +55,38 @@ $(function () {
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    房间号<input type="text" name="name"/>
+    <input type="text" name="name"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
-    <button type="button"  onclick="addTab('house_add','添加房源','house/add.jsp?estateId=${estateId}')" class="btn btn-success ">添加房源</button>
 </form>
 
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
+    	<th>编号</th>
+    	<th>楼盘</th>
         <th>楼栋</th>
         <th>单元</th>
     	<th>房间号</th>
-        <th>面积</th>
-        <th>房型</th>
-        <th>朝向</th>
-        <th>单价</th>
-        <th>折扣</th>
-        <th>折扣后总价</th>
+        <th>客户</th>
+        <th>客户电话</th>
+        <th>预约时间</th>
+        <th>状态</th>
         <th>操作</th>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
-    			<td>$[dhao]</td>
+    			<td>$[id]</td>
+                <td>$[estateName]</td>
+                <td>$[dhao]</td>
                 <td>$[unit]</td>
                 <td>$[fhao]</td>
-                <td>$[mji]</td>
-                <td>$[hxing]</td>
-                <td>$[cxiang]</td>
-                <td>$[djia]</td>
-                <td>$[zkou]</td>
-                <td>$[totalPrice]</td>
-                <td><a href="edit.jsp?id=$[id]">编辑</a>
-                    <a href="#" onclick="delPost($[id])">删除</a>
+                <td>$[buyerName]</td>
+                <td>$[buyerTel]</td>
+                <td>$[addtime]</td>
+                <td>$[status]</td>
+                <td>
+                    <a href="#" onclick="accept($[id])">接受</a>
                 </td>
             </tr>
     </tbody>

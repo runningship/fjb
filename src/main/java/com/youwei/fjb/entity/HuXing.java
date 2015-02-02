@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class House {
+public class HuXing {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -14,25 +14,9 @@ public class House {
 	
 	public Integer estateId;
 	
-	public String dhao;
+	public String uuid;
 	
-	public String unit;
+	public String name;
 	
-	public String fhao;
-	
-	public Float mji;
-	
-	public String hxing;
-	
-	public Integer djia;
-	
-	public String zkou;
-	
-	//折后总价
-	public Float totalPrice;
-	
-	public String cxiang;
-	
-	public String zxiu;
-
+	public String conts;
 }

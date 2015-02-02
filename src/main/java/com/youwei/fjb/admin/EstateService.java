@@ -78,4 +78,14 @@ public class EstateService {
 		mv.data.put("images", JSONHelper.toJSONArray(images));
 		return mv;
 	}
+	
+	@WebMethod
+	public ModelAndView deleteImage(Integer id){
+		ModelAndView mv = new ModelAndView();
+		HouseImage po = dao.get(HouseImage.class, id);
+		if(po!=null){
+			dao.delete(po);
+		}
+		return mv;
+	}
 }
