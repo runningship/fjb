@@ -19,9 +19,9 @@
 
 $(function(){
 	setTimeout(function(){
-		initUploadHouseImage('hxing_upload' , 'hxing' , '${estate.uuid}');
+		initUploadHouseImage('huxing_upload' , 'huxing' , '${estate.uuid}' ,'${huxing.uuid}');
 	},100);
-	getImgList('${estate.uuid}' ,'hxing');
+	getImgList('${estate.uuid}' ,'huxing' , '${huxing.uuid}');
 });
 
 function save(){
@@ -49,8 +49,8 @@ function save(){
     </tr>
     <tr>
         <td class="tableleft">图片</td>
-        <td><input id="hxing_upload"  style="display:none;margin-top:5px;">
-        	<div id="hxing_img_container">
+        <td><input id="huxing_upload"  style="display:none;margin-top:5px;">
+        	<div id="huxing_img_container">
         	</div>
         </td>
     </tr>

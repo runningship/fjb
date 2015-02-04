@@ -7,11 +7,13 @@ import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
+import org.bc.sdak.GException;
 import org.bc.sdak.Page;
 import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
+import org.bc.web.PlatformExceptionType;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.entity.Estate;
@@ -27,17 +29,18 @@ public class HuXingService {
 	CommonDaoService dao = TransactionalServiceHelper.getTransactionalService(CommonDaoService.class);
 	
 	@WebMethod
-	public ModelAndView list(){
+	public ModelAndView list(Integer estateId){
 		ModelAndView mv = new ModelAndView();
+		mv.jspData.put("estateId", estateId);
 		return mv;
 	}
 	
 	@WebMethod
 	public ModelAndView add(Integer estateId){
 		ModelAndView mv = new ModelAndView();
-		mv = ConfigHelper.queryItems(mv);
-		mv.jspData.put("estateId", estateId);
-		mv.jspData.put("uuid", UUID.randomUUID().toString());
+		Estate estate = dao.get(Estate.class, estateId);
+		mv.jspData.put("estate", estate);
+		mv.jspData.put("huxingUUID", UUID.randomUUID().toString());
 		return mv;
 	}
 	
@@ -47,7 +50,6 @@ public class HuXingService {
 		HuXing po = dao.get(HuXing.class, id);
 		Estate estate = dao.get(Estate.class, po.estateId);
 //		mv = ConfigHelper.queryItems(mv);
-//		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where type='hxing' and estateUUID=?", estate.uuid);
 		mv.jspData.put("huxing", po);
 		mv.jspData.put("estate", estate);
 //		mv.jspData.put("images", images);
@@ -57,7 +59,11 @@ public class HuXingService {
 	@WebMethod
 	public ModelAndView update(HuXing huxing){
 		ModelAndView mv = new ModelAndView();
-		HuXing po = dao.get(HuXing.class, huxing.id);
+		HuXing po = dao.getUniqueByKeyValue(HuXing.class, "name", huxing.name);
+		if(po!=null){
+			throw new GException(PlatformExceptionType.BusinessException,"重复的户型，请修改后提交");
+		}
+		po = dao.get(HuXing.class, huxing.id);
 		if(po!=null){
 			po.name = huxing.name;
 			po.conts = huxing.conts;
@@ -70,16 +76,20 @@ public class HuXingService {
 	@WebMethod
 	public ModelAndView doSave(HuXing huxing){
 		ModelAndView mv = new ModelAndView();
+		HuXing po = dao.getUniqueByKeyValue(HuXing.class, "name", huxing.name);
+		if(po!=null){
+			throw new GException(PlatformExceptionType.BusinessException,"重复的户型，请修改后提交");
+		}
 		dao.saveOrUpdate(huxing);
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView listData(Page<Map> page , String estateId){
+	public ModelAndView listData(Page<Map> page , Integer estateId){
 		ModelAndView mv = new ModelAndView();
 		StringBuilder hql = new StringBuilder("select hx.id as id, hx.name as name , est.name as estateName from HuXing hx, Estate est where est.id=hx.estateId ");
-		List<String> params = new ArrayList<String>();
-		if(StringUtils.isNotEmpty(estateId)){
+		List<Object> params = new ArrayList<Object>();
+		if(estateId!=null){
 			params.add(estateId);
 			hql.append(" and hx.estateId=?");
 		}

@@ -3,6 +3,7 @@ package com.youwei.fjb.admin;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.GException;
 import org.bc.sdak.Page;
@@ -14,6 +15,7 @@ import org.bc.web.Module;
 import org.bc.web.PlatformExceptionType;
 import org.bc.web.WebMethod;
 
+import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
 import com.youwei.fjb.entity.HuXing;
 import com.youwei.fjb.util.ConfigHelper;
@@ -46,6 +48,8 @@ public class HouseService {
 		ModelAndView mv = new ModelAndView();
 		House po = dao.get(House.class, id);
 		mv = ConfigHelper.queryItems(mv);
+		List<HuXing> hxings = SimpDaoTool.getGlobalCommonDaoService().listByParams(HuXing.class, "from HuXing where estateId=?",po.estateId);
+		mv.jspData.put("hxings", hxings);
 		mv.jspData.put("house", po);
 		return mv;
 	}
@@ -53,16 +57,39 @@ public class HouseService {
 	@WebMethod
 	public ModelAndView update(House house){
 		ModelAndView mv = new ModelAndView();
+		check(house);
 		House po = dao.get(House.class, house.id);
-		dao.saveOrUpdate(po);
+		house.estateId = po.estateId;
+		house.hasSold = po.hasSold;
+		dao.saveOrUpdate(house);
+		return mv;
+	}
+	
+	private void check(House house) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@WebMethod
+	public ModelAndView delete(Integer id){
+		ModelAndView mv = new ModelAndView();
+		House po = dao.get(House.class, id);
+		if(po!=null){
+			dao.delete(po);
+		}
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView doSave(House house , Integer fhaoStart , Integer fhaoEnd){
+	public ModelAndView doSave(House house , Integer lcengStart , Integer lcengEnd ,String fanghao){
 		ModelAndView mv = new ModelAndView();
-		if(fhaoEnd==null){
+		house.hasSold = 0;
+		if(StringUtils.isEmpty(house.hxing)){
+			throw new GException(PlatformExceptionType.BusinessException,"请先选择户型");
+		}
+		if(lcengEnd==null){
 			//检查栋号，单元，房间号
+			house.fhao = lcengStart+""+fanghao;
 			House po = dao.getUniqueByParams(House.class, new String[]{"dhao" , "unit" , "fhao"}, new Object[]{house.dhao , house.unit , house.fhao});
 			if(po!=null){
 				throw new GException(PlatformExceptionType.BusinessException,"房源重复,请检查栋号，单元，房间号后提交");
@@ -70,11 +97,11 @@ public class HouseService {
 			dao.saveOrUpdate(house);
 		}else{
 			int count = 0;
-			for(int i=fhaoStart;i<=fhaoEnd;i++){
+			for(int i=lcengStart;i<=lcengEnd;i++){
+				house.fhao = i+fanghao;
 				//检查栋号，单元，房间号
-				House po = dao.getUniqueByParams(House.class, new String[]{"dhao" , "unit" , "fhao"}, new Object[]{house.dhao , house.unit , String.valueOf(i)});
+				House po = dao.getUniqueByParams(House.class, new String[]{"dhao" , "unit" , "fhao"}, new Object[]{house.dhao , house.unit , house.fhao});
 				if(po==null){
-					house.fhao = String.valueOf(i);
 					house.id = null;
 					dao.saveOrUpdate(house);
 					count++;

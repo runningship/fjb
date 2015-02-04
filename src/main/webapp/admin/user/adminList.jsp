@@ -58,6 +58,7 @@ function doSearch(){
     <thead>
     <tr>
     	<th>编号</th>
+    	<th>账号</th>
         <th>姓名</th>
         <th>电话</th>
         <th>邮箱</th>
@@ -67,6 +68,7 @@ function doSearch(){
     <tbody>
     	<tr style="display:none" class="repeat">
     			<td>$[id]</td>
+    			<td>$[account]</td>
                 <td>$[name]</td>
                 <td>$[tel]</td>
                 <td>$[email]</td>

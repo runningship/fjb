@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.Page;
 import org.bc.sdak.TransactionalServiceHelper;
@@ -32,7 +33,7 @@ public class EstateService {
 	public ModelAndView add(){
 		ModelAndView mv = new ModelAndView();
 		mv = ConfigHelper.queryItems(mv);
-		mv.jspData.put("estate_uuid", UUID.randomUUID().toString());
+		mv.jspData.put("estateUUID", UUID.randomUUID().toString());
 		return mv;
 	}
 	
@@ -51,7 +52,43 @@ public class EstateService {
 		Estate po = dao.get(Estate.class, estate.id);
 		po.quyu = estate.quyu;
 		po.name = estate.name;
-		dao.saveOrUpdate(estate);
+		po.tel = estate.tel;
+		po.junjia = estate.junjia;
+		po.tejia = estate.tejia;
+		po.opentime = estate.opentime;
+		po.lxing = estate.lxing;
+		po.wylx = estate.wylx;
+		po.zxiu = estate.zxiu;
+		po.jzmj = estate.jzmj;
+		po.rongji = estate.rongji;
+		po.ghmj = estate.ghmj;
+		po.lvhua = estate.lvhua;
+		po.chewei = estate.chewei;
+		po.hushu = estate.hushu;
+		po.wyfee = estate.wyfee;
+		po.tese = estate.tese;
+		po.developer = estate.developer;
+		po.wyComp = estate.wyComp;
+		po.addr = estate.addr;
+		po.yufu = estate.yufu;
+		po.shidi = estate.shidi;
+		po.tehui = estate.tehui;
+		po.tuijian = estate.tuijian;
+		dao.saveOrUpdate(po);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView delete(Integer id){
+		ModelAndView mv = new ModelAndView();
+		Estate po = dao.get(Estate.class, id);
+		if(po!=null){
+			dao.delete(po);
+			//删除房源
+			dao.execute("delete from House where estateId=?", id);
+			//删除图片
+			dao.execute("delete from HouseImage where estateUUID=?", po.uuid);
+		}
 		return mv;
 	}
 	
@@ -72,9 +109,17 @@ public class EstateService {
 	}
 	
 	@WebMethod
-	public ModelAndView listImage(String estateUUID , String imgType){
+	public ModelAndView listImage(String estateUUID , String imgType , String huxingUUID){
 		ModelAndView mv = new ModelAndView();
-		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where estateUUID=? and type=?", estateUUID , imgType);
+		List<Object> params = new ArrayList<Object>();
+		StringBuilder hql = new StringBuilder("from HouseImage where estateUUID=? and type=?");
+		params.add(estateUUID);
+		params.add(imgType);
+		if(StringUtils.isNotEmpty(huxingUUID)){
+			hql.append(" and huxingUUID=?");
+			params.add(huxingUUID);
+		}
+		List<HouseImage> images = dao.listByParams(HouseImage.class, hql.toString(), params.toArray());
 		mv.data.put("images", JSONHelper.toJSONArray(images));
 		return mv;
 	}

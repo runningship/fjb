@@ -24,6 +24,7 @@ public class Estate {
 	
 	public Date opentime;
 	
+	//建筑类型，楼型
 	public String lxing;
 	
 	public String zxiu;
@@ -67,19 +68,23 @@ public class Estate {
 	//总价
 	public Float totalPrice;
 	
-	public Float yongjin;
+//	public Float yongjin;
 	
-	//市场价,指平方价格
-	public Float sjia;
+	//特惠价
+	public Float tejia;
 	
-	//优惠方案
-	public String youhui;
+	//预付
+	public Integer yufu;
 	
-	public Date youhuiEnd;
+	//实抵
+	public Integer shidi;
+	
+	public Date youhuiEndtime;
 	
 	//是否推荐
 	public Integer tuijian;
 	
+	//住图片
 	public String img;
 	
 	//1限时特惠

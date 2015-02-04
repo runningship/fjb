@@ -20,7 +20,7 @@ function doSearch(){
 	var a=$('form[name=form1]').serialize();
 	YW.ajax({
 	    type: 'get',
-	    url: '${projectName}/c/admin/order/listData',
+	    url: '${projectName}/c/admin/order/listHouseData',
 	    data: a,
 	    dataType:'json',
 	    mysuccess: function(json){
@@ -43,6 +43,7 @@ function delPost(id){
 	      });
 	  },function(){},'warning');
 }
+
 $(function () {
 	Page.Init();
 	$('#addnew').click(function(){
@@ -69,6 +70,7 @@ $(function () {
     	<th>房间号</th>
         <th>客户</th>
         <th>客户电话</th>
+        <th>经纪人</th>
         <th>预约时间</th>
         <th>状态</th>
         <th>操作</th>
@@ -83,9 +85,11 @@ $(function () {
                 <td>$[fhao]</td>
                 <td>$[buyerName]</td>
                 <td>$[buyerTel]</td>
+                <td>$[sellerName]</td>
                 <td>$[addtime]</td>
                 <td>$[status]</td>
                 <td>
+                    <a href="#" onclick="addTab('edit_yy','编辑预约','order/edit.jsp?id=$[id]')">编辑</a>
                     <a href="#" onclick="accept($[id])">接受</a>
                 </td>
             </tr>

@@ -405,7 +405,7 @@ select.sortSelect {
 
 .rightList .con li .img{ width:75px; height:75px; overflow:hidden;}
 
-.rightList .con li .img img{ width:75px;}
+.rightList .con li .img img{ width:75px; height:65px;}
 .rightList .con li .name{ width:120px; margin-left:5px;}
 
 .rightList .con li p{ margin-bottom:4px;}
@@ -469,7 +469,7 @@ select.sortSelect {
     border-style: solid;
     border-width: 2px 1px 1px;
 	width:370px;
-    height: 356px;
+    min-height: 356px;
     padding: 20px; margin-bottom:50px;
 }
 
@@ -988,4 +988,31 @@ h3.hd a {
     top:0;  
     left:0;  
     z-index:999;  
+}
+
+
+
+
+.page {
+    line-height: 24px;
+    padding: 0 15px 25px 30px;
+    text-align: center;
+	margin-top:25px; font-size:14px; font-family:"宋体";
+}
+
+.page a {
+    background: none repeat scroll 0 0 #c0c0c0;
+    border: 1px solid #c0c0c0;
+    color: #fff;
+    display: inline-block;
+    margin: 0 3px;
+    padding: 3px 12px;
+    vertical-align: top;
+}
+
+
+.page a:hover, .page .current {
+    background-color:#ff6000;
+    border: 1px solid #ff6000;
+    color: #fff;
 }

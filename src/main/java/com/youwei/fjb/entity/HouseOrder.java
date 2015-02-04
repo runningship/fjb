@@ -19,8 +19,10 @@ public class HouseOrder {
 	
 	public Integer hid;
 	
-	//负责人
+	//经纪人
 	public Integer sellerId;
+	
+	public String sellerName;
 	
 	public String status;
 	

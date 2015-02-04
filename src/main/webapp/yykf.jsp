@@ -3,48 +3,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<link rel="stylesheet" type="text/css" href="style/css.css" />
-<script src="js/jquery-1.6.4.min.js"></script>
-<script src="js/jquery.nivo.slider.pack.js"></script> 
-<script src="${projectName}/js/jquery.js" type="text/javascript"></script>
-<script type="text/javascript" src="${projectName}/js/buildHtml.js"></script>
-</head>
+<jsp:include page="header.jsp" />
 <script type="text/javascript">
   
 function save(){
   var a=$('form[name=form1]').serialize();
     YW.ajax({
       type: 'POST',
-      url: 'c/order/doSave',
+      url: 'c/admin/order/doSave',
       data:a,
       mysuccess: function(data){
           // $('#saveBtn').removeAttr('disabled');
           //art.dialog.close();
           // art.dialog.opener.doSearchAndSelectFirst();
-          alert('提交成功');
+          alert('预约提交成功');
       }
   });
 }
 
-
 </script>
+</head>
+
 <body>
 <form name="form1" role="form">
+<input type="hidden" name="estateId" value="${estateId }"/>
 <div class="dialog-custom dialog-book">
       <div class="form-title">
-        <p class="title-main">预约&nbsp;<span>玫瑰绅城 ${dhao }栋 ${unit }单元 ${fhao }室</span></p>
+        <p class="title-main">预约&nbsp;<span>玫瑰绅城 <c:if test="${house !=null }">${house.dhao }栋 ${house.unit }单元 ${house.fhao }室</c:if></span></p>
         <p class="title-sub">请填写您的姓名和手机号，以便经纪人联系您看房</p>
       </div>
       <div class="form-field">
         <label>手机号</label>
-        <input type="text" placeholder="请输入手机号" name="mobile" class="int int-num">
+        <input type="text" placeholder="请输入手机号" name="buyerTel" class="int int-num">
         <div name="tip" class="tips"><i class="icon-error"></i><span></span></div>
       </div>
       <div class="form-field">
         <label>姓&#12288;名</label>
-        <input type="text" placeholder="请输入姓名" name="name" autocomplete="off" class="int int-num">
+        <input type="text" placeholder="请输入姓名" name="buyerName" autocomplete="off" class="int int-num">
         <div name="tip" class="tips"><i class="icon-error"></i><span></span></div>
       </div>
       <div class="form-field">

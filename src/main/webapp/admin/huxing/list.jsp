@@ -16,11 +16,12 @@
 	<script type="text/javascript" src="${projectName}/js/buildHtml.js"></script>
     <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
 <script type="text/javascript">
+var estateId;
 function doSearch(){
 	var a=$('form[name=form1]').serialize();
 	YW.ajax({
 	    type: 'get',
-	    url: '${projectName}/c/admin/huxing/listData',
+	    url: '${projectName}/c/admin/huxing/listData?estateId='+estateId,
 	    data: a,
 	    dataType:'json',
 	    mysuccess: function(json){
@@ -47,6 +48,7 @@ function doSearch(){
 		$('#addnew').click(function(){
 				window.location.href="add.jsp";
 		 });
+		estateId = getParam('estateId');
 		doSearch();
 	});
 	
@@ -56,7 +58,7 @@ function doSearch(){
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
     楼盘名称：<input type="text" name="name"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
-    <!-- <button type="button"  onclick="addTab('hxing_add','添加户型','order/addHxing.jsp?estateId=$[id]')" class="btn btn-success ">添加户型</button> -->
+    <c:if test="${estateId!=null}"><button type="button"  onclick="addTab('hxing_add','添加户型','huxing/add.jsp?estateId=${estateId}')" class="btn btn-success ">添加户型</button></c:if>
 </form>
 
 <table class="table table-bordered table-hover definewidth m10">

@@ -92,9 +92,13 @@
                              text: '预约管理',
                              items: [
                                  {
-                                     id: 'order_list',
-                                     text: '预约列表',
-                                     href: 'order/list.jsp'
+                                     id: 'order_house_list',
+                                     text: '房源预约',
+                                     href: 'order/listHouse.jsp'
+                                 },{
+                                     id: 'order_estate_list',
+                                     text: '楼盘预约',
+                                     href: 'order/listEstate.jsp'
                                  }
                              ]
                          },{
@@ -103,7 +107,7 @@
                                  {
                                      id: 'lxing_cfg',
                                      text: '建筑类型',
-                                     href: 'order/list.jsp'
+                                     href: 'config/lxingList.jsp'
                                  },{
                                      id: 'wylx_cfg',
                                      text: '物业类型',

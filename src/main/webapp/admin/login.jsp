@@ -42,7 +42,7 @@ $(function(){
 			<form name="form1">
 			<p class="main">
 				<label>账号: </label>
-				<input name="name" value="" /> 
+				<input name="account" value="" /> 
 				<label>密码: </label>
 				<input type="password" name="pwd" value="">	
 			</p>

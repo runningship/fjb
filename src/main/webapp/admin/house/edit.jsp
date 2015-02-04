@@ -17,13 +17,14 @@
 	<script type="text/javascript">
 		
 		$(function(){
+			$('#cxiang').val('${house.cxiang}');
 		});
 		
 		function save(){
 		    var a=$('form[name=form1]').serialize();
 		    YW.ajax({
 		        type: 'POST',
-		        url: '${projectName}/c/admin/estate/update',
+		        url: '${projectName}/c/admin/house/update',
 		        data:a,
 		        mysuccess: function(data){
 		            alert('修改成功');
@@ -34,119 +35,69 @@
 </head>
 <body>
 <form name="form1" method="post" class="definewidth m20">
-	<input type="hidden" name="id"  value="${estate.id}"/>
+	<input type="hidden" name="id"  value="${house.id}"/>
 <table class="table table-bordered table-hover m10">
 	
     <tr>
-        <td class="tableleft">名称</td>
-        <td><input type="text" name="name" value="${estate.name }"/></td>
+        <td class="tableleft">楼栋</td>
+        <td><input type="text" name="dhao" value="${house.dhao}" /></td>
     </tr>
     <tr>
-        <td class="tableleft">区域</td>
+        <td class="tableleft">单元</td>
+        <td><input type="text" name="unit" value="${house.unit}" /></td>
+    </tr>
+    <tr>
+        <td class="tableleft">房间号</td>
+        <td><input  style="width:101px;" type="text" name="fhao" value="${house.fhao}"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">面积</td>
+        <td><input type="text" name="mji" value="${house.mji}"/></td>
+    </tr>
+    <!-- <tr>
+        <td class="tableleft">主图片</td>
+        <td><input id="main_upload"  style="display:none;margin-top:5px;">
+            <div id="main_img_container">
+            </div>
+        </td>
+    </tr> -->
+    <tr>
+        <td class="tableleft">户型</td>
         <td>
-        	<select  class="sortSelect" name="quyu">
+            <select  class="sortSelect" name="hxing">
                 <option value="" >所有</option>
-                <c:forEach items="${quyus}" var="quyu">
-                  <option value="${quyu.value}">${quyu.value}</option>
+                <c:forEach items="${hxings}" var="hxing">
+                  <option <c:if test="${hxing.name eq house.hxing }">selected="selected"</c:if> value="${hxing.name}">${hxing.name}</option>
                 </c:forEach>
             </select>
         </td>
     </tr>
     <tr>
-        <td class="tableleft">均价</td>
-        <td><input type="text" name="junjia" value="${junjia }"/>元/平方</td>
-    </tr>
-    
-    <tr id="tr_conts" >
-    	<td class="tableleft">开盘时间</td>
-    	<td></td>
-    </tr>
-    <tr>
-        <td class="tableleft">建筑类型</td>
+        <td class="tableleft">朝向</td>
         <td>
-        	<select  class="sortSelect" name="lxing">
-                <option value="" >所有</option>
-                <c:forEach items="${lxings}" var="lxing">
-                  <option value="${lxing.value}">${lxing.value}</option>
-                </c:forEach>
+            <select  class="sortSelect"  id="cxiang" name="cxiang">
+                <option value="东" >东</option>
+                <option value="西" >西</option>
+                <option value="南" >南</option>
+                <option value="北" >北</option>
             </select>
-       </td>
-    </tr>
-    <tr>
-        <td class="tableleft">物业类型</td>
-        <td><select  class="sortSelect" name="wylx">
-                <option value="" >所有</option>
-                <c:forEach items="${wylxs}" var="wylx">
-                  <option value="${wylx.value}">${wylx.value}</option>
-                </c:forEach>
-            </select></td>
-    </tr>
-    <tr>
-        <td class="tableleft">装修</td>
-        <td><select  class="sortSelect" name="zxiu">
-                <option value="" >所有</option>
-                <c:forEach items="${zxius}" var="zxiu">
-                  <option value="${zxiu.value}">${zxiu.value}</option>
-                </c:forEach>
-            </select></td>
-    </tr>
-    <tr>
-        <td class="tableleft">建筑面积</td>
-        <td><input type="text" name="jzmj"  value="${estate.jzmj }" />平方</td>
-    </tr>
-    <tr>
-        <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji" value="${estate.rongji }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">规划面积</td>
-        <td><input type="text" name="ghmj" value="${estate.ghmj }"/>平方</td>
-    </tr>
-    <tr>
-        <td class="tableleft">绿化率</td>
-        <td><input type="text" name="lvhua" value="${estate.lvhua }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">车位数</td>
-        <td><input type="text" name="chewei" value="${estate.chewei }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">规划户数</td>
-        <td><input type="text" name="hushu"  value="${estate.hushu }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">物业费</td>
-        <td><input type="text" name="wyfee" value="${estate.wyfee }"/>元/平方*月</td>
-    </tr>
-    <tr>
-        <td class="tableleft">楼盘特色</td>
-        <td><textarea name="tese"  >${estate.tese }</textarea></td>
-    </tr>
-    <tr>
-        <td class="tableleft">开发商</td>
-        <td><input type="text" name="developer" value="${estate.developer }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">物业公司</td>
-        <td><input type="text" name="wyComp" value="${estate.wyComp }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">地址</td>
-        <td><input type="text" name="addr" value="${estate.addr }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">户型图</td>
-        <td><input id="hxing_upload"  style="display:none;margin-top:5px;">
-        	<div id="hxing_img_container">
-        	</div>
         </td>
     </tr>
-     <tr>
-        <td class="tableleft">效果图</td>
-        <td><input id="xiaoguo_upload"  style="display:none;margin-top:5px;">
-        	<div id="xiaoguo_img_container">
-        	</div>
-        </td>
+    <tr>
+        <td class="tableleft">单价</td>
+        <td><input type="text" name="djia" value="${house.djia}"/>元/平方</td>
+    </tr>
+    <tr>
+        <td class="tableleft">优惠方案</td>
+        <td><input type="text" name="yufu" value="${house.yufu}" />抵<input type="text" name="shidi" value="${house.shidi}" /></td>
+    </tr>
+    <tr>
+        <td class="tableleft">折后总价</td>
+        <td><input type="text" name="totalPrice" value="${house.totalPrice}"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">佣金</td>
+        <td><input type="text" name="yongjin" value="${house.yongjin}" /></td>
     </tr>
     <tr>
         <td class="tableleft"></td>

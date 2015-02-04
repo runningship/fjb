@@ -81,7 +81,7 @@ $(function () {
                 <td>$[hxing]</td>
                 <td>$[cxiang]</td>
                 <td>$[djia]</td>
-                <td>$[zkou]</td>
+                <td>$[yufu]抵$[shidi]</td>
                 <td>$[totalPrice]</td>
                 <td><a href="edit.jsp?id=$[id]">编辑</a>
                     <a href="#" onclick="delPost($[id])">删除</a>

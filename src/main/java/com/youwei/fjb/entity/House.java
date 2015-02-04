@@ -26,7 +26,11 @@ public class House {
 	
 	public Integer djia;
 	
-	public String zkou;
+	//预付
+	public Integer yufu;
+	
+	//实抵
+	public Integer shidi;
 	
 	//折后总价
 	public Float totalPrice;
@@ -35,4 +39,8 @@ public class House {
 	
 	public String zxiu;
 
+	//经纪人佣金
+	public Float yongjin;
+	
+	public Integer hasSold;
 }

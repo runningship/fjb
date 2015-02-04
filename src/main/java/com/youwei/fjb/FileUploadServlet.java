@@ -50,10 +50,12 @@ public class FileUploadServlet extends HttpServlet {
 			out = response.getOutputStream();
 			response.setContentType("text/plain");
 			String estateId;
+			String huxingUUID="";
 			String type="";
 			try{
 				type = request.getParameter("imgType");
 				estateId = request.getParameter("estateId");
+				huxingUUID = request.getParameter("huxingUUID");
 			}catch(Exception ex){
 				response.setStatus(500);
 				out.write("recordId should be number ".getBytes());
@@ -85,6 +87,7 @@ public class FileUploadServlet extends HttpServlet {
 				}
 				image.estateUUID = estateId;
 				image.type = type;
+				image.huxingUUID = huxingUUID;
 				SimpDaoTool.getGlobalCommonDaoService().saveOrUpdate(image);
 			}
 			result.put("msg", "success");

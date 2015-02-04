@@ -14,13 +14,11 @@
     <script type="text/javascript" src="${projectName }/js/artDialog/plugins/iframeTools.source.js"></script>
     <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
+    <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
 	<script type="text/javascript">
-var id;
 		$(function(){
 			setTimeout(function(){
-				initUploadHouseImage('hxing_upload' , 'hxing' ,'${estate.uuid}');
-				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo' ,'${estate.uuid}');
-				initUploadHouseImage('main_upload' , 'main' ,'${estate.uuid}');
+				initUploadHouseImage('huxing_upload' , 'huxing' , '${estate.uuid}' , '${huxingUUID}');
 			},100);
 		});
 		
@@ -39,7 +37,8 @@ var id;
 </head>
 <body>
 <form name="form1" method="post" class="definewidth m20">
-<input type="hidden" name="estateId" id="estateId" value="${estateId}">
+<input type="hidden" name="uuid" value="${huxingUUID}">
+<input type="hidden" name="estateId" value="${estate.id}">
 <table class="table table-bordered table-hover m10">
 	
     <tr>
@@ -48,8 +47,8 @@ var id;
     </tr>
     <tr>
         <td class="tableleft">图片</td>
-        <td><input id="main_upload"  style="display:none;margin-top:5px;">
-        	<div id="main_img_container">
+        <td><input id="huxing_upload"  style="display:none;margin-top:5px;">
+        	<div id="huxing_img_container">
         	</div>
         </td>
     </tr>

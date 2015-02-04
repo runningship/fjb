@@ -1,7 +1,9 @@
 package com.youwei.fjb.admin;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
@@ -11,15 +13,20 @@ import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
+import org.bc.web.ThreadSession;
 import org.bc.web.WebMethod;
 
+import com.youwei.fjb.FjbConstant;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
 import com.youwei.fjb.entity.HouseImage;
 import com.youwei.fjb.entity.HuXing;
 import com.youwei.fjb.entity.HouseOrder;
+import com.youwei.fjb.entity.OrderGenJin;
+import com.youwei.fjb.entity.User;
 import com.youwei.fjb.util.ConfigHelper;
 import com.youwei.fjb.util.DataHelper;
+import com.youwei.fjb.util.VerifyCodeHelper;
 
 @Module(name="/admin/order")
 public class OrderService {
@@ -41,42 +48,108 @@ public class OrderService {
 	@WebMethod
 	public ModelAndView edit(Integer id){
 		ModelAndView mv = new ModelAndView();
-		HuXing po = dao.get(HuXing.class, id);
+		HouseOrder po = dao.get(HouseOrder.class, id);
+		if(po.sellerId!=null){
+			User seller = dao.get(User.class, po.sellerId);
+			mv.jspData.put("sellerTel", seller.tel);
+		}
 		Estate estate = dao.get(Estate.class, po.estateId);
-		mv = ConfigHelper.queryItems(mv);
-		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where type='hxing' and estateUUID=?", estate.uuid);
-		mv.jspData.put("huxing", po);
-		mv.jspData.put("images", images);
+		House house = dao.get(House.class, po.hid);
+		mv.jspData.put("order", po);
+		mv.jspData.put("estate", estate);
+		mv.jspData.put("house", house);
+		List<String> statusList = new ArrayList<String>();
+		statusList.add(FjbConstant.HouseOrderAccepted);
+		statusList.add(FjbConstant.HouseOrderNotAccept);
+		statusList.add(FjbConstant.HouseOrderDeal);
+		mv.jspData.put("statusList",statusList);
 		return mv;
 	}
 	
 	@WebMethod
 	public ModelAndView update(HouseOrder order){
 		ModelAndView mv = new ModelAndView();
-		House po = dao.get(House.class, order.id);
+		HouseOrder po = dao.get(HouseOrder.class, order.id);
+		po.status = order.status;
 		dao.saveOrUpdate(po);
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView doSave(HouseOrder order){
+	public ModelAndView doSave(HouseOrder order , String yzm){
+		VerifyCodeHelper.verify(yzm);
+		User seller = (User)ThreadSession.getHttpSession().getAttribute("user");
+		order.status = FjbConstant.HouseOrderNotAccept;
+		if(seller!=null){
+			order.sellerId = seller.id;
+			order.sellerName = seller.name;
+		}
 		ModelAndView mv = new ModelAndView();
+		order.addtime = new Date();
 		dao.saveOrUpdate(order);
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView listData(Page<House> page , String estateId){
+	public ModelAndView fankui(OrderGenJin genjin){
+		ModelAndView mv = new ModelAndView();
+		genjin.addtime = new Date();
+		dao.saveOrUpdate(genjin);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView accept(Integer id){
+		ModelAndView mv = new ModelAndView();
+		HouseOrder po = dao.get(HouseOrder.class, id);
+		po.status = FjbConstant.HouseOrderAccepted;
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView deal(Integer id){
+		ModelAndView mv = new ModelAndView();
+		HouseOrder po = dao.get(HouseOrder.class, id);
+		po.status = FjbConstant.HouseOrderDeal;
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView listHouseData(Page<Map> page , String estateId , Integer sellerId){
 		ModelAndView mv = new ModelAndView();
 		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, house.dhao as dhao , house.unit as unit,house.fhao as fhao"
-				+ ", order.buyerName as buyerName ,order.buyerTel as buyerTel ,order.addtime as addtime, order.status as staus from HouseOrder order, "
-				+ "Estate est,House house where order.estateId=est.id and order.hid=house.id");
-		List<String> params = new ArrayList<String>();
+				+ ",order.sellerName as sellerName ,  order.buyerName as buyerName ,order.buyerTel as buyerTel ,order.addtime as addtime, order.status as status from HouseOrder order, "
+				+ "Estate est,House house where order.estateId=est.id and order.hid=house.id ");
+		List<Object> params = new ArrayList<Object>();
 		if(StringUtils.isNotEmpty(estateId)){
 			params.add(estateId);
 			hql.append(" and estateId=?");
 		}
-		page = dao.findPage(page, hql.toString(), params.toArray());
+		if(sellerId!=null){
+			hql.append(" and order.sellerId=?");
+			params.add(sellerId);
+		}
+		page = dao.findPage(page, hql.toString(), true,params.toArray());
+		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView listEstateData(Page<Map> page , String estateId , Integer sellerId){
+		ModelAndView mv = new ModelAndView();
+		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, order.buyerName as buyerName ,order.buyerTel as buyerTel,"
+				+ " order.sellerName as sellerName , order.addtime as addtime, order.status as status from HouseOrder order, "
+				+ "Estate est where order.estateId=est.id and order.hid is null");
+		List<Object> params = new ArrayList<Object>();
+		if(StringUtils.isNotEmpty(estateId)){
+			params.add(estateId);
+			hql.append(" and estateId=?");
+		}
+		if(sellerId!=null){
+			hql.append(" and order.sellerId=?");
+			params.add(sellerId);
+		}
+		page = dao.findPage(page, hql.toString(), true,params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;
 	}

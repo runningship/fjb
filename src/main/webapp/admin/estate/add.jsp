@@ -15,10 +15,12 @@
     <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
     <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
+    <script type="text/javascript" src="../../js/DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			setTimeout(function(){
-				initUploadHouseImage('hxing_upload' , 'hxing' , '${estateUUID}');
+				initUploadHouseImage('shijing_upload' , 'shijing' , '${estateUUID}');
+				initUploadHouseImage('guihua_upload' , 'guihua' , '${estateUUID}');
 				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo' , '${estateUUID}');
 				initUploadHouseImage('main_upload' , 'main' , '${estateUUID}');
 			},100);
@@ -49,7 +51,11 @@
         <td><input type="text" name="name"/></td>
     </tr>
     <tr>
-        <td class="tableleft">主图片</td>
+        <td class="tableleft">电话</td>
+        <td><input type="text" name="tel"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">主图片<em style="color:red">*</em></td>
         <td><input id="main_upload"  style="display:none;margin-top:5px;">
         	<div id="main_img_container">
         	</div>
@@ -70,10 +76,13 @@
         <td class="tableleft">均价</td>
         <td><input type="text" name="junjia"/>元/平方</td>
     </tr>
-    
+    <tr>
+        <td class="tableleft">特惠价</td>
+        <td><input type="text" name="tejia"/>元/平方</td>
+    </tr>
     <tr id="tr_conts" >
     	<td class="tableleft">开盘时间</td>
-    	<td></td>
+    	<td><input type="text" class="form-control input-sm input-left" name="opentime" id="opentime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
         <td class="tableleft">建筑类型</td>
@@ -149,9 +158,31 @@
         <td><input type="text" name="addr"/></td>
     </tr>
     <tr>
-        <td class="tableleft">户型图</td>
-        <td><input id="hxing_upload"  style="display:none;margin-top:5px;">
-        	<div id="hxing_img_container">
+        <td class="tableleft">优惠方案</td>
+        <td><input type="text" name="yufu"/>抵<input type="text" name="shidi"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">优惠截止时间</td>
+        <td><input type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
+    </tr>
+    <tr>
+        <td class="tableleft">推荐</td>
+        <td><select name="tuijian">
+			<option value="0">否</option>
+        	<option value="1">是</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">特惠</td>
+        <td><select name="tehui">
+        	<option value="0">否</option>
+        	<option value="1">是</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">规划图</td>
+        <td><input id="guihua_upload"  style="display:none;margin-top:5px;">
+        	<div id="guihua_img_container">
         	</div>
         </td>
     </tr>
@@ -159,6 +190,13 @@
         <td class="tableleft">效果图</td>
         <td><input id="xiaoguo_upload"  style="display:none;margin-top:5px;">
         	<div id="xiaoguo_img_container">
+        	</div>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableleft">实景图</td>
+        <td><input id="shijing_upload"  style="display:none;margin-top:5px;">
+        	<div id="shijing_img_container">
         	</div>
         </td>
     </tr>

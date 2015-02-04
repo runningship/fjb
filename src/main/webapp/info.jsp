@@ -3,7 +3,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <script type="text/javascript" src="${projectName}/js/pagination.js"></script>
 <jsp:include page="header.jsp" />
+<script type="text/javascript">
+function doSearch(){
+    var a=$('form[name=form1]').serialize();
+    YW.ajax({
+        type: 'get',
+        url: '${projectName}/c/admin/house/listData?estateId=${estate.id}',
+        data: a,
+        dataType:'json',
+        mysuccess: function(json){
+            buildHtmlWithJsonArray("repeat",json.page.data);
+            Page.setPageInfo(json.page);
+        }
+      });
+}
+
+$(function () {
+    Page.Init();
+    doSearch();
+});
+
+</script>
 </head>
 
 <body>
@@ -22,24 +44,23 @@
                     <!-- 楼盘描述 -->
                     <div class="photos-info">
                         <div class="photos-text">
-                            <h1>[包河区]  玫瑰绅城</h1>
+                            <h1>[${estate.quyu}]  ${estate.name }</h1>
                             <h2>
-                                医院：合肥长江医院  周边学校： 工大附中  超市：家乐福、...<br> 
-                                楼盘地址：合肥市包河区当涂路与南淝河路交叉口西，淝河路99号
+                                ${estate.tese }
                             </h2>
                             <div class="bd">
 
-                                <p class="price"><em>7500</em>元/平米</p> 
+                                <p class="price"><em>${estate.junjia }</em>元/平米</p> 
                                 
                                 
-                                <a class="btn-main " onclick="openNewWin('bookroom','yykf.jsp');" id="booking" href="javascript:;">预约看房</a>
+                                <a class="btn-main " onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${estate.id}');" id="booking" href="javascript:;">预约看房</a>
 
                                 <a class="btn-sub  " href="#online-choose-room">在线选房 (125)</a>
 
 
 
                                 <p class="tips-info">
-                                    (在线剩余125套，总价114.9761万起)
+                                    (在线剩余${leftCount}套，总价${po.totalPrice}万起)
                                 </p>
 
                              </div>
@@ -49,37 +70,42 @@
 
                     <!-- 相册 -->
                     <div class="photos">
-                                                <a class="pic" target="_blank" href="/house/3796/photo">
-                            <img alt="楼盘图片" src="http://fs.fangdd.com/thumb/390m265/orig/000/001/817/-sGdTitbF-Sd_I-1yOKP9k9zTv4.jpg">
+                                                <a class="pic" target="_blank" href="picList.jsp?estateId=${estate.id }">
+                            <img alt="楼盘图片" src="./upload/${main_img }">
                         </a>
                                                 <!-- 列表分页 -->
                         <div role="thumb" class="thumb">
-                                                            
-                            <a role="thumbItem" class="thumb-item  " href="/house/3796/flat#104">
-                                <img alt="" src="http://fs.fangdd.com/thumb/166x120/000/001/817/m-29_Ro4hitrCuUz7IUW619Q4es.jpg">
+                            <c:if test="${huxing_img !=null }">
+                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
+                                <img alt="" src="./upload/${huxing_img }">
                                 <p class="cover-layer">户型图</p>
                                 <span class="photo-frame"></span>
                             </a>
-                                
-                            <a role="thumbItem" class="thumb-item  " href="/house/3796/photo#101">
-                                <img alt="" src="http://fs.fangdd.com/thumb/166x120/000/001/817/-sGdTitbF-Sd_I-1yOKP9k9zTv4.jpg">
-                                <p class="cover-layer">效果图</p>
-                                <span class="photo-frame"></span>
-                            </a>
-                                
-                            <a role="thumbItem" class="thumb-item  " href="/house/3796/photo#102">
-                                <img alt="" src="http://fs.fangdd.com/thumb/166x120/000/001/817/AIcOmCTY4yW06d6fRDsV08XWvdQ.jpg">
-                                <p class="cover-layer">实景图</p>
-                                <span class="photo-frame"></span>
-                            </a>
-                                
-                            <a role="thumbItem" class="thumb-item  last" href="/house/3796/photo#103">
-                                <img alt="" src="http://fs.fangdd.com/thumb/166x120/000/001/817/C3c6QRjWlVWhZsdzju55P4keB7M.jpg">
-                                <p class="cover-layer">规划图</p>
-                                <span class="photo-frame"></span>
-                            </a>
-                                
-                                                    </div>
+                            </c:if>
+                            <c:if test="${xiaoguo_img !=null}">
+	                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
+	                                <img alt="" src="./upload/${xiaoguo_img }">
+	                                <p class="cover-layer">效果图</p>
+	                                <span class="photo-frame"></span>
+	                            </a>
+                            </c:if>
+                            
+                            <c:if test="${shijing_img !=null}">
+                            	<a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
+	                                <img alt="" src="./upload/${shijing_img }">
+	                                <p class="cover-layer">实景图</p>
+	                                <span class="photo-frame"></span>
+	                            </a>
+                            </c:if>
+                            
+                            <c:if test="${guihua_img !=null }">
+	                            <a role="thumbItem" class="thumb-item  last" href="picList.jsp?estateId=${estate.id }">
+	                                <img alt="" src="./upload/${guihua_img }">
+	                                <p class="cover-layer">规划图</p>
+	                                <span class="photo-frame"></span>
+	                            </a>
+                            </c:if>
+                          </div>
 
 
                         <!-- /列表分页 -->
@@ -114,21 +140,18 @@
                          <p>玫瑰绅城在售叠加别墅，户型200-220平米，均价7500元/平米，在售联排240-330平米的户型，均价14500元/...</p>
                          <a class="more" href="/house/3796/news">更多动态</a>
                      </div>
-                    
                 
                 </div>
                 
-                
-                
                 <div id="online-choose-room" class="sct screen-nd clearfix">
             <!-- 在线选房 -->
-                    <h3 class="hd">在线选房<span>以下房源真实在售，在线缴纳定金即可锁定。</span></h3>
+                    <h3 class="hd">在线选房<span>以下房源真实在售</span></h3>
                     <div class="fl online-order">
                         <div class="choose-room">
                             
                             <div role="contents" class="bd">
-                                
-                                
+                                <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="doSearch();return false;">
+                                <input type="hidden" name="pageSize" value="5"/>
                                 <table cellspacing="0">
                                     <thead>
                                         <tr>
@@ -143,119 +166,30 @@
                                             <th>状态/操作</th>
                                         </tr>
                                     </thead>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a href="javascript:;" class="btn-choose btn-order ">预定此房</a>
+            <tr style="display:none" class="repeat">
+                                            <td title="楼栋">$[dhao]</td>
+                                            <td title="单元">$[unit]</td>
+                                            <td title="房间">$[fhao]</td>
+                                            <td title="面积">$[mji]</td>
+                                            <td title="户型">$[hxing]</td>
+                                            <td title="单价">$[djia]</td>
+                                            <td title="折扣">$[zkou]</td>
+                                            <td title="折后总价">$[totalPrice]</td>
+                                            <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
                                             </td>
                                      </tr>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a onclick="baidu_cal_event('bookroom','预定此房');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
-                                            </td>
-                                     </tr>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a onclick="baidu_cal_event('bookroom','预定此房');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
-                                            </td>
-                                     </tr>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a onclick="baidu_cal_event('bookroom','预定此房');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
-                                            </td>
-                                     </tr>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a onclick="baidu_cal_event('bookroom','预定此房');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
-                                            </td>
-                                     </tr>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a onclick="baidu_cal_event('bookroom','预定此房');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
-                                            </td>
-                                     </tr>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a onclick="baidu_cal_event('bookroom','预定此房');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
-                                            </td>
-                                     </tr>
-                                     <tr>
-                                            <td title="楼栋">B4</td>
-                                            <td title="单元">1单元</td>
-                                            <td title="房间">1504</td>
-                                            <td title="面积">223.02</td>
-                                            <td title="户型">H户型</td>
-                                            <td title="单价">7091</td>
-                                            <td title="折扣">2万抵6.588903万</td>
-                                            <td title="折后总价">158.1337万</td>
-                                            <td><a onclick="baidu_cal_event('bookroom','预定此房');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
-                                            </td>
-                                     </tr>
+    
                                 </table>
-                        
-                                
+                                <div class="footer" style="margin-top:5px;margin-left:35px;">
+							        <div class="maxHW mainCont ymx_page foot_page_box"></div>
+							    </div>
+                        	</form>
                             </div>
                         
                         </div>
-        
-        
-        
-        
                      </div>
 
                 </div>
-                
-                
-                
-                
                 
                 <div class="sct screen-rd">
                 <!-- 基本信息 -->
@@ -263,51 +197,49 @@
                     <table cellspacing="0" class="table-text">
                         <tbody><tr>
                             <th>开盘时间</th>
-                            <td>2013-03-21</td>
+                            <td>${estate.opentime }</td>
                             <th>建筑类型</th>
-                            <td>高层,双拼别墅,联排别墅</td>
+                            <td>${estate.lxing }</td>
                         </tr>
                         <tr>
                             <th>建筑装修</th>
-                            <td>毛坯</td>
+                            <td>${estate.zxiu }</td>
                             <th>物业类型</th>
-                            <td>住宅,别墅</td>
+                            <td>${estate.wylx }</td>
                         </tr>
                         <tr>
                             <th>建筑面积</th>
-                            <td>400000㎡</td>
+                            <td>${estate.jzmj }㎡</td>
                             <th>容积率</th>
-                            <td>0.70%</td>
+                            <td>${estate.rongji }%</td>
                         </tr>
                         <tr>
                             <th>规划面积</th>
-                            <td>150000㎡</td>
+                            <td>${estate.ghmj}㎡</td>
                             <th>绿化率</th>
-                            <td>暂无</td>
+                            <td>${estate.lvhua }%</td>
                         </tr>
                         <tr>
                             <th>车位数</th>
-                            <td>3100</td>
+                            <td>${estate.chewei }</td>
                             <th>规划户数</th>
-                            <td>暂无</td>
+                            <td>${estate.hushu }</td>
                         </tr>
                         <tr>
                             <th>物业费</th>
-                            <td>1.2</td>
+                            <td>${estate.wyfee }</td>
                             <th>楼盘特色</th>
-                            <td>医院：合肥长江医院  周边学校： 工大附中  超市：家乐福、...</td>
+                            <td>${estate.tese }</td>
                         </tr>
                         <tr>
                             <th>开发商</th>
-                            <td>上海城开集团合肥置业有限公司</td>
+                            <td>${estate.developer }</td>
                             <th>物业公司</th>
-                            <td>合肥申大物业服务有限公司</td>
+                            <td>${estate.wyComp }</td>
                         </tr>
                     </tbody></table>
                 <!-- /基本信息 -->
                 </div>
-                
-                
                 
                 <div class="screen-sur">
                 
@@ -330,19 +262,8 @@
                      </div>
                      
                      <div class="surround-bd">
-                     
-                          
-                     
                      </div>
-                     
-                     
-                
                 </div>
-                
-                
-                
-                
-                
 
             </div>
           
@@ -350,9 +271,6 @@
      </div>
 
 </div>
-
-
-
 
 <jsp:include page="foot.jsp"></jsp:include>
 

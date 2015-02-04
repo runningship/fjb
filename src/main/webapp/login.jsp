@@ -12,12 +12,17 @@ function save(){
       type: 'POST',
       url: 'c/admin/user/login',
       data:a,
+      dataType:'json',
       success: function(data){
           // $('#saveBtn').removeAttr('disabled');
           //art.dialog.close();
           // art.dialog.opener.doSearchAndSelectFirst();
           alert('登陆成功');
           window.location = 'sellerIndex.jsp';
+      },
+      error:function(data){
+    	  var json = JSON.parse(data.responseText);
+    	  alert(json.msg);
       }
   });
 }

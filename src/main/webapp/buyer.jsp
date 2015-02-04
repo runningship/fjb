@@ -3,67 +3,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<link rel="stylesheet" type="text/css" href="style/css.css" />
+<jsp:include page="header.jsp" />
+<script type="text/javascript" src="js/pagination.js"></script>
 <link rel="stylesheet" type="text/css" href="style/user.css" />
-<script src="js/jquery-1.6.4.min.js"></script>
-<script src="js/jquery.nivo.slider.pack.js"></script> 
+
 </head>
 
 <body>
 
-<div class="warp top">
-     
-     <div class="main">
-      
-          <span class="fr topFr"><a href="#">经纪人登录</a><a href="#">注册</a><a href="#">微信公众账号</a></span>
-      
-     </div>
+<jsp:include page="top.jsp"></jsp:include>
+<jsp:include page="nav.jsp"></jsp:include>
+<script type="text/javascript">
+function doSearch(){
+    var a=$('form[name=form1]').serialize();
+    YW.ajax({
+        type: 'get',
+        url: '${projectName}/c/admin/order/listEstateData?sellerId=${seller.id}',
+        data: a,
+        dataType:'json',
+        mysuccess: function(json){
+            buildHtmlWithJsonArray("buyer",json.page.data);
+            Page.setPageInfo(json.page);
+        }
+      });
+}
 
-</div>
+$(function () {
+    Page.Init();
+    doSearch();
+});
 
-<div class="warp">
-     
-     <div class="main">
-      
-          <div class="fl"><a href="#"><img src="images/logo.jpg" /></a></div>
-          
-          <div class="search-wrap fr">
-                <div id="searchBar" class="search-bar">
-                                
-                    
-                    <div class="search-menu">
-                      <div class="search-tab">
-                        <a val="1" href="javascript:;" class="tab-item current">新房</a>
-                        <a val="2" href="javascript:;" class="tab-item">二手房</a>
-                      </div>
-                      <i></i>
-                    </div>
-                    <input type="text" placeholder="楼盘名称 / 地址" value="" name="kw" class="search-input" role="elem">
-                    <button class="search-btn" type="submit">搜索</button>
-                </div>
-            </div>
-          
-          
-      
-     </div>
-
-</div>
-
-<div class="warp nav">
-
-     <ul class="main">
-          
-          <li><a href="#" class="sel">首页</a></li>
-          <li><a href="#">限时特惠</a></li>
-          <li><a href="#">所有楼盘</a></li>
-          <li><a href="#">地图找房</a></li>
-     
-     </ul>
-
-</div>
-
+</script>
 <div class="warp">
 
      <div class="main">
@@ -89,41 +59,30 @@
                         <h2></h2>
                         
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td height="35" width="30" align="center" valign="middle" bgcolor="#eeeeee"></td>
-    <td align="center" valign="middle" bgcolor="#eeeeee">姓名</td>
-    <td align="center" valign="middle" bgcolor="#eeeeee">电话</td>
-    <td align="center" valign="middle" bgcolor="#eeeeee">预约楼盘</td>
-    <td align="center" valign="middle" bgcolor="#eeeeee">预约时间</td>
-    <td align="center" valign="middle" bgcolor="#eeeeee">看房时间</td>
-    <td align="center" valign="middle" bgcolor="#eeeeee"></td>
-    <td align="center" valign="middle" bgcolor="#eeeeee"></td>
-  </tr>
-  <tr>
-    <td height="30" align="center" valign="middle">1</td>
-    <td align="center" valign="middle">叶新舟</td>
-    <td align="center" valign="middle">15855443322</td>
-    <td align="center" valign="middle">玫瑰绅城5#1708</td>
-    <td align="center" valign="middle">2015-01-20</td>
-    <td align="center" valign="middle">2015-01-30</td>
-    <td align="center" valign="middle">已处理</td>
-    <td align="center" valign="middle"><a href="javascript:" onclick="openNewWin('bookroom','预约信息反馈','xxfk.html');">查看</a></td>
-  </tr>
-  <tr>
-    <td height="30" align="center" valign="middle">2</td>
-    <td align="center" valign="middle">叶新舟</td>
-    <td align="center" valign="middle">15855443322</td>
-    <td align="center" valign="middle">玫瑰绅城5#1708</td>
-    <td align="center" valign="middle">2015-01-20</td>
-    <td align="center" valign="middle">2015-01-30</td>
-    <td align="center" valign="middle">已成交</td>
-    <td align="center" valign="middle"><a href="#">查看</a></td>
-  </tr>
-</table>
+    <thead>
+		  <tr>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">姓名</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">电话</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约楼盘</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约时间</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">状态</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">操作</td>
+		  </tr>
+    </thead>
+						  <tr style="display:none" class="buyer">
+						    <td align="center" valign="middle" height="30">$[buyerName]</td>
+						    <td align="center" valign="middle" height="30">$[buyerTel]</td>
+						    <td align="center" valign="middle" height="30">$[estateName]</td>
+						    <td align="center" valign="middle" height="30">$[addtime]</td>
+						    <td align="center" valign="middle" height="30">$[status]</td>
+						    <td align="center" valign="middle" height="30"><a href="javascript:" onclick="openNewWin('bookroom','预约信息反馈','admin/house/xxfk.html');">查看</a></td>
+						  </tr>
+						</table>
 
-                        
                  </div>
                     
+  				<div class="footer" style="margin-top:5px;margin-left:35px;">
+        			<div class="maxHW mainCont ymx_page foot_page_box"></div>
                
                </div>
                
@@ -132,49 +91,8 @@
      </div>
 
 </div>
-
-
-<div class="warp footerTop">
-
-
-     <div class="main">
-     
-           <ul class="safeguard">
-                <li class="sa-1">
-                    <i class="realsrc"><img src="images/xxf.png" /></i>
-                    <h4>在线选新房</h4>
-                    <p>一房一价，在线缴定金选房，可售 房源一览无余！</p>
-                </li>
-                <li class="sa-2">
-                    <i class="realsvc"><img src="images/zfy.png" /></i>
-                    <h4>100%真实房源</h4>
-                    <p>完全业主挂盘，市场上在售房源应有尽有。</p>
-                </li>
-                <li class="sa-3">
-                    <i class="realsaf"><img src="images/hpz.png" /></i>
-                    <h4>选靠谱服务</h4>
-                    <p>基于看房服务的评价体系，靠谱经纪人/<br>置业顾问带你看房，虚假房源不再有！</p>
-                </li>
-            </ul>
-     
-     </div>
-
-
 </div>
-<div class="warp footerBot">
-
-
-     <div class="main">
-
-          <p><a href="#">关于房金宝</a> | <a href="#">联系我们</a> | <a href="#">在售楼盘</a> | <a href="#">服务申明</a> | <a href="#">微信版</a> | <a href="#">服务电话</a></p>
-          <p>copyright © 2013-2015 www.jinbaohouse.com All Rights Reserved</p>
-          <p>粤ICP备88888888号</p>
-
-     </div>
-
-
-</div>
-
+<jsp:include page="foot.jsp"></jsp:include>
 
 </body>
 </html>

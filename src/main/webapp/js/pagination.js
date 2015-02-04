@@ -1,5 +1,5 @@
 /**
- * 
+ * maxHW mainCont ymx_page foot_page_box
  * @authors Your Name (you@example.org)
  * @date    2014-06-17 10:55:28
  * @version $Id$
@@ -125,11 +125,11 @@ var Page={
 
 
       var pageInfoStrs=''+
-      '<div class="btn-group page_btn_group">'+
+      '<div class="btn-group page_btn_group" style="display:inline-block;">'+
       '  <button type="button" class="btn btn-default" title="总条数">'+this.ln+'</button>'+
       '  <button type="button" class="btn btn-default" title="当前页码/总页码">'+this.p+'/'+this.pn+'</button>'+
       '</div>'+
-      '<div class="btn-group">';
+      '<div class="btn-group" style="display:inline-block;">';
       pageInfoStrs=pageInfoStrs+
       '  <button type="button" action="page" class="btn btn-default btn_p_prev_no hand"'+this.prev_disabled+'>首页</button>';
       pageInfoStrs=pageInfoStrs+

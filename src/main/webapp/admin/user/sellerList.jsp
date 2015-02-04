@@ -43,7 +43,7 @@ function doSearch(){
 		  },function(){},'warning');
 	}
 
-	function toggleShenhe(){
+	function toggleShenhe(id){
 		YW.ajax({
 	        type: 'POST',
 	        url: '${projectName}/c/admin/user/toggleShenHe?id='+id,

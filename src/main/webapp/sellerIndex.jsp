@@ -3,12 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<link rel="stylesheet" type="text/css" href="style/css.css" />
+<jsp:include page="header.jsp" />
 <link rel="stylesheet" type="text/css" href="style/user.css" />
-<script src="js/jquery-1.6.4.min.js"></script>
-<script src="js/jquery.nivo.slider.pack.js"></script> 
 </head>
 
 <body>
@@ -43,8 +39,8 @@
                         </div>
                         
                         <div class="user_inforight">
-                        姓名：叶新舟&#12288;本账户ID：15856985122<br>
-                        手机号码：15856985122&#12288;&#12288;
+                        姓名：${seller.name }&#12288;<br>
+                        手机号码：${seller.tel }&#12288;&#12288;
                         </div>
                         
                         <div class="user_moreinfo">
@@ -56,13 +52,13 @@
                                 <table width="600">
                                     <tbody><tr>
                                         <td width="20%"><img src="images/user_icon1.png"> 认证手机</td>
-                                        <td width="65%"><span style="color:#4682da">15856985122</span></td>
+                                        <td width="65%"><span style="color:#4682da">${seller.tel }</span></td>
                                         <td width="15%"></td>
                                     </tr>
                                     <tr>
                                         <td width="20%"><img src="images/user_icon4.png"> 更改密码</td>
                                         <td width="65%">修改密码之后要牢记密码,不要把密码给陌生人看</td>
-                                        <td width="15%"><a type="button" onclick="openNewWin('bookroom','xgmm.jsp','fsfsdf');" title="" href="javascript:">更改密码</a></td>
+                                        <td width="15%"><a type="button" onclick="openNewWin('modify_pwd','修改密码' ,'xgmm.jsp');" title="" href="javascript:">更改密码</a></td>
                                     </tr>
                                 </tbody></table>
                                 

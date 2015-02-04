@@ -77,7 +77,7 @@
                <ul class="con"> 
                   <c:forEach items="${tuijianList}"  var="tuijian">
                     <li>
-                      <a href="info.jsp">
+                      <a href="info.jsp?estateId=${tuijian.id}">
                         <span class="img"><img src="upload/${tuijian.img}" /></span>
                       </a>
                        <p><strong>[${tuijian.quyu}]${tuijian.name}</strong></p>

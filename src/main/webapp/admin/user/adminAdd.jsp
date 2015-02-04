@@ -38,7 +38,10 @@
 <form name="form1" method="post" class="definewidth m20">
 <input type="hidden" name="type" value="admin"/>
 <table class="table table-bordered table-hover m10">
-	
+	<tr>
+        <td class="tableleft">账号</td>
+        <td><input type="text" name="account"/></td>
+    </tr>
     <tr>
         <td class="tableleft">姓名</td>
         <td><input type="text" name="name"/></td>

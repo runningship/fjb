@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,18 +15,24 @@
     <script type="text/javascript" src="${projectName }/js/artDialog/plugins/iframeTools.source.js"></script>
     <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
-    <script type="text/javascript" src="${projectName}/fjb.js"></script>
+    <script type="text/javascript" src="../../js/fjb.js"></script>
+    <script type="text/javascript" src="../../js/DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 		
 		$(function(){
 			setTimeout(function(){
-				initUploadHouseImage('hxing_upload' , 'hxing' , '${estate.uuid}');
+				initUploadHouseImage('shijing_upload' , 'shijing' , '${estate.uuid}');
+				initUploadHouseImage('guihua_upload' , 'guihua' , '${estate.uuid}');
 				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo' , '${estate.uuid}');
 				initUploadHouseImage('main_upload' , 'main' ,'${estate.uuid}');
 			},100);
 			getImgList('${estate.uuid}' ,'main');
 			getImgList('${estate.uuid}' ,'xiaoguo');
-			getImgList('${estate.uuid}' ,'hxing');
+			getImgList('${estate.uuid}' ,'guihua');
+			getImgList('${estate.uuid}' ,'shijing');
+			
+			$('#tehui').val(${estate.tehui});
+			$('#tuijian').val(${estate.tuijian});
 		});
 		
 		function save(){
@@ -52,7 +59,11 @@
         <td><input type="text" name="name" value="${estate.name }"/></td>
     </tr>
     <tr>
-        <td class="tableleft">主图片</td>
+        <td class="tableleft">电话</td>
+        <td><input type="text" name="tel" value="${estate.tel }"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">主图片<em style="color:red">*</em></td>
         <td><input id="main_upload"  style="display:none;margin-top:5px;">
         	<div id="main_img_container">
         	</div>
@@ -64,19 +75,22 @@
         	<select  class="sortSelect" name="quyu">
                 <option value="" >所有</option>
                 <c:forEach items="${quyus}" var="quyu">
-                  <option value="${quyu.value}">${quyu.value}</option>
+                  <option <c:if test="${quyu.value eq estate.quyu }">selected="selected"</c:if> value="${quyu.value}">${quyu.value}</option>
                 </c:forEach>
             </select>
         </td>
     </tr>
     <tr>
         <td class="tableleft">均价</td>
-        <td><input type="text" name="junjia" value="${junjia }"/>元/平方</td>
+        <td><input type="text" name="junjia" value="${estate.junjia }"/>元/平方</td>
     </tr>
-    
+    <tr>
+        <td class="tableleft">特惠价</td>
+        <td><input type="text" name="sjia" value="${estate.tejia }"/>元/平方</td>
+    </tr>
     <tr id="tr_conts" >
     	<td class="tableleft">开盘时间</td>
-    	<td></td>
+    	<td><input type="text" value="<fmt:formatDate value="${estate.opentime}" pattern="yyyy-MM-dd"/>" class="form-control input-sm input-left" name="opentime" id="opentime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
         <td class="tableleft">建筑类型</td>
@@ -84,7 +98,7 @@
         	<select  class="sortSelect" name="lxing">
                 <option value="" >所有</option>
                 <c:forEach items="${lxings}" var="lxing">
-                  <option value="${lxing.value}">${lxing.value}</option>
+                  <option <c:if test="${lxing.value eq estate.lxing }">selected="selected"</c:if> value="${lxing.value}">${lxing.value}</option>
                 </c:forEach>
             </select>
        </td>
@@ -94,7 +108,7 @@
         <td><select  class="sortSelect" name="wylx">
                 <option value="" >所有</option>
                 <c:forEach items="${wylxs}" var="wylx">
-                  <option value="${wylx.value}">${wylx.value}</option>
+                  <option <c:if test="${wylx.value eq estate.wylx }">selected="selected"</c:if> value="${wylx.value}">${wylx.value}</option>
                 </c:forEach>
             </select></td>
     </tr>
@@ -103,7 +117,7 @@
         <td><select  class="sortSelect" name="zxiu">
                 <option value="" >所有</option>
                 <c:forEach items="${zxius}" var="zxiu">
-                  <option value="${zxiu.value}">${zxiu.value}</option>
+                  <option <c:if test="${zxiu.value eq estate.zxiu }">selected="selected"</c:if> value="${zxiu.value}">${zxiu.value}</option>
                 </c:forEach>
             </select></td>
     </tr>
@@ -152,9 +166,31 @@
         <td><input type="text" name="addr" value="${estate.addr }"/></td>
     </tr>
     <tr>
-        <td class="tableleft">户型图</td>
-        <td><input id="hxing_upload"  style="display:none;margin-top:5px;">
-        	<div id="hxing_img_container">
+        <td class="tableleft">优惠方案</td>
+        <td><input type="text" name="yufu" value="${estate.yufu }"/>抵<input type="text" name="shidi" value="${estate.shidi }"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">优惠截止时间</td>
+        <td><input value="<fmt:formatDate value="${estate.youhuiEndtime}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
+    </tr>
+    <tr>
+        <td class="tableleft">推荐</td>
+        <td><select name="tuijian" id="tuijian">
+	        <option value="0">否</option>
+        	<option value="1">是</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">特惠</td>
+        <td><select name="tehui"  id="tehui">
+        	<option value="0">否</option>
+        	<option value="1">是</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">规划图</td>
+        <td><input id="guihua_upload"  style="display:none;margin-top:5px;">
+        	<div id="guihua_img_container">
         	</div>
         </td>
     </tr>
@@ -162,6 +198,13 @@
         <td class="tableleft">效果图</td>
         <td><input id="xiaoguo_upload"  style="display:none;margin-top:5px;">
         	<div id="xiaoguo_img_container">
+        	</div>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableleft">实景图</td>
+        <td><input id="shijing_upload"  style="display:none;margin-top:5px;">
+        	<div id="shijing_img_container">
         	</div>
         </td>
     </tr>

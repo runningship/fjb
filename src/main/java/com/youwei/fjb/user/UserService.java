@@ -43,15 +43,18 @@ public class UserService {
 	
 	public User loginAsSeller(User user){
 		String pwd = SecurityHelper.Md5(user.pwd);
-		User po = dao.getUniqueByParams(User.class, new String[]{"tel" , "pwd"}, new Object[]{user.tel  , pwd});
+		User po = dao.getUniqueByParams(User.class, new String[]{"tel" , "pwd" , "type"}, new Object[]{user.tel  , pwd , "seller"});
 		if(po==null){
 			throw new GException(PlatformExceptionType.BusinessException,"用户名或密码不正确。");
+		}
+		if(po.valid==0){
+			throw new GException(PlatformExceptionType.BusinessException,"账户未审核，请电话联系为您审核。");
 		}
 		return po;
 	}
 	public User loginAsAdmin(User user){
 		String pwd = SecurityHelper.Md5(user.pwd);
-		User po = dao.getUniqueByParams(User.class, new String[]{"name" , "pwd"}, new Object[]{user.name  , pwd});
+		User po = dao.getUniqueByParams(User.class, new String[]{"account" , "pwd"}, new Object[]{user.account  , pwd});
 		if(po==null){
 			throw new GException(PlatformExceptionType.BusinessException,"用户名或密码不正确。");
 		}
@@ -62,7 +65,7 @@ public class UserService {
 	public ModelAndView logout(){
 		ModelAndView mv = new ModelAndView();
 		ThreadSession.getHttpSession().removeAttribute("user");
-		mv.redirect="/admin/public/login.jsp";
+		mv.redirect="../login.jsp";
 		return mv;
 	}
 	
@@ -82,6 +85,10 @@ public class UserService {
 	@WebMethod
 	public ModelAndView doRegiste(User user , String yzm){
 		ModelAndView mv = new ModelAndView();
+		User po = dao.getUniqueByParams(User.class, new String[]{"type" , "tel"}, new Object[]{"seller" , user.tel});
+		if(po!=null){
+			throw new GException(PlatformExceptionType.BusinessException,"该手机号码已经被注册");
+		}
 		VerifyCodeHelper.verify(yzm);
 		user.pwd = SecurityHelper.Md5(user.pwd);
 		//经纪人
@@ -96,6 +103,9 @@ public class UserService {
 	public ModelAndView doSave(User user){
 		ModelAndView mv = new ModelAndView();
 		user.pwd = SecurityHelper.Md5(user.pwd);
+		if(StringUtils.isEmpty(user.tel)){
+			throw new GException(PlatformExceptionType.BusinessException,"电话号码不能为空");
+		}
 		//经纪人
 		user.addtime = new Date();
 		dao.saveOrUpdate(user);
@@ -112,6 +122,16 @@ public class UserService {
 				dao.saveOrUpdate(po);
 				//跳转到登录页面
 			}
+		}
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView delete(Integer id){
+		ModelAndView mv = new ModelAndView();
+		User po = dao.get(User.class, id);
+		if(po!=null){
+			dao.delete(po);
 		}
 		return mv;
 	}

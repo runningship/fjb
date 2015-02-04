@@ -10,13 +10,12 @@ function save(){
   var a=$('form[name=form1]').serialize();
     YW.ajax({
       type: 'POST',
-      url: 'c/user/doRegiste',
+      url: 'c/admin/user/doRegiste',
       data:a,
       mysuccess: function(data){
           // $('#saveBtn').removeAttr('disabled');
           //art.dialog.close();
-          // art.dialog.opener.doSearchAndSelectFirst();
-          alert('注册成功');
+          infoAlert('注册成功,工作人员会第一时间与您联系，审核成功后即可登录');
       }
   });
 }
@@ -42,7 +41,7 @@ function save(){
            <div class="fl form-login">
               
                 <p><label for="name">手机号码</label><span class="form-tips">用户名不存在</span></p>
-               <input type="text" placeholder="请输入手机号" class="name" name="mobile">
+               <input type="text" placeholder="请输入手机号" class="name" name="tel">
                
               <p><label for="captcha">密码</label><span class="form-tips">请输入您的密码</span></p>
                <input type="password" placeholder="请输入您的密码" class="password" name="pwd">

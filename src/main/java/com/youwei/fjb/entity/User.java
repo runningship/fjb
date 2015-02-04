@@ -18,6 +18,8 @@ public class User {
 	
 	public String name;
 	
+	public String account;
+	
 	public String pwd;
 	
 	public String tel;

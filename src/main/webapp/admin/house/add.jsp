@@ -25,8 +25,13 @@
 		        type: 'POST',
 		        url: '${projectName}/c/admin/house/doSave',
 		        data:a,
+		        dataType:'json',
 		        mysuccess: function(data){
-		            alert(data.result);
+		        	if(data.result){
+		        		alert(data.result);	
+		        	}else{
+		        		alert('添加成功');
+		        	}
 		        }
 		    });
 		}
@@ -47,11 +52,12 @@
     </tr>
     <tr>
         <td class="tableleft">房间号</td>
-        <td><input  style="width:101px;" type="text" name="fhaoStart"/><input style="width:101px;" type="text" name="fhaoEnd"/></td>
+        <td><input  style="width:101px;" type="text" name="lcengStart"/>层到<input style="width:101px;" type="text" name="lcengEnd"/>层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            层内编号：<input style="width:101px;" type="text" name="fanghao"/></td>
     </tr>
     <tr>
         <td class="tableleft">面积</td>
-        <td><input type="text" name="mji"/></td>
+        <td><input type="text" name="mji" id="mji" /></td>
     </tr>
     <!-- <tr>
         <td class="tableleft">主图片</td>
@@ -84,15 +90,19 @@
     </tr>
     <tr>
         <td class="tableleft">单价</td>
-        <td><input type="text" name="djia"/>元/平方</td>
+        <td><input type="text" name="djia" id="djia" />元/平方</td>
     </tr>
     <tr>
-        <td class="tableleft">折扣</td>
-        <td><input type="text" name="zkou"/></td>
+        <td class="tableleft">优惠方案</td>
+        <td><input type="text" name="yufu"/>抵<input type="text" name="shidi"/></td>
     </tr>
     <tr>
         <td class="tableleft">折后总价</td>
-        <td><input type="text" name="totalPrice"/></td>
+        <td><input type="text" name="totalPrice" id="totalPrice" /></td>
+    </tr>
+    <tr>
+        <td class="tableleft">佣金</td>
+        <td><input type="text" name="yongjin"/></td>
     </tr>
     <tr>
         <td class="tableleft"></td>
