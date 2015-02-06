@@ -7,7 +7,7 @@
                   <li>
                     <a href="info.jsp">
                        <span class="img fl">
-							           <img src="${youhui.img}" />
+							           <img src="./upload/${youhui.img}" />
 					             </span>
                     </a>
                        <span class="name fl">

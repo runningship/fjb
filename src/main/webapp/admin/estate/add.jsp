@@ -17,33 +17,42 @@
     <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
     <script type="text/javascript" src="../../js/DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
-		$(function(){
-			setTimeout(function(){
-				initUploadHouseImage('shijing_upload' , 'shijing' , '${estateUUID}');
-				initUploadHouseImage('guihua_upload' , 'guihua' , '${estateUUID}');
-				initUploadHouseImage('xiaoguo_upload' , 'xiaoguo' , '${estateUUID}');
-				initUploadHouseImage('main_upload' , 'main' , '${estateUUID}');
-			},100);
-			
-		});
-		
-		function save(){
-		    var a=$('form[name=form1]').serialize();
-		    YW.ajax({
-		        type: 'POST',
-		        url: '${projectName}/c/admin/estate/doSave',
-		        data:a,
-		        mysuccess: function(data){
-		            alert('添加成功');
-		        }
-		    });
-		}
-		
+$(function(){
+	setTimeout(function(){
+		initUploadHouseImage('shijing_upload' , 'shijing' , '${estateUUID}');
+		initUploadHouseImage('guihua_upload' , 'guihua' , '${estateUUID}');
+		initUploadHouseImage('xiaoguo_upload' , 'xiaoguo' , '${estateUUID}');
+		initUploadHouseImage('main_upload' , 'main' , '${estateUUID}');
+	},100);
+	
+});
+
+function save(){
+    var a=$('form[name=form1]').serialize();
+    YW.ajax({
+        type: 'POST',
+        url: '${projectName}/c/admin/estate/doSave',
+        data:a,
+        mysuccess: function(data){
+            alert('添加成功');
+        }
+    });
+}
+
+function changeQuYu(city){
+    $('#quyu option').css('display','none');
+    $('#quyu option[city='+city+']').css('display','block');
+    var first = $('#quyu option[city='+city+']').first();
+    if(first){
+    	$('#quyu').val(first.text());
+    }
+}
+
 </script>
 </head>
 <body>
 <form name="form1" method="post" class="definewidth m20">
-	<input type="hidden" name="uuid"  value="${estate_uuid }"/>
+	<input type="hidden" name="uuid"  value="${estateUUID }"/>
 <table class="table table-bordered table-hover m10">
 	
     <tr>
@@ -64,10 +73,14 @@
     <tr>
         <td class="tableleft">区域</td>
         <td>
-        	<select  class="sortSelect" name="quyu">
-                <option value="" >所有</option>
+            <select  class="sortSelect" name="city" onchange="changeQuYu(this.value);">
+                <c:forEach items="${citys}" var="city">
+                  <option value="${city.value}">${city.value}</option>
+                </c:forEach>
+            </select>
+        	<select  class="sortSelect" name="quyu" id="quyu">
                 <c:forEach items="${quyus}" var="quyu">
-                  <option value="${quyu.value}">${quyu.value}</option>
+                  <option value="${quyu.value}" city="${quyu.attr}">${quyu.value}</option>
                 </c:forEach>
             </select>
         </td>
@@ -156,6 +169,10 @@
     <tr>
         <td class="tableleft">地址</td>
         <td><input type="text" name="addr"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">经纬度</td>
+        <td><input type="text" name="jingdu" placeholder="经度"/>  /  <input type="text" name="weidu" placeholder="纬度"/></td>
     </tr>
     <tr>
         <td class="tableleft">优惠方案</td>

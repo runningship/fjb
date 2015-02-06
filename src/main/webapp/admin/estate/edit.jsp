@@ -166,6 +166,10 @@
         <td><input type="text" name="addr" value="${estate.addr }"/></td>
     </tr>
     <tr>
+        <td class="tableleft">经纬度</td>
+        <td><input type="text" name="jingdu" placeholder="经度" value="${estate.jingdu}" />  /  <input type="text" name="weidu" placeholder="纬度" value="${estate.weidu}" /></td>
+    </tr>
+    <tr>
         <td class="tableleft">优惠方案</td>
         <td><input type="text" name="yufu" value="${estate.yufu }"/>抵<input type="text" name="shidi" value="${estate.shidi }"/></td>
     </tr>

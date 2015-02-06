@@ -11,7 +11,7 @@ public class ConfigHelper {
 
 	public static ModelAndView queryItems(ModelAndView mv){
 		//查询条件
-		List<Config> quyus = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=? and attr='合肥' ","quyu");
+		List<Config> quyus = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=? ","quyu");
 		
 		List<Config> lxings = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=?","lxing");
 		List<Config> zxius = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=?","zxiu");

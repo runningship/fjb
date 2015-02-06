@@ -18,41 +18,41 @@
      
           <div class="teSelect">
                
-               <h2>房金宝承诺合肥最低价<em>[共2款特惠房源促销中]</em></h2>
+               <h2>房金宝承诺合肥最低价<em>[共${page.totalCount }款特惠房源促销中]</em></h2>
                
-               <div class="choose">
-                        <div class="choose_list">
-                            <label class="pass-label">区域</label>
-                            <select onchange="checkSelect('qy');" id="quyu" class="sortSelect">
-                                <option value="" selected="">默认区域</option>
-                                <c:forEach items="${quyus}" var="quyu">
-                                  <option value="${quyu.value}">${quyu.value}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div class="choose_list">
-                            <label class="pass-label">户型</label>
-                            <select onchange="checkSelect('hx');" id="huxing" class="sortSelect">
-                                <option value="" selected="">默认户型</option>
-                                <c:forEach items="${hxings}" var="hxing">
-                                  <option value="${hxing.value}">${hxing.value}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div class="choose_list">
-                            <label class="pass-label">价位</label>
-                            <select onchange="checkSelect('jw');" id="jiawei" class="sortSelect">
-                                <option value="" selected="">默认价位</option>
-                                <option value="1">6000元以下</option>
-                                <option value="2">6000-10000元</option>
-                                <option value="3">1-1.5万</option>
-                                <option value="4">1.5-2万</option>
-                                <option value="5">2-2.5万</option>
-                                <option value="6">2.5-3万</option>
-                                <option value="7">3万以上</option>
-                            </select>
-                        </div>
-                    </div>
+<!--                <div class="choose"> -->
+<!--                         <div class="choose_list"> -->
+<!--                             <label class="pass-label">区域</label> -->
+<!--                             <select onchange="checkSelect('qy');" id="quyu" class="sortSelect"> -->
+<!--                                 <option value="" selected="">默认区域</option> -->
+<%--                                 <c:forEach items="${quyus}" var="quyu"> --%>
+<%--                                   <option value="${quyu.value}">${quyu.value}</option> --%>
+<%--                                 </c:forEach> --%>
+<!--                             </select> -->
+<!--                         </div> -->
+<!--                         <div class="choose_list"> -->
+<!--                             <label class="pass-label">户型</label> -->
+<!--                             <select onchange="checkSelect('hx');" id="huxing" class="sortSelect"> -->
+<!--                                 <option value="" selected="">默认户型</option> -->
+<%--                                 <c:forEach items="${hxings}" var="hxing"> --%>
+<%--                                   <option value="${hxing.value}">${hxing.value}</option> --%>
+<%--                                 </c:forEach> --%>
+<!--                             </select> -->
+<!--                         </div> -->
+<!--                         <div class="choose_list"> -->
+<!--                             <label class="pass-label">价位</label> -->
+<!--                             <select onchange="checkSelect('jw');" id="jiawei" class="sortSelect"> -->
+<!--                                 <option value="" selected="">默认价位</option> -->
+<!--                                 <option value="1">6000元以下</option> -->
+<!--                                 <option value="2">6000-10000元</option> -->
+<!--                                 <option value="3">1-1.5万</option> -->
+<!--                                 <option value="4">1.5-2万</option> -->
+<!--                                 <option value="5">2-2.5万</option> -->
+<!--                                 <option value="6">2.5-3万</option> -->
+<!--                                 <option value="7">3万以上</option> -->
+<!--                             </select> -->
+<!--                         </div> -->
+<!--                     </div> -->
           
           </div>
      
@@ -63,25 +63,27 @@
                <div class="lpPic"><a href="#"><img style="width:570px;height:310px;" src="upload/${youhui.img}" /></a></div>
                <div class="lpCon">
                    
-                    <span class="hYPrice"><em>市场价 ${youhui.sjia} </em>房金宝团购优惠价 </span>
-                    <span class="hnPrice"><strong>${youhui.junjia}</strong>元/平米 <em>${youhui.youhui}</em></span>
+                    <span class="hYPrice"><em>市场价 <c:if test="${youhui.sjia eq null}">待定</c:if> <c:if test="${youhui.sjia}">${youhui.sjia}"</c:if> </em>房金宝团购优惠价 </span>
+                    <span class="hnPrice"><strong>${youhui.junjia}</strong>元/平米 <em>${youhui.yufu}享${youhui.shidi }</em></span>
                     <span class="liaojie">
                           <div class="fl w180">
                                <p>楼盘位置：${youhui.quyu}</p>
                                <p>开盘日期：<fmt:formatDate value="${youhui.opendate}" pattern="yyyy-MM-dd"/></p>
                           </div>
-                          <a href="info.jsp" class="btn-sub fl">了解详情</a>
+                          <a href="info.jsp?estateId=${youhui.id}" class="btn-sub fl">了解详情</a>
                     </span>
                     
                     <span class="yuyue">
                           <div class="fl w180">
                                <em>76</em>人已预约看房
                           </div>
-                          <a href="#" class="btn-main fl">预约看房</a>
+                          <a href="#" onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${youhui.id}');" class="btn-main fl">预约看房</a>
                     </span>
                     
                     
-                    <span class="tehuiClock">已成交:<em>${youhui.chengjiao}</em>套 &nbsp; 活动结束剩<em>93</em>天<em>7</em>小时<em>19</em>分钟<em>39</em>秒</span>
+                    <span class="tehuiClock">
+<%--                     已成交:<em>${youhui.chengjiao}</em>套 &nbsp;  --%>
+                    活动结束剩<em>93</em>天<em>7</em>小时<em>19</em>分钟<em>39</em>秒</span>
                
                </div>
           

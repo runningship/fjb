@@ -20,7 +20,7 @@ function doSearch(){
 	var a=$('form[name=form1]').serialize();
 	YW.ajax({
 	    type: 'get',
-	    url: '${projectName}/c/admin/config/listData?type=quyu',
+	    url: '${projectName}/c/admin/config/listData?type=city',
 	    data: a,
 	    dataType:'json',
 	    mysuccess: function(json){
@@ -50,22 +50,20 @@ function doSearch(){
 </script>
 </head>
 <body>
-<form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="doSearch();return false;">
-    <button onclick="window.location.href='quyuAdd.jsp'" type="button"  class="btn btn-success ">添加区域</button>
+<form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
+    <button onclick="window.location.href='cityAdd.jsp'" type="button"  class="btn btn-success ">添加城市</button>
 </form>
 
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
     	<th>编号</th>
-        <th>城市</th>
         <th>名称</th>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
     			<td>$[id]</td>
-                <td>$[attr]</td>
                 <td>$[value]</td>
                 <td>
                     <a href="#" onclick="del($[id])">删除</a>

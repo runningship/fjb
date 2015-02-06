@@ -91,4 +91,10 @@ public class Estate {
 	public Integer tehui;
 	
 	public String uuid;
+	
+	public Float jingdu;
+	
+	public Float weidu;
+	
+	public String city;
 }

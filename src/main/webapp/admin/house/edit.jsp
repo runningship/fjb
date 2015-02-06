@@ -16,21 +16,36 @@
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
 	<script type="text/javascript">
 		
-		$(function(){
-			$('#cxiang').val('${house.cxiang}');
-		});
-		
-		function save(){
-		    var a=$('form[name=form1]').serialize();
-		    YW.ajax({
-		        type: 'POST',
-		        url: '${projectName}/c/admin/house/update',
-		        data:a,
-		        mysuccess: function(data){
-		            alert('修改成功');
-		        }
-		    });
-		}
+$(function(){
+	$('#cxiang').val('${house.cxiang}');
+});
+
+function save(){
+    var a=$('form[name=form1]').serialize();
+    YW.ajax({
+        type: 'POST',
+        url: '${projectName}/c/admin/house/update',
+        data:a,
+        mysuccess: function(data){
+            alert('修改成功');
+        }
+    });
+}
+
+function jisuan(){
+    var mji = $('#mji').val();
+    var djia = $('#djia').val();
+    var yufu = $('#yufu').val();
+    var shidi = $('#shidi').val();
+    var zjia = 0;
+    if (mji!=""&&djia!="") {
+        zjia = Number.parseFloat(mji)*Number.parseInt(djia);
+        if (yufu!=""&&shidi!="") {
+            zjia = zjia-Number.parseInt(shidi)+Number.parseInt(yufu);
+        };
+    };
+    $('#totalPrice').val(zjia);
+}
 </script>
 </head>
 <body>
@@ -52,7 +67,7 @@
     </tr>
     <tr>
         <td class="tableleft">面积</td>
-        <td><input type="text" name="mji" value="${house.mji}"/></td>
+        <td><input type="text" name="mji" id="mji" value="${house.mji}"/></td>
     </tr>
     <!-- <tr>
         <td class="tableleft">主图片</td>
@@ -85,15 +100,15 @@
     </tr>
     <tr>
         <td class="tableleft">单价</td>
-        <td><input type="text" name="djia" value="${house.djia}"/>元/平方</td>
+        <td><input type="text" name="djia" id="djia" value="${house.djia}"/>元/平方</td>
     </tr>
     <tr>
         <td class="tableleft">优惠方案</td>
-        <td><input type="text" name="yufu" value="${house.yufu}" />抵<input type="text" name="shidi" value="${house.shidi}" /></td>
+        <td><input type="text" name="yufu" id="yufu" value="${house.yufu}" />抵<input type="text" name="shidi" id="shidi" value="${house.shidi}" /></td>
     </tr>
     <tr>
         <td class="tableleft">折后总价</td>
-        <td><input type="text" name="totalPrice" value="${house.totalPrice}"/></td>
+        <td><input type="text" name="totalPrice" id="totalPrice" value="${house.totalPrice}"/></td>
     </tr>
     <tr>
         <td class="tableleft">佣金</td>

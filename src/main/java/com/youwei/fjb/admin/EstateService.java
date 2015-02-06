@@ -13,6 +13,7 @@ import org.bc.web.ModelAndView;
 import org.bc.web.Module;
 import org.bc.web.WebMethod;
 
+import com.youwei.fjb.entity.Config;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.HouseImage;
 import com.youwei.fjb.util.ConfigHelper;
@@ -34,6 +35,8 @@ public class EstateService {
 		ModelAndView mv = new ModelAndView();
 		mv = ConfigHelper.queryItems(mv);
 		mv.jspData.put("estateUUID", UUID.randomUUID().toString());
+		List<Config> list = dao.listByParams(Config.class, "from Config where type=?", "city");
+		mv.jspData.put("citys", list);
 		return mv;
 	}
 	
@@ -74,6 +77,8 @@ public class EstateService {
 		po.shidi = estate.shidi;
 		po.tehui = estate.tehui;
 		po.tuijian = estate.tuijian;
+		po.jingdu = estate.jingdu;
+		po.weidu = estate.weidu;
 		dao.saveOrUpdate(po);
 		return mv;
 	}

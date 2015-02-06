@@ -61,4 +61,11 @@ public class ConfigService {
 		return mv;
 	}
 	
+	@WebMethod
+	public ModelAndView quyuAdd(){
+		ModelAndView mv = new ModelAndView();
+		List<Config> list = dao.listByParams(Config.class, "from Config where type=?", "city");
+		mv.jspData.put("citys", list);
+		return mv;
+	}
 }

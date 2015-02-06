@@ -10,4 +10,5 @@ public class FjbConstant {
 	public static final String HouseOrderNotAccept = "未处理";
 	public static final String HouseOrderAccepted = "未成交";
 	public static final String HouseOrderDeal = "已成交";
+	public static final String Session_Attr_City = "session_city";
 }

@@ -63,7 +63,7 @@
                      <li>
                         <a target="_blank" href="info.jsp?estateId=${house.id}"><img width="180" height="120" src="upload/${house.img}"></a>
                         <span class="f_name"><a target="_blank" href="#">[${house.quyu}]${house.name}</a></span>
-                        <span class="f_sale">${house.youhui}</span>
+                        <span class="f_sale">${house.yufu}享${house.shidi }</span>
                         <span class="f_price"><em>${house.junjia}元/㎡</em>
                         <a target="_blank" href="info.jsp?estateId=${house.id}">
                         <button class="button_tao" title="了解更多" type="submit">了解更多</button></a></span>

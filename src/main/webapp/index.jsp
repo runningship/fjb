@@ -82,7 +82,7 @@
                       </a>
                        <p><strong>[${tuijian.quyu}]${tuijian.name}</strong></p>
                        <p><em>均价：¥${tuijian.junjia}/m2</em></p>
-                       <p><span class="yhBg">优惠</span> <b>${tuijian.youhui}</b></p>
+                       <p><span class="yhBg">优惠</span> <b>${tuijian.yufu}享${tuijian.shidi }</b></p>
                     </li>
                   </c:forEach>
                     

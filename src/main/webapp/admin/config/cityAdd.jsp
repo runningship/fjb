@@ -26,7 +26,7 @@ function save(){
         data:a,
         mysuccess: function(data){
         	infoAlert('添加成功');
-            window.location='quyuList.jsp';
+            window.location='cityList.jsp';
         }
     });
 }
@@ -35,20 +35,10 @@ function save(){
 </head>
 <body>
 <form name="form1" method="post" class="definewidth m20">
-	<input type="hidden"  name="type" value="quyu"/>
+	<input type="hidden"  name="type" value="city"/>
 <table class="table table-bordered table-hover m10">
     <tr>
-        <td class="tableleft">城市</td>
-        <td>
-        	<select name="attr">
-                <c:forEach items="${citys}" var="city">
-            		<option value="${city.value}">${city.value}</option>
-                </c:forEach>
-        	</select>
-		</td>
-    </tr>
-    <tr>
-        <td class="tableleft">区域</td>
+        <td class="tableleft">城市名称</td>
         <td><input type="text" name="value"/></td>
     </tr>
     
