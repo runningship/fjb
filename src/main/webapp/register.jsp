@@ -32,7 +32,7 @@ function save(){
 <div class="warp loginMain" style="margin-bottom:50px;">
       
       
-<form name="form1" role="form">
+<form name="form1" role="form" onsubmit="save();return false">
       <div class="main">
       
            <div class="fr loginLeft" style="margin-top:80px;"><img src="images/tu.png" /></div>
@@ -57,7 +57,7 @@ function save(){
                <input type="text" placeholder="请输入图片验证码" class="captcha" name="yzm">
           <img alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
                </div>
-               <input type="submit" onclick="save();" class="btn-login" value="注册" />
+               <input type="submit" class="btn-login" value="注册" />
            
            </div>
       

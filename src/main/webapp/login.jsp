@@ -6,7 +6,7 @@
 <jsp:include page="header.jsp" />
 <script type="text/javascript">
   
-function save(){
+function login(){
   var a=$('form[name=form1]').serialize();
     $.ajax({
       type: 'POST',
@@ -37,7 +37,7 @@ function save(){
 <jsp:include page="top.jsp" />
 
 <div class="warp loginMain">
-<form name="form1" role="form" onsubmit="save();return false">
+<form name="form1" role="form" onsubmit="login();return false">
       
       <div class="main">
       
@@ -56,7 +56,7 @@ function save(){
                <input type="text" placeholder="请输入图片验证码" class="captcha" name="yzm">
           <img alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
                </div>
-               <input type="submit" onclick="save();" class="btn-login" value="登录" />
+               <input type="submit" class="btn-login" value="登录" />
            
            </div>
       
