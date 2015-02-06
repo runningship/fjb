@@ -18,7 +18,7 @@ required:必选项
 
 		// 默认值
 		settings=$.extend({
-			url:"js/city/city.min.js",
+			url:"/fjb/js/city/city.min.js",
 			prov:null,
 			city:null,
 			dist:null,
@@ -63,6 +63,7 @@ required:必选项
 			});
 			city_obj.html(temp_html).attr("disabled",false).css({"display":"","visibility":""});
 			distStart();
+			
 		};
 
 		// 赋值地区（县）函数
@@ -122,11 +123,17 @@ required:必选项
 			// 选择省份时发生事件
 			prov_obj.bind("change",function(){
 				cityStart();
+				if(settings.cityChange){
+					settings.cityChange();
+				}
 			});
 
 			// 选择市级时发生事件
 			city_obj.bind("change",function(){
 				distStart();
+				if(settings.cityChange){
+					settings.cityChange();
+				}
 			});
 		};
 

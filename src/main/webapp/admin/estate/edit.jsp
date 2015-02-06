@@ -17,6 +17,9 @@
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
     <script type="text/javascript" src="../../js/fjb.js"></script>
     <script type="text/javascript" src="../../js/DatePicker/WdatePicker.js"></script>
+    
+    <script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
+	<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 	<script type="text/javascript">
 		
 		$(function(){
@@ -33,6 +36,15 @@
 			
 			$('#tehui').val(${estate.tehui});
 			$('#tuijian').val(${estate.tuijian});
+			
+			var myprovince = remote_ip_info['province'];
+			var mycity = remote_ip_info['city']
+			var mydistrict = remote_ip_info['district'];
+			$("#city_1").citySelect({
+				prov: '${estate.province}', 
+		    	city: '${estate.city}',
+		    	dist: '${estate.quyu}'
+			});
 		});
 		
 		function save(){
@@ -72,12 +84,19 @@
     <tr>
         <td class="tableleft">区域</td>
         <td>
+        	<!--
         	<select  class="sortSelect" name="quyu">
                 <option value="" >所有</option>
                 <c:forEach items="${quyus}" var="quyu">
                   <option <c:if test="${quyu.value eq estate.quyu }">selected="selected"</c:if> value="${quyu.value}">${quyu.value}</option>
                 </c:forEach>
             </select>
+            -->
+            <div id="city_1" style="display:inline-block;">
+		  		<select class="prov"  id="province" name="province"></select> 
+		    	<select class="city" id="city" name="city"></select>
+		    	<select class="dist" id="dist"  name="quyu"></select>
+		    </div>
         </td>
     </tr>
     <tr>
@@ -86,7 +105,7 @@
     </tr>
     <tr>
         <td class="tableleft">特惠价</td>
-        <td><input type="text" name="sjia" value="${estate.tejia }"/>元/平方</td>
+        <td><input type="text" name="tejia" value="${estate.tejia }"/>元/平方</td>
     </tr>
     <tr id="tr_conts" >
     	<td class="tableleft">开盘时间</td>
@@ -170,14 +189,6 @@
         <td><input type="text" name="jingdu" placeholder="经度" value="${estate.jingdu}" />  /  <input type="text" name="weidu" placeholder="纬度" value="${estate.weidu}" /></td>
     </tr>
     <tr>
-        <td class="tableleft">优惠方案</td>
-        <td><input type="text" name="yufu" value="${estate.yufu }"/>抵<input type="text" name="shidi" value="${estate.shidi }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">优惠截止时间</td>
-        <td><input value="<fmt:formatDate value="${estate.youhuiEndtime}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
-    </tr>
-    <tr>
         <td class="tableleft">推荐</td>
         <td><select name="tuijian" id="tuijian">
 	        <option value="0">否</option>
@@ -190,6 +201,14 @@
         	<option value="0">否</option>
         	<option value="1">是</option>
         </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">优惠方案</td>
+        <td><input type="text" name="yufu" value="${estate.yufu }"/>抵<input type="text" name="shidi" value="${estate.shidi }"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">优惠截止时间</td>
+        <td><input value="<fmt:formatDate value="${estate.youhuiEndtime}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
         <td class="tableleft">规划图</td>
@@ -216,6 +235,7 @@
         <td class="tableleft"></td>
         <td>
             <button class="btn btn-primary" type="button" onclick="save();return false;">保存</button>
+            <button class="btn btn-primary" type="button" onclick="window.location='list.jsp'">返回</button>
         </td>
     </tr>
 </table>

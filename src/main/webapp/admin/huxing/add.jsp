@@ -30,6 +30,7 @@
 		        data:a,
 		        mysuccess: function(data){
 		            alert('添加成功');
+                    window.location='list.jsp';
 		        }
 		    });
 		}

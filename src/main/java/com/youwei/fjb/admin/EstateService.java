@@ -6,11 +6,13 @@ import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
+import org.bc.sdak.GException;
 import org.bc.sdak.Page;
 import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
+import org.bc.web.PlatformExceptionType;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.entity.Config;
@@ -52,6 +54,7 @@ public class EstateService {
 	@WebMethod
 	public ModelAndView update(Estate estate){
 		ModelAndView mv = new ModelAndView();
+		checkEstate(estate);
 		Estate po = dao.get(Estate.class, estate.id);
 		po.quyu = estate.quyu;
 		po.name = estate.name;
@@ -79,6 +82,9 @@ public class EstateService {
 		po.tuijian = estate.tuijian;
 		po.jingdu = estate.jingdu;
 		po.weidu = estate.weidu;
+		po.youhuiEndtime = estate.youhuiEndtime;
+		po.city = estate.city;
+		po.province = estate.province;
 		dao.saveOrUpdate(po);
 		return mv;
 	}
@@ -100,8 +106,20 @@ public class EstateService {
 	@WebMethod
 	public ModelAndView doSave(Estate estate){
 		ModelAndView mv = new ModelAndView();
+		checkEstate(estate);
 		dao.saveOrUpdate(estate);
 		return mv;
+	}
+	
+	private void checkEstate(Estate estate){
+		if(estate.tehui==1){
+			if(estate.youhuiEndtime==null){
+				throw new GException(PlatformExceptionType.BusinessException,"请先设置优惠结束时间");
+			}
+			if(estate.tejia==null){
+				throw new GException(PlatformExceptionType.BusinessException,"请先设置特惠价格");
+			}
+		}
 	}
 	
 	@WebMethod

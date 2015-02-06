@@ -58,6 +58,7 @@ function save(){
         <td class="tableleft"></td>
         <td>
             <button class="btn btn-primary" type="button" onclick="save();return false;">保存</button>
+            <button class="btn btn-primary" type="button" onclick="window.location='list.jsp'">返回</button>
         </td>
     </tr>
 </table>

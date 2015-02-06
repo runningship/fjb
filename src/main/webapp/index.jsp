@@ -33,12 +33,12 @@
                 <div class="l-r-box">
                         
                         <div class="bg"></div>
-                
+                		<c:if test="${seller ==null }">
 			            <div class="l-r">
                             <a href="login.jsp" class="fl i-p-login">登录</a>
                             <a href="register.jsp" class="fr i-p-register">注册</a>
                         </div>
-                                    
+                        </c:if>
                         <div class="l-r-step">
                             <a href="#" class="i-p-step-1">
                                 <i><img src="images/step1.png" /></i>
@@ -73,12 +73,12 @@
      
           <div class="tuijian">
           
-               <div class="tit"><span class="t fl">推荐楼盘</span><span class="m fr">本期共有<strong>49</strong>个合作楼盘，<strong>优惠幅度最大50万</strong></span></div>
+               <div class="tit"><span class="t fl">推荐楼盘</span><span class="m fr">本期共有<strong>${total}</strong>个合作楼盘，<strong>优惠幅度最大${maxYouhui }</strong></span></div>
                <ul class="con"> 
-                  <c:forEach items="${tuijianList}"  var="tuijian">
+                  <c:forEach items="${page.result}"  var="tuijian">
                     <li>
                       <a href="info.jsp?estateId=${tuijian.id}">
-                        <span class="img"><img src="upload/${tuijian.img}" /></span>
+                        <span class="img"><img src="${upload_path}/${tuijian.img}" /></span>
                       </a>
                        <p><strong>[${tuijian.quyu}]${tuijian.name}</strong></p>
                        <p><em>均价：¥${tuijian.junjia}/m2</em></p>

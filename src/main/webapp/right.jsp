@@ -5,9 +5,9 @@
                <ul class="con fl">
                 <c:forEach items="${youhuiList}" var="youhui">
                   <li>
-                    <a href="info.jsp">
+                    <a href="info.jsp?estateId=${youhui.id}">
                        <span class="img fl">
-							           <img src="./upload/${youhui.img}" />
+							           <img src="${upload_path}/${youhui.img}" />
 					             </span>
                     </a>
                        <span class="name fl">

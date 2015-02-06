@@ -5,13 +5,14 @@ import java.util.List;
 import org.bc.sdak.SimpDaoTool;
 import org.bc.web.ModelAndView;
 
+import com.youwei.fjb.ThreadSessionHelper;
 import com.youwei.fjb.entity.Config;
 
 public class ConfigHelper {
 
 	public static ModelAndView queryItems(ModelAndView mv){
 		//查询条件
-		List<Config> quyus = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=? ","quyu");
+		List<Config> quyus = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=? and attr=?","quyu" , ThreadSessionHelper.getCity());
 		
 		List<Config> lxings = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=?","lxing");
 		List<Config> zxius = SimpDaoTool.getGlobalCommonDaoService().listByParams(Config.class, "from Config where type=?","zxiu");

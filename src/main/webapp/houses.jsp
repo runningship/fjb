@@ -4,6 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <jsp:include page="header.jsp" />
+<script type="text/javascript">
+function checkSelect(){
+	//window.location='houses.jsp?searchText='+$('#searchText').val()+'&quyu='+$('#quyu').val()+'&lxing='+$('#lxing').val();
+	$('#quyu_input').val($('#quyu_select').val());
+	$('#lxing_input').val($('#lxing_select').val());
+	document.forms[0].submit();
+}
+</script>
 </head>
 
 <body>
@@ -18,24 +26,24 @@
      
           <div class="teSelect fl">
                
-               <h2>房金宝在售房源<em>[合肥最低价]</em></h2>
+               <h2>房金宝在售房源<em><c:if test="${session_city !=null }">[${session_city }最低价]</c:if></em></h2>
                
                <div class="choose">
                         <div class="choose_list">
                             <label class="pass-label">区域</label>
-                            <select onchange="checkSelect('qy');" id="quyu" class="sortSelect">
-                                <option value="" selected="">默认区域</option>
+                            <select onchange="checkSelect();" id="quyu_select" class="sortSelect">
+                                <option value="" selected="">全市</option>
                                 <c:forEach items="${quyus}" var="quyu">
-                                  <option value="${quyu.value}">${quyu.value}</option>
+                                  <option <c:if test="${quyu.value eq selectedQuyu }">selected="selected"</c:if> value="${quyu.value}">${quyu.value}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="choose_list">
-                            <label class="pass-label">户型</label>
-                            <select onchange="checkSelect('hx');" id="huxing" class="sortSelect">
-                                <option value="" selected="">默认户型</option>
-                                <c:forEach items="${hxings}" var="hxing">
-                                    <option value="${hxing.value}">${hxing.value}</option>
+                            <label class="pass-label">楼型</label>
+                            <select onchange="checkSelect()" id="lxing_select" class="sortSelect">
+                                <option value="" selected="">所有</option>
+                                <c:forEach items="${lxings}" var="lxing">
+                                    <option <c:if test="${lxing.value eq selectedLxing }">selected="selected"</c:if> value="${lxing.value}">${lxing.value}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -61,7 +69,7 @@
                <ul>
                 <c:forEach items="${page.result}" var="house">
                      <li>
-                        <a target="_blank" href="info.jsp?estateId=${house.id}"><img width="180" height="120" src="upload/${house.img}"></a>
+                        <a target="_blank" href="info.jsp?estateId=${house.id}"><img width="180" height="120" src="${upload_path}/${house.img}"></a>
                         <span class="f_name"><a target="_blank" href="#">[${house.quyu}]${house.name}</a></span>
                         <span class="f_sale">${house.yufu}享${house.shidi }</span>
                         <span class="f_price"><em>${house.junjia}元/㎡</em>

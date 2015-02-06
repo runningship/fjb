@@ -43,6 +43,7 @@ function delPost(id){
 	      });
 	  },function(){},'warning');
 }
+
 $(function () {
 	Page.Init();
 	doSearch();
@@ -52,8 +53,7 @@ $(function () {
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    房间号<input type="text" name="name"/>
-    <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
+    <button type="button" style="display:none" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
     <button type="button"  onclick="addTab('house_add','添加房源','house/add.jsp?estateId=${estateId}')" class="btn btn-success ">添加房源</button>
 </form>
 

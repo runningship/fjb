@@ -57,12 +57,12 @@ $(function () {
                                 
                                 <a class="btn-main " onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${estate.id}');" id="booking" href="javascript:;">预约看房</a>
 
-                                <a class="btn-sub  " href="#online-choose-room">在线选房 (125)</a>
+                                <a class="btn-sub  " href="#online-choose-room">在线选房 (${leftCount})</a>
 
 
 
                                 <p class="tips-info">
-                                    (在线剩余${leftCount}套，总价${po.totalPrice}万起)
+                                    (在线剩余${leftCount}套 <c:if test="${minTotalPrice !=null}">，总价${minTotalPrice}起</c:if>)
                                 </p>
 
                              </div>
@@ -73,20 +73,20 @@ $(function () {
                     <!-- 相册 -->
                     <div class="photos">
                                                 <a class="pic" target="_blank" href="picList.jsp?estateId=${estate.id }">
-                            <img alt="楼盘图片" src="./upload/${main_img }">
+                            <img alt="楼盘图片" src="${upload_path}/${main_img }">
                         </a>
                                                 <!-- 列表分页 -->
                         <div role="thumb" class="thumb">
                             <c:if test="${huxing_img !=null }">
                             <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
-                                <img alt="" src="./upload/${huxing_img }">
+                                <img alt="" src="${upload_path}/${huxing_img }">
                                 <p class="cover-layer">户型图</p>
                                 <span class="photo-frame"></span>
                             </a>
                             </c:if>
                             <c:if test="${xiaoguo_img !=null}">
 	                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
-	                                <img alt="" src="./upload/${xiaoguo_img }">
+	                                <img alt="" src="${upload_path}/${xiaoguo_img }">
 	                                <p class="cover-layer">效果图</p>
 	                                <span class="photo-frame"></span>
 	                            </a>
@@ -94,7 +94,7 @@ $(function () {
                             
                             <c:if test="${shijing_img !=null}">
                             	<a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
-	                                <img alt="" src="./upload/${shijing_img }">
+	                                <img alt="" src="${upload_path}/${shijing_img }">
 	                                <p class="cover-layer">实景图</p>
 	                                <span class="photo-frame"></span>
 	                            </a>
@@ -102,7 +102,7 @@ $(function () {
                             
                             <c:if test="${guihua_img !=null }">
 	                            <a role="thumbItem" class="thumb-item  last" href="picList.jsp?estateId=${estate.id }">
-	                                <img alt="" src="./upload/${guihua_img }">
+	                                <img alt="" src="${upload_path}/${guihua_img }">
 	                                <p class="cover-layer">规划图</p>
 	                                <span class="photo-frame"></span>
 	                            </a>
@@ -175,7 +175,7 @@ $(function () {
                                             <td title="面积">$[mji]</td>
                                             <td title="户型">$[hxing]</td>
                                             <td title="单价">$[djia]</td>
-                                            <td title="折扣">$[zkou]</td>
+                                            <td title="折扣">$[yufu]抵$[shidi]</td>
                                             <td title="折后总价">$[totalPrice]</td>
                                             <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
                                             </td>
@@ -329,7 +329,7 @@ $(function () {
 			]);
 	
 	}
-	map.addOverlay(polygon);//此处显示区域
+	//map.addOverlay(polygon);//此处显示区域
 	
 	
 

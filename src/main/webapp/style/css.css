@@ -421,7 +421,7 @@ select.sortSelect {
 
 .rightList .erweima{ padding:15px 10px; text-align:center;}
 
-
+.rightList .erweima img{ width:90%;}
 
 
 .page {
@@ -431,7 +431,7 @@ select.sortSelect {
 	margin-top:25px; font-size:14px; font-family:"宋体";
 }
 
-.page a {
+.page a, .page span span {
     background: none repeat scroll 0 0 #c0c0c0;
     border: 1px solid #c0c0c0;
     color: #fff;
@@ -506,21 +506,10 @@ select.sortSelect {
     top: 0;
 }
 
-.form-login .btn-login {
-    background-color: #ef4923;
-    border: 0 none;
-    border-radius: 2px;
-    color: #fff;
-    cursor: pointer;
-    font: 400 16px "Microsoft Yahei";
-    margin: 10px 0;
-    padding: 10px 25px;
-    transition: all 0.15s ease 0s;
-}
 
 
 
-.form-login .btn-login, .form-login .btn-login-disable {
+ .form-login .btn-login-disable {
     border: 0 none;
     display: inline-block;
     font-weight: 700;
@@ -533,7 +522,11 @@ select.sortSelect {
 }
 
 
-.form-login .btn-login:hover {
+.form-login input.btn-login{ height:auto; line-height:normal; width:100%; background-color:#ef4923; border:none; color:#ffffff; margin-top:30px; font-weight:700; letter-spacing: 1em; font-size:16px;}
+
+
+
+.form-login input.btn-login:hover {
     background-color: #d0330f;
     border-color: #d0330f;
     color: #fff !important;

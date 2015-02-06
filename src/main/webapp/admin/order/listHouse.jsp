@@ -56,7 +56,10 @@ $(function () {
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    <input type="text" name="name"/>
+    客户姓名<input type="text" name="buyerName"/>
+    客户电话<input type="text" name="buyerTel"/>
+    楼盘名称<input type="text" name="estateName"/>
+    经纪人姓名<input type="text" name="sellerName"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
 
@@ -89,8 +92,7 @@ $(function () {
                 <td>$[addtime]</td>
                 <td>$[status]</td>
                 <td>
-                    <a href="#" onclick="addTab('edit_yy','编辑预约','order/edit.jsp?id=$[id]')">编辑</a>
-                    <a href="#" onclick="accept($[id])">接受</a>
+                    <a href="#" onclick="addTab('edit_yy','查看预约','order/edit.jsp?id=$[id]')">查看</a>
                 </td>
             </tr>
     </tbody>

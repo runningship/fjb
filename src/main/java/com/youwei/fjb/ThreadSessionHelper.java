@@ -2,6 +2,7 @@ package com.youwei.fjb;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.GException;
 import org.bc.web.PlatformExceptionType;
 import org.bc.web.ThreadSession;
@@ -21,9 +22,18 @@ public class ThreadSessionHelper {
     	}
     	return u;
     }
+	
     public static String getIp(){
     	HttpSession session = ThreadSession.getHttpSession();
     	return (String)session.getAttribute("ip");
     }
    
+    public static String getCity(){
+    	HttpSession session = ThreadSession.getHttpSession();
+    	String city = (String)session.getAttribute(FjbConstant.Session_Attr_City);
+    	if(StringUtils.isEmpty(city)){
+    		
+    	}
+    	return city;
+    }
 }

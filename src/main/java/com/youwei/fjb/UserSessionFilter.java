@@ -17,7 +17,7 @@ import org.bc.web.ThreadSession;
 
 public class UserSessionFilter implements Filter {
 
-
+	private FjbUserOfflineHandler handler = new FjbUserOfflineHandler();
 	// Filter注销方法
 	@Override
 	public void destroy() {
@@ -28,7 +28,6 @@ public class UserSessionFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req  = (HttpServletRequest)request;
-		HttpServletResponse resp = (HttpServletResponse)response;
 //		ThreadSession.setHttpServletRequest(req);
 //		ThreadSession.setHttpServletResponse(resp);
 		ThreadSession.setHttpSession(req.getSession());
@@ -36,11 +35,8 @@ public class UserSessionFilter implements Filter {
 			ThreadSessionHelper.getUser();
 		}catch(GException ex){
 			if(ex.getType()==PlatformExceptionType.UserOfflineException){
-				
-				response.getWriter().write("<script type='text/javascript'>window.top.location='"+request.getServletContext().getContextPath()+"/admin/login.jsp'</script>");
-//				response.getWriter().write("<script type='text/javascript'>alert(0)</script>");
+				handler.handle(req, response);
 				return;
-//				resp.sendRedirect("/admin/public/login.jsp");
 			}
 		}
 		chain.doFilter(request, response);

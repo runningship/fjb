@@ -39,7 +39,7 @@
 	
     <tr>
         <td class="tableleft">楼盘</td>
-        <td><input type="text" name="dhao" value="${estate.name}" /></td>
+        <td>${estate.name}</td>
     </tr>
     <c:if test="${house!=null}">
     <tr>
@@ -57,8 +57,7 @@
     </c:if>
     <tr>
         <td class="tableleft">经纪人姓名/电话</td>
-        <td><input type="text" name="sellerName" value="${order.sellerName}"/>
-            <input type="text" name="sellerTel" value="${sellerTel}"/>
+        <td><span>${order.sellerName}</span>/<span>${sellerTel}</span>
         </td>
     </tr>
     <tr>
@@ -81,7 +80,7 @@
     <tr>
         <td class="tableleft">状态</td>
         <td>
-            <select  class="sortSelect" name="hxing">
+            <select  class="sortSelect" name="status">
                 <option value="" >所有</option>
                 <c:forEach items="${statusList}" var="status">
                   <option <c:if test="${status eq order.status }">selected="selected"</c:if> value="${status}">${status}</option>

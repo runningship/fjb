@@ -97,4 +97,6 @@ public class Estate {
 	public Float weidu;
 	
 	public String city;
+	
+	public String province;
 }

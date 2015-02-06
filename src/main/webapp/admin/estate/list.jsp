@@ -85,7 +85,7 @@ function doSearch(){
                 <td>$[junjia]</td>
                 <td>$[opentime]</td>
                 <td><a onclick="addTab('house_list','房源信息','house/list.jsp?estateId=$[id]')" href="#">房源</a>
-                    <a onclick="addTab('huxing_list','添加户型','huxing/list.jsp?estateId=$[id]')" href="#">户型</a>
+                    <a onclick="addTab('huxing_list','户型','huxing/list.jsp?estateId=$[id]')" href="#">户型</a>
                     <a href="edit.jsp?id=$[id]">编辑</a>
                     <a href="#" onclick="delPost($[id])">删除</a>
                 </td>

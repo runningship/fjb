@@ -87,7 +87,7 @@ function filterImg(type){
         <ul id="keyFilterList" class="photo-list">
           <c:forEach items="${images}" var="image">
           <li key="${image.type}" class="list-item">
-            <img alt="" src="./upload/${image.path}">
+            <img alt="" src="${upload_path}/${image.path}">
             <c:choose>
             	<c:when test="${image.type==\"huxing\" }">
             		<p class="title">户型图</p>

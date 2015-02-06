@@ -21,23 +21,17 @@
                     
                     <h2>叶新舟</h2>
                     
-                    <div class="txImg"><img src="images/p2.png" /></div>
                     
                     <div><a href="#" class="sel">个人资料</a></div>
-                    <div><a href="buyer.jsp">客户列表</a></div>
-               
+                    <div><a href="estateOrder.jsp">楼盘预约</a></div>
+               		<div><a href="houseOrder.jsp">房源预约</a></div>
                </div>
                
                <div class="userRight">
                
-                    <div class="tit"><a href="#">我的好屋</a> > <span>个人资料</span></div>
+                    <div class="tit"><a href="#">我的房金宝</a> > <span>个人资料</span></div>
                     
                     <div class="con">
-                        <div class="txImg">
-                            <img src="images/p2.png"><br>
-                            <a href="/user/touxiang">修改头像</a>
-                        </div>
-                        
                         <div class="user_inforight">
                         姓名：${seller.name }&#12288;<br>
                         手机号码：${seller.tel }&#12288;&#12288;

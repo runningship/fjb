@@ -37,7 +37,7 @@ function save(){
 <jsp:include page="top.jsp" />
 
 <div class="warp loginMain">
-<form name="form1" role="form">
+<form name="form1" role="form" onsubmit="save();return false">
       
       <div class="main">
       
@@ -56,7 +56,7 @@ function save(){
                <input type="text" placeholder="请输入图片验证码" class="captcha" name="yzm">
           <img alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
                </div>
-               <a onclick="save();" class="btn-login">登录</a>
+               <input type="submit" onclick="save();" class="btn-login" value="登录" />
            
            </div>
       

@@ -18,7 +18,7 @@ function doSearch(){
     var a=$('form[name=form1]').serialize();
     YW.ajax({
         type: 'get',
-        url: '${projectName}/c/admin/order/listEstateData?sellerId=${seller.id}',
+        url: '${projectName}/c/admin/order/listHouseData?sellerId=${seller.id}',
         data: a,
         dataType:'json',
         mysuccess: function(json){
@@ -32,7 +32,19 @@ $(function () {
     Page.Init();
     doSearch();
 });
-
+function delOrder(id){
+	art.dialog.confirm('删除后不可恢复，确定要删除吗？', function () {
+	    YW.ajax({
+	        type: 'POST',
+	        url: '${projectName}/c/admin/order/delete?id='+id,
+	        data:'',
+	        mysuccess: function(data){
+                doSearch();
+	            alert('删除成功');
+	        }
+	      });
+	  },function(){},'warning');
+}
 </script>
 <div class="warp">
 
@@ -43,10 +55,10 @@ $(function () {
                     
                     <h2>叶新舟</h2>
                     
-                    <div class="txImg"><img src="images/p2.png" /></div>
                     
                     <div><a href="sellerIndex.jsp">个人资料</a></div>
-                    <div><a href="#" class="sel">客户列表</a></div>
+                    <div><a href="estateOrder.jsp">楼盘预约</a></div>
+               		<div><a href="houseOrder.jsp">房源预约</a></div>
                
                </div>
                
@@ -63,7 +75,10 @@ $(function () {
 		  <tr>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">姓名</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">电话</td>
-		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约楼盘</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">楼盘</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">栋号</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">单元</td>
+		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">房间号</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约时间</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">状态</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">操作</td>
@@ -73,9 +88,15 @@ $(function () {
 						    <td align="center" valign="middle" height="30">$[buyerName]</td>
 						    <td align="center" valign="middle" height="30">$[buyerTel]</td>
 						    <td align="center" valign="middle" height="30">$[estateName]</td>
+						    <td align="center" valign="middle" height="30">$[dhao]</td>
+						    <td align="center" valign="middle" height="30">$[unit]</td>
+						    <td align="center" valign="middle" height="30">$[fhao]</td>
 						    <td align="center" valign="middle" height="30">$[addtime]</td>
 						    <td align="center" valign="middle" height="30">$[status]</td>
-						    <td align="center" valign="middle" height="30"><a href="javascript:" onclick="openNewWin('bookroom','预约信息反馈','admin/house/xxfk.html');">查看</a></td>
+						    <td align="center" valign="middle" height="30">
+						    	<a href="javascript:" onclick="openNewWin('bookroom','预约信息反馈','xxfk.jsp?orderId=$[id]');">查看</a>
+						    	<a href="javascript:" onclick="delOrder($[id])">删除</a>
+						    </td>
 						  </tr>
 						</table>
 

@@ -5,7 +5,7 @@
 <head>
 <jsp:include page="header.jsp" />
 <script type="text/javascript">
-  
+var hid
 function save(){
   var a=$('form[name=form1]').serialize();
     YW.ajax({
@@ -13,23 +13,35 @@ function save(){
       url: 'c/admin/order/doSave',
       data:a,
       mysuccess: function(data){
-          // $('#saveBtn').removeAttr('disabled');
-          //art.dialog.close();
-          // art.dialog.opener.doSearchAndSelectFirst();
-          alert('预约提交成功');
+        if (hid=="") {
+          LayerRemoveBox2("estate_order");
+        }else{
+          LayerRemoveBox2("house_order");
+        }
+        alert('预约提交成功');
       }
   });
 }
+
+function LayerRemoveBox2(id){
+  $(window.top.document).contents().find(".maskLayer").remove();
+  $(window.top.document).contents().find("#"+id).remove();
+}
+
+$(function(){
+  hid = getParam('hid');
+})
 
 </script>
 </head>
 
 <body>
 <form name="form1" role="form">
-<input type="hidden" name="estateId" value="${estateId }"/>
+<input type="hidden" name="estateId" value="${estate.id }"/>
+<input type="hidden" name="hid" value="${house.id }"/>
 <div class="dialog-custom dialog-book">
       <div class="form-title">
-        <p class="title-main">预约&nbsp;<span>玫瑰绅城 <c:if test="${house !=null }">${house.dhao }栋 ${house.unit }单元 ${house.fhao }室</c:if></span></p>
+        <p class="title-main">预约&nbsp;<span>${estate.name } <c:if test="${house !=null }">${house.dhao }栋 ${house.unit }单元 ${house.fhao }室</c:if></span></p>
         <p class="title-sub">请填写您的姓名和手机号，以便经纪人联系您看房</p>
       </div>
       <div class="form-field">

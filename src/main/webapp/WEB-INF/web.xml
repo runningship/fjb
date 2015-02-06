@@ -14,7 +14,7 @@
 	    <listener-class>com.youwei.fjb.StartUpListener</listener-class>
 	</listener>
 	<session-config>
-	  <session-timeout>480</session-timeout>
+	  <session-timeout>1440</session-timeout>
 	 </session-config>
 	 
 <!--   	<servlet> -->
@@ -41,9 +41,9 @@
     </filter>
     <filter-mapping>
     	<filter-name>UserSessionFilter</filter-name>
-    	<url-pattern>/admin/board/*</url-pattern>
-    	<url-pattern>/admin/post/*</url-pattern>
     	<url-pattern>/admin/index.jsp</url-pattern>
+    	<url-pattern>/buyer.jsp</url-pattern>
+    	<url-pattern>/sellerIndex.jsp</url-pattern>
     	<url-pattern>/admin/password.jsp</url-pattern>
     </filter-mapping>
 	

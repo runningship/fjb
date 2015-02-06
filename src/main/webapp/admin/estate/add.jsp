@@ -16,6 +16,9 @@
     <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
     <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
     <script type="text/javascript" src="../../js/DatePicker/WdatePicker.js"></script>
+    
+    <script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
+	<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 	<script type="text/javascript">
 $(function(){
 	setTimeout(function(){
@@ -25,7 +28,16 @@ $(function(){
 		initUploadHouseImage('main_upload' , 'main' , '${estateUUID}');
 	},100);
 	
+	var myprovince = remote_ip_info['province'];
+	var mycity = remote_ip_info['city']
+	var mydistrict = remote_ip_info['district'];
+	$("#city_1").citySelect({
+		prov:myprovince, 
+    	city:mycity,
+    	dist: mydistrict
+	});
 });
+
 
 function save(){
     var a=$('form[name=form1]').serialize();
@@ -73,6 +85,7 @@ function changeQuYu(city){
     <tr>
         <td class="tableleft">区域</td>
         <td>
+        <!-- 
             <select  class="sortSelect" name="city" onchange="changeQuYu(this.value);">
                 <c:forEach items="${citys}" var="city">
                   <option value="${city.value}">${city.value}</option>
@@ -83,6 +96,12 @@ function changeQuYu(city){
                   <option value="${quyu.value}" city="${quyu.attr}">${quyu.value}</option>
                 </c:forEach>
             </select>
+            -->
+            <div id="city_1" style="display:inline-block;">
+		  		<select class="prov"  id="province"  name="province"></select> 
+		    	<select class="city" id="city" name="city"></select>
+		    	<select class="dist" id="dist"  name="quyu"></select>
+		    </div>
         </td>
     </tr>
     <tr>
@@ -175,14 +194,6 @@ function changeQuYu(city){
         <td><input type="text" name="jingdu" placeholder="经度"/>  /  <input type="text" name="weidu" placeholder="纬度"/></td>
     </tr>
     <tr>
-        <td class="tableleft">优惠方案</td>
-        <td><input type="text" name="yufu"/>抵<input type="text" name="shidi"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">优惠截止时间</td>
-        <td><input type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
-    </tr>
-    <tr>
         <td class="tableleft">推荐</td>
         <td><select name="tuijian">
 			<option value="0">否</option>
@@ -195,6 +206,14 @@ function changeQuYu(city){
         	<option value="0">否</option>
         	<option value="1">是</option>
         </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">优惠方案</td>
+        <td><input type="text" name="yufu"/>抵<input type="text" name="shidi"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">优惠截止时间</td>
+        <td><input type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
         <td class="tableleft">规划图</td>

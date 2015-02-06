@@ -3,44 +3,14 @@
 <%@ page import="com.youwei.fjb.entity.User" %>
 <script type="text/javascript" src="js/city/jquery.cityselect.js"></script>
 <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
-<script type="text/javascript">
-var mycity;
-$(function(){
-	var myprovince = remote_ip_info['province'];
-	mycity = remote_ip_info['city']
-	var mydistrict = remote_ip_info['district'];
-	$(function(){
-		$("#city_1").citySelect({
-			prov:myprovince, 
-	    	city:mycity
-		});
-	});
-	if(document.cookie.indexOf('city')<0){
-		document.cookie=document.cookie+";city="+mycity;
-	}
-});
 
-function changeCity(city){
-	YW.ajax({
-        type: 'POST',
-        url: '${projectName}/c/setCity',
-        data:'city='+city,
-        mysuccess: function(data){
-            alert('修改成功');
-        }
-    });
-}
-
-function selectDefaultCity(){
-	changeCity(mycity);
-}
-</script>
 <div class="warp top">
      
      <div class="main">
+           
             <div id="city_1" style="display:inline-block;">
-		  		<select class="prov"></select> 
-		    	<select class="city" onchange="changeCity(this.value)"></select>
+		  		<select class="prov"  id="province" ></select> 
+		    	<select class="city" id="city" ></select>
 		    </div>
      	<%
 			User user = (User)request.getSession().getAttribute("user");
@@ -48,12 +18,22 @@ function selectDefaultCity(){
 	     		request.setAttribute("seller" , user);
 	     	}
 	     	String city = (String)request.getSession().getAttribute("session_city");
-	     	if(city!=null){
+	     	if(city!=null && !"undefined".equals(city)){
 	     		request.setAttribute("session_city" , city);
 	     	}
+	     	String province = (String)request.getSession().getAttribute("session_province");
+	     	if(province!=null && !"undefined".equals(province)){
+	     		request.setAttribute("session_province" , province);
+	     	}
+	     	Boolean isDebug = request.getSession().getServletContext().getServerInfo().startsWith("jetty");
+	     	if(isDebug){
+	     		request.setAttribute("upload_path" , "upload/");
+	     	}else{
+	     		request.setAttribute("upload_path" , "/upload/");
+	     	}
      	%>
-     	<c:if test="${session_city ==null }">
-     		<script type="text/javascript">selectDefaultCity()</script>
+     	<c:if test="${session_city !=null }">
+     		<script type="text/javascript">$(function(){sessionCity='${session_city}'; sessionProvince='${session_province}';});</script>
      	</c:if>
    		<c:if test="${seller !=null }">
    			<span class="fr topFr"><a href="sellerIndex.jsp">${seller.name }</a><a href="logout.jsp">退出</a><a href="#">微信公众账号</a></span>
@@ -75,6 +55,7 @@ function selectDefaultCity(){
                 <div id="searchBar" class="search-bar">
                                 
                     
+                    <form action="houses.jsp" method="post">
                     <div class="search-menu">
                       <div class="search-tab">
                         <a val="1" href="javascript:;" class="tab-item current">新房</a>
@@ -82,8 +63,11 @@ function selectDefaultCity(){
                       </div>
                       <i></i>
                     </div>
-                    <input type="text" placeholder="楼盘名称 / 地址" value="" name="kw" class="search-input" role="elem">
-                    <button class="search-btn" type="submit">搜索</button>
+                        <input type="text" placeholder="楼盘名称 " value="${searchText }"  id="searchText" class="search-input"  name="searchText"/>
+                        <input type="hidden"  value="${selectedQuyu }"  id="quyu_input"  class="search-input"  name="quyu"/>
+                        <input type="hidden" value="${selectedLxing }"  id="lxing_input" class="search-input"  name="lxing"/>
+                        <input type="submit" class="search-btn"  value="搜索" />
+                    </form>
                 </div>
             </div>
           
@@ -92,3 +76,41 @@ function selectDefaultCity(){
      </div>
 
 </div>
+
+<script type="text/javascript">
+var mycity;
+var sessionCity;
+var sessionProvince;
+$(function(){
+	var myprovince = remote_ip_info['province'];
+	mycity = remote_ip_info['city']
+	var mydistrict = remote_ip_info['district'];
+	if(sessionProvince && sessionCity){
+		$("#city_1").citySelect({
+			prov : sessionProvince, 
+	    	city : sessionCity,
+	    	cityChange:changeCity
+		});
+	}else{
+		$("#city_1").citySelect({
+			prov:myprovince, 
+	    	city:mycity,
+	    	cityChange:changeCity
+		});
+		infoAlert('当前城市为'+myprovince+'省'+mycity+'市');
+		setTimeout(changeCity,2000);
+	}
+});
+
+function changeCity(){
+	YW.ajax({
+        type: 'POST',
+        url: '${projectName}/c/setCity',
+        data:'province='+$('#province').val()+'&city='+$('#city').val(),
+        mysuccess: function(data){
+            //alert('修改成功');
+            window.location.reload();
+        }
+    });
+}
+</script>

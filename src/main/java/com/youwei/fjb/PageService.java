@@ -5,16 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.Page;
 import org.bc.sdak.TransactionalServiceHelper;
-import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
 import org.bc.web.ThreadSession;
 import org.bc.web.WebMethod;
 
-import com.youwei.fjb.entity.Config;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
 import com.youwei.fjb.entity.HouseImage;
@@ -32,27 +31,24 @@ public class PageService {
 	public ModelAndView index(){
 		ModelAndView mv = new ModelAndView();
 		mv = tehui(mv);
-		//推荐楼盘
+		
 		Page<Map> page = new Page<Map>();
 		page.setPageSize(9);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.junjia as junjia , "
 				+ "img.path as img from Estate est,HouseImage img"
-				+ " where est.uuid=img.estateUUID and est.tuijian=1 and img.type='main'", true,new Object[]{});
-//		for(Map map : page.getResult()){
-//		}
-//		List<Map> tuijianList = new ArrayList<Map>();
-//		for(int i=0;i<6;i++){
-//			Map map = new HashMap();
-//			map.put("name", "国贸天琴湾");
-//			map.put("quyu", "瑶海区");
-//			map.put("junjia", "7500");
-//			map.put("youhui", "3000抵5万");
-//			map.put("img", "images/p1.png");
-//			tuijianList.add(map);
-//		}
-		mv.jspData.put("tuijianList", page.getResult());
-		
+				+ " where est.uuid=img.estateUUID and est.tuijian=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
+		mv.jspData.put("page", page);
 		mv.jspData.put("currNav", "index");
+		long total = dao.countHql("select count(*) from Estate where city=?",ThreadSessionHelper.getCity() );
+		mv.jspData.put("total", total);
+		
+		//最大优惠
+		Page<Map> page2 = new Page<Map>();
+		page.setPageSize(1);
+		page2 = dao.findPage(page2, "select (h.shidi-h.yufu) as youhui from Estate est, House h where h.estateId=est.id and est.city=? order by youhui desc", true , new Object[]{ThreadSessionHelper.getCity()});
+		if(!page2.getResult().isEmpty()){
+			mv.jspData.put("maxYouhui", page2.getResult().get(0).get("youhui"));
+		}
 		return mv;
 	}
 	
@@ -62,17 +58,7 @@ public class PageService {
 		page.setPageSize(6);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
 				+ " est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
-				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and img.type='main'", true,new Object[]{});
-		List<Map> youhuiList = new ArrayList<Map>();
-		for(int i=0;i<6;i++){
-			Map map = new HashMap();
-			map.put("name", "滨湖万科城");
-			map.put("quyu", "滨湖区");
-			map.put("junjia", "6500");
-			map.put("youhuijia", "6300");
-			map.put("img", "images/p1.png");
-			youhuiList.add(map);
-		}
+				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.jspData.put("youhuiList", page.getResult());
 		return mv;
 	}
@@ -86,43 +72,74 @@ public class PageService {
 		page.setPageSize(3);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
 				+ " est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
-				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and img.type='main'", true,new Object[]{});
+				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.jspData.put("page", page);
 //		//已经成交
 //		long dealCount = dao.countHql("select count(*) from House house, Estate est where house.estateId=est.id and est.tehui=1 and house.hasSold=1");
 //		mv.jspData.put("dealCount", dealCount);
+		
+		for(Map map : page.getResult()){
+			//与约数量
+			long count = dao.countHql("select count(*) from HouseOrder where estateId=?", map.get("id"));
+			map.put("orderCount", count);
+		}
+		
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView yykf(String estateId , Integer hid){
+	public ModelAndView yykf(Integer estateId , Integer hid){
 		ModelAndView mv = new ModelAndView();
 //		User seller = (User)ThreadSession.getHttpSession().getAttribute("user");
 		House house = dao.get(House.class, hid);
 		if(house!=null){
 			mv.jspData.put("house" , house);
 		}
-		mv.jspData.put("estateId" , estateId);
+		Estate estate = dao.get(Estate.class, estateId);
+		mv.jspData.put("estate" , estate);
 		return  mv;
 	}
 	
 	@WebMethod
-	public ModelAndView setCity(String city){
+	public ModelAndView setCity(String province , String city){
 		ModelAndView mv = new ModelAndView();
+		if("null".equals(city)){
+			return mv;
+		}
+		
 		ThreadSession.getHttpSession().setAttribute(FjbConstant.Session_Attr_City, city);
+		ThreadSession.getHttpSession().setAttribute(FjbConstant.Session_Attr_Province, province);
 		return  mv;
 	}
 	
 	@WebMethod
-	public ModelAndView houses(Page<Map> page){
+	public ModelAndView houses(Page<Map> page , String searchText , String quyu , String lxing){
 		ModelAndView mv = new ModelAndView();
 		mv = ConfigHelper.queryItems(mv);
 		mv = tehui(mv);
+		mv.jspData.put("selectedQuyu", quyu);
+		mv.jspData.put("selectedLxing", lxing);
+		mv.jspData.put("searchText", searchText);
 		mv.jspData.put("currNav", "houses");
-		page.setPageSize(3);
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
+		List<Object> params = new ArrayList<Object>();
+		params.add(ThreadSessionHelper.getCity());
+		page.setPageSize(10);
+		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
 				+ "  est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
-				+ "HouseImage img where est.uuid=img.estateUUID and img.type='main'", true,new Object[]{});
+				+ "HouseImage img where est.uuid=img.estateUUID and est.city=? and img.type='main'");
+		if(StringUtils.isNotEmpty(quyu)){
+			hql.append(" and est.quyu=?");
+			params.add(quyu);
+		}
+		if(StringUtils.isNotEmpty(lxing)){
+			hql.append(" and est.lxing like ?");
+			params.add("%"+lxing+"%");
+		}
+		if(StringUtils.isNotEmpty(searchText)){
+			hql.append(" and est.name like ?");
+			params.add("%"+searchText+"%");
+		}
+		page = dao.findPage(page, hql.toString() , true, params.toArray());
 		mv.jspData.put("page", page);
 		return mv;
 	}
@@ -138,7 +155,7 @@ public class PageService {
 	@WebMethod
 	public ModelAndView houseMap(){
 		ModelAndView mv = new ModelAndView();
-		List<Map> list = dao.listAsMap("select name as name, jingdu as jingdu , weidu as weidu from Estate where 1=1");
+		List<Map> list = dao.listAsMap("select name as name, jingdu as jingdu , weidu as weidu from Estate where city=?",ThreadSessionHelper.getCity());
 		mv.jspData.put("houses", list);
 		return mv;
 	}
@@ -166,12 +183,21 @@ public class PageService {
 		//在线剩余套数
 		long leftCount = dao.countHql("select count(*) from House where estateId=? and hasSold=0", estateId);
 		mv.jspData.put("leftCount", leftCount);
+		Page<Map> page = new Page<Map>();
+		page.setPageSize(1);
+		page = dao.findPage(page, "select totalPrice as totalPrice from House where estateId=? order by totalPrice desc", true, new Object[]{estateId});
+		if(!page.getResult().isEmpty()){
+			float p  = (Float)page.getResult().get(0).get("totalPrice");
+			
+			mv.jspData.put("minTotalPrice", (int)p);
+		}
 		return mv;
 	}
 	
 	@WebMethod
-	public ModelAndView buyer(Page<Map> page){
+	public ModelAndView buyer(Page<Map> page , String type){
 		ModelAndView mv = new ModelAndView();
+		mv.jspData.put("type", type);
 		return mv;
 	}
 	

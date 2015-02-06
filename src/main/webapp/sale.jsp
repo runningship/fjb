@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <jsp:include page="header.jsp" />
+<script type="text/javascript">
+  function closeOpen(id){
+    LayerRemoveBox(id);
+  }
+</script>
 </head>
 
 <body>
@@ -64,7 +69,10 @@
                <div class="lpCon">
                    
                     <span class="hYPrice"><em>市场价 <c:if test="${youhui.sjia eq null}">待定</c:if> <c:if test="${youhui.sjia}">${youhui.sjia}"</c:if> </em>房金宝团购优惠价 </span>
-                    <span class="hnPrice"><strong>${youhui.junjia}</strong>元/平米 <em>${youhui.yufu}享${youhui.shidi }</em></span>
+                    <span class="hnPrice">
+                    	<c:if test="${youhui.junjia != null}"><strong>${youhui.junjia}</strong>元/平米</c:if>
+                    	 <c:if test="${youhui.junjia == null}"><strong>待定</strong></c:if>
+                    	<em><c:if test="${youhui.yufu && youhui.shidi }"> ${youhui.yufu}享${youhui.shidi }</c:if></em></span>
                     <span class="liaojie">
                           <div class="fl w180">
                                <p>楼盘位置：${youhui.quyu}</p>
@@ -75,7 +83,7 @@
                     
                     <span class="yuyue">
                           <div class="fl w180">
-                               <em>76</em>人已预约看房
+                               <em>${youhui.orderCount }</em>人已预约看房
                           </div>
                           <a href="#" onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${youhui.id}');" class="btn-main fl">预约看房</a>
                     </span>
@@ -83,7 +91,8 @@
                     
                     <span class="tehuiClock">
 <%--                     已成交:<em>${youhui.chengjiao}</em>套 &nbsp;  --%>
-                    活动结束剩<em>93</em>天<em>7</em>小时<em>19</em>分钟<em>39</em>秒</span>
+					<em>优惠活动截止于<fmt:formatDate value="${youhui.youhuiEndtime}" pattern="yyyy年MM月dd日"/></em>
+<!--                     活动结束剩<em>93</em>天<em>7</em>小时<em>19</em>分钟<em>39</em>秒</span> -->
                
                </div>
           

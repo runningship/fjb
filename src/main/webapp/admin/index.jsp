@@ -112,15 +112,17 @@
                                      id: 'wylx_cfg',
                                      text: '物业类型',
                                      href: 'config/wylxList.jsp'
-                                 },{
-                                     id: 'city_cfg',
-                                     text: '城市',
-                                     href: 'config/cityList.jsp'
-                                 },{
-                                     id: 'quyu_cfg',
-                                     text: '区域',
-                                     href: 'config/quyuList.jsp'
-                                 },{
+                                 }
+//                                  ,{
+//                                      id: 'city_cfg',
+//                                      text: '城市',
+//                                      href: 'config/cityList.jsp'
+//                                  },{
+//                                      id: 'quyu_cfg',
+//                                      text: '区域',
+//                                      href: 'config/quyuList.jsp'
+//                                  }
+                                 ,{
                                      id: 'huxing_cfg',
                                      text: '户型',
                                      href: 'huxing/list.jsp'
