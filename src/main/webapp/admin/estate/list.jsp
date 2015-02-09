@@ -3,18 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${projectName}/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName}/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName}/Css/style.css" />
-    <script type="text/javascript" src="${projectName}/js/jquery.js"></script>
-    <script type="text/javascript" src="${projectName}/js/bootstrap.js"></script>
-    <script type="text/javascript" src="${projectName}/js/pagination.js"></script>
-    
-	<script type="text/javascript" src="${projectName}/js/artDialog/jquery.artDialog.source.js?skin=default"></script>
-	<script type="text/javascript" src="${projectName}/js/artDialog/plugins/iframeTools.source.js"></script>
-	<script type="text/javascript" src="${projectName}/js/buildHtml.js"></script>
-    <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
+<jsp:include page="../header.jsp" />
 <script type="text/javascript">
 function doSearch(){
 	var a=$('form[name=form1]').serialize();

@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
  <head>
-  <title>后台管理系统</title>
+  <title>房金宝后台管理系统</title>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
   <link href="assets/css/bui-min.css" rel="stylesheet" type="text/css" />

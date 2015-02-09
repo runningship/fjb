@@ -135,15 +135,15 @@ $(function () {
   </span>
 </div>-->
 
-                <div class="trends">
-                                                         <span class="label">动态</span>
-                     <div class="trends-con">
-                         <h2><a href="/house/3796/news/64077">玫瑰绅城在售叠加别墅 2013-11-06</a></h2>
-                         <p>玫瑰绅城在售叠加别墅，户型200-220平米，均价7500元/平米，在售联排240-330平米的户型，均价14500元/...</p>
-                         <a class="more" href="/house/3796/news">更多动态</a>
-                     </div>
+<!--                 <div class="trends"> -->
+<!--                                                          <span class="label">动态</span> -->
+<!--                      <div class="trends-con"> -->
+<!--                          <h2><a href="/house/3796/news/64077">玫瑰绅城在售叠加别墅 2013-11-06</a></h2> -->
+<!--                          <p>玫瑰绅城在售叠加别墅，户型200-220平米，均价7500元/平米，在售联排240-330平米的户型，均价14500元/...</p> -->
+<!--                          <a class="more" href="/house/3796/news">更多动态</a> -->
+<!--                      </div> -->
                 
-                </div>
+<!--                 </div> -->
                 
                 <div id="online-choose-room" class="sct screen-nd clearfix">
             <!-- 在线选房 -->
@@ -396,11 +396,11 @@ $(function () {
 		  this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
 		  this._div.style.top  = pixel.y - 30 + "px";
 		}
-		var txt = "绿地赢海国际大厦", mouseoverTxt = txt + " " + parseInt(Math.random() * 1000,10) + "套" ;
+		//var txt = "绿地赢海国际大厦", mouseoverTxt = txt + " " + parseInt(Math.random() * 1000,10) + "套" ;
 			
-		var myCompOverlay = new ComplexCustomOverlay(points, "绿地赢海国际大厦",mouseoverTxt);
+		//var myCompOverlay = new ComplexCustomOverlay(points, "绿地赢海国际大厦",mouseoverTxt);
 	
-		map.addOverlay(myCompOverlay);
+		//map.addOverlay(myCompOverlay);
 	}
 	
 	

@@ -14,6 +14,7 @@ import org.bc.web.Module;
 import org.bc.web.ThreadSession;
 import org.bc.web.WebMethod;
 
+import com.youwei.fjb.admin.EstateQuery;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
 import com.youwei.fjb.entity.HouseImage;
@@ -69,9 +70,9 @@ public class PageService {
 		mv = ConfigHelper.queryItems(mv);
 		mv = tehui(mv);
 		mv.jspData.put("currNav", "sale");
-		page.setPageSize(3);
+		page.setPageSize(10);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
-				+ " est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
+				+ " est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img , est.yufu as yufu, est.shidi as shidi from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.jspData.put("page", page);
 //		//已经成交
@@ -113,13 +114,15 @@ public class PageService {
 	}
 	
 	@WebMethod
-	public ModelAndView houses(Page<Map> page , String searchText , String quyu , String lxing){
+	public ModelAndView houses(Page<Map> page , EstateQuery query){
 		ModelAndView mv = new ModelAndView();
 		mv = ConfigHelper.queryItems(mv);
 		mv = tehui(mv);
-		mv.jspData.put("selectedQuyu", quyu);
-		mv.jspData.put("selectedLxing", lxing);
-		mv.jspData.put("searchText", searchText);
+		mv.jspData.put("selectedQuyu", query.quyu);
+		mv.jspData.put("selectedLxing",query.lxing);
+		mv.jspData.put("searchText", query.searchText);
+		mv.jspData.put("jiageStart", query.jiageStart);
+		mv.jspData.put("jiageEnd", query.jiageEnd);
 		mv.jspData.put("currNav", "houses");
 		List<Object> params = new ArrayList<Object>();
 		params.add(ThreadSessionHelper.getCity());
@@ -127,17 +130,25 @@ public class PageService {
 		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
 				+ "  est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.city=? and img.type='main'");
-		if(StringUtils.isNotEmpty(quyu)){
+		if(StringUtils.isNotEmpty(query.quyu)){
 			hql.append(" and est.quyu=?");
-			params.add(quyu);
+			params.add(query.quyu);
 		}
-		if(StringUtils.isNotEmpty(lxing)){
+		if(StringUtils.isNotEmpty(query.lxing)){
 			hql.append(" and est.lxing like ?");
-			params.add("%"+lxing+"%");
+			params.add("%"+query.lxing+"%");
 		}
-		if(StringUtils.isNotEmpty(searchText)){
+		if(StringUtils.isNotEmpty(query.searchText)){
 			hql.append(" and est.name like ?");
-			params.add("%"+searchText+"%");
+			params.add("%"+query.searchText+"%");
+		}
+		if(query.jiageStart!=null){
+			hql.append(" and est.junjia>=?");
+			params.add(query.jiageStart);
+		}
+		if(query.jiageEnd!=null){
+			hql.append(" and est.junjia<=?");
+			params.add(query.jiageEnd);
 		}
 		page = dao.findPage(page, hql.toString() , true, params.toArray());
 		mv.jspData.put("page", page);
@@ -155,7 +166,7 @@ public class PageService {
 	@WebMethod
 	public ModelAndView houseMap(){
 		ModelAndView mv = new ModelAndView();
-		List<Map> list = dao.listAsMap("select name as name, jingdu as jingdu , weidu as weidu from Estate where city=?",ThreadSessionHelper.getCity());
+		List<Map> list = dao.listAsMap("select name as name, jingdu as jingdu , weidu as weidu ,id as id from Estate where city=?",ThreadSessionHelper.getCity());
 		mv.jspData.put("houses", list);
 		mv.jspData.put("currNav", "map");
 		return mv;
@@ -226,7 +237,7 @@ public class PageService {
 			Long total = (Long)map.get("total");
 			all+=total;
 		}
-		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where estateUUID=?", estate.uuid);
+		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where estateUUID=?",  estate.uuid);
 		mv.jspData.put("estate", estate);
 		mv.jspData.put("fenleiList", fenleiList);
 		mv.jspData.put("images", images);

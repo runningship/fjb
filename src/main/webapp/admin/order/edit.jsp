@@ -3,18 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/style.css" />
-    <script type="text/javascript" src="${projectName }/js/jquery.js"></script>
-    <script type="text/javascript" src="${projectName }/js/bootstrap.js"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/jquery.artDialog.source.js?skin=default"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/plugins/iframeTools.source.js"></script>
-    <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
-    <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
-	<script type="text/javascript">
+<jsp:include page="../header.jsp" />
+<script type="text/javascript">
 		
 		$(function(){
 		});
@@ -57,18 +47,28 @@
     </c:if>
     <tr>
         <td class="tableleft">经纪人姓名/电话</td>
-        <td><span>${order.sellerName}</span>/<span>${sellerTel}</span>
+        <td><span>${order.sellerName}</span>
+        </td>
+    </tr>
+     <tr>
+        <td class="tableleft">经纪人电话</td>
+        <td><span>${sellerTel}</span>
         </td>
     </tr>
     <tr>
-        <td class="tableleft">客户姓名/电话</td>
-        <td><input type="text" name="buyerName" value="${order.buyerName}"/>
-            <input type="text" name="buyerTel" value="${order.buyerTel}"/>
+        <td class="tableleft">客户姓名</td>
+        <td><span>${order.buyerName}</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableleft">客户电话</td>
+        <td>
+            <span>${order.buyerTel}</span>
         </td>
     </tr>
     <tr>
         <td class="tableleft">备注</td>
-        <td><input type="text" name="sellerMark" value="${order.sellerMark}"/></td>
+        <td>${order.sellerMark}</td>
     </tr>
     <!-- <tr>
         <td class="tableleft">主图片</td>

@@ -3,24 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/style.css" />
-    <script type="text/javascript" src="${projectName }/js/jquery.js"></script>
-    <script type="text/javascript" src="${projectName }/js/bootstrap.js"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/jquery.artDialog.source.js?skin=default"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/plugins/iframeTools.source.js"></script>
-    <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
-    <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
-	<script type="text/javascript">
+<jsp:include page="../header.jsp" />
+<script type="text/javascript">
 		
 $(function(){
 	$('#cxiang').val('${house.cxiang}');
 });
 
 function save(){
+    if(checkNotnullInput()==false){
+        return;
+    }
     var a=$('form[name=form1]').serialize();
     YW.ajax({
         type: 'POST',
@@ -55,15 +48,15 @@ function jisuan(){
 	
     <tr>
         <td class="tableleft">楼栋</td>
-        <td><input type="text" name="dhao" value="${house.dhao}" /></td>
+        <td><input type="text" name="dhao" value="${house.dhao}"  not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">单元</td>
-        <td><input type="text" name="unit" value="${house.unit}" /></td>
+        <td><input type="text" name="unit" value="${house.unit}"  not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">房间号</td>
-        <td><input  style="width:101px;" type="text" name="fhao" value="${house.fhao}"/></td>
+        <td><input  style="width:101px;" type="text" name="fhao" not-null="true" value="${house.fhao}"/></td>
     </tr>
     <tr>
         <td class="tableleft">面积</td>

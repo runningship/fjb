@@ -3,23 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/style.css" />
-    <script type="text/javascript" src="${projectName }/js/jquery.js"></script>
-    <script type="text/javascript" src="${projectName }/js/bootstrap.js"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/jquery.artDialog.source.js?skin=default"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/plugins/iframeTools.source.js"></script>
-    <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
-    <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
-    <script type="text/javascript" src="${projectName}/js/fjb.js"></script>
-    <script type="text/javascript" src="../../js/DatePicker/WdatePicker.js"></script>
-    
-    <script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
-	<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
-	<script type="text/javascript">
+<jsp:include page="../header.jsp" />
+<script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
+<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script type="text/javascript">
 $(function(){
 	setTimeout(function(){
 		initUploadHouseImage('shijing_upload' , 'shijing' , '${estateUUID}');
@@ -40,6 +27,9 @@ $(function(){
 
 
 function save(){
+    if(checkNotnullInput()==false){
+        return;
+    }
     var a=$('form[name=form1]').serialize();
     YW.ajax({
         type: 'POST',
@@ -69,11 +59,11 @@ function changeQuYu(city){
 	
     <tr>
         <td class="tableleft">名称</td>
-        <td><input type="text" name="name"/></td>
+        <td><input type="text" name="name" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">电话</td>
-        <td><input type="text" name="tel"/></td>
+        <td><input type="text" name="tel" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">主图片<em style="color:red">*</em></td>
@@ -119,22 +109,30 @@ function changeQuYu(city){
     <tr>
         <td class="tableleft">建筑类型</td>
         <td>
-        	<select  class="sortSelect" name="lxing">
-                <option value="" >所有</option>
-                <c:forEach items="${lxings}" var="lxing">
-                  <option value="${lxing.value}">${lxing.value}</option>
-                </c:forEach>
-            </select>
+<!--         	<select  class="sortSelect" name="lxing"> -->
+<!--                 <option value="" >所有</option> -->
+<%--                 <c:forEach items="${lxings}" var="lxing"> --%>
+<%--                   <option value="${lxing.value}">${lxing.value}</option> --%>
+<%--                 </c:forEach> --%>
+<!--             </select> -->
+            <c:forEach items="${lxings}" var="lxing">
+              <input value="${lxing.value}" name="lxing" type="checkbox"/>${lxing.value}
+            </c:forEach>
        </td>
     </tr>
     <tr>
         <td class="tableleft">物业类型</td>
-        <td><select  class="sortSelect" name="wylx">
-                <option value="" >所有</option>
-                <c:forEach items="${wylxs}" var="wylx">
-                  <option value="${wylx.value}">${wylx.value}</option>
-                </c:forEach>
-            </select></td>
+        <td>
+<!--         	<select  class="sortSelect" name="wylx"> -->
+<!--                 <option value="" >所有</option> -->
+<%--                 <c:forEach items="${wylxs}" var="wylx"> --%>
+<%--                   <option value="${wylx.value}">${wylx.value}</option> --%>
+<%--                 </c:forEach> --%>
+<!--             </select> -->
+             <c:forEach items="${wylxs}" var="wylx">
+               <input value="${wylx.value}"  name="wylx" type="checkbox"/>${wylx.value}
+             </c:forEach>
+            </td>
     </tr>
     <tr>
         <td class="tableleft">装修</td>
@@ -187,7 +185,7 @@ function changeQuYu(city){
     </tr>
     <tr>
         <td class="tableleft">地址</td>
-        <td><input type="text" name="addr"/></td>
+        <td><input type="text" name="addr"/ not-null="true"></td>
     </tr>
     <tr>
         <td class="tableleft">经纬度</td>

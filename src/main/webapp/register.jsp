@@ -3,10 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script type="text/javascript" src="${projectName}/js/validate.js"></script>
 <jsp:include page="header.jsp" />
 <script type="text/javascript">
   
 function save(){
+  if(checkNotnullInput()==false){
+      return;
+  }
   var a=$('form[name=form1]').serialize();
     YW.ajax({
       type: 'POST',
@@ -41,23 +45,23 @@ function save(){
            <div class="fl form-login">
               
                 <p><label for="name">手机号码</label><span class="form-tips">用户名不存在</span></p>
-               <input type="text" placeholder="请输入手机号" class="name" name="tel">
+               <input type="text" placeholder="请输入手机号" class="name" name="tel" not-null="true">
                
               <p><label for="captcha">密码</label><span class="form-tips">请输入您的密码</span></p>
-               <input type="password" placeholder="请输入您的密码" class="password" name="pwd">
+               <input type="password" placeholder="请输入您的密码" class="password" name="pwd" not-null="true">
 
               <p><label for="captcha">姓名</label><span class="form-tips">请输入您的姓名</span></p>
-               <input type="text" placeholder="请输入您的姓名" class="name" name="name">
+               <input type="text" placeholder="请输入您的姓名" class="name" name="name" not-null="true">
                
                <p><label for="captcha">公司名称</label><span class="form-tips">请输入您的公司名称</span></p>
-               <input type="text" placeholder="公司名称+分店" class="name" name="compName">
+               <input type="text" placeholder="公司名称+分店" class="name" name="compName" not-null="true">
                
                <p><label for="captcha">请输入图片验证码</label><span class="form-tips">验证码错误</span></p>
               <div class="form-field">
                <input type="text" placeholder="请输入图片验证码" class="captcha" name="yzm">
           <img alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
                </div>
-               <input type="submit" class="btn-login" value="注册" />
+               <input type="submit" class="btn-login" value="注册" style="cursor:pointer" />
            
            </div>
       

@@ -9,6 +9,7 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
 </style>
 <jsp:include page="header.jsp" />
 
+<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
 </head>
 
 <body>
@@ -20,17 +21,20 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=9ad26b763c7cd0619e372f993cdc9849"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
-<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
+
 <script type="text/javascript">
 // 百度地图API功能
   var mp = new BMap.Map("allmap");
-  mp.centerAndZoom(new BMap.Point(117.246104,31.854113), 14);
+  //mp.centerAndZoom(new BMap.Point(117.246104,31.854113), 14);
+  mp.centerAndZoom(new BMap.Point(117.309, 31.837), 14);
+  mp.setCurrentCity("合肥");
   mp.enableScrollWheelZoom();
   // 复杂的自定义覆盖物
-    function ComplexCustomOverlay(point, text, mouseoverText){
+    function ComplexCustomOverlay(point, text, mouseoverText , estateId){
       this._point = point;
       this._text = text;
       this._overText = mouseoverText;
+      this._estateId = estateId;
     }
     ComplexCustomOverlay.prototype = new BMap.Overlay();
     ComplexCustomOverlay.prototype.initialize = function(map){
@@ -49,7 +53,8 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
       div.style.fontSize = "12px"
       var span = this._span = document.createElement("span");
       div.appendChild(span);
-      span.appendChild(document.createTextNode(this._text));      
+      span.appendChild(document.createTextNode(this._text));
+      $(div).attr('estateId' , this._estateId);
       var that = this;
 
       var arrow = this._arrow = document.createElement("div");
@@ -62,18 +67,8 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
       arrow.style.overflow = "hidden";
       div.appendChild(arrow);
      
-      div.onmouseover = function(){
-        this.style.backgroundColor = "#6BADCA";
-        this.style.borderColor = "#0000ff";
-        this.getElementsByTagName("span")[0].innerHTML = that._overText;
-        arrow.style.backgroundPosition = "0px -20px";
-      }
-
-      div.onmouseout = function(){
-        this.style.backgroundColor = "#EE5D5B";
-        this.style.borderColor = "#BC3B3A";
-        this.getElementsByTagName("span")[0].innerHTML = that._text;
-        arrow.style.backgroundPosition = "0px 0px";
+      div.onclick = function(){
+		window.location='info.jsp?estateId='+ $(div).attr('estateId');
       }
 
       mp.getPanes().labelPane.appendChild(div);
@@ -96,7 +91,7 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
 
 $(function(){
   $('.loupan').each(function(index,obj){
-    mp.addOverlay(new ComplexCustomOverlay(new BMap.Point($(obj).attr('jingdu'), $(obj).attr('weidu')), $(obj).attr('loupan'),''));
+    mp.addOverlay(new ComplexCustomOverlay(new BMap.Point($(obj).attr('jingdu'), $(obj).attr('weidu')), $(obj).attr('loupan'), '' ,$(obj).attr('estateId')));
   });
 });
 </script>
@@ -104,8 +99,8 @@ $(function(){
 </script>
 <jsp:include page="foot.jsp"></jsp:include>
 <div>
-<c:forEach items="${houses}" var="house">
-<span class="loupan" jingdu="${house.jingdu }" weidu="${house.weidu }"  loupan="${house.name }"></span>
+<c:forEach items="${houses}" var="estate">
+<span class="loupan" jingdu="${estate.jingdu }" weidu="${estate.weidu }"  loupan="${estate.name }" estateId="${estate.id }"></span>
 </c:forEach>
 </div>
 </body>

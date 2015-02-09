@@ -3,23 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="${projectName }/Css/style.css" />
-    <script type="text/javascript" src="${projectName }/js/jquery.js"></script>
-    <script type="text/javascript" src="${projectName }/js/bootstrap.js"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/jquery.artDialog.source.js?skin=default"></script>
-    <script type="text/javascript" src="${projectName }/js/artDialog/plugins/iframeTools.source.js"></script>
-    <script type="text/javascript" src="${projectName }/js/buildHtml.js"></script>
-    <script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
+<jsp:include page="../header.jsp" />
 	<script type="text/javascript">
 $(function(){
 	
 });
 
 function save(){
+	if(checkNotnullInput()==false){
+		return;
+	}
     var a=$('form[name=form1]').serialize();
     YW.ajax({
         type: 'POST',
@@ -59,16 +52,16 @@ function jisuan(){
 	
     <tr>
         <td class="tableleft">楼栋</td>
-        <td><input type="text" name="dhao"/></td>
+        <td><input type="text" name="dhao" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">单元</td>
-        <td><input type="text" name="unit"/></td>
+        <td><input type="text" name="unit" not-null="true" /></td>
     </tr>
     <tr>
         <td class="tableleft">房间号</td>
-        <td><input  style="width:101px;" type="text" name="lcengStart"/>层到<input style="width:101px;" type="text" name="lcengEnd"/>层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            层内编号：<input style="width:101px;" type="text" name="fanghao"/></td>
+        <td><input  style="width:101px;" type="text" not-null="true" name="lcengStart"/>层到<input style="width:101px;" type="text" name="lcengEnd"/>层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            层内编号：<input style="width:101px;" type="text" name="fanghao" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">面积</td>

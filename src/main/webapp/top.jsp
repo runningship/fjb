@@ -63,9 +63,11 @@
                       </div>
                       <i></i>
                     </div>
-                        <input type="text" placeholder="楼盘名称 " value="${searchText }"  id="searchText" class="search-input"  name="searchText"/>
+                        <input type="text"  style="margin-left:3px;" placeholder="楼盘名称 " value="${searchText }"  id="searchText" class="search-input"  name="searchText"/>
                         <input type="hidden"  value="${selectedQuyu }"  id="quyu_input"  class="search-input"  name="quyu"/>
                         <input type="hidden" value="${selectedLxing }"  id="lxing_input" class="search-input"  name="lxing"/>
+                        <input type="hidden" value="${jiageStart }"  id="jiageStart_input" class="search-input"  name="jiageStart"/>
+                        <input type="hidden" value="${jiageEnd }"  id="jiageEnd_input" class="search-input"  name="jiageEnd"/>
                         <input type="submit" class="search-btn"  value="搜索" />
                     </form>
                 </div>
@@ -97,7 +99,7 @@ $(function(){
 	    	city:mycity,
 	    	cityChange:changeCity
 		});
-		alert('当前城市为'+myprovince+'省'+mycity+'市');
+		alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
 		setTimeout(changeCity,2000);
 	}
 });

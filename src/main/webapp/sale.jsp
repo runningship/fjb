@@ -68,11 +68,11 @@
                <div class="lpPic"><a href="#"><img style="width:570px;height:310px;" src="upload/${youhui.img}" /></a></div>
                <div class="lpCon">
                    
-                    <span class="hYPrice"><em>市场价 <c:if test="${youhui.sjia eq null}">待定</c:if> <c:if test="${youhui.sjia}">${youhui.sjia}"</c:if> </em>房金宝团购优惠价 </span>
-                    <span class="hnPrice">
+                    <span class="hYPrice"><em>市场价  ${youhui.junjia}</em> 房金宝团购优惠价</span>
+                    <span class="hYPrice">
                     	<c:if test="${youhui.junjia != null}"><strong>${youhui.junjia}</strong>元/平米</c:if>
-                    	 <c:if test="${youhui.junjia == null}"><strong>待定</strong></c:if>
-                    	<em><c:if test="${youhui.yufu && youhui.shidi }"> ${youhui.yufu}享${youhui.shidi }</c:if></em></span>
+                    	<c:if test="${youhui.yufu != null && youhui.shidi !=null}">${youhui.yufu}享${youhui.shidi }</c:if>
+                    </span>
                     <span class="liaojie">
                           <div class="fl w180">
                                <p>楼盘位置：${youhui.quyu}</p>

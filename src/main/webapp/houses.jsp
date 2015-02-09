@@ -9,8 +9,15 @@ function checkSelect(){
 	//window.location='houses.jsp?searchText='+$('#searchText').val()+'&quyu='+$('#quyu').val()+'&lxing='+$('#lxing').val();
 	$('#quyu_input').val($('#quyu_select').val());
 	$('#lxing_input').val($('#lxing_select').val());
+	$('#jiageStart_input').val($('#jiageStart_select').val());
+	$('#jiageEnd_input').val($('#jiageEnd_select').val());
 	document.forms[0].submit();
 }
+
+$(function(){
+	$('#jiageStart_select').val(${jiageStart});
+	$('#jiageEnd_select').val(${jiageEnd});
+});
 </script>
 </head>
 
@@ -49,16 +56,24 @@ function checkSelect(){
                         </div>
                         <div class="choose_list">
                             <label class="pass-label">价位</label>
-                            <select onchange="checkSelect('jw');" id="jiawei" class="sortSelect">
+                            <select style="width:80px;" onchange="checkSelect()" id="jiageStart_select"  class="sortSelect">
                                 <option value="" selected="">默认价位</option>
-                                <option value="1">6000元以下</option>
-                                <option value="2">6000-10000元</option>
-                                <option value="3">1-1.5万</option>
-                                <option value="4">1.5-2万</option>
-                                <option value="5">2-2.5万</option>
-                                <option value="6">2.5-3万</option>
-                                <option value="7">3万以上</option>
-                            </select>
+                                <option value="6000">6000元</option>
+                                <option value="10000">1万</option>
+                                <option value="15000">1.5万</option>
+                                <option value="20000">2万</option>
+                                <option value="25000">2.5万</option>
+                                <option value="30000">3万</option>
+                            </select><span> 以上</span>
+                            <select style="width:80px;" onchange="checkSelect()" id="jiageEnd_select"    class="sortSelect">
+                                <option value="" selected="">默认价位</option>
+                                <option value="6000">6000</option>
+                                <option value="10000">1万</option>
+                                <option value="15000">1.5万</option>
+                                <option value="20000">2万</option>
+                                <option value="25000">2.5万</option>
+                                <option value="30000">3万</option>
+                            </select><span> 以下</span>
                         </div>
                </div>
           
