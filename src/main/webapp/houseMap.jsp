@@ -3,8 +3,6 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
 <style type="text/css">
 html, body, .body {height: 100%;padding: 0;margin: 0;}
 .errTip{ position:absolute; top:40%; left:30%; z-index:999; background:#F60; color:#FFF; height:100px; width:300px; line-height:100px; text-align:center; font-size:30px; font-family:"微软雅黑","黑体"; display:none;}

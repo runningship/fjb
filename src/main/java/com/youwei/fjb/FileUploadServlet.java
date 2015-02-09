@@ -21,13 +21,14 @@ import org.apache.commons.io.FileUtils;
 import org.bc.sdak.SimpDaoTool;
 import org.bc.sdak.utils.LogUtil;
 
+import com.youwei.fjb.cache.ConfigCache;
 import com.youwei.fjb.entity.HouseImage;
 
 public class FileUploadServlet extends HttpServlet {
 
 	static final int MAX_SIZE = 1024000*5;
 //	static final String BaseFileDir = "F:\\temp\\upload";
-	static final String BaseFileDir = "../upload/";
+	static final String BaseFileDir = ConfigCache.get("upload_path", "");
 	String rootPath, successMessage;
 
 	public void init(ServletConfig config) throws ServletException {
@@ -78,11 +79,12 @@ public class FileUploadServlet extends HttpServlet {
 					if(item.getSize()>=MAX_SIZE){
 						throw new RuntimeException("file size exceed 5M");
 					}else{
-						LogUtil.info("uploading file "+ item.getName());
-						String imgDir = request.getServletContext().getRealPath("/")+File.separator +"upload/"+request.getServletContext().getContextPath();
+						
+						String imgDir = BaseFileDir+File.separator +request.getServletContext().getContextPath();
 						image.path=request.getServletContext().getContextPath()+  File.separator + estateId + File.separator + item.getName();
 						FileUtils.copyInputStreamToFile(item.getInputStream(), new File(imgDir
 								+  File.separator + estateId + File.separator + item.getName()));
+						LogUtil.info("uploading file "+ item.getName()+" to "+imgDir);
 					}
 				}
 				image.estateUUID = estateId;

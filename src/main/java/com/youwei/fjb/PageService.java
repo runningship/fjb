@@ -35,7 +35,7 @@ public class PageService {
 		Page<Map> page = new Page<Map>();
 		page.setPageSize(9);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.junjia as junjia , "
-				+ "img.path as img from Estate est,HouseImage img"
+				+ "img.path as img , est.yufu as yufu , est.shidi as shidi from Estate est,HouseImage img"
 				+ " where est.uuid=img.estateUUID and est.tuijian=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.jspData.put("page", page);
 		mv.jspData.put("currNav", "index");
@@ -157,6 +157,7 @@ public class PageService {
 		ModelAndView mv = new ModelAndView();
 		List<Map> list = dao.listAsMap("select name as name, jingdu as jingdu , weidu as weidu from Estate where city=?",ThreadSessionHelper.getCity());
 		mv.jspData.put("houses", list);
+		mv.jspData.put("currNav", "map");
 		return mv;
 	}
 	

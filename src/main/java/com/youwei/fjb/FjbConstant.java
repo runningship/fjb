@@ -13,4 +13,5 @@ public class FjbConstant {
 	public static final String HouseOrderDeal = "已成交";
 	public static final String Session_Attr_City = "session_city";
 	public static final String Session_Attr_Province = "session_province";
+	public static final String Session_Attr_YZM = "session_yzm";
 }

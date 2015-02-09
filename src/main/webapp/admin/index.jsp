@@ -17,7 +17,17 @@
   </script>
  </head>
  <body>
-
+<%
+ 	Boolean isDebug = request.getSession().getServletContext().getServerInfo().startsWith("jetty");
+ 	if(isDebug){
+ 		request.setAttribute("upload_path" , "../../upload/");
+ 	}else{
+ 		request.setAttribute("upload_path" , "/upload/");
+ 	}
+%>
+ <script type="text/javascript">
+ var upload_path='${upload_path}';
+ </script>
   <div class="header" style="height:0px;">
     
       <div class="dl-title">

@@ -97,7 +97,7 @@ $(function(){
 	    	city:mycity,
 	    	cityChange:changeCity
 		});
-		infoAlert('当前城市为'+myprovince+'省'+mycity+'市');
+		alert('当前城市为'+myprovince+'省'+mycity+'市');
 		setTimeout(changeCity,2000);
 	}
 });
