@@ -12,6 +12,9 @@
 		});
 		
 		function save(){
+		  if(checkNotnullInput()==false){
+		      return;
+		  }
 		    var a=$('form[name=form1]').serialize();
 		    YW.ajax({
 		        type: 'POST',
@@ -19,7 +22,7 @@
 		        data:a,
 		        mysuccess: function(data){
 		            alert('添加成功');
-                    window.location='list.jsp';
+            		setTimeout(function(){window.location='list.jsp?estateId=${estate.id}'},'1000');
 		        }
 		    });
 		}
@@ -33,7 +36,7 @@
 	
     <tr>
         <td class="tableleft">户型</td>
-        <td><input type="text" name="name"/></td>
+        <td><input type="text" name="name" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">图片</td>

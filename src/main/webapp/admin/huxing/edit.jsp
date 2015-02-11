@@ -14,6 +14,9 @@ $(function(){
 });
 
 function save(){
+  if(checkNotnullInput()==false){
+      return;
+  }
     var a=$('form[name=form1]').serialize();
     YW.ajax({
         type: 'POST',
@@ -34,7 +37,7 @@ function save(){
 	
     <tr> 
         <td class="tableleft">户型</td>
-        <td><input type="text" name="name"  value="${huxing.name }"></td>
+        <td><input type="text" name="name"  value="${huxing.name }" not-null="true"></td>
     </tr>
     <tr>
         <td class="tableleft">图片</td>
@@ -47,7 +50,7 @@ function save(){
         <td class="tableleft"></td>
         <td>
             <button class="btn btn-primary" type="button" onclick="save();return false;">保存</button>
-            <button class="btn btn-primary" type="button" onclick="window.location='list.jsp'">返回</button>
+            <button class="btn btn-primary" type="button" onclick="window.location='list.jsp?estateId=${estate.id}'">返回</button>
         </td>
     </tr>
 </table>

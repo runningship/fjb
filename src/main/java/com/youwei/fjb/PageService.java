@@ -1,7 +1,6 @@
 package com.youwei.fjb;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -199,9 +198,7 @@ public class PageService {
 		page.setPageSize(1);
 		page = dao.findPage(page, "select totalPrice as totalPrice from House where estateId=? order by totalPrice desc", true, new Object[]{estateId});
 		if(!page.getResult().isEmpty()){
-			float p  = (Float)page.getResult().get(0).get("totalPrice");
-			
-			mv.jspData.put("minTotalPrice", (int)p);
+			mv.jspData.put("minTotalPrice", page.getResult().get(0).get("totalPrice"));
 		}
 		return mv;
 	}

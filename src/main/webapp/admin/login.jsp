@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link type="image/x-icon" rel="icon" href="../images/fjb.png">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Wide Admin - Login</title>
 		<link type="text/css" href="assets/css/login.css" rel="stylesheet" />	

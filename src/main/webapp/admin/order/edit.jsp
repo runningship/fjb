@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,15 +35,15 @@
     <c:if test="${house!=null}">
     <tr>
         <td class="tableleft">楼栋</td>
-        <td><input type="text" name="dhao" value="${house.dhao}" /></td>
+        <td><span>${house.dhao}</span></td>
     </tr>
     <tr>
         <td class="tableleft">单元</td>
-        <td><input type="text" name="unit" value="${house.unit}" /></td>
+        <td><span>${house.unit}</span></td>
     </tr>
     <tr>
         <td class="tableleft">房间号</td>
-        <td><input  style="width:101px;" type="text" name="fhao" value="${house.fhao}"/></td>
+        <td><span>${house.fhao}</span></td>
     </tr>
     </c:if>
     <tr>
@@ -94,7 +95,18 @@
             <button class="btn btn-primary" type="button" onclick="save();return false;">保存</button>
         </td>
     </tr>
+    <tr>
+        <td class="tableleft">跟进信息</td>
+        <td>
+	        <div  style=" width:100%; margin:10px 0; overflow-y:auto; color:#666666; font-family:'宋体';">
+			<c:forEach items="${genjiList}" var="genjin">
+			    <p style=" margin-bottom:5px;">${genjin.conts}</p><span style="color:#ccc"><fmt:formatDate value="${genjin.addtime}" pattern="yyyy-MM-dd HH-mm"/></span>
+			</c:forEach>
+			</div>
+		</td>
+    </tr>
 </table>
+
 </form>
 </body>
 </html>

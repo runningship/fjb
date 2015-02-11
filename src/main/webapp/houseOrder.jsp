@@ -53,12 +53,12 @@ function delOrder(id){
           <div class="user">
                <div class="userLeft">
                     
-                    <h2>叶新舟</h2>
+                    <h2>${seller.name }</h2>
                     
                     
                     <div><a href="sellerIndex.jsp">个人资料</a></div>
                     <div><a href="estateOrder.jsp">楼盘预约</a></div>
-               		<div><a href="houseOrder.jsp">房源预约</a></div>
+               		<div><a href="houseOrder.jsp" class="sel">房源预约</a></div>
                
                </div>
                

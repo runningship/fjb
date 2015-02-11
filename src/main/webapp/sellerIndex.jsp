@@ -19,7 +19,7 @@
           <div class="user">
                <div class="userLeft">
                     
-                    <h2>叶新舟</h2>
+                    <h2>${seller.name }</h2>
                     
                     
                     <div><a href="#" class="sel">个人资料</a></div>

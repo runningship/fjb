@@ -56,7 +56,7 @@ $(function(){
                         </div>
                         <div class="choose_list">
                             <label class="pass-label">价位</label>
-                            <select style="width:80px;" onchange="checkSelect()" id="jiageStart_select"  class="sortSelect">
+                            <select style="width:85px;" onchange="checkSelect()" id="jiageStart_select"  class="sortSelect">
                                 <option value="" selected="">默认价位</option>
                                 <option value="6000">6000元</option>
                                 <option value="10000">1万</option>
@@ -65,7 +65,7 @@ $(function(){
                                 <option value="25000">2.5万</option>
                                 <option value="30000">3万</option>
                             </select><span> 以上</span>
-                            <select style="width:80px;" onchange="checkSelect()" id="jiageEnd_select"    class="sortSelect">
+                            <select style="width:85px;" onchange="checkSelect()" id="jiageEnd_select"    class="sortSelect">
                                 <option value="" selected="">默认价位</option>
                                 <option value="6000">6000</option>
                                 <option value="10000">1万</option>

@@ -11,7 +11,7 @@
 					             </span>
                     </a>
                        <span class="name fl">
-                             <p><a href="#"><em>[${youhui.quyu}]</em>${youhui.name}</a></p>
+                             <p><a href="info.jsp?estateId=${youhui.id}"><em>[${youhui.quyu}]</em>${youhui.name}</a></p>
                              <p class="col">原价：<del>${youhui.junjia}元/㎡</del></p>
                              <p class="col3">优惠价：<b>${youhui.tejia}</b>元/㎡</p>
                        </span>

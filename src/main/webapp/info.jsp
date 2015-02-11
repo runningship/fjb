@@ -73,7 +73,7 @@ $(function () {
                     <!-- 相册 -->
                     <div class="photos">
                                                 <a class="pic" target="_blank" href="picList.jsp?estateId=${estate.id }">
-                            <img alt="楼盘图片" src="${upload_path}/${main_img }">
+                            <img style="width:100%;height:100%" alt="楼盘图片" src="${upload_path}/${main_img }">
                         </a>
                                                 <!-- 列表分页 -->
                         <div role="thumb" class="thumb">
@@ -114,6 +114,16 @@ $(function () {
                     </div>
                     <!-- /相册 -->
                 </div>
+
+
+
+<div style="width:100%; display:inline-block; float:left; margin-top:25px;" id="bdshare" class="bdshare_b"><img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg"> </div>
+<script id="bdshare_js" type="text/javascript" data="type=button&uid=664845" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=381133"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script> 
+
+
 
                 <!-- 分享模块 -->
 
@@ -163,6 +173,7 @@ $(function () {
                                             <th>面积</th>
                                             <th>户型</th>
                                             <th>单价</th>
+                                            <c:if test="${seller!=null}"><th>佣金</th></c:if>
                                             <th>折扣</th>
                                             <th>折后总价</th>
                                             <th>状态/操作</th>
@@ -175,6 +186,7 @@ $(function () {
                                             <td title="面积">$[mji]</td>
                                             <td title="户型">$[hxing]</td>
                                             <td title="单价">$[djia]</td>
+                                            <c:if test="${seller!=null}"><th>$[yongjin]</th></c:if>
                                             <td title="折扣">$[yufu]抵$[shidi]</td>
                                             <td title="折后总价">$[totalPrice]</td>
                                             <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
@@ -292,7 +304,7 @@ $(function () {
 	var points = new BMap.Point(117.309, 31.837);
 	map.centerAndZoom(points, 15);  // 初始化地图,设置中心点坐标和地图级别
 	//map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
-	map.setCurrentCity("合肥");          // 设置地图显示的城市 此项是必须设置的
+	map.setCurrentCity("${session_city}");          // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 	//map.centerAndZoom("合肥",16);
 
@@ -328,6 +340,13 @@ $(function () {
 			new BMap.Point(pStart.lng,pEnd.lat)
 			]);
 	
+	$('#mapTags a').each(function(index,obj){
+		if($(obj).text()==n){
+			$(obj).addClass('selected');
+		}else{
+			$(obj).removeClass('selected');
+		}
+	});
 	}
 	//map.addOverlay(polygon);//此处显示区域
 	

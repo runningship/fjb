@@ -36,10 +36,10 @@
      		<script type="text/javascript">$(function(){sessionCity='${session_city}'; sessionProvince='${session_province}';});</script>
      	</c:if>
    		<c:if test="${seller !=null }">
-   			<span class="fr topFr"><a href="sellerIndex.jsp">${seller.name }</a><a href="logout.jsp">退出</a><a href="#">微信公众账号</a></span>
+   			<span class="fr topFr"><a href="sellerIndex.jsp">${seller.name }</a><a href="logout.jsp">退出</a></span>
    		</c:if>
    		<c:if test="${seller ==null }">
-       		<span class="fr topFr"><a href="login.jsp">经纪人登录</a><a href="register.jsp">注册</a><a href="#">微信公众账号</a></span>
+       		<span class="fr topFr"><a href="login.jsp">经纪人登录</a><a href="register.jsp">注册</a></span>
    		</c:if>
      </div>
 

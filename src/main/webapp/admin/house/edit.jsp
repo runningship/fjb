@@ -21,6 +21,7 @@ function save(){
         data:a,
         mysuccess: function(data){
             alert('修改成功');
+            setTimeout(function(){window.location='list.jsp?estateId=${estate.id}'},'1000');
         }
     });
 }
@@ -111,7 +112,7 @@ function jisuan(){
         <td class="tableleft"></td>
         <td>
             <button class="btn btn-primary" type="button" onclick="save();return false;">保存</button>
-            <button class="btn btn-primary" type="button" onclick="window.location='list.jsp'">返回</button>
+            <button class="btn btn-primary" type="button" onclick="window.location='list.jsp?estateId=${estate.id}'">返回</button>
         </td>
     </tr>
 </table>

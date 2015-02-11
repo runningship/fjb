@@ -18,7 +18,7 @@ function save(){
         }else{
           LayerRemoveBox2("house_order");
         }
-        alert('预约提交成功');
+        alert('预约提交成功,房金宝稍后与您联系!');
       }
   });
 }

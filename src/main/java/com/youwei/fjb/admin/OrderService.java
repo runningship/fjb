@@ -64,6 +64,9 @@ public class OrderService {
 		statusList.add(FjbConstant.HouseOrderDeal);
 		statusList.add(FjbConstant.HouseOrderCancel);
 		mv.jspData.put("statusList",statusList);
+		
+		List<OrderGenJin> genjiList = dao.listByParams(OrderGenJin.class, "from OrderGenJin where orderId=?", id);
+		mv.jspData.put("genjiList", genjiList);
 		return mv;
 	}
 	

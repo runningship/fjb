@@ -65,7 +65,7 @@
           <div class="teHui">
           
                <h2><span class="title">${youhui.name}<em>[${youhui.quyu}]</em></span></h2>
-               <div class="lpPic"><a href="#"><img style="width:570px;height:310px;" src="upload/${youhui.img}" /></a></div>
+               <div class="lpPic"><a href="info.jsp?estateId=${youhui.id}"><img style="width:570px;height:310px;" src="${upload_path }/${youhui.img}" /></a></div>
                <div class="lpCon">
                    
                     <span class="hYPrice"><em>市场价  ${youhui.junjia}</em> 房金宝团购优惠价</span>

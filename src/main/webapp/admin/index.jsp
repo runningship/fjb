@@ -4,6 +4,7 @@
 <html>
  <head>
   <title>房金宝后台管理系统</title>
+  <link type="image/x-icon" rel="icon" href="../images/fjb.png">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
   <link href="assets/css/bui-min.css" rel="stylesheet" type="text/css" />

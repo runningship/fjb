@@ -59,7 +59,6 @@ function doSearch(){
     	<th>编号</th>
         <th>姓名</th>
         <th>电话</th>
-        <th>邮箱</th>
         <th>公司名称</th>
         <th>状态</th>
         <th>操作</th>
@@ -70,7 +69,6 @@ function doSearch(){
     			<td>$[id]</td>
                 <td>$[name]</td>
                 <td>$[tel]</td>
-                <td>$[email]</td>
                 <td>$[compName]</td>
                 <td>
                 	<a href="#"  show="$[valid]==1" onclick="toggleShenhe($[id])">已审核</a>
