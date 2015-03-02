@@ -5,7 +5,7 @@
 <head>
 <jsp:include page="header.jsp" />
 <script type="text/javascript">
-function checkSelect(){
+function searchByPrice(){
 	//window.location='houses.jsp?searchText='+$('#searchText').val()+'&quyu='+$('#quyu').val()+'&lxing='+$('#lxing').val();
 	$('#quyu_input').val($('#quyu_select').val());
 	$('#lxing_input').val($('#lxing_select').val());
@@ -56,7 +56,7 @@ $(function(){
                         </div>
                         <div class="choose_list">
                             <label class="pass-label">价位</label>
-                            <select style="width:85px;" onchange="checkSelect()" id="jiageStart_select"  class="sortSelect">
+                            <!-- <select style="width:85px;" onchange="checkSelect()" id="jiageStart_select"  class="sortSelect">
                                 <option value="" selected="">默认价位</option>
                                 <option value="6000">6000元</option>
                                 <option value="10000">1万</option>
@@ -73,7 +73,9 @@ $(function(){
                                 <option value="20000">2万</option>
                                 <option value="25000">2.5万</option>
                                 <option value="30000">3万</option>
-                            </select><span> 以下</span>
+                            </select><span> 以下</span> -->
+                            <input id="jiageStart_select" style="width:100px;height:21px;"/>~<input id="jiageEnd_select" style="width:100px;height:21px;"/><span>元</span>
+                            <a href="#" onclick="searchByPrice()" style="text-decoration:underline">查询</a>
                         </div>
                </div>
           

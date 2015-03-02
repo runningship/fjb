@@ -140,6 +140,23 @@
                                      href: 'huxing/list.jsp'
                                  }
                              ]
+                         },{
+                             text: '服务',
+                             items: [
+                                 {
+                                     id: 'about_jinbao',
+                                     text: '关于房金宝',
+                                     href: 'article/edit.jsp?pageName=about'
+                                 },{
+                                     id: 'contaction_ways',
+                                     text: '联系我们',
+                                     href: 'article/edit.jsp?pageName=contactUs'
+                                 },{
+                                      id: 'service_tab',
+                                      text: '服务申明',
+                                      href: 'article/edit.jsp?pageName=shenming'
+                                  }
+                             ]
                          }
                      ]
                  }

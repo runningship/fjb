@@ -17,6 +17,7 @@ import org.bc.web.WebMethod;
 
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
+import com.youwei.fjb.entity.HouseImage;
 import com.youwei.fjb.entity.HuXing;
 import com.youwei.fjb.util.ConfigHelper;
 import com.youwei.fjb.util.DataHelper;
@@ -123,6 +124,16 @@ public class HouseService {
 			hql.append(" and estateId=?");
 		}
 		page = dao.findPage(page, hql.toString() , params.toArray());
+		//找到户型图片
+		for(House h : page.getResult()){
+			HuXing hxing = dao.getUniqueByParams(HuXing.class, new String[]{"estateId" ,"name"},  new Object[]{estateId , h.hxing});
+			if(hxing!=null){
+				HouseImage img = dao.getUniqueByParams(HouseImage.class, new String[]{"huxingUUID" },  new Object[]{hxing.uuid});
+				if(img!=null){
+					h.hxingImg = img.path;
+				}
+			}
+		}
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;
 	}

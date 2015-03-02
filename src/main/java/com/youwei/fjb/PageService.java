@@ -14,6 +14,7 @@ import org.bc.web.ThreadSession;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.admin.EstateQuery;
+import com.youwei.fjb.entity.Article;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
 import com.youwei.fjb.entity.HouseImage;
@@ -246,6 +247,14 @@ public class PageService {
 		ModelAndView mv = new ModelAndView();
 		ThreadSession.getHttpSession().removeAttribute("user");
 		mv.redirect="./index.jsp";
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView about(){
+		ModelAndView mv = new ModelAndView();
+		Article article = dao.getUniqueByKeyValue(Article.class, "name", "about");
+		mv.jspData.put("conts", article.conts);
 		return mv;
 	}
 }

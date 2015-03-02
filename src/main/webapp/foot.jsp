@@ -34,7 +34,7 @@
 
      <div class="main">
 
-          <p><a href="#">关于房金宝</a> | <a href="#">联系我们</a> | <a href="#">在售楼盘</a> | <a href="#">服务申明</a> | <a href="#">微信版</a> | <a href="#">服务电话</a></p>
+          <p><a href="about.jsp">关于房金宝</a> | <a href="contactUs.jsp">联系我们</a> | <a href="shenming.jsp">服务申明</a> | <a href="#">微信版</a></p>
           <p>copyright © 2013-2015 www.jinbaohouse.com All Rights Reserved</p>
           <p>粤ICP备15004619号</p>
 

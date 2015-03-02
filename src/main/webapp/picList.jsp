@@ -6,10 +6,21 @@
 <jsp:include page="header.jsp" />
 <link rel="stylesheet" type="text/css" href="style/piclist.css" />
 <script type="text/javascript">
-function filterImg(type){
+function filterImg(type,obj){
+  $('.current').attr('class','tabs-item');
+  $(obj).attr('class','tabs-item current');
 	$('#keyFilterList li').hide();
 	$('li[key="'+type+'"]').show();
+  if (type=="") {
+    $('#keyFilterList li').show();
+  };
 }
+
+// $(function () {
+//   var type = getParams('type');
+//   filterImg(type,obj);
+// });
+
 </script>
 </head>
 
@@ -44,7 +55,7 @@ function filterImg(type){
     <!-- 标题 -->
 <div class="house-title clearfix">
   <h1 class="house-name">
-    <a href="/house/3796"><em>[${estate.quyu }]</em>
+    <a href="info.jsp?estateId=${estate.id }"><em>[${estate.quyu }]</em>
     ${estate.name }</a>
     <small>&nbsp;&nbsp;/&nbsp;
     参考均价<em>${estate.junjia }</em>元/平米
@@ -61,20 +72,20 @@ function filterImg(type){
     <div class="content">
       
       <div id="keyFilterTabs" class="tabs">
-        <a tabkey="all" href="#" class="tabs-item current">所有图片(${all })</a>
+        <a tabkey="all" href="#" onclick="filterImg('',this);" class="tabs-item current">所有图片(${all })</a><span class="sep">|</span>
       <c:forEach items="${fenleiList}" var="fenlei">
             <c:choose>
               <c:when test="${fenlei.name==\"huxing\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}');" href="#" class="tabs-item ">户型图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">户型图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
               <c:when test="${fenlei.name==\"xiaoguo\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}');" href="#" class="tabs-item ">效果图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">效果图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
               <c:when test="${fenlei.name==\"guihua\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}');" href="#" class="tabs-item ">规划图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">规划图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
               <c:when test="${fenlei.name==\"shijing\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}');" href="#" class="tabs-item ">实景图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">实景图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
             </c:choose>
         </c:forEach>

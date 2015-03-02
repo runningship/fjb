@@ -43,4 +43,6 @@ public class House {
 	public Float yongjin;
 	
 	public Integer hasSold;
+	
+	public transient String hxingImg;
 }

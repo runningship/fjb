@@ -6,6 +6,11 @@
     <script type="text/javascript" src="${projectName}/js/pagination.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=27b3c4a5846aeb5fed6a7a0b71731ba2"></script>
 <jsp:include page="header.jsp" />
+</head>
+<body onload="zdyLayer(),showN('公交')">
+<img id="view_big_pic" onclick="hiddenPic()" style="display:none;position:absolute;z-index:9999;width:600px;height:400px;" />
+<jsp:include page="top.jsp"></jsp:include>
+<jsp:include page="nav.jsp"></jsp:include>
 <script type="text/javascript">
 function doSearch(){
     var a=$('form[name=form1]').serialize();
@@ -26,15 +31,20 @@ $(function () {
     doSearch();
 });
 
-
+function showPic(pic){
+	var x,y;
+	x = event.clientX;
+	y = event.clientY;
+	var xx = $('#view_big_pic');
+	xx.attr('src','${upload_path}'+$(pic).attr('src'));
+	xx.css('display','block');
+	xx.css('top',y);
+	xx.css('left',x);
+}
+function hiddenPic(){
+	$('#view_big_pic').css('display','none');
+}
 </script>
-</head>
-
-<body onload="zdyLayer(),showN('公交')">
-
-<jsp:include page="top.jsp"></jsp:include>
-<jsp:include page="nav.jsp"></jsp:include>
-
 
 <div class="warp">
 
@@ -72,20 +82,20 @@ $(function () {
 
                     <!-- 相册 -->
                     <div class="photos">
-                                                <a class="pic" target="_blank" href="picList.jsp?estateId=${estate.id }">
+                                                <a class="pic" target="_blank" href="picList.jsp?estateId=${estate.id }&type==''">
                             <img style="width:100%;height:100%" alt="楼盘图片" src="${upload_path}/${main_img }">
                         </a>
                                                 <!-- 列表分页 -->
                         <div role="thumb" class="thumb">
                             <c:if test="${huxing_img !=null }">
-                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
+                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type==huxing">
                                 <img alt="" src="${upload_path}/${huxing_img }">
                                 <p class="cover-layer">户型图</p>
                                 <span class="photo-frame"></span>
                             </a>
                             </c:if>
                             <c:if test="${xiaoguo_img !=null}">
-	                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
+	                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type==xiaoguo">
 	                                <img alt="" src="${upload_path}/${xiaoguo_img }">
 	                                <p class="cover-layer">效果图</p>
 	                                <span class="photo-frame"></span>
@@ -93,7 +103,7 @@ $(function () {
                             </c:if>
                             
                             <c:if test="${shijing_img !=null}">
-                            	<a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }">
+                            	<a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type==shijing">
 	                                <img alt="" src="${upload_path}/${shijing_img }">
 	                                <p class="cover-layer">实景图</p>
 	                                <span class="photo-frame"></span>
@@ -101,7 +111,7 @@ $(function () {
                             </c:if>
                             
                             <c:if test="${guihua_img !=null }">
-	                            <a role="thumbItem" class="thumb-item  last" href="picList.jsp?estateId=${estate.id }">
+	                            <a role="thumbItem" class="thumb-item  last" href="picList.jsp?estateId=${estate.id }&type==guihua">
 	                                <img alt="" src="${upload_path}/${guihua_img }">
 	                                <p class="cover-layer">规划图</p>
 	                                <span class="photo-frame"></span>
@@ -117,12 +127,6 @@ $(function () {
 
 
 <div style="width:100%; display:inline-block; float:left; margin-top:25px;">
-
-<div id="bdshare" class="bdshare_b"><img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg"> </div>
-<script id="bdshare_js" type="text/javascript" data="type=button&uid=664845" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=381133"></script>
-<script type="text/javascript">
-document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
-</script>
 
 </div>
 
@@ -182,7 +186,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
             <tr style="display:none" class="repeat">
                                             <td title="楼栋">$[dhao]</td>
                                             <td title="面积">$[mji]</td>
-                                            <td title="户型" onclick="">$[hxing]</td>
+                                            <td onmouseout="hiddenPic();"><a src="$[hxingImg]"  onclick="showPic(this);" style="text-decoration:underline" >$[hxing]</a></td>
                                             <td title="单价">$[djia]</td>
                                             <c:if test="${seller!=null}"><th>$[yongjin]</th></c:if>
                                             <td title="折扣">$[yufu]抵$[shidi]</td>
