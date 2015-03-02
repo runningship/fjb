@@ -27,7 +27,7 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
   var mp = new BMap.Map("allmap");
   //mp.centerAndZoom(new BMap.Point(117.246104,31.854113), 14);
   mp.centerAndZoom(new BMap.Point(117.309, 31.837), 14);
-  mp.setCurrentCity("合肥");
+  //mp.setCurrentCity("${session_city}");
   mp.enableScrollWheelZoom();
   // 复杂的自定义覆盖物
     function ComplexCustomOverlay(point, text, mouseoverText , estateId){

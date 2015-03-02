@@ -116,13 +116,15 @@ $(function () {
                 </div>
 
 
+<div style="width:100%; display:inline-block; float:left; margin-top:25px;">
 
-<div style="width:100%; display:inline-block; float:left; margin-top:25px;" id="bdshare" class="bdshare_b"><img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg"> </div>
+<div id="bdshare" class="bdshare_b"><img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg"> </div>
 <script id="bdshare_js" type="text/javascript" data="type=button&uid=664845" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=381133"></script>
 <script type="text/javascript">
 document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
-</script> 
+</script>
 
+</div>
 
 
                 <!-- 分享模块 -->
@@ -168,8 +170,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
                                     <thead>
                                         <tr>
                                             <th style="border-left: 1px solid #e8e8e8;">楼栋</th>
-                                            <th>单元</th>
-                                            <th>房间</th>
                                             <th>面积</th>
                                             <th>户型</th>
                                             <th>单价</th>
@@ -181,10 +181,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
                                     </thead>
             <tr style="display:none" class="repeat">
                                             <td title="楼栋">$[dhao]</td>
-                                            <td title="单元">$[unit]</td>
-                                            <td title="房间">$[fhao]</td>
                                             <td title="面积">$[mji]</td>
-                                            <td title="户型">$[hxing]</td>
+                                            <td title="户型" onclick="">$[hxing]</td>
                                             <td title="单价">$[djia]</td>
                                             <c:if test="${seller!=null}"><th>$[yongjin]</th></c:if>
                                             <td title="折扣">$[yufu]抵$[shidi]</td>

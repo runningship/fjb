@@ -113,6 +113,9 @@ required:必选项
 							setTimeout(function(){
 								if(settings.dist!=null){
 									dist_obj.val(settings.dist);
+									if(settings.initCallback){
+										settings.initCallback();
+									}
 								};
 							},1);
 						};
