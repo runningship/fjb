@@ -98,10 +98,23 @@
           
           </div>
      
+    <div class="partners" style="border-left:50px;">
+        <div class="partners-inner clearfix">
+          <div class="tit"><span class="t fl">合作伙伴：</span></div>
+            <div class="partners-r clearfix" style="float:left;">
+              <img src="${projectName}/images/hzhb/hkly.jpg" style="margin-right: 3px;" alt="泓扣礼仪" title="泓扣礼仪">
+              <img src="${projectName}/images/hzhb/kqcm.jpg"  style="margin-right: 3px;" alt="科奇传媒" title="科奇传媒">
+              <img src="${projectName}/images/hzhb/szjt.jpg" alt="尚泽集团"  style="margin-right: 3px;" title="尚泽集团">
+              <img src="${projectName}/images/hzhb/sljt.jpg" alt="圣联集团" title="圣联集团" style="margin-right: 3px;" >
+              <img src="${projectName}/images/hzhb/wy.jpg" alt="文一" title="文一" style="margin-right: 3px;" >
+              <img src="${projectName}/images/hzhb/wxah.jpg" alt="无限安徽" title="无限安徽" style="margin-right: 3px;" >
+              <img src="${projectName}/images/hzhb/zjb.jpg" alt="中介宝" title="中介宝" style="margin-right: 3px;" >
+              <img src="${projectName}/images/hzhb/zttz.jpg" alt="中天投资" title="中天投资" style="margin-right: 3px;" >
+            </div>
+    </div>
      </div>
 
 </div>
-
 <jsp:include page="foot.jsp"></jsp:include>
 
 </body>

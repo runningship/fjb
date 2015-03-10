@@ -9,6 +9,19 @@
   function closeOpen(id){
     LayerRemoveBox(id);
   }
+
+function order_success(){
+  var info = $('#success_info');
+  var left = ($(document).width()-info.width())/2 ;
+  var height = $(document).scrollTop()+(window.screen.height-info.height())/2 ;
+  info.css({top:height,left:left});
+  info.css('display','');
+  
+  setTimeout(function(){
+    info.css('display','none'); 
+  },2000);
+  //alert(11);
+}
 </script>
 </head>
 
@@ -85,7 +98,7 @@
                           <div class="fl w180">
                                <em>${youhui.orderCount }</em>人已预约看房
                           </div>
-                          <a href="#" onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${youhui.id}');" class="btn-main fl">预约看房</a>
+                          <a href="#" onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${youhui.id}');return false" class="btn-main fl">预约看房</a>
                     </span>
                     
                     
@@ -105,6 +118,7 @@
 
 </div>
 
+<img id="success_info" src="images/success_info.png" style="display:none;position:absolute;border:1px solid #999"/>
 
 
 <jsp:include page="foot.jsp"></jsp:include>

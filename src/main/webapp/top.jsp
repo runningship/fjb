@@ -57,12 +57,12 @@
                     
                     <form action="houses.jsp" method="post">
                     <div class="search-menu">
-                      <div class="search-tab">
+                      <!-- <div class="search-tab">
                         <a val="1" href="javascript:;" class="tab-item current">新房</a>
                         <a val="2" href="javascript:;" class="tab-item">二手房</a>
                       </div>
                       <i></i>
-                    </div>
+ -->                    </div>
                         <input type="text"  style="margin-left:3px;" placeholder="楼盘名称 " value="${searchText }"  id="searchText" class="search-input"  name="searchText"/>
                         <input type="hidden"  value="${selectedQuyu }"  id="quyu_input"  class="search-input"  name="quyu"/>
                         <input type="hidden" value="${selectedLxing }"  id="lxing_input" class="search-input"  name="lxing"/>

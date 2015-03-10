@@ -56,7 +56,7 @@ public class PageService {
 	private ModelAndView tehui(ModelAndView mv){
 		//限时特惠
 		Page<Map> page = new Page<Map>();
-		page.setPageSize(6);
+		page.setPageSize(5);
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
 				+ " est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
@@ -126,7 +126,7 @@ public class PageService {
 		mv.jspData.put("currNav", "houses");
 		List<Object> params = new ArrayList<Object>();
 		params.add(ThreadSessionHelper.getCity());
-		page.setPageSize(10);
+		page.setPageSize(12);
 		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
 				+ "  est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.city=? and img.type='main'");
@@ -254,6 +254,22 @@ public class PageService {
 	public ModelAndView about(){
 		ModelAndView mv = new ModelAndView();
 		Article article = dao.getUniqueByKeyValue(Article.class, "name", "about");
+		mv.jspData.put("conts", article.conts);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView contactUs(){
+		ModelAndView mv = new ModelAndView();
+		Article article = dao.getUniqueByKeyValue(Article.class, "name", "contactUs");
+		mv.jspData.put("conts", article.conts);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView shenming(){
+		ModelAndView mv = new ModelAndView();
+		Article article = dao.getUniqueByKeyValue(Article.class, "name", "shenming");
 		mv.jspData.put("conts", article.conts);
 		return mv;
 	}

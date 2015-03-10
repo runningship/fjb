@@ -13,12 +13,14 @@ function save(){
       url: 'c/admin/order/doSave',
       data:a,
       mysuccess: function(data){
+    	window.parent.order_success();
         if (hid=="") {
           LayerRemoveBox2("estate_order");
         }else{
           LayerRemoveBox2("house_order");
         }
-        alert('预约提交成功,房金宝稍后与您联系!');
+        
+        //alert('预约提交成功,房金宝稍后与您联系!');
       }
   });
 }
@@ -67,5 +69,6 @@ $(function(){
       </div>
     </div>
 </form>
+
 </body>
 </html>

@@ -99,4 +99,7 @@ public class Estate {
 	public String city;
 	
 	public String province;
+	
+	//即将推出，文字性描述 
+	public String jjtc;
 }

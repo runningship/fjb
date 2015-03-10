@@ -214,6 +214,10 @@ function changeQuYu(city){
         <td><input type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
+        <td class="tableleft">即将推出</td>
+        <td><input type="text" name="jjtc" style="width:99%;" /></td>
+    </tr>
+    <tr>
         <td class="tableleft">规划图</td>
         <td><input id="guihua_upload"  style="display:none;margin-top:5px;">
         	<div id="guihua_img_container">

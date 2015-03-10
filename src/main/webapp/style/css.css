@@ -215,6 +215,11 @@ body{font: 12px/1.5 Tahoma,arial,"Hiragino Sans GB","microsoft yahei",宋体;}
 .tuijian .con .yhBg{ padding:0px 3px; border-radius: 2px; background-color:#ff3600; color:#ffffff;}
 
 
+.partners{ float:left; margin-top:20px;}
+
+.partners .tit{ height:45px; width:100%; display:inline-block; line-height:45px;}
+
+.partners .tit .t{ font-size:20px; color:#555555; font-weight:bold;}
 
 
 .teSelect{ width:962px; display:inline-block; background-color:#f2f2f2; padding:15px 20px; margin:15px 0 5px 0;}

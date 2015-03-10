@@ -44,6 +44,19 @@ function showPic(pic){
 function hiddenPic(){
 	$('#view_big_pic').css('display','none');
 }
+
+function order_success(){
+	var info = $('#success_info');
+	var left = ($(document).width()-info.width())/2 ;
+    var height = $(document).scrollTop()+(window.screen.height-info.height())/2 ;
+	info.css({top:height,left:left});
+	info.css('display','');
+	
+	setTimeout(function(){
+		info.css('display','none');	
+	},2000);
+	//alert(11);
+}
 </script>
 
 <div class="warp">
@@ -206,7 +219,12 @@ function hiddenPic(){
                      </div>
 
                 </div>
-                
+                <c:if test="${estate.jjtc!=null}">
+                    <div class="sct screen-rd">
+                        <h3 class="hd">即将推出</h3>
+                        <span>${estate.jjtc}</span>
+                    </div>
+                </c:if>
                 <div class="sct screen-rd">
                 <!-- 基本信息 -->
                     <h3 class="hd">基本信息</h3>
@@ -293,7 +311,7 @@ function hiddenPic(){
      </div>
 
 </div>
-
+<img id="success_info" src="images/success_info.png" style="display:none;position:absolute;border:1px solid #999"/>
 <jsp:include page="foot.jsp"></jsp:include>
 
 </body>

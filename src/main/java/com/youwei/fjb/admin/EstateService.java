@@ -64,6 +64,7 @@ public class EstateService {
 		po.opentime = estate.opentime;
 		po.lxing = estate.lxing;
 		po.wylx = estate.wylx;
+		po.jjtc = estate.jjtc;
 		po.zxiu = estate.zxiu;
 		po.jzmj = estate.jzmj;
 		po.rongji = estate.rongji;
