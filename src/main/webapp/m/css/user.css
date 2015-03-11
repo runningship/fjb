@@ -1,0 +1,24 @@
+
+
+#user{ width:100%; display:inline-block;}
+
+#user .name{ width:100%; padding:10px 0; display:inline-block; background:url(../images/userBg.jpg) repeat-y;}
+
+#user .name p{ font-size:1em; color:#ffffff; margin:0 5%; line-height:2em;}
+
+
+#user .litNav{ width:100%; padding:10px 0; margin-top:15px; display:inline-block; border-top:1px solid #e2e2e2; border-bottom:1px solid #e2e2e2; background-color:#ffffff;}
+
+#user .litNav a{ display:inline-block; margin-left:5%; color:#333333; font-size:1.1em;}
+
+.myInfoBox{ border:1px solid #ddd; border-radius:5px; margin:25px 4%; background-color:#f4f4f4;}
+
+.myInfoBox li{ padding:0 3%; height:60px; line-height:60px; border-bottom:1px solid #ddd; margin-bottom:-1px; color:#515050;}
+
+.myInfoBox li label{ width:90px;  display:inline-block; font-size:14px;}
+
+.myInfoBox li input{ padding:7px 2%; border:none; width:60%; display:inline-block; background-color:#f4f4f4; font-size:0.8em; font-family:"微软雅黑"; color:#515050;}
+
+.confirm{margin: 25px 4%;}
+
+.confirm a{ display:inline-block; width:100%; height:45px; text-align:center; line-height:45px;border-radius:3px; color:#fff; font-size:1.2em; background-color:#de3031;}
