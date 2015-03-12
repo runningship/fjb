@@ -38,6 +38,7 @@ function more(){
 </head>
 
 <body>
+
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
 	<input type="hidden"  name="currentPageNo" id="currentPageNo"/>
     <button type="button" style="display:none" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
@@ -45,11 +46,9 @@ function more(){
 <div class="main">
      
      <div id="top">
-     
-          <span class="s1"><img src="" />LOGO</span>
-          <span class="s2"><input type="text" class="searchBox" placeholder="楼盘名称" /></span>
-          <span class="s3">合肥<i class="sanj"></i></span>
-     
+     		<jsp:include page="top.jsp"></jsp:include>
+          <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
+<!--           <span class="s2"><input type="text" class="searchBox" placeholder="楼盘名称" /></span> -->
      </div>
      
      <div id="banner"><img src="images/ad1.jpg" /></div>
@@ -57,36 +56,40 @@ function more(){
      
      <div id="nav">
           
+          <a href="index.jsp">
           <div class="nbox">
                <p><img src="images/mxf.png" /></p>
                <p><i>买新房</i></p>
           </div>
-          
+          </a>
+          <a href="sales.jsp">
           <div class="nbox">
                <p><img src="images/xsth.png" /></p>
                <p><i>限时特惠</i></p>
           </div>
-          
+          </a>
+          <a href="houses.jsp">
           <div class="nbox">
                <p><img src="images/sylp.png" /></p>
                <p><i>所有楼盘</i></p>
           </div>
-          
+          </a>
+          <a href="houseMap.jsp">
           <div class="nbox">
                <p><img src="images/dtzf.png" /></p>
                <p><i>地图找房</i></p>
           </div>
-          
+          </a>
      </div>
      
      <div id="Fanglist">
      
-          <div class="tit"><i><img src="images/hot.png" /></i>推荐楼盘<span class="c">本期共有<strong>${total }</strong>个楼盘，优惠幅度最大<strong>${maxYouhui }</strong></span></div>
-          
+          <div class="tit"><i><img src="images/hot.png" /></i>推荐楼盘</div>
+          <div class="tit"><span class="c" style="float:left">本期共有<strong>${total }</strong>个楼盘，优惠幅度最大<strong>${maxYouhui }</strong></span></div>
           <ul>
           
-              <li class="repeat">
-                  <div class="img"><a href="#"><img src="images/f1.jpg" /></a></div>
+              <li class="repeat" style="display:none">
+                  <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]"  style=""/></a></div>
                   <div class="con">
                   
                        <h2>$[name]<em>在售</em></h2>
@@ -102,25 +105,9 @@ function more(){
      
      </div>
 
-     <div id="FangMore" onclick="more();">查看更多房源</div>
+     <div id="FangMore" onclick="more();return false">查看更多房源</div>
      
-     <div class="Pfixed">
-     
-         <div id="footer">
-         
-              <div class="nbox">
-                   <p><img src="images/home.png" /></p>
-                   <p><i class="sel">首页</i></p>
-              </div>
-              
-              <div class="nbox">
-                   <p><img src="images/user.png" /></p>
-                   <p><i>我的</i></p>
-              </div>
-         
-         </div>
-     
-     </div>
+     <jsp:include page="bottom.jsp" />
 
 </div>
 

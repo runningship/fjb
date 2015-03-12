@@ -15,6 +15,8 @@ public class FjbUserOfflineHandler implements UserOfflineHandler{
 		try {
 			if(req.getRequestURI().contains("admin")){
 				response.getWriter().write("<script type='text/javascript'>window.top.location='"+req.getServletContext().getContextPath()+"/admin/login.jsp'</script>");
+			}else if(req.getRequestURI().contains("/m/")){
+				response.getWriter().write("<script type='text/javascript'>window.top.location='"+req.getServletContext().getContextPath()+"/m/login.jsp'</script>");
 			}else{
 				response.getWriter().write("<script type='text/javascript'>window.top.location='"+req.getServletContext().getContextPath()+"/login.jsp'</script>");
 			}

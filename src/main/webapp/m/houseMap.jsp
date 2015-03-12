@@ -3,18 +3,28 @@
 <!doctype html>
 <html>
 <head>
+
+<jsp:include page="../header.jsp" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
+
 <style type="text/css">
 html, body, .body {height: 100%;padding: 0;margin: 0;}
-.errTip{ position:absolute; top:40%; left:30%; z-index:999; background:#F60; color:#FFF; height:100px; width:300px; line-height:100px; text-align:center; font-size:30px; font-family:"微软雅黑","黑体"; display:none;}
+#allmap{max-width:640px;min-width:320px;}
+.Pfixed{bottom:-4px;}
 </style>
-<jsp:include page="header.jsp" />
-
-<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
 </head>
 
 <body>
-<jsp:include page="top.jsp"></jsp:include>
-<jsp:include page="nav.jsp"></jsp:include>
+<div class="main" style="padding-bottom:0px;">
+     
+   <div id="top">
+   	  <jsp:include page="top.jsp"></jsp:include>
+   	  <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
+        <span class="s4"><a href="#">&lt;</a></span>
+   </div>
+<%--    <jsp:include page="bottom.jsp" /> --%>
+</div>
 <div class="body">
 <div id="allmap" style="margin:0px auto;text-aglin:center;width:100%;height:100%;border:0px solid #666; text-align:center;"></div>
 </div>
@@ -26,7 +36,7 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
 // 百度地图API功能
   var mp = new BMap.Map("allmap");
   //mp.centerAndZoom(new BMap.Point(117.246104,31.854113), 14);
-  mp.centerAndZoom(new BMap.Point(117.309, 31.837), 14);
+  mp.centerAndZoom(new BMap.Point(117.309, 31.837), 12);
   //mp.setCurrentCity("${session_city}");
   mp.enableScrollWheelZoom();
   // 复杂的自定义覆盖物
@@ -39,7 +49,7 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
     ComplexCustomOverlay.prototype = new BMap.Overlay();
     ComplexCustomOverlay.prototype.initialize = function(map){
       this._map = map;
-      var div = this._div = document.createElement("div");
+      var div = this._div = document.createElement("a");
       div.style.position = "absolute";
       div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
       div.style.backgroundColor = "#EE5D5B";
@@ -50,8 +60,11 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
       div.style.lineHeight = "18px";
       div.style.whiteSpace = "nowrap";
       div.style.MozUserSelect = "none";
-      div.style.fontSize = "12px"
+      div.style.fontSize = "12px";
+      //div.href='info.jsp?estateId='+ this._estateId;
       var span = this._span = document.createElement("span");
+//       span.href='info.jsp?estateId='+ this._estateId;
+//       span.style.color='white';
       div.appendChild(span);
       span.appendChild(document.createTextNode(this._text));
       $(div).attr('estateId' , this._estateId);
@@ -65,12 +78,16 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
       arrow.style.top = "22px";
       arrow.style.left = "10px";
       arrow.style.overflow = "hidden";
+      
       div.appendChild(arrow);
      
       div.onclick = function(){
 		window.location='info.jsp?estateId='+ $(div).attr('estateId');
       }
 
+      div.ontouchend = function(){
+		window.location='info.jsp?estateId='+ $(div).attr('estateId');
+      }
       mp.getPanes().labelPane.appendChild(div);
       
       return div;
@@ -96,7 +113,6 @@ $(function(){
 });
 </script>
 
-<jsp:include page="foot.jsp"></jsp:include>
 <div>
 <c:forEach items="${houses}" var="estate">
 <span class="loupan" jingdu="${estate.jingdu }" weidu="${estate.weidu }"  loupan="${estate.name }" estateId="${estate.id }"></span>
