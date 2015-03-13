@@ -53,8 +53,9 @@ function initUploadHouseImage(id , imgType , estateUUID , huxingUUID){
       'onUploadSuccess' : function(file, data, response) {
         var json = JSON.parse(data);
         if(json['result']!=0){
-          $('#' + file.id).find('.data').html('-文件上传失败,'+json['msg']);
+          $('#' + file.id).find('.data').html('-图片上传失败,'+json['msg']);
         }else{
+           alert('图片上传成功');
         	 getImgList(estateUUID , imgType , huxingUUID);
         }
       },
