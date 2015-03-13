@@ -48,7 +48,7 @@ function save(){
     <td height="25" width="60" bgcolor="#eeeeee" class="t">预约楼盘:</td>
     <td>${estate.name} <c:if test="${house.dhao!=null && house.fhao!=null}">${house.dhao}#${house.fhao}</c:if></td>
     <td width="60" bgcolor="#eeeeee" class="t">预约时间:</td>
-    <td><fmt:formatDate value="${order.addtime}" pattern="yyyy-MM-dd HH-mm"/></td>
+    <td><fmt:formatDate value="${order.addtime}" pattern="yyyy-MM-dd HH:mm"/></td>
   </tr>
   <tr>
     <td width="60" bgcolor="#eeeeee" class="t">状态:</td>

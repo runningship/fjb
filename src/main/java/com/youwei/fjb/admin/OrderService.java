@@ -99,6 +99,7 @@ public class OrderService {
 		ModelAndView mv = new ModelAndView();
 		genjin.addtime = new Date();
 		dao.saveOrUpdate(genjin);
+		mv.data.put("genjin", JSONHelper.toJSON(genjin , DataHelper.sdf3.toPattern()));
 		return mv;
 	}
 	

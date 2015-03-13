@@ -198,9 +198,9 @@ public class MobilePageService {
 	}
 	
 	@WebMethod
-	public ModelAndView xxfk(Page<Map> page , Integer orderId){
+	public ModelAndView ckyy(Page<Map> page , Integer orderId){
 		ModelAndView mv = new ModelAndView();
-		List<OrderGenJin> genjiList = dao.listByParams(OrderGenJin.class, "from OrderGenJin where orderId=?", orderId);
+		List<OrderGenJin> genjiList = dao.listByParams(OrderGenJin.class, "from OrderGenJin where orderId=? order by addtime desc", orderId);
 		mv.jspData.put("genjiList", genjiList);
 		HouseOrder order = dao.get(HouseOrder.class, orderId);
 		mv.jspData.put("order" , order);

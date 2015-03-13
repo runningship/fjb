@@ -29,7 +29,7 @@ function doSearch(){
 }
 
 function view(id){
-	window.location='?orderId='+id;
+	window.location='ckyy.jsp?orderId='+id;
 }
 function more(){
 	currentPageNo++;
