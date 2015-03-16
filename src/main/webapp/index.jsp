@@ -9,7 +9,45 @@
 <body>
 <jsp:include page="top.jsp"></jsp:include>
 <jsp:include page="nav.jsp"></jsp:include>
+<script type="text/javascript" src="js/kxbdSuperMarquee.js"></script>
+<script type="text/javascript" src="js/jquery.scrollbox.js"></script>
+<script type="text/javascript">
+    
+    $(function(){
+      //一次横向滚动一个
+      $('#marquee1').kxbdSuperMarquee({
+        distance:1002,
+        time:7,
+        // btnGo:{left:'#goL',right:'#goR'},
+        direction:'left'
+      });
+  $('#demo4').scrollbox({
+    direction: 'h',
+    switchItems: 7,
+    distance: 1002
+  });
 
+}
+  
+</script>
+<style type="text/css">
+  #marquee1 {
+  width:1002px;
+  height:130px;
+  overflow:hidden;
+}
+    #marquee1 ul li {float:left;padding:0 1px;  height:130px;}
+    #marquee1 ul li img {display:block;}
+  #demo4 {
+  width:1002px;
+  height:130px;
+  overflow:hidden;
+}
+    #demo4 ul li {float:left;padding:0 1px;  height:130px;}
+    #demo4  img {display:inline;}
+.scroll-img{white-space:nowrap;}
+
+</style>
 <div class="warp banner">
       
       <div class="bigBgImg">
@@ -101,15 +139,30 @@
     <div class="partners" style="border-left:50px;">
         <div class="partners-inner clearfix">
           <div class="tit"><span class="t fl">合作伙伴：</span></div>
+            <div class="partners-r clearfix scroll-img"  >
+              <div id="demo4" >
+                  <img src="${projectName}/images/hzhb/szjt.jpg" alt="尚泽集团"  style="margin-right: 3px;" title="尚泽集团">
+                  <img src="${projectName}/images/hzhb/sljt.jpg" alt="圣联集团" title="圣联集团" style="margin-right: 3px;" >
+                  <img src="${projectName}/images/hzhb/wy.jpg" alt="文一" title="文一" style="margin-right: 3px;" >
+                  <img src="${projectName}/images/hzhb/zttz.jpg" alt="中天投资" title="中天投资" style="margin-right: 3px;" >
+                  <img src="${projectName}/images/hzhb/1.jpg" alt="信达地产"  style="margin-right: 3px;" title="信达地产">
+                  <img src="${projectName}/images/hzhb/2.jpg" alt="万科"  style="margin-right: 3px;" title="万科">
+                  <img src="${projectName}/images/hzhb/3.jpg" alt="万达集团"  style="margin-right: 3px;" title="万达集团">
+                  <img src="${projectName}/images/hzhb/4.jpg" alt="华邦集团"  style="margin-right: 3px;" title="华邦集团">
+                  <img src="${projectName}/images/hzhb/5.jpg" alt="绿地集团"  style="margin-right: 3px;" title="绿地集团">
+                  <img src="${projectName}/images/hzhb/6.jpg" alt="保利地产"  style="margin-right: 3px;" title="保利地产">
+                  <img src="${projectName}/images/hzhb/7.jpg" alt="恒大集团"  style="margin-right: 3px;" title="恒大集团">
+              </div>
+            </div>
+    </div>
+    <div class="partners" style="border-left:50px;">
+        <div class="partners-inner clearfix">
+          <div class="tit"><span class="t fl">旗下运营：</span></div>
             <div class="partners-r clearfix" style="float:left;">
-              <img src="${projectName}/images/hzhb/hkly.jpg" style="margin-right: 3px;" alt="泓扣礼仪" title="泓扣礼仪">
-              <img src="${projectName}/images/hzhb/kqcm.jpg"  style="margin-right: 3px;" alt="科奇传媒" title="科奇传媒">
-              <img src="${projectName}/images/hzhb/szjt.jpg" alt="尚泽集团"  style="margin-right: 3px;" title="尚泽集团">
-              <img src="${projectName}/images/hzhb/sljt.jpg" alt="圣联集团" title="圣联集团" style="margin-right: 3px;" >
-              <img src="${projectName}/images/hzhb/wy.jpg" alt="文一" title="文一" style="margin-right: 3px;" >
               <img src="${projectName}/images/hzhb/wxah.jpg" alt="无限安徽" title="无限安徽" style="margin-right: 3px;" >
               <img src="${projectName}/images/hzhb/zjb.jpg" alt="中介宝" title="中介宝" style="margin-right: 3px;" >
-              <img src="${projectName}/images/hzhb/zttz.jpg" alt="中天投资" title="中天投资" style="margin-right: 3px;" >
+              <img src="${projectName}/images/hzhb/kqcm.jpg"  style="margin-right: 3px;" alt="科奇传媒" title="科奇传媒">
+              <img src="${projectName}/images/hzhb/hkly.jpg" style="margin-right: 3px;" alt="泓扣礼仪" title="泓扣礼仪">
             </div>
     </div>
      </div>
