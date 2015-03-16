@@ -12,6 +12,10 @@
 html, body, .body {height: 100%;padding: 0;margin: 0;}
 #allmap{max-width:640px;min-width:320px;}
 .Pfixed{bottom:-4px;}
+
+
+  
+.iconfont{ font-size: 28px; color: #FFF;}
 </style>
 </head>
 
@@ -20,8 +24,9 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
      
    <div id="top">
    	  <jsp:include page="top.jsp"></jsp:include>
-   	  <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
-        <span class="s4"><a href="#">&lt;</a></span>
+   	  <div class="fl">
+        <a href="#"><i class="icon iconfont">&#xe601;</i></a>
+      </div>
    </div>
 <%--    <jsp:include page="bottom.jsp" /> --%>
 </div>

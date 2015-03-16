@@ -141,7 +141,7 @@ function emptySearchResult(){
           
           <ul>
           
-              <li class="repeat">
+              <li class="repeat" style="display:none">
                   <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]" /></a></div>
                   <div class="con">
                   

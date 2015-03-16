@@ -6,9 +6,8 @@
 
      
      <div class="main" style="padding-bottom:0px;z-index:999999">
-           
             <div id="city_1" style="display:inline-block;position:absolute;right:2px;top:-3px;display:">
-		  		<select class="prov"  id="province" style="width:60px;"></select> 
+		  		<select class="prov"  id="province" style="width:60pt;"></select>
 		    	<select class="city" id="city" ></select>
 		    </div>
      	<%

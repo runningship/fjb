@@ -15,7 +15,7 @@
      <div id="top">
      
           <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
-          <span class="s4"><a href="#">&lt;</a></span>
+          <span class="s4"><a href="#"><i class="icon iconfont">&#xe601;</i></a></span>
      
      </div>
      
