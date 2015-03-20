@@ -79,9 +79,7 @@ function doSearch(){
 <!--                		<span style="font-size:14px; width:50px;pading-right:20px;">区域 </span> -->
 			  		<select class="prov"  id="province_reg"  name="province"></select> 
 			    	<select class="city" name="city"></select>
-			    	<select class="dist"  name="quyu">
-			    		<option value="">不限</option>
-			    	</select>
+			    	<select class="dist"  name="quyu"></select>
 		    	</div>
       <div style="display:inline-block;margin-left:20px;" id="adminName">
         <label>经纪服务人员</label>

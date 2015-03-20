@@ -4,6 +4,8 @@
 <html>
 <head>
 <jsp:include page="../header.jsp" />
+<script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
+<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 <script type="text/javascript">
 function doSearch(){
 	var a=$('form[name=form1]').serialize();
@@ -32,6 +34,15 @@ function doSearch(){
 		  },function(){},'warning');
 	}
 	$(function () {
+        var province_reg = remote_ip_info['province'];
+        var city_reg = remote_ip_info['city']
+        var district_reg = remote_ip_info['district'];
+        $("#city_wrap").citySelect({
+            prov: province_reg, 
+            city: city_reg,
+            dist: district_reg,
+            required:false
+        });
 		Page.Init();
 		$('#addnew').click(function(){
 				window.location.href="add.jsp";
@@ -40,12 +51,19 @@ function doSearch(){
 	});
 	
 </script>
+<style type="text/css">
+#city_wrap select{height:30px;width:120px;margin-top: 5px;margin-bottom: 5px;}
+</style>
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    楼盘名称：<input type="text" name="name"/>
-    区域：<input type="text" name="quyu" style="width:100px;">
-        </select>
+    楼盘名称：<input style="height:26px;width:200px;margin-right:10px;margin-top: 2px;" type="text" name="name"/>
+               <div id="city_wrap" style="display:inline-block;">
+<!--                        <span style="font-size:14px; width:50px;pading-right:20px;">区域 </span> -->
+                    <select class="prov"  id="province"  name="province"></select> 
+                    <select class="city"  id="city" name="city"></select>
+                    <select class="dist"  id="quyu" name="quyu"></select>
+                </div>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
 
