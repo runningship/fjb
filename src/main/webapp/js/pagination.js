@@ -125,7 +125,7 @@ var Page={
 
 
       var pageInfoStrs=''+
-      '<div class="btn-group page_btn_group" style="display:inline-block;">'+
+      '<div class="btn-group page_btn_group" style="display:inline-block;float:left">'+
       '  <button type="button" class="btn btn-default" title="总条数">'+this.ln+'</button>'+
       '  <button type="button" class="btn btn-default" title="当前页码/总页码">'+this.p+'/'+this.pn+'</button>'+
       '</div>'+

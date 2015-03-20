@@ -20,12 +20,29 @@ function save(){
           // $('#saveBtn').removeAttr('disabled');
           //art.dialog.close();
           infoAlert('注册成功,工作人员会第一时间与您联系，审核成功后即可登录');
+      },
+      error:function(data){
+    	  var json = JSON.parse(data.responseText);
+    	  alert(json.msg);
+    	  $('#yzm').click();
       }
   });
 }
 
-
+$(function(){
+	var province_reg = remote_ip_info['province'];
+	var city_reg = remote_ip_info['city']
+	var district_reg = remote_ip_info['district'];
+	$("#city_reg").citySelect({
+		prov: province_reg, 
+    	city: city_reg,
+    	dist: district_reg
+	});
+});
 </script>
+<style type="text/css">
+#city_reg select{height:30px;width:120px;margin-top: 20px;margin-bottom: 10px;}
+</style>
 </head>
 
 
@@ -39,7 +56,7 @@ function save(){
 <form name="form1" role="form" onsubmit="save();return false">
       <div class="main">
       
-           <div class="fr loginLeft" style="margin-top:80px;"><img src="images/tu.png" /></div>
+           <div class="fr loginLeft" style="margin-top:140px;"><img src="images/tu.png" /></div>
            
            <h2 style=" font-size:18px; margin-bottom:8px; color:#444444;">新用户注册</h2>
            <div class="fl form-login">
@@ -53,13 +70,23 @@ function save(){
               <p><label for="captcha">姓名</label><span class="form-tips">请输入您的姓名</span></p>
                <input type="text" placeholder="请输入您的姓名" class="name" name="name" not-null="true">
                
+               <div id="city_reg" style="display:inline-block;">
+<!--                		<span style="font-size:14px; width:50px;pading-right:20px;">区域 </span> -->
+			  		<select class="prov"  id="province_reg"  name="province"></select> 
+			    	<select class="city" name="city"></select>
+			    	<select class="dist"  name="quyu"></select>
+		    	</div>
+		    
                <p><label for="captcha">公司名称</label><span class="form-tips">请输入您的公司名称</span></p>
-               <input type="text" placeholder="公司名称+分店" class="name" name="compName" not-null="true">
+               <input type="text" placeholder="公司" class="name" name="compName" not-null="true">
+               
+               <p><label for="captcha">分店名称</label><span class="form-tips">请输入您的分店名称</span></p>
+               <input type="text" placeholder="分店" class="name" name="deptName" not-null="true">
                
                <p><label for="captcha">请输入图片验证码</label><span class="form-tips">验证码错误</span></p>
               <div class="form-field">
                <input type="text" placeholder="请输入图片验证码" class="captcha" name="yzm">
-          <img alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
+          			<img id="yzm" alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
                </div>
                <input type="submit" class="btn-login" value="注册" style="cursor:pointer" />
            

@@ -26,6 +26,8 @@ public class User {
 	
 	public String compName;
 	
+	public String deptName;
+	
 	public Date addtime;
 	
 	public Date lasttime;
@@ -41,7 +43,17 @@ public class User {
 	//意向
 	public Float intentPrice;
 	
+	public String province;
+	
 	public String city;
 	
+	public String quyu;
+	
 	public String activeCode;
+	
+	//经纪服务人员
+	public Integer adminId;
+	
+	public String adminName;
+	
 }

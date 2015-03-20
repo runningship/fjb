@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript">
+    function showWx () {
+        $('#ewm').attr('style','position: absolute;bottom:20px;left:-190px;border:none;');
+    }
+</script>
 
 <div class="warp footerTop">
 
@@ -34,7 +39,7 @@
 
      <div class="main">
 
-          <p><a href="about.jsp">关于房金宝</a> | <a href="contactUs.jsp">联系我们</a> | <a href="shenming.jsp">服务申明</a> | <a href="#">微信版</a></p>
+          <p><a href="about.jsp">关于房金宝</a> | <a href="contactUs.jsp">联系我们</a> | <a href="shenming.jsp">服务申明</a> | <a href="#" style="position: relative;" onclick="return false;" onMouseOver="showWx();return false" onmouseout="$('#ewm').attr('style','display:none;');"><img src="images/ewm.png" id="ewm" style="display:none"/>微信版</a></p>
           <p>copyright © 2013-2015 www.jinbaohouse.com All Rights Reserved</p>
           <p>粤ICP备15004619号</p>
 

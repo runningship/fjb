@@ -83,6 +83,47 @@ public class UserService {
 	}
 	
 	@WebMethod
+	public ModelAndView updateSeller(User seller , String modifyPwd){
+		ModelAndView mv = new ModelAndView();
+		User po = dao.get(User.class, seller.id);
+		po.compName = seller.compName;
+		po.deptName = seller.deptName;
+		po.name = seller.name;
+		po.tel = seller.tel;
+		po.city = seller.city;
+		po.province= seller.province;
+		po.quyu = seller.quyu;
+		po.adminId = seller.adminId;
+		User admin = dao.get(User.class, seller.adminId);
+		if(admin!=null){
+			po.adminName = admin.name;
+		}
+		if("1".equals(modifyPwd)){
+			po.pwd = SecurityHelper.Md5(seller.pwd);
+		}
+		dao.saveOrUpdate(po);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView sellerList(){
+		ModelAndView mv = new ModelAndView();
+		List<User> admins = dao.listByParams(User.class, "from User where type=?", "admin");
+		mv.jspData.put("admins", admins);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView sellerEdit(Integer id){
+		ModelAndView mv = new ModelAndView();
+		User seller = dao.get(User.class, id);
+		mv.jspData.put("seller", seller);
+		List<User> admins = dao.listByParams(User.class, "from User where type=?", "admin");
+		mv.jspData.put("admins", admins);
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView doRegiste(User user , String yzm){
 		ModelAndView mv = new ModelAndView();
 		User po = dao.getUniqueByParams(User.class, new String[]{"type" , "tel"}, new Object[]{"seller" , user.tel});
@@ -137,13 +178,25 @@ public class UserService {
 	}
 	
 	@WebMethod
-	public ModelAndView listData(Page<House> page , String type){
+	public ModelAndView listData(Page<House> page , String type , String city , String quyu , Integer adminId){
 		ModelAndView mv = new ModelAndView();
 		StringBuilder hql = new StringBuilder("from User where 1=1 ");
-		List<String> params = new ArrayList<String>();
+		List<Object> params = new ArrayList<Object>();
 		if(StringUtils.isNotEmpty(type)){
 			params.add(type);
 			hql.append(" and type=?");
+		}
+		if(StringUtils.isNotEmpty(city)){
+			hql.append(" and city = ?");
+			params.add(city);
+		}
+		if(StringUtils.isNotEmpty(quyu)){
+			hql.append(" and quyu = ?");
+			params.add(quyu);
+		}
+		if(adminId!=null){
+			hql.append(" and adminId = ?");
+			params.add(adminId);
 		}
 		page = dao.findPage(page, hql.toString(), params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));

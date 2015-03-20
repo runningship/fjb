@@ -2,9 +2,9 @@ function buildHtmlWithJsonArray(id,json,removeTemplate,remainItems){
     var temp = $('.'+id);
 
     var subCatagory = temp.parent();
-    var dhtml = temp[0].outerHTML;
-    //var temp = $(first);
-    var copy=$(dhtml);
+//    var dhtml = temp[0].outerHTML;
+//    var copy=$(dhtml);
+    var copy = temp.clone();
     temp.removeClass(id);
     temp.remove();
     if(!remainItems){
@@ -328,32 +328,6 @@ function deleteQuery(delIcon){
   
 }
 
-function ChangeW(){
-    // var h = $(window).height();
-    // $(window.top.document).find('#iframeBox').height(h+40);
-  var w = $(window).width();
-  w = w - 267;
-  
-  $("#FY_RCon").width(w);
-  // $("#FY_RCon").css('margin-top','5px');
-  $("#FY_RTit").width(w);
-  $("#KY_TableMain").width(w);
-  $("#FY_TableTit").width(w);
-  $("#pageMwidth").width(w);
-
-  //设置拖动栏
-  try{
-    var doc = $(window.top.selectedFrame[0].contentDocument);
-    var menuTopW = doc.find('#menuTop').width();
-    var bodyW = $(window.top.document).width()-50;
-    $(window.top.document).find('#dragbar').width(bodyW-menuTopW);
-  }catch(e){
-    console.log('set drag bar width fail,'+e);
-  }
-}
-window.onresize = function(){
-  ChangeW();
-}
 
 
 

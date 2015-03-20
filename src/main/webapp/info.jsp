@@ -145,34 +145,6 @@ function order_success(){
 
 
                 <!-- 分享模块 -->
-
-<!--<div class="tool-bar">
-    <a href="javascript:;" data-param="{&quot;url&quot;:&quot;/fang/house/ajax-add-house-favorite?houseId=3796&quot;}" class="collect" id="collectHouse"><i></i>收藏</a>
-
-  
-
-
-  <span data-share=" 均价为：售价待定, 地址：[包河区] 合肥市包河区当涂路与南淝河路交叉口西，淝河路99号,  电话：4000989900 转 99368  " class="share" id="share">
-    <i></i>分享到
-    <div class="jiathis_style">
-      <a class="jiathis_button_tsina" title="分享到新浪微博"><span class="jiathis_txt jtico jtico_tsina"></span></a>
-      <a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a>
-      <a class="jiathis_button_renren" title="分享到人人网"><span class="jiathis_txt jtico jtico_renren"></span></a>
-      <a class="jiathis_button_douban" title="分享到豆瓣"><span class="jiathis_txt jtico jtico_douban"></span></a>
-      <a class="jiathis_button_qzone" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone"></span></a>
-    </div>
-  </span>
-</div>-->
-
-<!--                 <div class="trends"> -->
-<!--                                                          <span class="label">动态</span> -->
-<!--                      <div class="trends-con"> -->
-<!--                          <h2><a href="/house/3796/news/64077">玫瑰绅城在售叠加别墅 2013-11-06</a></h2> -->
-<!--                          <p>玫瑰绅城在售叠加别墅，户型200-220平米，均价7500元/平米，在售联排240-330平米的户型，均价14500元/...</p> -->
-<!--                          <a class="more" href="/house/3796/news">更多动态</a> -->
-<!--                      </div> -->
-                
-<!--                 </div> -->
                 
                 <div id="online-choose-room" class="sct screen-nd clearfix">
             <!-- 在线选房 -->
@@ -196,7 +168,7 @@ function order_success(){
                                             <th>状态/操作</th>
                                         </tr>
                                     </thead>
-            <tr style="display:none" class="repeat">
+                                        <tr style="display:none" class="repeat">
                                             <td title="楼栋">$[dhao]</td>
                                             <td title="面积">$[mji]</td>
                                             <td onmouseout="hiddenPic();"><a src="$[hxingImg]"  onclick="showPic(this);" style="text-decoration:underline" >$[hxing]</a></td>

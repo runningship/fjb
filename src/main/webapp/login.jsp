@@ -27,6 +27,7 @@ function login(){
       error:function(data){
     	  var json = JSON.parse(data.responseText);
     	  alert(json.msg);
+    	  $('#yzm').click();
       }
   });
 }
@@ -58,7 +59,7 @@ function login(){
                <p><label for="captcha">请输入图片验证码</label><span class="form-tips">请输入密码</span></p>
               <div class="form-field">
                <input type="text" placeholder="请输入图片验证码" class="captcha" name="yzm">
-          <img alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
+          			<img id="yzm" alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
                </div>
                <input type="submit" class="btn-login" value="登录"  style="cursor:pointer"/>
            

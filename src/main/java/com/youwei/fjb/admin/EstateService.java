@@ -124,10 +124,19 @@ public class EstateService {
 	}
 	
 	@WebMethod
-	public ModelAndView listData(Page<Estate> page){
+	public ModelAndView listData(Page<Estate> page , String name , String quyu){
 		ModelAndView mv = new ModelAndView();
+		StringBuilder hql = new StringBuilder("from Estate where 1=1 ");
 		List<String> params = new ArrayList<String>();
-		page = dao.findPage(page, "from Estate", params.toArray());
+		if(StringUtils.isNotEmpty(name)){
+			hql.append(" and name like ?");
+			params.add("%"+name+"%");
+		}
+		if(StringUtils.isNotEmpty(quyu)){
+			hql.append(" and quyu like ?");
+			params.add("%"+quyu+"%");
+		}
+		page = dao.findPage(page, hql.toString(), params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;
 	}

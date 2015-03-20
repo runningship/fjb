@@ -1,37 +1,37 @@
-/**
- * @classDescription 超级Marquee，可做图片导航，图片轮换
- * @author Aken Li(www.kxbd.com)
- * @date 2009-07-27
- * @dependence jQuery 1.3.2
- * @DOM
- *  	<div id="marquee">
- *  		<ul>
- *   			<li></li>
- *   			<li></li>
- *  		</ul>
- *  	</div>
- * @CSS
- *  	#marquee {width:200px;height:50px;overflow:hidden;}
- * @Usage
- *  	$('#marquee').kxbdSuperMarquee(options);
- * @options
- *		distance:200,//一次滚动的距离
- *		duration:20,//缓动效果，单次移动时间，越小速度越快，为0时无缓动效果
- *		time:5,//停顿时间，单位为秒
- *		direction: 'left',//滚动方向，'left','right','up','down'
- *		scrollAmount:1,//步长
- *		scrollDelay:20//时长，单位为毫秒
- *		isEqual:true,//所有滚动的元素长宽是否相等,true,false
- *		loop: 0,//循环滚动次数，0时无限
- *		btnGo:{left:'#goL',right:'#goR'},//控制方向的按钮ID，有四个属性left,right,up,down分别对应四个方向
- *		eventGo:'click',//鼠标事件
- *		controlBtn:{left:'#goL',right:'#goR'},//控制加速滚动的按钮ID，有四个属性left,right,up,down分别对应四个方向
- *		newAmount:4,//加速滚动的步长
- *		eventA:'mouseenter',//鼠标事件，加速
- *		eventB:'mouseleave',//鼠标事件，原速
- *		navId:'#marqueeNav', //导航容器ID，导航DOM:<ul><li>1</li><li>2</li><ul>,导航CSS:.navOn
- *		eventNav:'click' //导航事件
- */
+// *
+//  * @classDescription 超级Marquee，可做图片导航，图片轮换
+//  * @author Aken Li(www.kxbd.com)
+//  * @date 2009-07-27
+//  * @dependence jQuery 1.3.2
+//  * @DOM
+//  *  	<div id="marquee">
+//  *  		<ul>
+//  *   			<li></li>
+//  *   			<li></li>
+//  *  		</ul>
+//  *  	</div>
+//  * @CSS
+//  *  	#marquee {width:200px;height:50px;overflow:hidden;}
+//  * @Usage
+//  *  	$('#marquee').kxbdSuperMarquee(options);
+//  * @options
+//  *		distance:200,//一次滚动的距离
+//  *		duration:20,//缓动效果，单次移动时间，越小速度越快，为0时无缓动效果
+//  *		time:5,//停顿时间，单位为秒
+//  *		direction: 'left',//滚动方向，'left','right','up','down'
+//  *		scrollAmount:1,//步长
+//  *		scrollDelay:20//时长，单位为毫秒
+//  *		isEqual:true,//所有滚动的元素长宽是否相等,true,false
+//  *		loop: 0,//循环滚动次数，0时无限
+//  *		btnGo:{left:'#goL',right:'#goR'},//控制方向的按钮ID，有四个属性left,right,up,down分别对应四个方向
+//  *		eventGo:'click',//鼠标事件
+//  *		controlBtn:{left:'#goL',right:'#goR'},//控制加速滚动的按钮ID，有四个属性left,right,up,down分别对应四个方向
+//  *		newAmount:4,//加速滚动的步长
+//  *		eventA:'mouseenter',//鼠标事件，加速
+//  *		eventB:'mouseleave',//鼠标事件，原速
+//  *		navId:'#marqueeNav', //导航容器ID，导航DOM:<ul><li>1</li><li>2</li><ul>,导航CSS:.navOn
+//  *		eventNav:'click' //导航事件
+ 
 (function($){
 
 	$.fn.kxbdSuperMarquee = function(options){

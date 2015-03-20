@@ -37,6 +37,7 @@ $(function(){
 
 function save(){
     if(checkNotnullInput()==false){
+        infoAlert('请检查 楼盘名称、联系电话、楼盘地址是否未填！');
         return;
     }
     var a=$('form[name=form1]').serialize();
@@ -45,7 +46,7 @@ function save(){
         url: '${projectName}/c/admin/estate/update',
         data:a,
         mysuccess: function(data){
-            alert('修改成功');
+            infoAlert('修改成功');
         }
     });
 }

@@ -45,10 +45,10 @@ function initUploadHouseImage(id , imgType , estateUUID , huxingUUID){
       'removeTimeout': 0.1,
       'fileSizeLimit' : '5MB',
       'onUploadError' : function(file, errorCode, errorMsg, errorString){
-          console.log('The file ' + file.name + ' could not be uploaded: ' + errorString);
+          //console.log('The file ' + file.name + ' could not be uploaded: ' + errorString);
       },
       'onUploadComplete':function(file){
-          console.log('finish:'+file);
+          //console.log('finish:'+file);
       },
       'onUploadSuccess' : function(file, data, response) {
         var json = JSON.parse(data);
@@ -60,7 +60,7 @@ function initUploadHouseImage(id , imgType , estateUUID , huxingUUID){
         }
       },
       'onQueueComplete' : function(queueData) {
-        console.log(queueData);
+        //console.log(queueData);
       }
       // Put your options here
   });

@@ -10,42 +10,29 @@
 <jsp:include page="top.jsp"></jsp:include>
 <jsp:include page="nav.jsp"></jsp:include>
 <script type="text/javascript" src="js/kxbdSuperMarquee.js"></script>
-<script type="text/javascript" src="js/jquery.scrollbox.js"></script>
 <script type="text/javascript">
     
     $(function(){
       //一次横向滚动一个
       $('#marquee1').kxbdSuperMarquee({
-        distance:1002,
-        time:7,
-        // btnGo:{left:'#goL',right:'#goR'},
+        isAuto:false,
+        distance:372,
+        duration:99,
+        btnGo:{left:'#goL',right:'#goR'},
         direction:'left'
       });
-  $('#demo4').scrollbox({
-    direction: 'h',
-    switchItems: 7,
-    distance: 1002
-  });
 
-}
-  
+});
+
 </script>
 <style type="text/css">
   #marquee1 {
-  width:1002px;
-  height:130px;
+  width:650px;
+  height:100px;
   overflow:hidden;
 }
-    #marquee1 ul li {float:left;padding:0 1px;  height:130px;}
+    #marquee1 ul li {float:left;height:100px;}
     #marquee1 ul li img {display:block;}
-  #demo4 {
-  width:1002px;
-  height:130px;
-  overflow:hidden;
-}
-    #demo4 ul li {float:left;padding:0 1px;  height:130px;}
-    #demo4  img {display:inline;}
-.scroll-img{white-space:nowrap;}
 
 </style>
 <div class="warp banner">
@@ -137,36 +124,41 @@
           </div>
      
     <div class="partners" style="border-left:50px;">
-        <div class="partners-inner clearfix">
-          <div class="tit"><span class="t fl">合作伙伴：</span></div>
-            <div class="partners-r clearfix scroll-img"  >
-              <div id="demo4" >
-                  <img src="${projectName}/images/hzhb/szjt.jpg" alt="尚泽集团"  style="margin-right: 3px;" title="尚泽集团">
-                  <img src="${projectName}/images/hzhb/sljt.jpg" alt="圣联集团" title="圣联集团" style="margin-right: 3px;" >
-                  <img src="${projectName}/images/hzhb/wy.jpg" alt="文一" title="文一" style="margin-right: 3px;" >
-                  <img src="${projectName}/images/hzhb/zttz.jpg" alt="中天投资" title="中天投资" style="margin-right: 3px;" >
-                  <img src="${projectName}/images/hzhb/1.jpg" alt="信达地产"  style="margin-right: 3px;" title="信达地产">
-                  <img src="${projectName}/images/hzhb/2.jpg" alt="万科"  style="margin-right: 3px;" title="万科">
-                  <img src="${projectName}/images/hzhb/3.jpg" alt="万达集团"  style="margin-right: 3px;" title="万达集团">
-                  <img src="${projectName}/images/hzhb/4.jpg" alt="华邦集团"  style="margin-right: 3px;" title="华邦集团">
-                  <img src="${projectName}/images/hzhb/5.jpg" alt="绿地集团"  style="margin-right: 3px;" title="绿地集团">
-                  <img src="${projectName}/images/hzhb/6.jpg" alt="保利地产"  style="margin-right: 3px;" title="保利地产">
-                  <img src="${projectName}/images/hzhb/7.jpg" alt="恒大集团"  style="margin-right: 3px;" title="恒大集团">
-              </div>
+      <div class="partners-inner clearfix">
+        <div class="tit"><span class="t fl">合作伙伴：</span></div>
+        <div class="partners-r clearfix scroll-img"  >
+          <div id="control" style="position:relative">
+            <img src="${projectName}/images/left.jpg" style="width:30px;height:50px;position: absolute;top: 13px;left: 6px;" id="goL">
+            <div id="marquee1" style="position:absolute;left:36px">
+              <ul>
+                <li><img src="${projectName}/images/hzhb/szjt.jpg" alt="尚泽集团" id="moveleft"  style="margin-right: 3px;width:91px;height:100px;" title="尚泽集团"></li>
+                <li><img src="${projectName}/images/hzhb/sljt.jpg" alt="圣联集团" id="moveleft" title="圣联集团" style="margin-right: 3px;width:91px;height:100px;" ></li>
+                <li><img src="${projectName}/images/hzhb/wy.jpg" alt="文一" id="moveleft" title="文一" style="margin-right: 3px;width:91px;height:100px;" ></li>
+                <li><img src="${projectName}/images/hzhb/zttz.jpg" alt="中天投资" id="moveleft" title="中天投资" style="margin-right: 3px;width:91px;height:100px;" ></li>
+                <li><img src="${projectName}/images/hzhb/1.jpg" alt="信达地产"  style="margin-right: 3px;width:91px;height:100px;" title="信达地产"></li>
+                <li><img src="${projectName}/images/hzhb/2.jpg" alt="万科"  style="margin-right: 3px;width:91px;height:100px;" title="万科"></li>
+                <li><img src="${projectName}/images/hzhb/3.jpg" alt="万达集团"  style="margin-right: 3px;width:91px;height:100px;" title="万达集团"></li>
+                <li><img src="${projectName}/images/hzhb/4.jpg" alt="华邦集团" id="moveright" style="margin-right: 3px;width:91px;height:100px;" title="华邦集团"></li>
+                <li><img src="${projectName}/images/hzhb/5.jpg" alt="绿地集团" id="moveright" style="margin-right: 3px;width:91px;height:100px;" title="绿地集团"></li>
+                <li><img src="${projectName}/images/hzhb/6.jpg" alt="保利地产" id="moveright" style="margin-right: 3px;width:91px;height:100px;" title="保利地产"></li>
+                <li><img src="${projectName}/images/hzhb/7.jpg" alt="恒大集团" id="moveright"  style="margin-right: 3px;width:91px;height:100px;" title="恒大集团"></li>
+              </ul>
             </div>
-    </div>
-    <div class="partners" style="border-left:50px;">
-        <div class="partners-inner clearfix">
+            <img src="${projectName}/images/right.jpg" style="width:30px;height:50px;position: absolute;float:right;right: -230px;bottom: -68px;" id="goR">
+          </div>
+        </div>
+      </div>
+      <div style="position: relative;top: 100px;">
           <div class="tit"><span class="t fl">旗下运营：</span></div>
             <div class="partners-r clearfix" style="float:left;">
-              <img src="${projectName}/images/hzhb/wxah.jpg" alt="无限安徽" title="无限安徽" style="margin-right: 3px;" >
-              <img src="${projectName}/images/hzhb/zjb.jpg" alt="中介宝" title="中介宝" style="margin-right: 3px;" >
-              <img src="${projectName}/images/hzhb/kqcm.jpg"  style="margin-right: 3px;" alt="科奇传媒" title="科奇传媒">
-              <img src="${projectName}/images/hzhb/hkly.jpg" style="margin-right: 3px;" alt="泓扣礼仪" title="泓扣礼仪">
+              <img src="${projectName}/images/hzhb/wxah.jpg" alt="无限安徽" title="无限安徽" style="margin-right: 3px;width:90px;height:100px;" >
+              <img src="${projectName}/images/hzhb/zjb.jpg" alt="中介宝" title="中介宝" style="margin-right: 3px;width:90px;height:100px;" >
+              <img src="${projectName}/images/hzhb/kqcm.jpg"  style="margin-right: 3px;width:90px;height:100px;" alt="科奇传媒" title="科奇传媒">
+              <img src="${projectName}/images/hzhb/hkly.jpg" style="margin-right: 3px;width:90px;height:100px;" alt="泓扣礼仪" title="泓扣礼仪">
             </div>
-    </div>
-     </div>
-
+      </div>
+</div>
+</div>
 </div>
 <jsp:include page="foot.jsp"></jsp:include>
 

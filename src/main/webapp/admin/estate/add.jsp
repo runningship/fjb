@@ -28,6 +28,7 @@ $(function(){
 
 function save(){
     if(checkNotnullInput()==false){
+        infoAlert('请检查 楼盘名称、联系电话、楼盘地址是否未填！');
         return;
     }
     var a=$('form[name=form1]').serialize();
@@ -36,7 +37,7 @@ function save(){
         url: '${projectName}/c/admin/estate/doSave',
         data:a,
         mysuccess: function(data){
-            alert('添加成功');
+            infoAlert('添加成功');
         }
     });
 }
@@ -58,11 +59,11 @@ function changeQuYu(city){
 <table class="table table-bordered table-hover m10">
 	
     <tr>
-        <td class="tableleft">名称</td>
+        <td class="tableleft">楼盘名称</td>
         <td><input type="text" name="name" not-null="true"/></td>
     </tr>
     <tr>
-        <td class="tableleft">电话</td>
+        <td class="tableleft">联系电话</td>
         <td><input type="text" name="tel" not-null="true"/></td>
     </tr>
     <tr>
@@ -184,7 +185,7 @@ function changeQuYu(city){
         <td><input type="text" name="wyComp"/></td>
     </tr>
     <tr>
-        <td class="tableleft">地址</td>
+        <td class="tableleft">楼盘地址</td>
         <td><input type="text" name="addr"/ not-null="true"></td>
     </tr>
     <tr>

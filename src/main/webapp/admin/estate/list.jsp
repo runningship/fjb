@@ -44,6 +44,8 @@ function doSearch(){
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
     楼盘名称：<input type="text" name="name"/>
+    区域：<input type="text" name="quyu" style="width:100px;">
+        </select>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
 
