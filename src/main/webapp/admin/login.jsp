@@ -22,7 +22,10 @@ function login(){
 	    data: a,
 	    mysuccess: function(json){
 	        window.location="index.jsp";
-	    }
+	    },
+	    error:function(data){
+	    	  alert('用户名或密码错误');
+	      }
 	  });
 }
 $(function(){

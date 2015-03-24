@@ -4,6 +4,8 @@
 <html>
 <head>
 <jsp:include page="../header.jsp" />
+<script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
+<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 <script type="text/javascript">
 function doSearch(){
 	var a=$('form[name=form1]').serialize();
@@ -34,6 +36,13 @@ function delPost(id){
 }
 
 $(function () {
+        var province_reg = remote_ip_info['province'];
+        var city_reg = remote_ip_info['city']
+        var district_reg = remote_ip_info['district'];
+        $("#city_reg").citySelect({
+            prov: province_reg, 
+            required:false
+        });
 	Page.Init();
 	$('#addnew').click(function(){
 			window.location.href="add.jsp";
@@ -42,13 +51,24 @@ $(function () {
 });
 
 </script>
+<style type="text/css">
+#city_reg select{height:30px;width:120px;}
+#adminName select{height:30px;width:120px;}
+#adminName label{height:30px;width:90px;}
+</style>
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    客户姓名<input type="text" name="buyerName"/>
-    客户电话<input type="text" name="buyerTel"/>
-    楼盘名称<input type="text" name="estateName"/>
-    经纪人姓名<input type="text" name="sellerName"/>
+    客户姓名<input type="text" name="buyerName" style="width:100px;margin-right:10px;height:25px;" />
+    客户电话<input type="text" name="buyerTel" style="width:120px;margin-right:10px;height:25px;"/>
+    楼盘名称<input type="text" name="estateName" style="width:100px;margin-right:10px;height:25px;"/>
+    经纪人姓名<input type="text" name="sellerName" style="width:100px;margin-right:10px;height:25px;"/>
+               <div id="city_reg" style="display:inline-block;">
+<!--                        <span style="font-size:14px; width:50px;pading-right:20px;">区域 </span> -->
+                    <select class="prov"  id="province_reg"  name="province"></select> 
+                    <select class="city" name="city"></select>
+                    <select class="dist"  name="quyu"></select>
+                </div>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
 

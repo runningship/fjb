@@ -76,14 +76,6 @@ function save(){
     <tr>
         <td class="tableleft">区域</td>
         <td>
-        	<!--
-        	<select  class="sortSelect" name="quyu">
-                <option value="" >所有</option>
-                <c:forEach items="${quyus}" var="quyu">
-                  <option <c:if test="${quyu.value eq estate.quyu }">selected="selected"</c:if> value="${quyu.value}">${quyu.value}</option>
-                </c:forEach>
-            </select>
-            -->
             <div id="city_1" style="display:inline-block;">
 		  		<select class="prov"  id="province" name="province"></select> 
 		    	<select class="city" id="city" name="city"></select>
@@ -135,15 +127,19 @@ function save(){
     </tr>
     <tr>
         <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji" value="${estate.rongji }"/></td>
+        <td><input type="text" name="rongji" value="${estate.rongji }"/>%</td>
     </tr>
     <tr>
         <td class="tableleft">规划面积</td>
         <td><input type="text" name="ghmj" value="${estate.ghmj }"/>平方</td>
     </tr>
     <tr>
+        <td class="tableleft">公摊</td>
+        <td><input type="text" name="gongtan" value="${estate.gongtan }"/>%</td>
+    </tr>
+    <tr>
         <td class="tableleft">绿化率</td>
-        <td><input type="text" name="lvhua" value="${estate.lvhua }"/></td>
+        <td><input type="text" name="lvhua" value="${estate.lvhua }"/>%</td>
     </tr>
     <tr>
         <td class="tableleft">车位数</td>
@@ -166,12 +162,32 @@ function save(){
         <td><input type="text" name="developer" value="${estate.developer }"/></td>
     </tr>
     <tr>
+        <td class="tableleft">销售许可证</td>
+        <td><input type="text" name="xukezheng" value="${estate.xukezheng }"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">产权土地年限</td>
+        <td><input type="text" name="chanquan" value="${estate.chanquan }"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">产权归属</td>
+        <td><input type="text" name="guishu" value="${estate.guishu}"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">代理商</td>
+        <td><input type="text" name="daili" value="${estate.daili}"/></td>
+    </tr>
+    <tr>
         <td class="tableleft">物业公司</td>
         <td><input type="text" name="wyComp" value="${estate.wyComp }"/></td>
     </tr>
     <tr>
-        <td class="tableleft">地址</td>
+        <td class="tableleft">项目地址</td>
         <td><input type="text" name="addr" value="${estate.addr }" not-null="true"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">售楼部地址</td>
+        <td><input type="text" name="shouloubu" value="${estate.shouloubu }" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">经纬度</td>
@@ -190,6 +206,18 @@ function save(){
         	<option value="0">否</option>
         	<option value="1">是</option>
         </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">公积金贷款</td>
+        <td><input type="text" name="gongjijin" value="${estate.gongjijin}"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">付款方式</td>
+        <td><input type="text" name="fukuang" value="${estate.fukuang}"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">交房日期</td>
+        <td><input value="<fmt:formatDate value="${estate.jiaofangDate}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="jiaofangDate" id="jiaofangDate" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
         <td class="tableleft">优惠方案</td>

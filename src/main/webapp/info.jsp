@@ -101,14 +101,14 @@ function order_success(){
                                                 <!-- 列表分页 -->
                         <div role="thumb" class="thumb">
                             <c:if test="${huxing_img !=null }">
-                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type==huxing">
+                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type=huxing">
                                 <img alt="" src="${upload_path}/${huxing_img }">
                                 <p class="cover-layer">户型图</p>
                                 <span class="photo-frame"></span>
                             </a>
                             </c:if>
                             <c:if test="${xiaoguo_img !=null}">
-	                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type==xiaoguo">
+	                            <a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type=xiaoguo">
 	                                <img alt="" src="${upload_path}/${xiaoguo_img }">
 	                                <p class="cover-layer">效果图</p>
 	                                <span class="photo-frame"></span>
@@ -116,7 +116,7 @@ function order_success(){
                             </c:if>
                             
                             <c:if test="${shijing_img !=null}">
-                            	<a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type==shijing">
+                            	<a role="thumbItem" class="thumb-item  " href="picList.jsp?estateId=${estate.id }&type=shijing">
 	                                <img alt="" src="${upload_path}/${shijing_img }">
 	                                <p class="cover-layer">实景图</p>
 	                                <span class="photo-frame"></span>
@@ -198,53 +198,93 @@ function order_success(){
                     </div>
                 </c:if>
                 <div class="sct screen-rd">
-                <!-- 基本信息 -->
                     <h3 class="hd">基本信息</h3>
                     <table cellspacing="0" class="table-text">
                         <tbody><tr>
-                            <th>开盘时间</th>
-                            <td>${estate.opentime }</td>
-                            <th>建筑类型</th>
-                            <td>${estate.lxing }</td>
+                            <th>参考均价</th>
+                            <td style="width:35%;">${estate.junjia}<c:if test="${estate.junjia!=null}" >元/平米</c:if></td>
+                            <th>咨询电话</th>
+                            <td>${estate.tel }</td>
                         </tr>
                         <tr>
-                            <th>建筑装修</th>
+                            <th>装修情况</th>
                             <td>${estate.zxiu }</td>
-                            <th>物业类型</th>
-                            <td>${estate.wylx }</td>
+                            <th>区域/板块</th>
+                            <td>${estate.quyu}</td>
                         </tr>
                         <tr>
-                            <th>建筑面积</th>
-                            <td>${estate.jzmj }㎡</td>
-                            <th>容积率</th>
-                            <td>${estate.rongji }%</td>
-                        </tr>
-                        <tr>
-                            <th>规划面积</th>
-                            <td>${estate.ghmj}㎡</td>
-                            <th>绿化率</th>
-                            <td>${estate.lvhua }%</td>
-                        </tr>
-                        <tr>
-                            <th>车位数</th>
-                            <td>${estate.chewei }</td>
-                            <th>规划户数</th>
-                            <td>${estate.hushu }</td>
-                        </tr>
-                        <tr>
-                            <th>物业费</th>
-                            <td>${estate.wyfee }</td>
-                            <th>楼盘特色</th>
-                            <td>${estate.tese }</td>
+                            <th>项目地址</th>
+                            <td>${estate.addr}</td>
+                            <th>售楼地址</th>
+                            <td>${estate.shouloubu}</td>
                         </tr>
                         <tr>
                             <th>开发商</th>
-                            <td>${estate.developer }</td>
-                            <th>物业公司</th>
-                            <td>${estate.wyComp }</td>
+                            <td>${estate.developer}</td>
+                            <th>代理商</th>
+                            <td>${estate.daili}</td>
+                        </tr>
+                        <tr>
+                            <th>销售许可证</th>
+                            <td>${estate.xukezheng}</td>
+                            <th>付款方式</th>
+                            <td>${estate.fukuang}</td>
+                        </tr>
+                        <tr>
+                            <th>公积金贷款</th>
+                            <td>${estate.gongjijin}</td>
+                            <th>交房时间</th>
+                            <td>${estate.jiaofangDate}</td>
                         </tr>
                     </tbody></table>
-                <!-- /基本信息 -->
+                    <h3 class="hd">建筑信息</h3>
+                    <table cellspacing="0" class="table-text">
+                        <tbody><tr>
+                            <th>土地使用年限</th>
+                            <td style="width:35%;">${estate.chanquan}<c:if test="${estate.chanquan!=null}" >年</c:if></td>
+                            <th>规划户数</th>
+                            <td>${estate.hushu}<c:if test="${estate.hushu!=null}" >户</c:if></td>
+                        </tr>
+                        <tr>
+                            <th>产证归属</th>
+                            <td>${estate.guishu }</td>
+                            <th>建筑面积</th>
+                            <td>${estate.jzmj }<c:if test="${estate.jzmj!=null}" >㎡</c:if></td>
+                        </tr>
+                        <tr>
+                            <th>规划面积</th>
+                            <td>${estate.ghmj}<c:if test="${estate.ghmj!=null}" >㎡</c:if></td>
+                            <th>公摊面积</th>
+                            <td>${estate.gongtan}<c:if test="${estate.gongtan!=null}" >%</c:if></td>
+                        </tr>
+                        <tr>
+                            <th>建筑类型</th>
+                            <td>${estate.lxing}</td>
+                            <th>项目特色</th>
+                            <td>${estate.tese }</td>
+                        </tr>
+                    </tbody></table>
+                    <h3 class="hd">物业类型</h3>
+                    <table cellspacing="0" class="table-text">
+                        <tbody><tr>
+                            <th>物业类型</th>
+                            <td style="width:35%;">${estate.wylx }</td>
+                            <th>容积率</th>
+                            <td>${estate.rongji }<c:if test="${estate.rongji!=null}" >%</c:if></td>
+                        </tr>
+                        <tr>
+                            <th>物业费</th>
+                            <td>${estate.wyfee }<c:if test="${estate.wyfee!=null}" >元/平方*月</c:if></td>
+                            <th>绿化率</th>
+                            <td>${estate.lvhua }<c:if test="${estate.lvhua!=null}" >%</c:if></td>
+                        </tr>
+                        <tr>
+                            <th>物业公司</th>
+                            <td>${estate.wyComp }</td>
+                            <th>车位数</th>
+                            <td>${estate.chewei }</td>
+                        </tr>
+                    </tbody></table>
                 </div>
                 
                 <div class="screen-sur">

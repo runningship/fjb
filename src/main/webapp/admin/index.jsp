@@ -157,6 +157,23 @@
                                       href: 'article/edit.jsp?pageName=shenming'
                                   }
                              ]
+                         },{
+                             text: '首页链接',
+                             items: [
+                                 {
+                                     id: 'home_registe',
+                                     text: '经纪人注册',
+                                     href: 'article/edit.jsp?pageName=registe'
+                                 },{
+                                     id: 'home_secondHand',
+                                     text: '不仅二手房',
+                                     href: 'article/edit.jsp?pageName=secondHand'
+                                 },{
+                                      id: 'home_yongjin',
+                                      text: '赚取佣金',
+                                      href: 'article/edit.jsp?pageName=yongjin'
+                                  }
+                             ]
                          }
                      ]
                  }

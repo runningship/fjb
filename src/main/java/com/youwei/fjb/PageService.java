@@ -273,4 +273,28 @@ public class PageService {
 		mv.jspData.put("conts", article.conts);
 		return mv;
 	}
+	
+	@WebMethod
+	public ModelAndView registe(){
+		ModelAndView mv = new ModelAndView();
+		Article article = dao.getUniqueByKeyValue(Article.class, "name", "registe");
+		mv.jspData.put("conts", article.conts);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView secondHand(){
+		ModelAndView mv = new ModelAndView();
+		Article article = dao.getUniqueByKeyValue(Article.class, "name", "secondHand");
+		mv.jspData.put("conts", article.conts);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView yongjin(){
+		ModelAndView mv = new ModelAndView();
+		Article article = dao.getUniqueByKeyValue(Article.class, "name", "yongjin");
+		mv.jspData.put("conts", article.conts);
+		return mv;
+	}
 }

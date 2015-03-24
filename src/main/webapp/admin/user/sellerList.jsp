@@ -60,8 +60,7 @@ function doSearch(){
 		var district_reg = remote_ip_info['district'];
 		$("#city_reg").citySelect({
 			prov: province_reg, 
-	    	city: city_reg,
-	    	dist: district_reg
+            required:false
 		});
 		Page.Init();
 		doSearch();

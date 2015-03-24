@@ -86,6 +86,16 @@ public class EstateService {
 		po.youhuiEndtime = estate.youhuiEndtime;
 		po.city = estate.city;
 		po.province = estate.province;
+		po.gongtan = estate.gongtan;
+		po.chanquan = estate.chanquan;
+		po.shouloubu = estate.shouloubu;
+		po.xukezheng = estate.xukezheng;
+		po.guishu = estate.guishu;
+		po.daili = estate.daili;
+		po.gongjijin = estate.gongjijin;
+		po.fukuang = estate.fukuang;
+		po.jiaofangDate = estate.jiaofangDate;
+		po.mainHuxing = estate.mainHuxing;
 		dao.saveOrUpdate(po);
 		return mv;
 	}

@@ -15,8 +15,7 @@
     $(function(){
       //一次横向滚动一个
       $('#marquee1').kxbdSuperMarquee({
-        isAuto:false,
-        distance:372,
+        distance:376,
         duration:99,
         btnGo:{left:'#goL',right:'#goR'},
         direction:'left'
@@ -65,17 +64,17 @@
                         </div>
                         </c:if>
                         <div class="l-r-step">
-                            <a href="#" class="i-p-step-1">
+                            <a href="register.jsp" class="i-p-step-1">
                                 <i><img src="images/step1.png" /></i>
                                 <strong>经纪人注册</strong>
                                 <span>一键注册、轻松操作</span>
                             </a>
-                            <a href="#" class="i-p-step-2">
+                            <a href="login.jsp" class="i-p-step-2">
                                 <i><img src="images/step2.png" /></i>
                                 <strong>不仅销售二手房</strong>
                                 <span>增加销售渠道 新房也能卖</span>
                             </a>
-                            <a href="#" class="i-p-step-3">
+                            <a href="login.jsp" class="i-p-step-3">
                                 <i><img src="images/step3.png" /></i>
                                 <strong>赚取佣金</strong>
                                 <span>推荐销售即得佣金</span>
@@ -123,12 +122,12 @@
           
           </div>
      
-    <div class="partners" style="border-left:50px;">
+    <div class="partners" style="height:300px;">
       <div class="partners-inner clearfix">
         <div class="tit"><span class="t fl">合作伙伴：</span></div>
         <div class="partners-r clearfix scroll-img"  >
           <div id="control" style="position:relative">
-            <img src="${projectName}/images/left.jpg" style="width:30px;height:50px;position: absolute;top: 13px;left: 6px;" id="goL">
+            <img src="${projectName}/images/left.jpg" style="width:30px;height:50px;position: absolute;top: 18px;left: 6px;cursor:pointer" id="goL">
             <div id="marquee1" style="position:absolute;left:36px">
               <ul>
                 <li><img src="${projectName}/images/hzhb/szjt.jpg" alt="尚泽集团" id="moveleft"  style="margin-right: 3px;width:91px;height:100px;" title="尚泽集团"></li>
@@ -144,11 +143,11 @@
                 <li><img src="${projectName}/images/hzhb/7.jpg" alt="恒大集团" id="moveright"  style="margin-right: 3px;width:91px;height:100px;" title="恒大集团"></li>
               </ul>
             </div>
-            <img src="${projectName}/images/right.jpg" style="width:30px;height:50px;position: absolute;float:right;right: -230px;bottom: -68px;" id="goR">
+            <img src="${projectName}/images/right.jpg" style="width:30px;height:50px;position: absolute;float:right;right: -230px;bottom: -68px;cursor:pointer" id="goR">
           </div>
         </div>
       </div>
-      <div style="position: relative;top: 100px;">
+      <div style="position: relative;top: 130px;">
           <div class="tit"><span class="t fl">旗下运营：</span></div>
             <div class="partners-r clearfix" style="float:left;">
               <img src="${projectName}/images/hzhb/wxah.jpg" alt="无限安徽" title="无限安徽" style="margin-right: 3px;width:90px;height:100px;" >

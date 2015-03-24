@@ -12,12 +12,12 @@ function login(){
       return;
   }
   var a=$('form[name=form1]').serialize();
-    $.ajax({
+    YW.ajax({
       type: 'POST',
       url: 'c/admin/user/login',
       data:a,
       dataType:'json',
-      success: function(data){
+      mysuccess: function(data){
           // $('#saveBtn').removeAttr('disabled');
           //art.dialog.close();
           // art.dialog.opener.doSearchAndSelectFirst();

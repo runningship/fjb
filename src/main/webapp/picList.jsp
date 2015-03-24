@@ -16,10 +16,10 @@ function filterImg(type,obj){
   };
 }
 
-// $(function () {
-//   var type = getParams('type');
-//   filterImg(type,obj);
-// });
+$(function () {
+  var type = getParam('type');
+  filterImg(type,$('#'+type+''));
+});
 
 </script>
 </head>
@@ -76,16 +76,16 @@ function filterImg(type,obj){
       <c:forEach items="${fenleiList}" var="fenlei">
             <c:choose>
               <c:when test="${fenlei.name==\"huxing\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">户型图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}" id="${fenlei.name}" onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">户型图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
               <c:when test="${fenlei.name==\"xiaoguo\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">效果图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}" id="${fenlei.name}" onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">效果图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
               <c:when test="${fenlei.name==\"guihua\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">规划图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}" id="${fenlei.name}" onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">规划图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
               <c:when test="${fenlei.name==\"shijing\" }">
-              <a tabkey="${fenlei.name}"  onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">实景图(${fenlei.total})</a><span class="sep">|</span>
+              <a tabkey="${fenlei.name}" id="${fenlei.name}" onclick="filterImg('${fenlei.name}',this);" href="#" class="tabs-item ">实景图(${fenlei.total})</a><span class="sep">|</span>
               </c:when>
             </c:choose>
         </c:forEach>

@@ -76,18 +76,6 @@ function changeQuYu(city){
     <tr>
         <td class="tableleft">区域</td>
         <td>
-        <!-- 
-            <select  class="sortSelect" name="city" onchange="changeQuYu(this.value);">
-                <c:forEach items="${citys}" var="city">
-                  <option value="${city.value}">${city.value}</option>
-                </c:forEach>
-            </select>
-        	<select  class="sortSelect" name="quyu" id="quyu">
-                <c:forEach items="${quyus}" var="quyu">
-                  <option value="${quyu.value}" city="${quyu.attr}">${quyu.value}</option>
-                </c:forEach>
-            </select>
-            -->
             <div id="city_1" style="display:inline-block;">
 		  		<select class="prov"  id="province"  name="province"></select> 
 		    	<select class="city" id="city" name="city"></select>
@@ -110,12 +98,6 @@ function changeQuYu(city){
     <tr>
         <td class="tableleft">建筑类型</td>
         <td>
-<!--         	<select  class="sortSelect" name="lxing"> -->
-<!--                 <option value="" >所有</option> -->
-<%--                 <c:forEach items="${lxings}" var="lxing"> --%>
-<%--                   <option value="${lxing.value}">${lxing.value}</option> --%>
-<%--                 </c:forEach> --%>
-<!--             </select> -->
             <c:forEach items="${lxings}" var="lxing">
               <input value="${lxing.value}" name="lxing" type="checkbox"/>${lxing.value}
             </c:forEach>
@@ -150,15 +132,19 @@ function changeQuYu(city){
     </tr>
     <tr>
         <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji"/></td>
+        <td><input type="text" name="rongji"/>%</td>
     </tr>
     <tr>
         <td class="tableleft">规划面积</td>
         <td><input type="text" name="ghmj"/>平方</td>
     </tr>
     <tr>
+        <td class="tableleft">公摊</td>
+        <td><input type="text" name="gongtan"/>%</td>
+    </tr>
+    <tr>
         <td class="tableleft">绿化率</td>
-        <td><input type="text" name="lvhua"/></td>
+        <td><input type="text" name="lvhua"/>%</td>
     </tr>
     <tr>
         <td class="tableleft">车位数</td>
@@ -181,12 +167,32 @@ function changeQuYu(city){
         <td><input type="text" name="developer"/></td>
     </tr>
     <tr>
+        <td class="tableleft">销售许可证</td>
+        <td><input type="text" name="xukezheng"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">产权土地年限</td>
+        <td><input type="text" name="chanquan"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">产权归属</td>
+        <td><input type="text" name="guishu"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">代理商</td>
+        <td><input type="text" name="daili"/></td>
+    </tr>
+    <tr>
         <td class="tableleft">物业公司</td>
         <td><input type="text" name="wyComp"/></td>
     </tr>
     <tr>
-        <td class="tableleft">楼盘地址</td>
-        <td><input type="text" name="addr"/ not-null="true"></td>
+        <td class="tableleft">项目地址</td>
+        <td><input type="text" name="addr" not-null="true"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">售楼部地址</td>
+        <td><input type="text" name="shouloubu" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">经纬度</td>
@@ -205,6 +211,18 @@ function changeQuYu(city){
         	<option value="0">否</option>
         	<option value="1">是</option>
         </select></td>
+    </tr>
+    <tr>
+        <td class="tableleft">公积金贷款</td>
+        <td><input type="text" name="gongjijin"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">付款方式</td>
+        <td><input type="text" name="fukuang"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">交房日期</td>
+        <td><input type="text" class="form-control input-sm input-left" name="jiaofangDate" id="jiaofangDate" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
         <td class="tableleft">优惠方案</td>

@@ -54,6 +54,7 @@ public class Estate {
 	//物业费
 	public String wyfee;
 	
+	//特色
 	public String tese;
 	
 	//开发商
@@ -102,4 +103,33 @@ public class Estate {
 	
 	//即将推出，文字性描述 
 	public String jjtc;
+	
+	//公摊
+	public Float gongtan;
+	
+	//产权,土地年限
+	public Integer chanquan;
+	
+	//售楼部地址
+	public String shouloubu;
+	
+	//销售许可证
+	public String xukezheng;
+	
+	//产权归属
+	public String guishu;
+	
+	//代理商
+	public String daili;
+	
+	//公积金贷款
+	public String gongjijin;
+	
+	//付款方式
+	public String fukuang;
+	
+	//交房日期
+	public Date jiaofangDate;
+	
+	public String mainHuxing;
 }

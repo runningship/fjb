@@ -39,8 +39,6 @@ function doSearch(){
         var district_reg = remote_ip_info['district'];
         $("#city_wrap").citySelect({
             prov: province_reg, 
-            city: city_reg,
-            dist: district_reg,
             required:false
         });
 		Page.Init();
@@ -70,7 +68,8 @@ function doSearch(){
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-    	<th>编号</th>
+        <th>编号</th>
+    	<th>城市</th>
         <th>区域</th>
         <th>名称</th>
         <th>建筑类型</th>
@@ -84,7 +83,8 @@ function doSearch(){
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
-    			<td>$[id]</td>
+                <td>$[id]</td>
+                <td>$[city]</td>
                 <td>$[quyu]</td>
                 <td>$[name]</td>
                 <td>$[lxing]</td>
