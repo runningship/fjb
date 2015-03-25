@@ -16,6 +16,15 @@ function filterImg(type,obj){
   };
 }
 
+function showImg(obj){
+  var url = $(obj).attr('src');
+  $('#bigImg').attr('src',url);
+  var left = ($(document).width()-$('#bigImg').width())/2 ;
+  var height = $(document).scrollTop()-(window.screen.height)/8 ;
+  $('#bigImg').attr('style','position: absolute;z-index:999;margin-top:'+height+'px;left:'+left+'px;width:50%;');
+  var a=0;
+}
+
 $(function () {
   var type = getParam('type');
   filterImg(type,$('#'+type+''));
@@ -91,11 +100,12 @@ $(function () {
         </c:forEach>
       </div>
 
+            <img src="#" onclick="$('#bigImg').attr('style','display:none;width:50%');" id="bigImg" style="display:none;width:50%"/>
       <div class="photo-list-wrap">
         <ul id="keyFilterList" class="photo-list">
           <c:forEach items="${images}" var="image">
           <li key="${image.type}" class="list-item">
-            <img alt="" src="${upload_path}/${image.path}">
+            <img alt="" onclick="showImg(this);return false;" src="${upload_path}/${image.path}">
             <c:choose>
             	<c:when test="${image.type==\"huxing\" }">
             		<p class="title">户型图</p>

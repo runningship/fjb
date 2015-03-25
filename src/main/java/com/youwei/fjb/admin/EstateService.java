@@ -96,6 +96,7 @@ public class EstateService {
 		po.fukuang = estate.fukuang;
 		po.jiaofangDate = estate.jiaofangDate;
 		po.mainHuxing = estate.mainHuxing;
+		po.jieshao = estate.jieshao;
 		dao.saveOrUpdate(po);
 		return mv;
 	}

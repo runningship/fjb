@@ -106,9 +106,9 @@
                       </a>
                        <p><strong>[${tuijian.quyu}]${tuijian.name}</strong></p>
                        <p><em>均价：¥${tuijian.junjia}/m2</em></p>
-                       <c:if test="${tuijian.yufu != null && tuijian.shidi !=null}">
-                       <p><span class="yhBg">优惠</span> <b>${tuijian.yufu}享${tuijian.shidi }</b></p>
-                       </c:if>
+                       
+                       <p><c:if test="${tuijian.yufu != null && tuijian.shidi !=null}"><span class="yhBg">优惠</span> <b>${tuijian.yufu}享${tuijian.shidi }</b></c:if>&nbsp;</p>
+                       
                     </li>
                   </c:forEach>
                     

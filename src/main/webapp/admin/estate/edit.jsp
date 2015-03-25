@@ -54,65 +54,65 @@ function save(){
 </script>
 </head>
 <body>
+<style type="text/css">
+#city_1 select{height:25px;width:120px;margin-top: 5px;margin-bottom: 5px;}
+</style>
 <form name="form1" method="post" class="definewidth m20">
 	<input type="hidden" name="id"  value="${estate.id}"/>
 <table class="table table-bordered table-hover m10">
 	
     <tr>
-        <td class="tableleft">名称</td>
+        <td class="tableleft">楼盘名称</td>
         <td><input type="text" name="name" value="${estate.name }" not-null="true"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">电话</td>
+        <td class="tableleft">售楼部地址</td>
+        <td><input type="text" name="shouloubu" value="${estate.shouloubu }" not-null="true"/></td>
+        <td class="tableleft">联系电话</td>
         <td><input type="text" name="tel" value="${estate.tel }" not-null="true"/></td>
     </tr>
     <tr>
-        <td class="tableleft">主图片<em style="color:red">*</em></td>
-        <td><input id="main_upload"  style="display:none;margin-top:5px;">
-        	<div id="main_img_container">
-        	</div>
-        </td>
+        <td class="tableleft">开发商</td>
+        <td><input type="text" name="developer" value="${estate.developer }"/></td>
+        <td class="tableleft">项目地址</td>
+        <td><input type="text" name="addr" value="${estate.addr }" not-null="true"/></td>
+        <td class="tableleft">公摊</td>
+        <td><input type="text" name="gongtan" value="${estate.gongtan }"/>%</td>
+    </tr>
+    <tr><td class="tableleft">代理商</td>
+        <td><input type="text" name="daili" value="${estate.daili }"/></td>
+        <td class="tableleft">销售许可证</td>
+        <td><input type="text" name="xukezheng" value="${estate.xukezheng }"/></td>
+        <td class="tableleft">容积率</td>
+        <td><input type="text" name="rongji" value="${estate.rongji }"/>%</td>
     </tr>
     <tr>
-        <td class="tableleft">区域</td>
-        <td>
-            <div id="city_1" style="display:inline-block;">
-		  		<select class="prov"  id="province" name="province"></select> 
-		    	<select class="city" id="city" name="city"></select>
-		    	<select class="dist" id="dist"  name="quyu"></select>
-		    </div>
-        </td>
-    </tr>
-    <tr>
-        <td class="tableleft">均价</td>
-        <td><input type="text" name="junjia" value="${estate.junjia }"/>元/平方</td>
-    </tr>
-    <tr>
-        <td class="tableleft">特惠价</td>
-        <td><input type="text" name="tejia" value="${estate.tejia }"/>元/平方</td>
+        <td class="tableleft">物业公司</td>
+        <td><input type="text" name="wyComp" value="${estate.wyComp }"/></td>
+        <td class="tableleft">物业费</td>
+        <td><input type="text" name="wyfee" value="${estate.wyfee }"/>元/平方*月</td>
+        <td class="tableleft">绿化率</td>
+        <td><input type="text" name="lvhua" value="${estate.lvhua }"/>%</td>
     </tr>
     <tr id="tr_conts" >
-    	<td class="tableleft">开盘时间</td>
-    	<td><input type="text" value="<fmt:formatDate value="${estate.opentime}" pattern="yyyy-MM-dd"/>" class="form-control input-sm input-left" name="opentime" id="opentime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
+        <td class="tableleft">开盘时间</td>
+        <td><input type="text" value="<fmt:formatDate value="${estate.opentime}" pattern="yyyy-MM-dd"/>" class="form-control input-sm input-left" name="opentime" id="opentime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
+        <td class="tableleft">交房日期</td>
+        <td><input value="<fmt:formatDate value="${estate.jiaofangDate}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="jiaofangDate" id="jiaofangDate" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
+        <td class="tableleft">付款方式</td>
+        <td><input type="text" name="fukuang" value="${estate.fukuang }"/></td>
     </tr>
     <tr>
-        <td class="tableleft">建筑类型</td>
-        <td>
-            <c:forEach items="${lxings}" var="lxing">
-              <input <c:if test="${fn:contains(estate.lxing, lxing.value)}">checked="checked"</c:if> value="${lxing.value}" name="lxing" type="checkbox"/>${lxing.value}
-            </c:forEach>
-       </td>
+        <td class="tableleft">产权归属</td>
+        <td><input type="text" name="guishu" value="${estate.guishu }"/></td>
+        <td class="tableleft">产权土地年限</td>
+        <td><input type="text" name="chanquan" value="${estate.chanquan }"/></td>
+        <td class="tableleft">公积金贷款</td>
+        <td><input type="text" name="gongjijin" value="${estate.gongjijin }" placeholder="例如：市直公积金或省直公积金"/></td>
     </tr>
     <tr>
-    
-        <td class="tableleft">物业类型</td>
-        <td>
-            <c:forEach items="${wylxs}" var="wylx">
-               <input  <c:if test="${fn:contains(estate.wylx, wylx.value)}">checked="checked"</c:if> value="${wylx.value}"  name="wylx" type="checkbox"/>${wylx.value}
-             </c:forEach>
-            </td>
-    </tr>
-    <tr>
+        <td class="tableleft">建筑面积</td>
+        <td><input type="text" name="jzmj" value="${estate.jzmj }"/>平方</td>
+        <td class="tableleft">规划面积</td>
+        <td><input type="text" name="ghmj" value="${estate.ghmj }"/>平方</td>
         <td class="tableleft">装修</td>
         <td><select  class="sortSelect" name="zxiu">
                 <option value="" >所有</option>
@@ -122,132 +122,97 @@ function save(){
             </select></td>
     </tr>
     <tr>
-        <td class="tableleft">建筑面积</td>
-        <td><input type="text" name="jzmj"  value="${estate.jzmj }" />平方</td>
-    </tr>
-    <tr>
-        <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji" value="${estate.rongji }"/>%</td>
-    </tr>
-    <tr>
-        <td class="tableleft">规划面积</td>
-        <td><input type="text" name="ghmj" value="${estate.ghmj }"/>平方</td>
-    </tr>
-    <tr>
-        <td class="tableleft">公摊</td>
-        <td><input type="text" name="gongtan" value="${estate.gongtan }"/>%</td>
-    </tr>
-    <tr>
-        <td class="tableleft">绿化率</td>
-        <td><input type="text" name="lvhua" value="${estate.lvhua }"/>%</td>
-    </tr>
-    <tr>
+        <td class="tableleft">规划户数</td>
+        <td><input type="text" name="hushu" value="${estate.hushu }"/></td>
         <td class="tableleft">车位数</td>
         <td><input type="text" name="chewei" value="${estate.chewei }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">规划户数</td>
-        <td><input type="text" name="hushu"  value="${estate.hushu }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">物业费</td>
-        <td><input type="text" name="wyfee" value="${estate.wyfee }"/>元/平方*月</td>
-    </tr>
-    <tr>
         <td class="tableleft">楼盘特色</td>
-        <td><textarea name="tese"  >${estate.tese }</textarea></td>
+        <td><textarea name="tese" value="${estate.tese }" style="width:99%"></textarea></td>
     </tr>
     <tr>
-        <td class="tableleft">开发商</td>
-        <td><input type="text" name="developer" value="${estate.developer }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">销售许可证</td>
-        <td><input type="text" name="xukezheng" value="${estate.xukezheng }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">产权土地年限</td>
-        <td><input type="text" name="chanquan" value="${estate.chanquan }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">产权归属</td>
-        <td><input type="text" name="guishu" value="${estate.guishu}"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">代理商</td>
-        <td><input type="text" name="daili" value="${estate.daili}"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">物业公司</td>
-        <td><input type="text" name="wyComp" value="${estate.wyComp }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">项目地址</td>
-        <td><input type="text" name="addr" value="${estate.addr }" not-null="true"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">售楼部地址</td>
-        <td><input type="text" name="shouloubu" value="${estate.shouloubu }" not-null="true"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">经纬度</td>
-        <td><input type="text" name="jingdu" placeholder="经度" value="${estate.jingdu}" />  /  <input type="text" name="weidu" placeholder="纬度" value="${estate.weidu}" /></td>
+        <td class="tableleft">参考均价</td>
+        <td><input type="text" name="junjia" value="${estate.ghmj }"/>元/平方</td>
+        <td class="tableleft">特惠价</td>
+        <td><input type="text" name="tejia" value="${estate.ghmj }">元/平方</td>
+        <td class="tableleft">优惠截止时间</td>
+        <td colspan="5"><input value="<fmt:formatDate value="${estate.youhuiEndtime}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>
     <tr>
         <td class="tableleft">推荐</td>
         <td><select name="tuijian" id="tuijian">
-	        <option value="0">否</option>
-        	<option value="1">是</option>
+            <option value="0">否</option>
+            <option value="1">是</option>
         </select></td>
-    </tr>
-    <tr>
         <td class="tableleft">特惠</td>
         <td><select name="tehui"  id="tehui">
-        	<option value="0">否</option>
-        	<option value="1">是</option>
+            <option value="0">否</option>
+            <option value="1">是</option>
         </select></td>
-    </tr>
-    <tr>
-        <td class="tableleft">公积金贷款</td>
-        <td><input type="text" name="gongjijin" value="${estate.gongjijin}"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">付款方式</td>
-        <td><input type="text" name="fukuang" value="${estate.fukuang}"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">交房日期</td>
-        <td><input value="<fmt:formatDate value="${estate.jiaofangDate}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="jiaofangDate" id="jiaofangDate" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
-    </tr>
-    <tr>
-        <td class="tableleft">优惠方案</td>
-        <td><input type="text" name="yufu" value="${estate.yufu }"/>抵<input type="text" name="shidi" value="${estate.shidi }"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">优惠截止时间</td>
-        <td><input value="<fmt:formatDate value="${estate.youhuiEndtime}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
-    </tr>
-    <tr>
         <td class="tableleft">即将推出</td>
-        <td><input type="text" name="jjtc" value="${estate.jjtc}" style="width:99%;"/></td>
+        <td><input type="text" name="jjtc" value="${estate.jjtc }" style="width:99%;" /></td>
+    </tr>
+    <tr>
+        <td class="tableleft">经纬度</td>
+        <td><input type="text" name="jingdu" placeholder="经度" value="${estate.jingdu }" style="width:45%"/>  /  <input type="text" name="weidu" placeholder="纬度" value="${estate.weidu }" style="width:45%"/></td>
+        <td class="tableleft">优惠方案</td>
+        <td><input type="text" name="yufu" value="${estate.yufu }" style="width:45%"/>抵<input type="text" name="shidi" value="${estate.shidi }" style="width:45%"/></td>
+        <td class="tableleft">主力户型</td>
+        <td><input type="text" name="mainHuxing" value="${estate.mainHuxing }"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">区域</td>
+        <td colspan="5">
+            <div id="city_1" style="display:inline-block;">
+                <select class="prov"  id="province"  name="province"></select> 
+                <select class="city" id="city" name="city"></select>
+                <select class="dist" id="dist"  name="quyu"></select>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableleft">项目介绍</td>
+        <td colspan="5"><input type="text" name="jieshao" value="${estate.jieshao }" style="width:99%;" /></td>
+    </tr>
+    <tr>
+        <td class="tableleft">建筑类型</td>
+        <td colspan="5">
+            <c:forEach items="${lxings}" var="lxing">
+              <input <c:if test="${fn:contains(estate.lxing, lxing.value)}">checked="checked"</c:if> value="${lxing.value}" name="lxing" type="checkbox"/>${lxing.value}
+            </c:forEach>
+       </td>
+    </tr>
+    <tr>
+        <td class="tableleft">物业类型</td>
+        <td colspan="5">
+            <c:forEach items="${wylxs}" var="wylx">
+               <input  <c:if test="${fn:contains(estate.wylx, wylx.value)}">checked="checked"</c:if> value="${wylx.value}"  name="wylx" type="checkbox"/>${wylx.value}
+             </c:forEach>
+            </td>
+    </tr>
+    <tr>
+        <td class="tableleft">主图片<em style="color:red">*</em></td>
+        <td colspan="5"><input id="main_upload"  style="display:none;margin-top:5px;">
+            <div id="main_img_container">
+            </div>
+        </td>
     </tr>
     <tr>
         <td class="tableleft">规划图</td>
-        <td><input id="guihua_upload"  style="display:none;margin-top:5px;">
+        <td colspan="5"><input id="guihua_upload"  style="display:none;margin-top:5px;">
         	<div id="guihua_img_container">
         	</div>
         </td>
     </tr>
      <tr>
         <td class="tableleft">效果图</td>
-        <td><input id="xiaoguo_upload"  style="display:none;margin-top:5px;">
+        <td colspan="5"><input id="xiaoguo_upload"  style="display:none;margin-top:5px;">
         	<div id="xiaoguo_img_container">
         	</div>
         </td>
     </tr>
     <tr>
         <td class="tableleft">实景图</td>
-        <td><input id="shijing_upload"  style="display:none;margin-top:5px;">
+        <td colspan="5"><input id="shijing_upload"  style="display:none;margin-top:5px;">
         	<div id="shijing_img_container">
         	</div>
         </td>

@@ -70,14 +70,14 @@ function doSearch(){
     <tr>
         <th>编号</th>
     	<th>城市</th>
-        <th>区域</th>
+        <th style="width:60px;">区域</th>
         <th>名称</th>
         <th>建筑类型</th>
         <th>规划面积</th>
-        <th>地址</th>
+        <th style="width:400px;">项目地址</th>
         <th>户数</th>
         <th>均价</th>
-        <th>开盘</th>
+        <th style="width:100px;">开盘时间</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -85,14 +85,14 @@ function doSearch(){
     	<tr style="display:none" class="repeat">
                 <td>$[id]</td>
                 <td>$[city]</td>
-                <td>$[quyu]</td>
+                <td style="width:60px;">$[quyu]</td>
                 <td>$[name]</td>
                 <td>$[lxing]</td>
                 <td>$[ghmj]</td>
-                <td>$[addr]</td>
+                <td style="width:400px;">$[addr]</td>
                 <td>$[hushu]</td>
                 <td>$[junjia]</td>
-                <td>$[opentime]</td>
+                <td style="width:100px;">$[opentime]</td>
                 <td><a onclick="addTab('house_list','房源信息','house/list.jsp?estateId=$[id]')" href="#">房源</a>
                     <a onclick="addTab('huxing_list','户型','huxing/list.jsp?estateId=$[id]')" href="#">户型</a>
                     <a href="edit.jsp?id=$[id]">编辑</a>

@@ -207,6 +207,12 @@ function order_success(){
                             <td>${estate.tel }</td>
                         </tr>
                         <tr>
+                            <th>主力户型</th>
+                            <td style="width:35%;">${estate.mainHuxing}</td>
+                            <th>规划户数</th>
+                            <td>${estate.hushu}<c:if test="${estate.hushu!=null}" >户</c:if></td>
+                        </tr>
+                        <tr>
                             <th>装修情况</th>
                             <td>${estate.zxiu }</td>
                             <th>区域/板块</th>
@@ -283,6 +289,13 @@ function order_success(){
                             <td>${estate.wyComp }</td>
                             <th>车位数</th>
                             <td>${estate.chewei }</td>
+                        </tr>
+                    </tbody></table>
+                    <h3 class="hd">楼盘介绍</h3>
+                    <table cellspacing="0" class="table-text">
+                        <tbody><tr>
+                            <th>项目介绍</th>
+                            <td style="width:89%;">${estate.jieshao}</td>
                         </tr>
                     </tbody></table>
                 </div>

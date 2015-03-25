@@ -131,5 +131,9 @@ public class Estate {
 	//交房日期
 	public Date jiaofangDate;
 	
+	//主力户型
 	public String mainHuxing;
+	
+	public String jieshao;
+	
 }
