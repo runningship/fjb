@@ -67,7 +67,7 @@ function changeQuYu(city){
         <td class="tableleft">售楼部地址</td>
         <td><input type="text" name="shouloubu" not-null="true"/></td>
         <td class="tableleft">联系电话</td>
-        <td><input type="text" name="tel" not-null="true"/></td>
+        <td><input type="text" name="tel" not-null="true" style="width:90%;"/></td>
     </tr>
     <tr>
         <td class="tableleft">开发商</td>
@@ -75,14 +75,14 @@ function changeQuYu(city){
         <td class="tableleft">项目地址</td>
         <td><input type="text" name="addr" not-null="true"/></td>
         <td class="tableleft">公摊</td>
-        <td><input type="text" name="gongtan"/>%</td>
+        <td><input type="text" name="gongtan" style="width:90%;"/>%</td>
     </tr>
     <tr><td class="tableleft">代理商</td>
         <td><input type="text" name="daili"/></td>
         <td class="tableleft">销售许可证</td>
         <td><input type="text" name="xukezheng"/></td>
         <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji"/>%</td>
+        <td><input type="text" name="rongji" style="width:90%;"/>%</td>
     </tr>
     <tr>
         <td class="tableleft">物业公司</td>
@@ -90,7 +90,7 @@ function changeQuYu(city){
         <td class="tableleft">物业费</td>
         <td><input type="text" name="wyfee"/>元/平方*月</td>
         <td class="tableleft">绿化率</td>
-        <td><input type="text" name="lvhua"/>%</td>
+        <td><input type="text" name="lvhua" style="width:90%;"/>%</td>
     </tr>
     <tr id="tr_conts" >
         <td class="tableleft">开盘时间</td>
@@ -127,7 +127,7 @@ function changeQuYu(city){
         <td class="tableleft">车位数</td>
         <td><input type="text" name="chewei"/></td>
         <td class="tableleft">楼盘特色</td>
-        <td><textarea name="tese" style="width:99%"></textarea></td>
+        <td><textarea name="tese" style="width:90%"></textarea></td>
     </tr>
     <tr>
         <td class="tableleft">参考均价</td>
@@ -149,7 +149,7 @@ function changeQuYu(city){
             <option value="1">是</option>
         </select></td>
         <td class="tableleft">即将推出</td>
-        <td colspan="5"><input type="text" name="jjtc" style="width:99%;" /></td>
+        <td colspan="5"><input type="text" name="jjtc" style="width:90%;" /></td>
     </tr>
     <tr>
         <td class="tableleft">经纬度</td>
@@ -171,7 +171,7 @@ function changeQuYu(city){
     </tr>
     <tr>
         <td class="tableleft">项目介绍</td>
-        <td colspan="5"><input type="text" name="jieshao" style="width:99%;" /></td>
+        <td colspan="5"><input type="text" name="jieshao" style="width:90%;" /></td>
     </tr>
     <tr>
         <td class="tableleft">建筑类型</td>

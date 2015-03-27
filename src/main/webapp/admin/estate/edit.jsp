@@ -67,7 +67,7 @@ function save(){
         <td class="tableleft">售楼部地址</td>
         <td><input type="text" name="shouloubu" value="${estate.shouloubu }" not-null="true"/></td>
         <td class="tableleft">联系电话</td>
-        <td><input type="text" name="tel" value="${estate.tel }" not-null="true"/></td>
+        <td><input type="text" name="tel" value="${estate.tel }" style="width:90%;" not-null="true"/></td>
     </tr>
     <tr>
         <td class="tableleft">开发商</td>
@@ -75,14 +75,14 @@ function save(){
         <td class="tableleft">项目地址</td>
         <td><input type="text" name="addr" value="${estate.addr }" not-null="true"/></td>
         <td class="tableleft">公摊</td>
-        <td><input type="text" name="gongtan" value="${estate.gongtan }"/>%</td>
+        <td><input type="text" name="gongtan" value="${estate.gongtan }" style="width:90%;"/>%</td>
     </tr>
     <tr><td class="tableleft">代理商</td>
         <td><input type="text" name="daili" value="${estate.daili }"/></td>
         <td class="tableleft">销售许可证</td>
         <td><input type="text" name="xukezheng" value="${estate.xukezheng }"/></td>
         <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji" value="${estate.rongji }"/>%</td>
+        <td><input type="text" name="rongji" value="${estate.rongji }" style="width:90%;"/>%</td>
     </tr>
     <tr>
         <td class="tableleft">物业公司</td>
@@ -90,7 +90,7 @@ function save(){
         <td class="tableleft">物业费</td>
         <td><input type="text" name="wyfee" value="${estate.wyfee }"/>元/平方*月</td>
         <td class="tableleft">绿化率</td>
-        <td><input type="text" name="lvhua" value="${estate.lvhua }"/>%</td>
+        <td><input type="text" name="lvhua" value="${estate.lvhua }" style="width:90%;"/>%</td>
     </tr>
     <tr id="tr_conts" >
         <td class="tableleft">开盘时间</td>

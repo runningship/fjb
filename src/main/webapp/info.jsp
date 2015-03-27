@@ -76,7 +76,7 @@ function order_success(){
                             <div class="bd">
 
                                 <p class="price"><em>${estate.junjia }</em>元/平米</p> 
-                                
+                                <p style="margin-top:-20px;margin-bottom:20px;color:grey;font-size:15px;">咨询电话：<em style="color:red;font-size:22px;">${estate.tel}</em></p>
                                 
                                 <a class="btn-main " onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${estate.id}');" id="booking" href="javascript:;">预约看房</a>
 
