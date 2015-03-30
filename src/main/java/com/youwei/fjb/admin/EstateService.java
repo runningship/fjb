@@ -151,6 +151,8 @@ public class EstateService {
 			hql.append(" and city like ?");
 			params.add("%"+city+"%");
 		}
+		page.order = "desc";
+		page.orderBy="id";
 		page = dao.findPage(page, hql.toString(), params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;

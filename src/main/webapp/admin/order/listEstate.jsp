@@ -51,18 +51,18 @@ $(function () {
 
 </script>
 <style type="text/css">
-#city_reg select{height:30px;width:120px;}
-#adminName select{height:30px;width:120px;}
+#city_reg select{height:22px;width:90px;}
+#adminName select{height:30px;width:90px;}
 #adminName label{height:30px;width:90px;}
 </style>
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    客户姓名<input type="text" name="buyerName" style="width:100px;margin-right:10px;height:25px;"/>
-    客户电话<input type="text" name="buyerTel" style="width:120px;margin-right:10px;height:25px;"/>
-    楼盘名称<input type="text" name="estateName" style="width:100px;margin-right:10px;height:25px;"/>
-    经纪人姓名<input type="text" name="sellerName" style="width:100px;margin-right:10px;height:25px;"/>
-               <div id="city_reg" style="display:inline-block;">
+    客户姓名<input type="text" name="buyerName" style="width:100px;margin-right:10px;"/>
+    客户电话<input type="text" name="buyerTel" style="width:120px;margin-right:10px;height:18px;"/>
+    楼盘名称<input type="text" name="estateName" style="width:100px;margin-right:10px;height:18px;"/>
+    经纪人姓名<input type="text" name="sellerName" style="width:100px;margin-right:10px;height:18px;"/>
+               <div id="city_reg" style="display:inline-block;display: inline;">
 <!--                        <span style="font-size:14px; width:50px;pading-right:20px;">区域 </span> -->
                     <select class="prov"  id="province_reg"  name="province"></select> 
                     <select class="city" name="city"></select>

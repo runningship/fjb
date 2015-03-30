@@ -75,10 +75,15 @@ function order_success(){
                             </h2>
                             <div class="bd">
 
-                                <p class="price"><em>${estate.junjia }</em>元/平米</p> 
-                                <p style="margin-top:-20px;margin-bottom:20px;color:grey;font-size:15px;">咨询电话：<em style="color:red;font-size:22px;">${estate.tel}</em></p>
+                                <p class="price"><span>平均价格：</span><em>${estate.junjia }</em>元/平米 
+                                	<c:if test="${estate.yufu != null && estate.shidi !=null}"></c:if>
+                                </p>
+                                <p class="yh_price">
+                                	<c:if test="${estate.yufu != null && estate.shidi !=null}"><span>独家优惠：</span><em>${estate.yufu}</em><span>享</span><em>${estate.shidi }</em></c:if>
+                                </p>
+                                <p style="margin-bottom:23px;color:grey;font-size:15px;"><em style="color:red;font-size:22px;"></em><img src="images/tel_400.jpg" /></p>
                                 
-                                <a class="btn-main " onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${estate.id}');" id="booking" href="javascript:;">预约看房</a>
+                                <a class="btn-main " onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=${estate.id}', '400px');" id="booking" href="javascript:;">预约看房</a>
 
                                 <a class="btn-sub  " href="#online-choose-room">在线选房 (${leftCount})</a>
 
@@ -176,7 +181,7 @@ function order_success(){
                                             <c:if test="${seller!=null}"><th>$[yongjin]</th></c:if>
                                             <td title="折扣">$[yufu]抵$[shidi]</td>
                                             <td title="折后总价">$[totalPrice]</td>
-                                            <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
+                                            <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]' ,'400px');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
                                             </td>
                                      </tr>
     

@@ -161,10 +161,12 @@ function layerShowBox(id){
    
    
    
-   	 function openNewWin(id,tit,s){
+   	 function openNewWin(id,tit,s , h){
 		 
-			 
-			 var htmlText = '<div class="maskLayer"></div><div class="cocoLayer" id=' + id + ' style="width:600px; height:520px; display:block;"><div class="cocoLayerTit" ><span>'+ tit +'</span><i class="closeBg close" onclick="LayerRemoveBox(\''+id+'\')" title="关闭">×</i></div><iframe frameborder="0" src="'+s+'" style="width:100%;border:0px;height:480px;"></iframe></div>';
+			 if(!h){
+				 h="480px";
+			 }
+			 var htmlText = '<div class="maskLayer"></div><div class="cocoLayer" id=' + id + ' style="width:600px; height:'+h+'; display:block;"><div class="cocoLayerTit" ><span>'+ tit +'</span><i class="closeBg close" onclick="LayerRemoveBox(\''+id+'\')" title="关闭">×</i></div><iframe frameborder="0" src="'+s+'" style="width:100%;border:0px;height:'+h+';"></iframe></div>';
 			 
 			 $("body").append(htmlText);
 			 

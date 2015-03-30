@@ -60,6 +60,7 @@ public class OrderService {
 		mv.jspData.put("house", house);
 		List<String> statusList = new ArrayList<String>();
 		statusList.add(FjbConstant.HouseOrderAccepted);
+		statusList.add(FjbConstant.HouseOrderDaiKan);
 		statusList.add(FjbConstant.HouseOrderNotAccept);
 		statusList.add(FjbConstant.HouseOrderDeal);
 		statusList.add(FjbConstant.HouseOrderCancel);

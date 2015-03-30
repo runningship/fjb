@@ -67,22 +67,22 @@ function doSearch(){
 	});
 </script>
 <style type="text/css">
-#city_reg select{height:30px;width:120px;}
-#adminName select{height:30px;width:120px;}
-#adminName label{height:30px;width:90px;}
+#city_reg select{height:22px;width:90px;}
+#adminName select{height:30px;width:90px;}
+#adminName span{height:30px;width:90px;}
 </style>
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-               <div id="city_reg" style="display:inline-block;">
+               <div id="city_reg" style="display:inline-block;display: inline;">
 <!--                		<span style="font-size:14px; width:50px;pading-right:20px;">区域 </span> -->
 			  		<select class="prov"  id="province_reg"  name="province"></select> 
 			    	<select class="city" name="city"></select>
 			    	<select class="dist"  name="quyu"></select>
 		    	</div>
-      <div style="display:inline-block;margin-left:20px;" id="adminName">
-        <label>经纪服务人员</label>
-        <select>
+      <div style="display:inline-block;margin-left:20px;display: inline;" id="adminName">
+        <span>经纪服务人员</span>
+        <select style="height:22px;">
           <option name="adminName" value="">所有</option>
         <c:forEach items="${admins}" var="admin">
           <option name="adminId" <c:if test="${admin.name==seller.adminName}"> select="selected" </c:if> value="${admin.id}"> ${admin.name}</option>

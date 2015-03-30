@@ -127,7 +127,7 @@ function changeQuYu(city){
         <td class="tableleft">车位数</td>
         <td><input type="text" name="chewei"/></td>
         <td class="tableleft">楼盘特色</td>
-        <td><textarea name="tese" style="width:90%"></textarea></td>
+        <td><textarea name="tese" style="width:90%;height:100%"></textarea></td>
     </tr>
     <tr>
         <td class="tableleft">参考均价</td>
@@ -171,7 +171,7 @@ function changeQuYu(city){
     </tr>
     <tr>
         <td class="tableleft">项目介绍</td>
-        <td colspan="5"><input type="text" name="jieshao" style="width:90%;" /></td>
+        <td colspan="5"><textarea name="jieshao" style="width:90%;height:100%" ></textarea></td>
     </tr>
     <tr>
         <td class="tableleft">建筑类型</td>

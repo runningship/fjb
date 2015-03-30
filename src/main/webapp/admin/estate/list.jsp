@@ -50,13 +50,13 @@ function doSearch(){
 	
 </script>
 <style type="text/css">
-#city_wrap select{height:30px;width:120px;margin-top: 5px;margin-bottom: 5px;}
+#city_wrap select{height:22px;width:90px;margin-top: 5px;margin-bottom: 5px;}
 </style>
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    楼盘名称：<input style="height:26px;width:200px;margin-right:10px;margin-top: 2px;" type="text" name="name"/>
-               <div id="city_wrap" style="display:inline-block;">
+    楼盘名称：<input style="height:18px;width:200px;margin-right:10px;" type="text" name="name"/>
+               <div id="city_wrap" style="display:inline-block;display: inline;">
 <!--                        <span style="font-size:14px; width:50px;pading-right:20px;">区域 </span> -->
                     <select class="prov"  id="province"  name="province"></select> 
                     <select class="city"  id="city" name="city"></select>
@@ -68,16 +68,16 @@ function doSearch(){
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th>编号</th>
-    	<th>城市</th>
+        <th width=30px>编号</th>
+    	<th width=30px>城市</th>
         <th style="width:60px;">区域</th>
         <th>名称</th>
-        <th>建筑类型</th>
-        <th>规划面积</th>
-        <th style="width:400px;">项目地址</th>
+        <th width=60px>建筑类型</th>
+        <th width=55px>规划面积</th>
+        <th style="width:200px;">项目地址</th>
         <th>户数</th>
         <th>均价</th>
-        <th style="width:100px;">开盘时间</th>
+        <th style="width:70px;">开盘时间</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -89,10 +89,10 @@ function doSearch(){
                 <td>$[name]</td>
                 <td>$[lxing]</td>
                 <td>$[ghmj]</td>
-                <td style="width:400px;">$[addr]</td>
+                <td style="width:200px;">$[addr]</td>
                 <td>$[hushu]</td>
                 <td>$[junjia]</td>
-                <td style="width:100px;">$[opentime]</td>
+                <td style="width:70px;">$[opentime]</td>
                 <td><a onclick="addTab('house_list','房源信息','house/list.jsp?estateId=$[id]')" href="#">房源</a>
                     <a onclick="addTab('huxing_list','户型','huxing/list.jsp?estateId=$[id]')" href="#">户型</a>
                     <a href="edit.jsp?id=$[id]">编辑</a>

@@ -127,7 +127,7 @@ function save(){
         <td class="tableleft">车位数</td>
         <td><input type="text" name="chewei" value="${estate.chewei }"/></td>
         <td class="tableleft">楼盘特色</td>
-        <td><textarea name="tese" value="${estate.tese }" style="width:99%"></textarea></td>
+        <td><textarea name="tese" value="${estate.tese }" style="width:99%;height:100%"></textarea></td>
     </tr>
     <tr>
         <td class="tableleft">参考均价</td>
@@ -171,7 +171,7 @@ function save(){
     </tr>
     <tr>
         <td class="tableleft">项目介绍</td>
-        <td colspan="5"><input type="text" name="jieshao" value="${estate.jieshao }" style="width:99%;" /></td>
+        <td colspan="5"><textarea name="jieshao" value="${estate.jieshao }" style="width:99%;height:100%" ></textarea></td>
     </tr>
     <tr>
         <td class="tableleft">建筑类型</td>

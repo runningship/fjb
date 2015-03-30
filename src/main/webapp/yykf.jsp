@@ -56,6 +56,7 @@ $(function(){
         <input type="text" placeholder="请输入姓名" name="buyerName" autocomplete="off" class="int int-num">
         <div name="tip" class="tips"><i class="icon-error"></i><span></span></div>
       </div>
+      <!-- 
       <div class="form-field">
         <label>验证码</label>
         <input type="text" placeholder="请输入图片验证码" name="yzm" class="int int-code"><a class="btn-link">
@@ -63,7 +64,7 @@ $(function(){
         </a>
         <div name="tip" class="tips"><i class="icon-error"></i><span></span></div>
       </div>
-      
+       -->
       <div class="btn-wrap">
         <button data-house-id="10" data-url="/fang/house/ajax-subscribe-house-see?houseId=3796" onclick="save();" class="btn-active" name="confirm" type="button">立即预约</button>
       </div>

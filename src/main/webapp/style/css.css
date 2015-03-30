@@ -278,7 +278,7 @@ select.sortSelect {
     border-radius: 2px;
     color: #fff;
     font: 400 16px "Microsoft Yahei";
-    padding: 10px 25px;
+    padding: 10px 21px;
     transition: all 0.15s ease 0s;
 }
 
@@ -698,14 +698,33 @@ select.sortSelect {
 .main-info .photos-text .price {
     color: #515151;
     font: 400 20px "Microsoft Yahei";
-    margin-bottom: 45px;
+    margin-bottom: 5px;
 	border-bottom:1px dashed #cccccc;
 	padding-bottom:20px;
 }
 
+.main-info .photos-text .yh_price {
+    color: #515151;
+    font: 400 20px "Microsoft Yahei";
+    margin-bottom: 5px;
+	border-bottom:1px dashed #cccccc;
+	padding-bottom:20px;
+}
 .main-info .photos-text .price em {
     color: #ef4923;
-    font: 400 46px "Microsoft Yahei";
+    font: 400 22px "Microsoft Yahei";
+}
+.main-info .photos-text .price span {
+    color: grey;
+    font: 200 15px "Microsoft Yahei";
+}
+.main-info .photos-text .yh_price em {
+    color: #ef4923;
+    font: 200 32px "Microsoft Yahei";
+}
+.main-info .photos-text .yh_price span {
+    color: grey;
+    font: 200 15px "Microsoft Yahei";
 }
 
 .main-info .photos-text p.tips-info {

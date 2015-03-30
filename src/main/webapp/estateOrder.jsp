@@ -88,8 +88,8 @@ function delOrder(id){
 						    <td align="center" valign="middle" height="30">$[addtime]</td>
 						    <td align="center" valign="middle" height="30">$[status]</td>
 						    <td align="center" valign="middle" height="30">
-						    	<a href="javascript:" onclick="openNewWin('bookroom','预约信息反馈','xxfk.jsp?orderId=$[id]');">查看</a>
-						    	<a href="javascript:" onclick="delOrder($[id])">删除</a>
+						    	<a href="javascript:" show="'$[status]'!='已带看'" onclick="openNewWin('bookroom','预约信息反馈','xxfk.jsp?orderId=$[id]');">查看</a>
+						    	<a href="javascript:" show="'$[status]'!='已带看'" onclick="delOrder($[id])">删除</a>
 						    </td>
 						  </tr>
 						</table>
