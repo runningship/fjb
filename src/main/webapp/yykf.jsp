@@ -46,14 +46,14 @@ $(function(){
         <p class="title-main">预约&nbsp;<span>${estate.name } <c:if test="${house !=null }">${house.dhao }栋 ${house.unit }单元 ${house.fhao }室</c:if></span></p>
         <p class="title-sub">请填写您的姓名和手机号，以便经纪人联系您看房</p>
       </div>
-      <div class="form-field">
+      <div class="form-field" style="border:none">
         <label>手机号</label>
-        <input type="text" placeholder="请输入手机号" name="buyerTel" class="int int-num">
+        <input type="text" placeholder="请输入手机号" name="buyerTel" class="int int-num" style="border:1px solid #c3c3c3" />
         <div name="tip" class="tips"><i class="icon-error"></i><span></span></div>
       </div>
-      <div class="form-field">
+      <div class="form-field" style="border:none">
         <label>姓&#12288;名</label>
-        <input type="text" placeholder="请输入姓名" name="buyerName" autocomplete="off" class="int int-num">
+        <input type="text" placeholder="请输入姓名" name="buyerName" autocomplete="off" class="int int-num" style="border:1px solid #c3c3c3" />
         <div name="tip" class="tips"><i class="icon-error"></i><span></span></div>
       </div>
       <!-- 

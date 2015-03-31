@@ -30,7 +30,7 @@ public class Estate {
 	public String zxiu;
 	
 	//均价,房金宝的价格
-	public Float junjia;
+	public String junjia;
 	//物业类型
 	public String wylx;
 	
@@ -72,7 +72,7 @@ public class Estate {
 //	public Float yongjin;
 	
 	//特惠价
-	public Float tejia;
+	public String tejia;
 	
 	//预付
 	public Integer yufu;

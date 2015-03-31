@@ -88,8 +88,8 @@ $(function(){
                      <li>
                         <a target="_blank" href="info.jsp?estateId=${house.id}"><img width="180" height="120" src="${upload_path}/${house.img}"></a>
                         <span class="f_name"><a target="_blank" href="#">[${house.quyu}]${house.name}</a></span>
-                        <span class="f_sale">${house.yufu}享${house.shidi }</span>
-                        <span class="f_price"><em>${house.junjia}元/㎡</em>
+                        <span class="f_sale">${house.yufu}<c:if test="${house.yufu != null && house.shidi !=null}">享</c:if>${house.shidi }</span>
+                        <span class="f_price"><em>${house.junjia}<c:if test="${house.junjia != null}">元/㎡</c:if></em>
                         <a target="_blank" href="info.jsp?estateId=${house.id}">
                         <button class="button_tao" title="了解更多" type="submit">了解更多</button></a></span>
                      </li>   

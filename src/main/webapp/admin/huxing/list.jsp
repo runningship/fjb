@@ -26,8 +26,9 @@ function doSearch(){
 		        url: '${projectName}/c/admin/huxing/delete?id='+id,
 		        data:'',
 		        mysuccess: function(data){
-                    doSearch();
+                    //doSearch();
 		            alert('删除成功');
+		            window.location.reload();
 		        }
 		      });
 		  },function(){},'warning');

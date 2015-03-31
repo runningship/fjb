@@ -79,7 +79,8 @@ function order_success(){
                                 	<c:if test="${estate.yufu != null && estate.shidi !=null}"></c:if>
                                 </p>
                                 <p class="yh_price">
-                                	<c:if test="${estate.yufu != null && estate.shidi !=null}"><span>独家优惠：</span><em>${estate.yufu}</em><span>享</span><em>${estate.shidi }</em></c:if>
+                                	<c:if test="${estate.yufu != null && estate.shidi !=null}"><span>独家优惠：</span><em>${estate.tejia}</em></c:if>
+<%--                                 	<em>${estate.yufu}</em><span>享</span><em>${estate.shidi }</em> --%>
                                 </p>
                                 <p style="margin-bottom:23px;color:grey;font-size:15px;"><em style="color:red;font-size:22px;"></em><img src="images/tel_400.jpg" /></p>
                                 

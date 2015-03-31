@@ -57,6 +57,16 @@ public class HuXingService {
 	}
 	
 	@WebMethod
+	public ModelAndView delete(Integer id){
+		ModelAndView mv = new ModelAndView();
+		HuXing po = dao.get(HuXing.class, id);
+		if(po!=null){
+			dao.delete(po);
+		}
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView update(HuXing huxing){
 		ModelAndView mv = new ModelAndView();
 		HuXing po = dao.getUniqueByKeyValue(HuXing.class, "name", huxing.name);

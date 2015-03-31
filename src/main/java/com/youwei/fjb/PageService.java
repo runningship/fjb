@@ -127,7 +127,7 @@ public class PageService {
 		List<Object> params = new ArrayList<Object>();
 		params.add(ThreadSessionHelper.getCity());
 		page.setPageSize(12);
-		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
+		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.yufu as yufu , est.shidi as shidi, "
 				+ "  est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.city=? and img.type='main'");
 		if(StringUtils.isNotEmpty(query.quyu)){
