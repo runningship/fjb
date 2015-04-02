@@ -131,9 +131,9 @@ function save(){
     </tr>
     <tr>
         <td class="tableleft">参考均价</td>
-        <td><input type="text" name="junjia" value="${estate.ghmj }"/>元/平方</td>
+        <td><input type="text" name="junjia" value="${estate.junjia }"/>元/平方</td>
         <td class="tableleft">特惠价</td>
-        <td><input type="text" name="tejia" value="${estate.ghmj }">元/平方</td>
+        <td><input type="text" name="tejia" value="${estate.tejia }"></td>
         <td class="tableleft">优惠截止时间</td>
         <td colspan="5"><input value="<fmt:formatDate value="${estate.youhuiEndtime}" pattern="yyyy-MM-dd"/>"  type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>

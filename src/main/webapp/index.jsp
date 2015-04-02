@@ -40,9 +40,9 @@
                
                     <ul id="bigPic">
                     
-                        <li style="z-index:1; display:list-item; background:url(images/banner1.jpg) no-repeat center top;"></li>
-                        <li style="z-index:0; display:none; background:url(images/banner2.jpg) no-repeat center top;"></li>
-                        <li style="z-index:0; display:none; background:url(images/banner3.jpg) no-repeat center top;"></li>
+                        <a href="http://www.jinbaohouse.com/fjb/info.jsp?estateId=42" target="_blank"><li style="z-index:1; display:list-item; background:url(images/banner11.jpg) no-repeat center top;" ></li></a>
+                        <a href="http://www.jinbaohouse.com/fjb/info.jsp?estateId=36" target="_blank"><li style="z-index:0; display:none; background:url(images/banner12.jpg) no-repeat center top;"></li></a>
+<!--                         <li style="z-index:0; display:none; background:url(images/banner3.jpg) no-repeat center top;"></li> -->
                     
                     </ul>
                     <ul id="litPic"></ul>
@@ -50,11 +50,11 @@
       </div>
       
       
-      <div class="warp" style="position:absolute; z-index:100; top:0; left:0;">
+      <div class="warp" style="position:absolute;  top:0; left:0;">
 
            <div class="main">
            
-                <div class="l-r-box">
+                <div class="l-r-box" style="z-index:100;">
                         
                         <div class="bg"></div>
                 		<c:if test="${seller ==null }">

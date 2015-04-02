@@ -133,7 +133,7 @@ function changeQuYu(city){
         <td class="tableleft">参考均价</td>
         <td><input type="text" name="junjia"/>元/平方</td>
         <td class="tableleft">特惠价</td>
-        <td><input type="text" name="tejia"/>元/平方</td>
+        <td><input type="text" name="tejia"/></td>
         <td class="tableleft">优惠截止时间</td>
         <td><input type="text" class="form-control input-sm input-left" name="youhuiEndtime" id="youhuiEndtime" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" ></td>
     </tr>

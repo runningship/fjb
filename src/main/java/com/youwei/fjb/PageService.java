@@ -35,6 +35,8 @@ public class PageService {
 		
 		Page<Map> page = new Page<Map>();
 		page.setPageSize(9);
+//		page.order = "desc";
+//		page.orderBy = "orderx";
 		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.junjia as junjia , "
 				+ "img.path as img , est.yufu as yufu , est.shidi as shidi from Estate est,HouseImage img"
 				+ " where est.uuid=img.estateUUID and est.tuijian=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});

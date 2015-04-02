@@ -69,7 +69,7 @@ public class HuXingService {
 	@WebMethod
 	public ModelAndView update(HuXing huxing){
 		ModelAndView mv = new ModelAndView();
-		HuXing po = dao.getUniqueByKeyValue(HuXing.class, "name", huxing.name);
+		HuXing po = dao.getUniqueByParams(HuXing.class, new String[]{"estateId" , "name"}, new Object[]{huxing.estateId , huxing.name});
 		if(po!=null){
 			throw new GException(PlatformExceptionType.BusinessException,"重复的户型，请修改后提交");
 		}
@@ -86,7 +86,7 @@ public class HuXingService {
 	@WebMethod
 	public ModelAndView doSave(HuXing huxing){
 		ModelAndView mv = new ModelAndView();
-		HuXing po = dao.getUniqueByKeyValue(HuXing.class, "name", huxing.name);
+		HuXing po = dao.getUniqueByParams(HuXing.class, new String[]{"estateId" , "name"}, new Object[]{huxing.estateId , huxing.name});
 		if(po!=null){
 			throw new GException(PlatformExceptionType.BusinessException,"重复的户型，请修改后提交");
 		}

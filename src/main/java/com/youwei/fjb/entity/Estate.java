@@ -136,4 +136,5 @@ public class Estate {
 	
 	public String jieshao;
 	
+	public int orderx;
 }

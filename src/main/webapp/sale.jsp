@@ -36,7 +36,7 @@ function order_success(){
      
           <div class="teSelect">
                
-               <h2>房金宝承诺合肥最低价<em>[共${page.totalCount }款特惠房源促销中]</em></h2>
+               <h2>房金宝承诺真实房源<em>[共${page.totalCount }款特惠房源促销中]</em></h2>
                
 <!--                <div class="choose"> -->
 <!--                         <div class="choose_list"> -->

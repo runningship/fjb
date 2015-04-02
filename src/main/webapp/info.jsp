@@ -79,7 +79,7 @@ function order_success(){
                                 	<c:if test="${estate.yufu != null && estate.shidi !=null}"></c:if>
                                 </p>
                                 <p class="yh_price">
-                                	<c:if test="${estate.yufu != null && estate.shidi !=null}"><span>独家优惠：</span><em>${estate.tejia}</em></c:if>
+                                	<c:if test="${estate.tejia != null}"><span>独家优惠：</span><em>${estate.tejia}</em></c:if>
 <%--                                 	<em>${estate.yufu}</em><span>享</span><em>${estate.shidi }</em> --%>
                                 </p>
                                 <p style="margin-bottom:23px;color:grey;font-size:15px;"><em style="color:red;font-size:22px;"></em><img src="images/tel_400.jpg" /></p>
@@ -350,10 +350,11 @@ function order_success(){
 
 
 <script type="text/javascript">
+var point = new BMap.Point(117.309, 31.837);
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");    // 创建Map实例
-	var points = new BMap.Point(117.309, 31.837);
-	map.centerAndZoom(points, 15);  // 初始化地图,设置中心点坐标和地图级别
+	//var points = new BMap.Point(117.309, 31.837);
+	//map.centerAndZoom(points, 15);  // 初始化地图,设置中心点坐标和地图级别
 	//map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
 	map.setCurrentCity("${session_city}");          // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
@@ -370,16 +371,30 @@ function order_success(){
 	
 	add_control();//添加比例尺
 
+// 创建地址解析器实例
+var myGeo = new BMap.Geocoder();
+// 将地址解析结果显示在地图上,并调整地图视野
+myGeo.getPoint("凤麟大道与泉阳路", function(p){
+	if (p) {
+		point = p;
+		//map.addOverlay(new BMap.Marker(point));
+	}else{
+		//alert("您选择地址没有解析到结果!");
+	}
+	map.centerAndZoom(point, 16);
+}, "${session_city}");
+	
+	
 //点附近的公交站牌
-    function showN(n){	
+    function showN(n){
 	
 	    map.clearOverlays(); 
 		zdyLayer();
 		var local = new BMap.LocalSearch(map, {
 			renderOptions:{map: map, panel: "r-result"}
 		});
-		var pStart = new BMap.Point(117.299, 31.832);
-		var pEnd = new BMap.Point(117.319, 31.842);
+		var pStart = new BMap.Point(point.lng-0.01, point.lat-0.01);
+		var pEnd = new BMap.Point(point.lng+0.01, point.lat+0.01);
 		var bs = new BMap.Bounds(pStart,pEnd);   //自己规定范围
 		local.searchInBounds(n, bs);
 	//	conBlock(n)
@@ -398,7 +413,7 @@ function order_success(){
 			$(obj).removeClass('selected');
 		}
 	});
-	}
+}
 	//map.addOverlay(polygon);//此处显示区域
 	
 	
