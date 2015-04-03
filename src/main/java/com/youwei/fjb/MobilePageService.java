@@ -52,8 +52,10 @@ public class MobilePageService {
 		ModelAndView mv = new ModelAndView();
 		List<String> params = new ArrayList<String>();
 		page.setPageSize(10);
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu , est.addr as addr, est.junjia as junjia , "
-				+ "img.path as img , est.yufu as yufu , est.shidi as shidi from Estate est,HouseImage img"
+		page.order="desc";
+		page.orderBy = "est.orderx";
+		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu , est.addr as addr, est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
+				+ "est.tel as tel,img.path as img , est.yufu as yufu , est.shidi as shidi from Estate est,HouseImage img"
 				+ " where est.uuid=img.estateUUID and est.tuijian=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;
@@ -77,7 +79,9 @@ public class MobilePageService {
 	public ModelAndView listSalesData(Page<Map> page){
 		ModelAndView mv = new ModelAndView();
 		page.setPageSize(10);
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
+		page.order="desc";
+		page.orderBy = "est.orderx";
+		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
 				+ " est.opentime as opendate, est.addr as addr ,est.youhuiEndtime as youhuiEndtime, img.path as img , est.yufu as yufu, est.shidi as shidi from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
@@ -103,7 +107,7 @@ public class MobilePageService {
 		List<Object> params = new ArrayList<Object>();
 		params.add(ThreadSessionHelper.getCity());
 		page.setPageSize(10);
-		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
+		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.tel as tel, est.youhuiPlan as youhuiPlan,"
 				+ "  est.opentime as opendate, est.addr as addr,  est.yufu as yufu, est.shidi as shidi , img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.city=? and img.type='main'");
 		if(StringUtils.isNotEmpty(query.quyu)){

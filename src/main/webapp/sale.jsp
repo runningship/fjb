@@ -83,8 +83,9 @@ function order_success(){
                    
                     <span class="hYPrice"><em>市场价  ${youhui.junjia}</em> 房金宝团购优惠价</span>
                     <span class="hYPrice">
-                    	<c:if test="${youhui.junjia != null}"><strong>${youhui.junjia}</strong>元/平米</c:if>
-                    	<c:if test="${youhui.yufu != null && youhui.shidi !=null}">${youhui.yufu}享${youhui.shidi }</c:if>
+                    	<c:if test="${youhui.tejia != null}"><strong>${youhui.tejia}</strong>元/平米 &nbsp;&nbsp;&nbsp;</c:if>
+<%--                     	<c:if test="${youhui.yufu != null && youhui.shidi !=null}">${youhui.yufu}享${youhui.shidi }</c:if> --%>
+						${youhui.youhuiPlan}
                     </span>
                     <span class="liaojie">
                           <div class="fl w180">

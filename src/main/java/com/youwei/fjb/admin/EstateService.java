@@ -97,6 +97,9 @@ public class EstateService {
 		po.jiaofangDate = estate.jiaofangDate;
 		po.mainHuxing = estate.mainHuxing;
 		po.jieshao = estate.jieshao;
+		po.manager = estate.manager;
+		po.orderx = estate.orderx;
+		po.youhuiPlan = estate.youhuiPlan;
 		dao.saveOrUpdate(po);
 		return mv;
 	}
@@ -152,7 +155,7 @@ public class EstateService {
 			params.add("%"+city+"%");
 		}
 		page.order = "desc";
-		page.orderBy="id";
+		page.orderBy="orderx";
 		page = dao.findPage(page, hql.toString(), params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;

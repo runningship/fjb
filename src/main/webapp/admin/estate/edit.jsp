@@ -154,20 +154,29 @@ function save(){
     <tr>
         <td class="tableleft">经纬度</td>
         <td><input type="text" name="jingdu" placeholder="经度" value="${estate.jingdu }" style="width:45%"/>  /  <input type="text" name="weidu" placeholder="纬度" value="${estate.weidu }" style="width:45%"/></td>
+        
+<!--         <td class="tableleft">优惠方案</td> -->
+<%--         <td><input type="text" name="yufu" value="${estate.yufu }" style="width:45%"/>抵<input type="text" name="shidi" value="${estate.shidi }" style="width:45%"/></td> --%>
+        
         <td class="tableleft">优惠方案</td>
-        <td><input type="text" name="yufu" value="${estate.yufu }" style="width:45%"/>抵<input type="text" name="shidi" value="${estate.shidi }" style="width:45%"/></td>
+		<td><input type="text" name="youhuiPlan" value="${estate.youhuiPlan }" /></td>
+		
         <td class="tableleft">主力户型</td>
         <td><input type="text" name="mainHuxing" value="${estate.mainHuxing }"/></td>
     </tr>
     <tr>
         <td class="tableleft">区域</td>
-        <td colspan="5">
+        <td>
             <div id="city_1" style="display:inline-block;">
                 <select class="prov"  id="province"  name="province"></select> 
                 <select class="city" id="city" name="city"></select>
                 <select class="dist" id="dist"  name="quyu"></select>
             </div>
         </td>
+        <td class="tableleft">项目经理</td>
+        <td><input type="text" name="manager" value="${estate.manager }" /></td>
+        <td class="tableleft">排序</td>
+        <td><input type="text" name="orderx" value="${estate.orderx }" /></td>
     </tr>
     <tr>
         <td class="tableleft">项目介绍</td>

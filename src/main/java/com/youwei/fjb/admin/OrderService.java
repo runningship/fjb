@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.Page;
+import org.bc.sdak.Transactional;
 import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
@@ -72,17 +73,26 @@ public class OrderService {
 	}
 	
 	@WebMethod
+	@Transactional
 	public ModelAndView update(HouseOrder order){
 		ModelAndView mv = new ModelAndView();
 		HouseOrder po = dao.get(HouseOrder.class, order.id);
 		po.status = order.status;
 		dao.saveOrUpdate(po);
+		if(FjbConstant.HouseOrderDaiKan.equals(order.status)){
+			//同一个楼盘下面相同的客户的其他预约被锁定
+			String hql = "update HouseOrder set protect=1 where estateId=? and buyerName=? and buyerTel=?";
+			dao.execute(hql, po.estateId , po.buyerName , po.buyerTel);
+		}else{
+			String hql = "update HouseOrder set protect=0 where estateId=? and buyerName=? and buyerTel=?";
+			dao.execute(hql, po.estateId , po.buyerName , po.buyerTel);
+		}
 		return mv;
 	}
 	
 	@WebMethod
 	public ModelAndView doSave(HouseOrder order , String yzm){
-		VerifyCodeHelper.verify(yzm);
+//		VerifyCodeHelper.verify(yzm);
 		User seller = (User)ThreadSession.getHttpSession().getAttribute("user");
 		order.status = FjbConstant.HouseOrderNotAccept;
 		if(seller!=null){
@@ -133,7 +143,7 @@ public class OrderService {
 	@WebMethod
 	public ModelAndView listHouseData(Page<Map> page , OrderQuery query){
 		ModelAndView mv = new ModelAndView();
-		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, house.dhao as dhao , house.unit as unit,house.fhao as fhao"
+		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, house.dhao as dhao , house.unit as unit,house.fhao as fhao,order.protect as protect "
 				+ ",order.sellerName as sellerName ,  order.buyerName as buyerName ,order.buyerTel as buyerTel ,order.addtime as addtime, order.status as status from HouseOrder order, "
 				+ "Estate est,House house where order.estateId=est.id and order.hid=house.id ");
 		List<Object> params = new ArrayList<Object>();
@@ -146,9 +156,9 @@ public class OrderService {
 	@WebMethod
 	public ModelAndView listEstateData(Page<Map> page ,OrderQuery query){
 		ModelAndView mv = new ModelAndView();
-		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, order.buyerName as buyerName ,order.buyerTel as buyerTel,"
+		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, order.buyerName as buyerName ,order.buyerTel as buyerTel,order.protect as protect,"
 				+ " order.sellerName as sellerName , order.addtime as addtime, order.status as status from HouseOrder order, "
-				+ "Estate est where order.estateId=est.id and order.hid is null");
+				+ "Estate est where order.estateId=est.id  and order.hid is null");
 		List<Object> params = new ArrayList<Object>();
 		setQuery(hql, params , query);
 		page = dao.findPage(page, hql.toString(), true,params.toArray());

@@ -44,9 +44,8 @@ function more(){
     <button type="button" style="display:none" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
 <div class="main">
-     
+     <jsp:include page="top.jsp"></jsp:include>
      <div id="top">
-     		<jsp:include page="top.jsp"></jsp:include>
           <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
 <!--           <span class="s2"><input type="text" class="searchBox" placeholder="楼盘名称" /></span> -->
      </div>
@@ -92,11 +91,11 @@ function more(){
                   <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]"  style=""/></a></div>
                   <div class="con">
                   
-                       <h2>$[name]<em>在售</em></h2>
-                       <p>$[quyu]<i class="r">$[junjia]元/平</i></p>
-                       <p>[$[addr]]</p>
-                       <p><i class="ys">$[yufu]抵$[shidi]</i><i class="ys">投资地产</i><i class="ys">地铁沿线</i></p>
-                  
+                       <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a><em>在售</em></h2>
+                       <p><i class="r">$[junjia]元/平</i></p>
+                       <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p>
+                       <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">独家优惠: </span> <b>$[youhuiPlan]</b>&nbsp;</p>
+                  	   <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">抢购热线: </span> <b>$[tel]</b>&nbsp;</p>
                   </div>
               </li>
           

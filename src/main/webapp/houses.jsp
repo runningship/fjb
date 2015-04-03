@@ -88,22 +88,23 @@ $(function(){
                      <li>
                         <a target="_blank" href="info.jsp?estateId=${house.id}"><img width="180" height="120" src="${upload_path}/${house.img}"></a>
                         <span class="f_name"><a target="_blank" href="#">[${house.quyu}]${house.name}</a></span>
-                        <span class="f_sale">${house.yufu}<c:if test="${house.yufu != null && house.shidi !=null}">享</c:if>${house.shidi }</span>
+                        
                         <span class="f_price"><em>${house.junjia}<c:if test="${house.junjia != null}">元/㎡</c:if></em>
-                        <a target="_blank" href="info.jsp?estateId=${house.id}">
-                        <button class="button_tao" title="了解更多" type="submit">了解更多</button></a></span>
+                        <span class="f_sale"><c:if test="${house.youhuiPlan != null}"><span style="background-color:red;color:white">优惠 </span></c:if><b>&nbsp; ${house.youhuiPlan }</b></span>
+<%--                         <a target="_blank" href="info.jsp?estateId=${house.id}"> --%>
+<!--                         <button class="button_tao" title="了解更多" type="submit">了解更多</button></a></span> -->
                      </li>   
                 </c:forEach>                      
                </ul>
                
-               <jsp:include page="page.jsp" />
+           <jsp:include page="page.jsp" />
           </div>
           
           <div class="rightList fl">
           
 			<jsp:include page="right.jsp"></jsp:include>
           </div>
-     
+     	
      </div>
 
 </div>

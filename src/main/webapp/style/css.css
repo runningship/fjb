@@ -325,7 +325,7 @@ select.sortSelect {
 
 .allList ul li {
     float: left;
-    margin: 18px 0;
+    margin: 22px 0;
     width: 180px;
 	margin-left:15px;
 }
@@ -354,7 +354,7 @@ select.sortSelect {
 .allList ul li span.f_name a{ color:#666666;}
 
 .allList ul li span.f_sale {
-    color: #822d03;
+    color: #ff3600;
     float: left;
     font-size: 12px;
     height: 24px;
@@ -365,7 +365,7 @@ select.sortSelect {
 }
 
 .allList ul li span.f_price {
-    color: #ea1100;
+    color: #666666;
     float: left;
     font-size: 12px;
     height: 24px;

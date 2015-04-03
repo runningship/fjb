@@ -83,7 +83,7 @@ $(function(){
 						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">状态</td>
 						  </tr>
 				    </thead>
-				  <tr style="display:none" class="buyer" ontouchend="view($[id])" onclick="view($[id]);">
+				  <tr style="display:none" class="buyer" ontouchend="view($[id])" >
 				    <td align="center" valign="middle" height="30">$[buyerName]</td>
 				    <td align="center" valign="middle" height="30">$[estateName]</td>
 				    <td align="center" valign="middle" height="30">$[addtime]</td>

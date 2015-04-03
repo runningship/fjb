@@ -103,7 +103,6 @@ function emptySearchResult(){
      
      </div>
      
-     
      <div class="SelectTit" id="SelectTit">
          <span>
               <a href="#" id="quyu_btn">区域<i></i></a>
@@ -145,11 +144,11 @@ function emptySearchResult(){
                   <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]" /></a></div>
                   <div class="con">
                   
-                       <h2>$[name]<em>在售</em></h2>
-                       <p>$[quyu]<i class="r">$[junjia]元/平</i></p>
-                       <p>[$[addr]]</p>
-                       <p><i class="ys">$[yufu]抵$[shidi]</i><i class="ys">投资地产</i><i class="ys">地铁沿线</i></p>
-                       <p>开盘时间: $[opendate]</p>
+                       <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a><em>在售</em></h2>
+                       <p><i class="r">$[junjia]元/平</i></p>
+                       <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p>
+                       <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg" show="'$[youhuiPlan]'==null">独家优惠: </span> <b>$[youhuiPlan]</b></p>
+                       <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">抢购热线: </span> <b>$[tel]</b>&nbsp;</p>
                   </div>
               </li>
           
@@ -160,7 +159,7 @@ function emptySearchResult(){
 
      <div id="FangMore" onclick="more();">查看更多房源</div>
      
-<%-- 	<jsp:include page="bottom.jsp" /> --%>
+<jsp:include page="bottom.jsp" />
 
 </div>
 </form>

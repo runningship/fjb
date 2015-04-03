@@ -5,9 +5,9 @@
 <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 
      
-     <div class="main" style="padding-bottom:0px;z-index:999999">
-            <div id="city_1" style="display:inline-block;position:absolute;right:2px;top:15px;display:">
-		  		<select class="prov"  id="province" style="width:60pt;display:none" ></select>
+     <div class="main" style="padding-bottom:0px;height:23px;z-index:999999;background-color: rgb(222,48,49);">
+            <div id="city_1" style="display:inline-block;float:right;">
+		  		<select class="prov"  id="province" style="width:60pt;display:" ></select>
 		    	<select class="city" id="city" ></select>
 		    </div>
      	<%

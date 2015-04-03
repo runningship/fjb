@@ -98,11 +98,15 @@ function jisuan(){
     </tr>
     <tr>
         <td class="tableleft">单价</td>
-        <td><input type="text" name="djia" id="djia" onblur="jisuan();" />元/平方</td>
+        <td><input type="text" name="djia" id="djia"  />元/平方</td>
     </tr>
+<!--     <tr> -->
+<!--         <td class="tableleft">优惠方案</td> -->
+<!--         <td><input type="text" name="yufu" id="yufu" />抵<input type="text" name="shidi" id="shidi" /></td> -->
+<!--     </tr> -->
     <tr>
         <td class="tableleft">优惠方案</td>
-        <td><input type="text" name="yufu" id="yufu" onblur="jisuan();"/>抵<input type="text" name="shidi" id="shidi" onblur="jisuan();"/></td>
+        <td><input type="text" name="youhuiPlan" /></td>
     </tr>
     <tr>
         <td class="tableleft">折后总价</td>

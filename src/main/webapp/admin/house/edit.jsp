@@ -61,7 +61,7 @@ function jisuan(){
     </tr>
     <tr>
         <td class="tableleft">面积</td>
-        <td><input type="text" name="mji" id="mji" value="${house.mji}" onblur="jisuan();"/></td>
+        <td><input type="text" name="mji" id="mji" value="${house.mji}" /></td>
     </tr>
     <!-- <tr>
         <td class="tableleft">主图片</td>
@@ -94,11 +94,15 @@ function jisuan(){
     </tr>
     <tr>
         <td class="tableleft">单价</td>
-        <td><input type="text" name="djia" id="djia" value="${house.djia}" onblur="jisuan();"/>元/平方</td>
+        <td><input type="text" name="djia" id="djia" value="${house.djia}" />元/平方</td>
     </tr>
+<!--     <tr> -->
+<!--         <td class="tableleft">优惠方案</td> -->
+<%--         <td><input type="text" name="yufu" id="yufu" value="${house.yufu}"  onblur="jisuan();"/>抵<input type="text" name="shidi" id="shidi" value="${house.shidi}"  onblur="jisuan();"/></td> --%>
+<!--     </tr> -->
     <tr>
         <td class="tableleft">优惠方案</td>
-        <td><input type="text" name="yufu" id="yufu" value="${house.yufu}"  onblur="jisuan();"/>抵<input type="text" name="shidi" id="shidi" value="${house.shidi}"  onblur="jisuan();"/></td>
+        <td><input type="text" name="youhuiPlan" /></td>
     </tr>
     <tr>
         <td class="tableleft">折后总价</td>

@@ -68,31 +68,33 @@ function doSearch(){
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th width=30px>编号</th>
-    	<th width=30px>城市</th>
+        <th style="width:30px">编号</th>
+        <th style="width:30px">序号</th>
+    	<th style="width:30px">城市</th>
         <th style="width:60px;">区域</th>
         <th>名称</th>
-        <th width=60px>建筑类型</th>
-        <th width=55px>规划面积</th>
-        <th style="width:200px;">项目地址</th>
+        <th style="width:110px;">建筑类型</th>
+        <th style="width:35px">规划面积</th>
+        <th style="width:250px;">项目地址</th>
         <th>户数</th>
-        <th>均价</th>
-        <th style="width:70px;">开盘时间</th>
+        <th style="width:60px;">均价</th>
+        <th style="width:110px;">开盘时间</th>
         <th>操作</th>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
                 <td>$[id]</td>
+                <td>$[orderx]</td>
                 <td>$[city]</td>
                 <td style="width:60px;">$[quyu]</td>
                 <td>$[name]</td>
-                <td>$[lxing]</td>
+                <td style="width:110px;">$[lxing]</td>
                 <td>$[ghmj]</td>
-                <td style="width:200px;">$[addr]</td>
+                <td style="width:250px;">$[addr]</td>
                 <td>$[hushu]</td>
-                <td>$[junjia]</td>
-                <td style="width:70px;">$[opentime]</td>
+                <td style="width:60px;">$[junjia]</td>
+                <td style="width:110px;">$[opentime]</td>
                 <td><a onclick="addTab('house_list','房源信息','house/list.jsp?estateId=$[id]')" href="#">房源</a>
                     <a onclick="addTab('huxing_list','户型','huxing/list.jsp?estateId=$[id]')" href="#">户型</a>
                     <a href="edit.jsp?id=$[id]">编辑</a>

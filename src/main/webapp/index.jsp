@@ -11,15 +11,26 @@
 <jsp:include page="nav.jsp"></jsp:include>
 <script type="text/javascript" src="js/kxbdSuperMarquee.js"></script>
 <script type="text/javascript">
+var system = { win: false, mac: false, xll: false };
+//检测平台      
+var p = navigator.platform;
+system.win = p.indexOf("Win") == 0;
+system.mac = p.indexOf("Mac") == 0;
+system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+//跳转语句      
+if (system.win || system.mac || system.xll) {            }
+else {
+    window.location.href = "http://192.168.1.111:8080/fjb/m/index.jsp";
+}   
     
-    $(function(){
-      //一次横向滚动一个
-      $('#marquee1').kxbdSuperMarquee({
-        distance:376,
-        duration:99,
-        btnGo:{left:'#goL',right:'#goR'},
-        direction:'left'
-      });
+$(function(){
+  //一次横向滚动一个
+  $('#marquee1').kxbdSuperMarquee({
+    distance:376,
+    duration:99,
+    btnGo:{left:'#goL',right:'#goR'},
+    direction:'left'
+  });
 
 });
 
@@ -107,12 +118,13 @@
                        <p><strong>[${tuijian.quyu}]${tuijian.name}</strong></p>
                        <p><em>均价：¥${tuijian.junjia}/m2</em></p>
                        
-                       <p><c:if test="${tuijian.yufu != null && tuijian.shidi !=null}"><span class="yhBg">优惠</span> <b>${tuijian.yufu}享${tuijian.shidi }</b></c:if>&nbsp;</p>
-                       
+<%--                        <p><c:if test="${tuijian.yufu != null && tuijian.shidi !=null}"><span class="yhBg">优惠</span> <b>${tuijian.yufu}享${tuijian.shidi }</b></c:if>&nbsp;</p> --%>
+                       <p><c:if test="${tuijian.youhuiPlan != null}"><span class="yhBg">优惠</span> <b>${tuijian.youhuiPlan}</b></c:if>&nbsp;</p>
                     </li>
                   </c:forEach>
                     
                </ul>
+    <jsp:include page="page.jsp" />
           
           </div>
           

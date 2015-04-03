@@ -177,10 +177,10 @@ function order_success(){
                                         <tr style="display:none" class="repeat">
                                             <td title="楼栋">$[dhao]</td>
                                             <td title="面积">$[mji]</td>
-                                            <td onmouseout="hiddenPic();"><a src="$[hxingImg]"  onclick="showPic(this);" style="text-decoration:underline" >$[hxing]</a></td>
+                                            <td onmouseout="hiddenPic();"><a href="#" src="$[hxingImg]"  onclick="showPic(this);" style="text-decoration:underline" >$[hxing]</a></td>
                                             <td title="单价">$[djia]</td>
                                             <c:if test="${seller!=null}"><th>$[yongjin]</th></c:if>
-                                            <td title="折扣">$[yufu]抵$[shidi]</td>
+                                            <td title="折扣">$[youhuiPlan]</td>
                                             <td title="折后总价">$[totalPrice]</td>
                                             <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]' ,'400px');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
                                             </td>
@@ -350,11 +350,11 @@ function order_success(){
 
 
 <script type="text/javascript">
-var point = new BMap.Point(117.309, 31.837);
+var point = new BMap.Point(${estate.jingdu}, ${estate.weidu});
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");    // 创建Map实例
 	//var points = new BMap.Point(117.309, 31.837);
-	//map.centerAndZoom(points, 15);  // 初始化地图,设置中心点坐标和地图级别
+	map.centerAndZoom(point, 15);  // 初始化地图,设置中心点坐标和地图级别
 	//map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
 	map.setCurrentCity("${session_city}");          // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
@@ -374,15 +374,15 @@ var point = new BMap.Point(117.309, 31.837);
 // 创建地址解析器实例
 var myGeo = new BMap.Geocoder();
 // 将地址解析结果显示在地图上,并调整地图视野
-myGeo.getPoint("凤麟大道与泉阳路", function(p){
-	if (p) {
-		point = p;
-		//map.addOverlay(new BMap.Marker(point));
-	}else{
-		//alert("您选择地址没有解析到结果!");
-	}
-	map.centerAndZoom(point, 16);
-}, "${session_city}");
+// myGeo.getPoint("凤麟大道与泉阳路", function(p){
+// 	if (p) {
+// 		point = p;
+// 		//map.addOverlay(new BMap.Marker(point));
+// 	}else{
+// 		//alert("您选择地址没有解析到结果!");
+// 	}
+// 	map.centerAndZoom(point, 16);
+// }, "${session_city}");
 	
 	
 //点附近的公交站牌

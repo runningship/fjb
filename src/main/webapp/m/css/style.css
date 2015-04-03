@@ -35,11 +35,11 @@ body {
 
 #top span.s1 img{ max-width:80%;}
 
-#top span.s2{width: 40%; padding:12px 30%; position:absolute; z-index:10; top:0; left:0;}
+#top span.s2{width: 50%; padding:12px 30%; position:absolute; z-index:10; top:0; left:0;}
 
 #top .searchBox{ width:100%; padding:7px 7px; background-color:#ffffff; color:#666; border:none; border-radius:3px;}
 
-#top .search button{ padding:2px 4px; background-color:#de3031; color:#ffffff; position:absolute; border-radius:3px; top:16px; right:5%; border:none;}
+#top .search button{ padding:2px 4px; background-color:#de3031; color:#ffffff; position:absolute; border-radius:3px; top:16px; right:10%; border:none;}
 
 #top span.s3{ float:right; width:20%; padding-right:5%; color:#fff; text-align:right;}
 
@@ -86,7 +86,7 @@ body {
 
 #Fanglist ul li div.img{ float:left; width:30%;}
 
-#Fanglist ul li div.img img{ width:100%; border:1px solid #dedee0;}
+#Fanglist ul li div.img img{ width:100%; border:1px solid #dedee0; height:120px}
 
 #Fanglist ul li div.con{ float:left; width:65%; padding-left:5%;}
 

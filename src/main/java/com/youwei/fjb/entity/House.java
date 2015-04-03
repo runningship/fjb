@@ -44,5 +44,8 @@ public class House {
 	
 	public Integer hasSold;
 	
+	public String youhuiPlan;
+	
 	public transient String hxingImg;
+	
 }

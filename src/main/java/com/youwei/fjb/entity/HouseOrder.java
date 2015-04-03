@@ -34,4 +34,9 @@ public class HouseOrder {
 	public String buyerName;
 	
 	public String buyerTel;
+	
+	public int protect;
+	
+	//成交后设置
+	public float yongjin;
 }

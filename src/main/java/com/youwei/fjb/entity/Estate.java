@@ -136,5 +136,10 @@ public class Estate {
 	
 	public String jieshao;
 	
+	//优惠方案
+	public String youhuiPlan;
+	//项目经理
+	public String manager;
+	
 	public int orderx;
 }

@@ -29,25 +29,23 @@ public class PageService {
 	CommonDaoService dao = TransactionalServiceHelper.getTransactionalService(CommonDaoService.class);
 	
 	@WebMethod
-	public ModelAndView index(){
+	public ModelAndView index(Page<Map> page){
 		ModelAndView mv = new ModelAndView();
 		mv = tehui(mv);
-		
-		Page<Map> page = new Page<Map>();
 		page.setPageSize(9);
-//		page.order = "desc";
-//		page.orderBy = "orderx";
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.junjia as junjia , "
+		page.order = "desc";
+		page.orderBy = "orderx";
+		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.junjia as junjia , est.tejia as tejia, est.youhuiPlan as youhuiPlan, "
 				+ "img.path as img , est.yufu as yufu , est.shidi as shidi from Estate est,HouseImage img"
 				+ " where est.uuid=img.estateUUID and est.tuijian=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.jspData.put("page", page);
 		mv.jspData.put("currNav", "index");
 		long total = dao.countHql("select count(*) from Estate where city=?",ThreadSessionHelper.getCity() );
 		mv.jspData.put("total", total);
-		
+		mv.jspData.put("page", page);
 		//最大优惠
 		Page<Map> page2 = new Page<Map>();
-		page.setPageSize(1);
+		page2.setPageSize(1);
 		page2 = dao.findPage(page2, "select (h.shidi-h.yufu) as youhui from Estate est, House h where h.estateId=est.id and est.city=? order by youhui desc", true , new Object[]{ThreadSessionHelper.getCity()});
 		if(!page2.getResult().isEmpty()){
 			mv.jspData.put("maxYouhui", page2.getResult().get(0).get("youhui"));
@@ -72,8 +70,10 @@ public class PageService {
 		mv = ConfigHelper.queryItems(mv);
 		mv = tehui(mv);
 		mv.jspData.put("currNav", "sale");
-		page.setPageSize(10);
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
+		page.setPageSize(5);
+		page.order="desc";
+		page.orderBy="orderx";
+		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
 				+ " est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img , est.yufu as yufu, est.shidi as shidi from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.jspData.put("page", page);
@@ -129,7 +129,7 @@ public class PageService {
 		List<Object> params = new ArrayList<Object>();
 		params.add(ThreadSessionHelper.getCity());
 		page.setPageSize(12);
-		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.yufu as yufu , est.shidi as shidi, "
+		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.yufu as yufu , est.shidi as shidi, est.youhuiPlan as youhuiPlan, "
 				+ "  est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.city=? and img.type='main'");
 		if(StringUtils.isNotEmpty(query.quyu)){
