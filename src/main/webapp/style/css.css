@@ -256,11 +256,11 @@ select.sortSelect {
 
 .teHui h2 em{ font-size:18px; color:#ff6600; margin-left:10px;}
 
-.teHui .lpPic{ width:570px; height:310px; float:left; background-color:#CCC;}
+.teHui .lpPic{ width:570px; height:280px; float:left; background-color:#CCC;}
 
-.teHui .lpCon{ width:360px; height:280px; float:left; background-color:#f4f4f4 ; margin-left:10px; padding:15px 20px; position:relative;}
+.teHui .lpCon{ width:360px; height:280px; float:left; background-color:#f4f4f4 ; margin-left:10px; padding:0px 20px; position:relative;}
 
-.teHui .lpCon span{ float:left; width:100%; margin-bottom:10px;}    
+.teHui .lpCon span{ float:left; width:100%; margin-bottom:10px;margin-top:10px;}    
 
 .teHui .hYPrice{ color:#ff6600; font-size:16px;}
 

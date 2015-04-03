@@ -20,7 +20,7 @@ system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
 //跳转语句      
 if (system.win || system.mac || system.xll) {            }
 else {
-    window.location.href = "http://192.168.1.111:8080/fjb/m/index.jsp";
+    window.location.href = "m/index.jsp";
 }   
     
 $(function(){

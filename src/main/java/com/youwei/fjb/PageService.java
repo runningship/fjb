@@ -31,6 +31,11 @@ public class PageService {
 	@WebMethod
 	public ModelAndView index(Page<Map> page){
 		ModelAndView mv = new ModelAndView();
+		String userAgent=ThreadSession.HttpServletRequest.get().getHeader("user-agent");
+		if(userAgent.contains("Linux") || userAgent.contains("Android") || userAgent.contains("iPhone")){
+			mv.redirect="m/index.jsp";
+			return mv;
+		}
 		mv = tehui(mv);
 		page.setPageSize(9);
 		page.order = "desc";
@@ -57,7 +62,7 @@ public class PageService {
 		//限时特惠
 		Page<Map> page = new Page<Map>();
 		page.setPageSize(5);
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , "
+		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
 				+ " est.opentime as opendate, est.youhuiEndtime as youhuiEndtime, img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.jspData.put("youhuiList", page.getResult());

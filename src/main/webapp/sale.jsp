@@ -78,24 +78,23 @@ function order_success(){
           <div class="teHui">
           
                <h2><span class="title">${youhui.name}<em>[${youhui.quyu}]</em></span></h2>
-               <div class="lpPic"><a href="info.jsp?estateId=${youhui.id}"><img style="width:570px;height:310px;" src="${upload_path }/${youhui.img}" /></a></div>
+               <div class="lpPic"><a href="info.jsp?estateId=${youhui.id}"><img style="width:570px;height:280px;" src="${upload_path }/${youhui.img}" /></a></div>
                <div class="lpCon">
                    
-                    <span class="hYPrice"><em>市场价  ${youhui.junjia}</em> 房金宝团购优惠价</span>
-                    <span class="hYPrice">
-                    	<c:if test="${youhui.tejia != null}"><strong>${youhui.tejia}</strong>元/平米 &nbsp;&nbsp;&nbsp;</c:if>
+                    <span class="hYPrice"><em>市场价  ${youhui.junjia}</em></span>
+                    <span class="hYPrice" style="margin-bottom:10px;">
+                    	<c:if test="${youhui.tejia != null}">独家特惠: ${youhui.youhuiPlan}</c:if>
 <%--                     	<c:if test="${youhui.yufu != null && youhui.shidi !=null}">${youhui.yufu}享${youhui.shidi }</c:if> --%>
-						${youhui.youhuiPlan}
                     </span>
                     <span class="liaojie">
-                          <div class="fl w180">
+                          <div class="fl w180" style="margin-top:-6px;">
                                <p>楼盘位置：${youhui.quyu}</p>
-                               <p>开盘日期：<fmt:formatDate value="${youhui.opendate}" pattern="yyyy-MM-dd"/></p>
+                               <p style="margin-top:10px;">开盘日期：<fmt:formatDate value="${youhui.opendate}" pattern="yyyy-MM-dd"/></p>
                           </div>
                           <a href="info.jsp?estateId=${youhui.id}" class="btn-sub fl">了解详情</a>
                     </span>
                     
-                    <span class="yuyue">
+                    <span class="yuyue" style="margin-top:0px;">
                           <div class="fl w180">
                                <em>${youhui.orderCount }</em>人已预约看房
                           </div>

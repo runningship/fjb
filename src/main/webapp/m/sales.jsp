@@ -58,7 +58,7 @@ function more(){
           <ul>
           
               <li class="repeat" style="display:none">
-                  <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]"/></a></div>
+                  <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../../${upload_path}/$[img]"/></a></div>
                   <div class="con">
                   
                        <h2>$[name]<em>在售</em></h2>
