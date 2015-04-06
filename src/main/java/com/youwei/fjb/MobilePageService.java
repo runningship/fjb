@@ -175,6 +175,14 @@ public class MobilePageService {
 	}
 	
 	@WebMethod
+	public ModelAndView clients(){
+		ModelAndView mv = new ModelAndView();
+		User u = ThreadSessionHelper.getUser();
+		mv.jspData.put("user", u);
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView order(Integer estateId , Integer hid){
 		ModelAndView mv = new ModelAndView();
 		House house = dao.get(House.class, hid);

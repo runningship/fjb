@@ -104,6 +104,7 @@ function emptySearchResult(){
      </div>
      
      <div class="SelectTit" id="SelectTit">
+     <!--  
          <span>
               <a href="#" id="quyu_btn">区域<i></i></a>
                <div class="hide">
@@ -113,6 +114,7 @@ function emptySearchResult(){
                   </c:forEach>
                </div>
          </span>
+         -->
          <span>
                <a href="#" id="lxing_btn">楼型<i></i></a>
                <div class="hide">
@@ -143,11 +145,11 @@ function emptySearchResult(){
               <li class="repeat" style="display:none">
                   <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]" /></a></div>
                   <div class="con">
-                  
-                       <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a><em>在售</em></h2>
-                       <p><i class="r">$[junjia]元/平</i></p>
-                       <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p>
-                       <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg" show="'$[youhuiPlan]'==null">独家优惠: </span> <b>$[youhuiPlan]</b></p>
+                  		<a href="order.jsp?estateId=$[id]"><img src="../images/tuijian.jpg"/ style="height:35px;cursor:pointer" /></a>
+                       <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a></h2>
+<!--                        <p><i class="r">$[junjia]元/平</i></p> -->
+<!--                        <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p> -->
+                       <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg" show="'$[youhuiPlan]'!=null">独家优惠: </span> <b>$[youhuiPlan]</b></p>
                        <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">抢购热线: </span> <b>$[tel]</b>&nbsp;</p>
                   </div>
               </li>

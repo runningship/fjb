@@ -67,7 +67,7 @@ function save(){
           
           <div class="confirm">
                  <input type="submit" value="提交" id="subbtn" style="display: none;">
-                 <a href="javascript:void(0)" onclick="save();return false;">预约</a>
+                 <a href="javascript:void(0)" onclick="save();return false;">马上推荐</a>
           </div>
      
      </div>

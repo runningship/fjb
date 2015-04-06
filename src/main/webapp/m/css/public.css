@@ -1,0 +1,537 @@
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+}
+a {
+	text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+}
+ul, ol, li {
+	list-style: none;
+}
+em, i {
+	font-style: normal;
+}
+img {
+	border: none;
+}
+input{ border:none;}
+input, img {
+	vertical-align: middle;
+}
+html {
+	font-size: 16px;
+	height: 100%;
+	width: 100%;
+	font-family: "Microsoft YaHei", Times, serif;
+}
+body {
+	/*margin: 0 auto;*/
+	width: 100%;
+	height: 100%;
+	background:#eeeeee;
+	font-size:14px;
+	font-family:'Microsoft YaHei'; /*微软雅黑的设置*/
+	color:#868686;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+img{ max-width:100%;}
+
+/* 腾讯logo*/
+.foot {position:absolute; bottom:8px;left:0;z-index: 9;width:100%;text-align:center; font-size:12px; color:#FFF}
+.footlogo{position: absolute;bottom: 5%;font-size: 12px;width: 100%;text-align: center;}
+
+/*字体大小设置 start*/
+.txt2{ font-size:14px;}
+.txt3{ font-size:9px;}
+.txt4{ font-size:16px;}
+.txt5{ font-size:18px;}
+.txt6{ font-size:12px;}
+.txt7{ font-size:15px;}
+.fontw{ font-weight:bold;}
+.txtcl{ color:#5e5e5e;}
+.txtgreen{color:#91ac29;}
+/*字体大小设置 end*/
+
+/*我要选房浮层 start*/
+.ruledetail{width:87%; margin-left:8%; overflow: auto; height:205px}
+/*我要选房浮层 end*/
+
+/*设置背景样式 start*/
+.loginbg{ background:url(../images/zcbg.jpg) no-repeat; background-size:100% 100%;  width:100%; min-height:100%;}
+/*设置背景样式 end*/
+/*************苹果四样式********************/
+@media screen  and (max-height:480px){
+	.loginbg{ background:url(../images/zcbg.jpg) no-repeat; background-size:100% 100%; width:100%; min-height:460px;}
+}
+
+/*-----------登录样式 start-----------*/
+	.txtInput1{ width:75%;height: 27px;border-radius:5px; font-size:15px; float:right; height:30px;}
+	.maleft{width: 90%;margin-left:5%;}
+	.logininput{ position:relative;padding-top:10%;}	
+	.logininput li{ margin-top:10%;}
+	.loginleft{float: left; height:30px; line-height:30px;}
+	.btnstyle{background: rgb(144, 172, 40);color: rgb(255, 255, 255);padding: 2.5% 12%;border-radius: 5px;text-align: center;margin-left:2%;}
+/*-----------登录样式 end-----------*/
+
+/*-----------协议详情 start-----------*/
+	.protmatter{position: absolute;top: 5%;width: 94%;left: 3%; background:#fff;border-radius: 5px; color:#9d9d9d; display:none;}
+	.proback{width: 10%;position: absolute;top:5%;right:5%;}
+	.protit{ color:#6d6d6d;text-align: center;padding: 6% 0;font-size: 18px;border-bottom: 1px solid #cecece;}
+	.prodetails{width: 90%;margin: 4% 5%; line-height: 25px;}
+	.proheight{ overflow:auto;height:420px;}
+	.yjbtnstyle{background: rgb(144, 172, 40);color: rgb(255, 255, 255);padding: 2.5% 12%;border-radius: 5px;text-align: center;margin-left:34%;}
+	/*************苹果五样式********************/
+	@media only screen and (device-width: 320px) and (device-height:568px){
+		.proheight{ overflow:auto;height: 370px;}
+	}
+	
+	/*************苹果四样式********************/
+	@media only screen and (min-device-width: 100px) and (max-device-width:320px) and (max-device-height:567px){
+		.proheight{ overflow:auto;height:320px; }
+	}
+/*-----------协议详情 end-----------*/
+
+/*--------------全民经纪人欢迎页 start---------------------*/
+	.jjrpeople{padding-top: 20%;}
+	.jjrrecom{margin-top: -8%;}
+	.jjrgain{width: 40%;margin-left: 13%;}
+	.jjrcoin{width: 36%;margin-left: 2%;margin-top: -5%;}
+	.jjrjoin{width: 40%;position: absolute;bottom: 8%;left: 25%;}
+	.jjrarres{width: 5%;position: absolute;bottom: 6%;right: 25%;}
+/*--------------全民经纪人欢迎页 end---------------------*/
+
+/*--------------------推荐弹出页  start------------------------------*/
+	/*设置背景样式 start*/
+	.brokerage2{ background:url(../images/tckbg.jpg) no-repeat; background-size:100% 100%; width:100%; min-height:100%;position:fixed; z-index:999; top:0; left:0;}
+	/*设置背景样式 end*/
+	.browallet2{width: 30%;padding-top: 10%;margin-left: 35%;}
+	.brodescribe2{width: 70%;margin: 5% 0 0 15%;}
+	.brobtn2{width: 50%;margin: 15% 0 0 25%; }
+	/*************苹果四样式********************/
+	@media only screen and (min-device-width: 100px) and (max-device-width:320px) and (max-device-height:567px){
+		.brobtn2{width: 50%;margin: 5% 0 0 25%;}
+	}
+/*--------------------推荐弹出页  end------------------------------*/
+
+
+/*头部导航条 样式 start*/
+.navigation{ width:100%;border-bottom:1px solid #e5e5e5; height:30px; line-height:30px; font-size:16px;}
+.home{width:15%; border-right:1px solid #e5e5e5; text-align:center;}
+.home a{color:#868686;}
+.home1{width:26%; border-right:1px solid #e5e5e5; text-align:center;}
+.home1 a{color:#868686;}
+.textColor{color:#98b244;}
+/*头部导航条 样式 end*/
+/*经纪人注册样式 start*/
+.caption{ font-size:20px; font-weight:bold; color:#98b244; width:100%; text-align:center; font-family:'宋体'; margin-top:5%;}
+.register{ width:90%; margin:5% auto 5%;}
+.register li{ width:100%; margin-top:5%; font-size:15px;}
+.register li a{ color:#FFF;}
+.txtInput{ width:97.5%;height: 27px;border-radius:5px; font-size:15px; }
+.inputbd{border:none; padding-left:2px; padding-top:2px; font-size:14px; font-family:"微软雅黑"; text-indent:3px;}
+.txtSelect1{width: 100%;height: 27px;border-radius:5px;border:1px solid #e5e5e5; font-size:15px; color:rgb(134, 134, 134);}
+.txtSelect{width: 110%;height: 30px;border:1px solid #e5e5e5;}
+.txtcheckbox{ width:17px;height:17px;}
+.agree{color:#98b244; margin-left:3%;  border-bottom : 1px solid #98b244; font-size:14px;}
+.pass{float: right;border-bottom: 1px solid rgb(229, 229, 229);}
+.btn{background: rgb(152, 178, 68);border-radius: 5px;height: 32px;text-align: center;line-height: 32px;color: rgb(255, 255, 255); margin:0 auto 0;}
+.text_yx{width: 100%;height: 27px;border-radius:5px; background:#Fff; line-height:27px;}
+.search{width: 100%;margin: 5% 0 0 0%; position:relative;    }
+.searchdiv {height: 57px;width: 18%;z-index: 999;position: absolute;top: -16px;right: 0;vertical-align: middle;text-align: center;}
+.searchImg{margin-top: 18px;vertical-align: middle;}
+
+/*.searchImg{position: absolute;margin-top: 1%;left:90%;}*/
+.txtzhi1{width:91%;height: 27px;border-radius: 5px; border:none;margin-left: 3%;font-size:16px; padding-left:3%;z-index: 1;}
+
+#purpose{padding-left:4%;font-size: 15px;color: rgb(134, 134, 134);}
+/*经纪人注册样式 end*/
+
+/*国内置业和国外置业的共同样式 start*/
+	.top_gn{ width:100%; background:#ffffff; height:40px; padding-top:5%;}
+	.logoimg{ width:48%; float:left; margin-left:5%;}
+	.logoimg img{ width:100%;} 
+	.btn_sh{ width:51px; height:25px; line-height:25px; background:#e0e0e0; color:#000; float:right; border-radius:5px; margin-right:5%; text-align:center;}
+	.clear_float{ clear:both;}
+	.area{ font-size:15px; width:26.5%;text-align: center; margin: 0.4% -2% 0 3%;padding: 1.8%;z-index: 9999;background: rgb(255, 255, 255); border-radius:5px; border: 1px solid #90ac28; color:#90ac28;}
+	.favorable{width: 49%; position:absolute;left:0;top:0;}
+	/*楼盘样式 start*/
+	.houses{ width:94%; background:#ffffff; margin: 3% 0 0 3%;float: left;}
+	.houses a{color: rgb(115, 115, 115);}
+	.houses_single{ width:53%; float:left;}
+	.houses_single li{ width:90%;font-size:15px; }
+	.houses_img{ width:43%; float:right; margin:2%;height: 76px;overflow: hidden; }
+	.houses_img img{ width:100%;}
+	.txt_style{ background:#90ac28; color:#fff; font-size:22px; margin-right:5%; padding:4px 7px 4px 7px;}
+	.txt_style1{font-size:19px; color:#000;}
+	.txt_style2{color:#ff8a00; font-size:14px;}
+	.txt_style3{font-size:15px;font-weight: bold;}
+	
+	.jl_top{margin:6% auto 3%;}
+	.jl_top1{margin:5% auto 3%;}
+	.jl_top2{margin: -2.8% auto 3%;}
+	.jl_top3{margin-top: -3%;}
+	/*楼盘样式 end*/
+	
+
+	/*国内楼盘样式 start*/
+	.title_txt{color:#000000; font-size:22px;margin: 5% 0 0 5%;}
+	
+	.gn_details{ width:100%; background:#ffffff;height:22%; margin-top:10px; overflow:hidden; margin-bottom:2%;}
+	.gn_details a{color:#737373;}
+	.details_img{ width:35%; float:left; margin: 3% 3% 0 3%;position: relative;}
+	
+	.imgwidth{ width:100%;}
+	.details_text{ width:38%;float:left; margin: 2% 0 0 0%;color:#737373;}
+	.details_text li{ font-size:15px; margin-top:4%;}
+	
+	.details_map{ width:18%; float:right;margin: 3% 2% 0 0;}
+	.details_map li{ font-size:14px; text-align:center;color:#737373;}
+	.txt_details{ background:#ff7800; color:#fff; font-size:12px; padding: 3px 4px; margin: 2%; }
+	/*国内楼盘详情样式 end*/
+	
+	/*箭头*/
+	.arres{ width:8%; position:fixed; bottom:10px; left:45%;}
+/*国内置业和国外置业的共同样式 end*/
+
+
+/*活动细则 start*/
+	.hdxz_bg{ width:94%; margin:5% auto 0; background:#FFF; border-radius:8px;}
+	.hdxz_txt{ width:94%; margin:5% auto 0; line-height:22px; font-size:15px;}
+	.txt1{ font-size:18px; height:34px; line-height:34px; width:100%; text-align:center; border-bottom: 1px solid rgb(229, 229, 229); }
+/*活动细则 end*/
+
+/*经济人平台-我的推荐客户 start*/
+	.hdxz_txt table{width:100%; border: none;}
+	.hdxz_txt table tr td{  font-size:16px; text-align:center;padding-top: 5px;height: 40px;line-height: 18px;}
+	.hdxz_txt table tr td a{color:#91ac29;}
+	.state{ color:#fff; border-radius:3px; width:100%; text-align:center; height:35px; line-height:35px; font-size: 12px;}
+	.hue_bg1{background:#929292;}
+	.hue_bg2{background:#90ac28;}
+	.matter{width:100%; background-color:#eee; border: none; border-radius:5px; margin-top:3%;}
+	.tr_size1{ width:15%;}
+	.tr_size2{ width:35%;}
+	.tr_size3{ width:40%;}
+/*经济人平台-我的推荐客户 end*/
+
+
+/*经济人平台-我的佣金 start*/
+	.setting{width: 45.5%;background: rgb(144, 172, 40);color: rgb(255, 255, 255);border-radius: 5px;margin: 5% 0 0 3%;float: left;}
+	.settting_nr1{height: 40px;line-height: 40px;text-align: center;width: 90%;margin: 0 auto;}
+	.bankcard{ width: 90%;margin: 5% auto 0;background: rgb(255, 255, 255);border-radius: 5px;height: 34px;line-height: 34px;padding-left: 5%;}
+	.particulars{ width: 90%;margin: 5% auto 0;}
+	.particulars_txt{width: 67%;height:31px;border-radius: 5px;border: 1px solid #f3f3f3;float: right;font-size: 15px;color: rgb(105, 105, 105); padding-left:2%;}
+	.txthang{text-align: right;width: 31%;float: left;}
+/*经济人平台-我的佣金 end*
+
+/*银行卡绑定 start*/
+.message_bg{position: fixed;top: 0;	left: 0;z-index: 1987;width: 100%;height: 100%;background: rgba(238,238,238,0.6); display:none;}
+.message_sq{ position: fixed;top:4%;left: 3%;width: 94%;background: rgb(255, 255, 255);border-radius:5px; }
+.petitioner{ width:90%; margin:6% auto 0;color:#696969; font-size:15px;font-family:微软雅黑; line-height:31px; }
+.txtzhi{width:66%;height: 27px;border-radius: 5px;float: right;}
+.sign_up{width:100%; font-size:19px;font-family:微软雅黑; text-align:center; height:40px; line-height:40px; padding-top:4%;}
+.btn_tj{width: 43%;margin: 10% 0 0 27%; background:#90ac28; text-align:center; height:40px; line-height:40px;border-radius:5px; color:#ffffff;}
+.tr_width1{ width:34%;}
+.tr_width2{ width:33%;}
+
+
+/*银行卡绑定 end*
+
+
+/*经纪人详情 start */
+	/*个人图片和修改按钮 start*/
+	.portrait_bg{background:url(../images/grtp.png) no-repeat; background-size:100% 100%; width:30%; margin:5% auto 0;}
+	.portrait{padding: 3px 6px 6px 6px; width:85%;}
+	.revamp{position: absolute;top:19%;right:6%;}
+	.revamp li{ float:left;}
+	.identity{width: 74%;margin-left: 3%;float: left;height: 27px;border-radius: 5px;border: 1px solid rgb(229, 229, 229);font-size: 15px;color: rgb(134, 134, 134);}
+	/*个人图片和修改按钮 end*/
+	
+	/*个人详细信息介绍 start*/
+	.details_xx{ width:94%; margin:5% auto 0; background:#FFF;  border-radius:8px; height:28%;}
+	.details_xx li{width:94%;margin: 0% auto 0;padding-top: 8%; height:20%;}
+	.txt_right{ margin-right:5px; text-align:left; width:30%; }
+	.float_right{ float:right;}
+	.float_left{ float:left;}
+	/*个人详细信息介绍 end*/
+/*经纪人详情 start */
+
+
+/*---------------------------------------------------------个人信息修改样式 start------------------------------------*/
+	.details_xq{ width:98%; margin:0% auto 0;}
+	.details_xq li{width:98%;margin: 0% auto 0;padding-top:14%; height:20%;}
+	.length1{width: 71%;height: 27px;border-radius: 5px;float: right;}
+	.xgpass{ float:right; margin:5%;}
+	.xgpass li{ float:left;}
+	.lblwidth{text-align: right;width: 23%;line-height: 31px;}
+	.bordersz{border-bottom:1px solid rgb(229, 229, 229);}
+/*-----------------------------------------------------------个人信息修改样式 end------------------------------------*/
+
+/*---------------------国外置业-详情页 样式 start------------------------------*/
+	/*图片幻灯*/	
+	 .swipe{overflow:hidden; width:100%;}
+	 .swipe-wrap{overflow:hidden;position:relative;}
+	 .swipe-wrap>div{float:left;position:relative;}
+	 .swipe-wrap .swipe_pic{position:relative;overflow:hidden;width:100%;}
+	 .swipe-wrap .swipe_pic img{width:100%;}
+	
+	 .swipe_num{position: relative;left: 47%;bottom: 10px;}
+	 .swipe_num li{float:left;width:5px;height:5px;background:#959684; background-size:cover; margin-left:5px; border-radius:10px;}
+	 .swipe_num li.active{width:5px;height:5px;background:#dbdcd5; background-size:cover; margin-left:5px; border-radius:10px;}
+	.fclear{ clear:both;}
+	/*图片幻灯样式结束*/
+
+	.floor{ width:94%; margin:4% auto 0; color:#000;}
+	.floor li{ margin-top:2%; font-size:15px;}
+	.floor li a{color:#000;}
+	.condition{ width:100%;}
+	.condition li{ width:23%; float:left; margin-right:2%;font-size:13px; background:#ff8a00; color:#FFF; text-align:center;height: 25px;line-height: 25px;}
+	.layout{width:94%; margin:4% auto 0;}
+	
+	/*菜单 start*/
+		.layout_top{ width:94%; margin:0 auto;}
+		.layout_mune{ width:100%;}
+		.layout_mune li{ width:48.5%; float:left; padding-bottom:10px; }
+		.layout_center{ margin:3% 0%;}
+	/*菜单 end*/	
+	.message_bg1{position: fixed;top: 0;left: 0;z-index: 1987;width: 100%;height: 100%;background: rgba(143,143,143,0.6); display:none;}
+	
+	.zyborder{float: left;width:66%;border: 1px solid #f3f3f3;height: 31px;margin-left:2%;border-radius: 5px;}
+	.gntxtzhi{width:97%;height: 27px;border-radius: 5px; font-size:15px;}
+/*---------------------国外置业-详情页 样式 end------------------------------*/
+
+/*个人信息-样式 start*/
+	.details_gr{width: 94%;margin: 40px auto 0;background: rgb(255, 255, 255);border-radius: 5px;height:15%; font-size:14px;}
+	.managetop{margin-top:4%;}
+	.grleft{ width:40%; margin:0 auto; float:left; margin-left:5%;}
+	.portrait_bg1{background: url(../images/grtp.png) no-repeat;background-size: 100% 100%;width: 66%;margin-top: -26%;}
+	.lblname{ float:right; margin-top:19%; font-size:12px;}
+	.grleft_img1{margin-top: -22px;width:66%;}
+	.grleft_img2{ width:14%;}
+	.grright{ width:49%; margin:0 auto; float:left; margin:18px 0 0 5%; border-left: 1px solid rgb(229, 229, 229);}
+	.grright li{ width:40%; float:left;margin-left:8%;}
+	.grright_img1{width:44%; margin-top:3%;}
+	
+	/*.xq_img{width: 94%;margin:5% auto 0;background: rgb(255, 255, 255);border-radius: 5px;height:41%;}*/
+	.xq_img a{ color:#959595;}
+	.opposite{width:86%;margin: 5% auto 0;background: rgb(255, 255, 255);border-radius: 5px;padding: 10px 10px 13px 10px;}
+    .Hainan{margin-top: -54%; width:25%;}
+	
+	.txtcenter{text-align:center; margin-top:5%;}
+	/*个人信息-样式 end*/
+	
+	
+/*---------------------客户详情样式 start--------------------------------*/
+.kf_details{width:94%; margin:5% auto 0; background:#FFF; border-radius:8px; height:32%;}
+.kf_details2{width:94%; margin:5% auto 0; background:#FFF; border-radius:8px; height:40%;}
+.kfcontent{width:83%; margin:0 auto 0; padding-top:2%;font-size: 16px;}
+.kfcontent li{ margin-top:2%;}
+.sizeimg{ width:49%; margin-top: 3%;}
+
+
+.kf_txtright {margin-right: 5px;text-align: left;width: 38%;}
+.txt_color1{ color:#ff8a00;}
+.plan {width: 3.2%;float: left;margin-top:10%;margin-left: 4%;}
+.plan_conter{float: left;width: 80%;margin-left:5%;font-size: 16px;}
+.plan_conter li{ margin-top:11.8%;}
+/*---------------------客户详情样式 end--------------------------------*/
+
+/*楼盘列表页面样式 start*/
+	.house_lb{width:100%; height:340px; overflow:auto;}
+	.yx_house{position: absolute;top: 0;	left: 0;z-index: 1987;width: 100%;height: 100%;background: rgba(0,0,0,0.8); display:none;}
+	.backimg{width:9%; position:absolute; top:7%; right:7%;}
+	.houselist{background:#ffffff; width: 94%;margin: 0 auto; border-radius:5px;height:90%; }
+	.listdetail{width: 94%;margin:0% auto;}
+	.listtitle{ text-align:center; padding-top: 5%;margin-top: 9%;}
+	.txt_sl1{font-size:16px;}
+	.txt_color{ color:#000;}
+	.lb_details{ width:100%; height: 87px; margin-top:10px; margin-bottom:5%;}
+	.lb_img{ width:43%; float:left; margin: 3% 0 0 3%;}
+	.lb_text{ width:48%;float:right; margin: 2% 0 0 3%;}
+	.lb_text li{ font-size:15px; margin-top:3%;}
+	
+	.txt_details1{ background:#ff7800; color:#fff; font-size:13px; padding: 3px 4px; margin-left: 2%; width:34%; }
+	.lbimgwidth{ width:50%}
+	
+	.pull-down1{position:absolute;top:24%;left:5%;z-index: 1987;width:90%; border:1px solid #90ac28; display:none;}
+	.pull-down1 li{ width:50%;}
+	.area1{ font-size:15px; width:26.5%;text-align: center;margin: 0.4% 5% 0 -2%;padding: 1.8%;z-index: 9999;background: rgb(255, 255, 255); border-radius:5px; border: 1px solid #90ac28; color:#90ac28;}
+
+/*楼盘列表页面 end*/
+
+
+/*摩天环球-图文页样式 start*/
+	.tw_deital{ background:#FFF; border-radius:5px; width:90%;margin: 6% auto 0;padding-bottom: 6%; }
+	.tw_deital dd{ width:94%; margin:0 auto; margin-top:4%;}
+	.arrerbd{ width:0; height:0; border-top: 7px solid transparent; border-left: 7px solid #535353; border-right: 7px solid transparent; border-bottom: 7px solid transparent;margin-top:1.6%;}
+	.tw_height{ width:23%; line-height:25px; height:25px; color:#FFF; text-align:center; background:#90ac28; border-radius:5px;}
+	.imgborder{border-radius: 6px 6px 0 0px; width:100%;}
+	
+    .mttittxt{background: rgba(15, 15, 15, 0.6);text-align: center;font-size: 18px;width: 100%;z-index: 99999;position: absolute; bottom:0px; left:0px; height:35px; line-height:35px; color:#FFF;}
+	/*************苹果五样式********************/
+	@media only screen and (device-width: 320px) and (device-height:568px){
+		.mttittxt{background: rgba(15, 15, 15, 0.6);text-align: center;font-size: 18px;width: 100%;z-index: 99999;position: absolute; bottom:0px; left:0px; height:35px; line-height:35px;color:#FFF;}
+	}
+	
+	/*************苹果四样式********************/
+	@media only screen and (min-device-width: 100px) and (max-device-width:320px) and (max-device-height:567px){
+		.mttittxt{background: rgba(15, 15, 15, 0.6);text-align: center;font-size: 18px;width: 100%;z-index: 99999;position: absolute; bottom:0px; left:0px; height:35px; line-height:35px;color:#FFF;}
+	}
+	
+/*摩天环球-图文页样式 end*/
+
+
+/*---------------品牌动态样式 start-----------------*/
+	.brand{ width:94%; margin:5% auto 0;}
+	.brand a{ color: rgb(94, 94, 94);}
+	.dot{background:#90ac28; width:5px; height:5px; border-radius:5px;margin: 2% 2% 0 1%;}
+/*---------------品牌动态样式 end-----------------*/
+
+/*品牌动态详情页样式 start*/
+	.pp_details{background:#FFF; width:94%;/* height:20%;*/ color:#83a80c; font-size:20px; margin:5% auto;}
+	.pp_title{width:68%;text-align: center;line-height: 34px; margin:0 auto; padding: 6px 0 14px 0;}
+	.views{width: 100%;text-align: center; font-size:16px;}
+	.xq_det{background:#FFF; width:92%; margin:5% auto;  border-radius:5px;font-size:16px;font-family:'微软雅黑';  }
+	.xq_font{max-width: 100%; padding:6px;font-family: '微软雅黑';font-size:17px; line-height:27px; }
+	.wiregap{ margin:4% 0;}
+/*品牌动态详情页样式end*/
+
+/*智慧城镇页面样式 start*/
+	.liplace_top{width: 10%;margin: 0 auto;}
+	.arres_zh{width: 1.5%;position: fixed;bottom: 10px;right: 11%;}
+/*智慧城镇页面样式 end*/
+
+/*---智慧城镇 摩天环球-详情页样式 start--*/
+	.mthq_details{width:94%; margin:5% auto 0; background:#FFF; border-radius:10px;}
+	.intro{ font-size: 20px;font-weight: 600;height: 33px;line-height: 33px; width:100%; text-align:center; border-bottom: 1px solid rgb(229, 229, 229); background:#c8c8c8; color:#000; }
+	.intro_txt{ width:94%; margin:5% auto 0; line-height:24px; text-indent: 2em;font-size:16px;}
+	.moreText{font-size:16px; height:34px; line-height:34px; width:100%; text-align:center; border-top: 1px dashed rgb(229, 229, 229); margin-top:3%;}
+	.bodertop{border-top: 1px dashed rgb(229, 229, 229); margin-top:3%;height:10px;}
+/*---智慧城镇 摩天环球-详情页样式 end*/
+
+/*----世界绿地 start----------*/
+.year{background: url(../images/bgnian.png) no-repeat;width: 17%;height: 10%;background-size: 100% 100%;margin: 4% 0 0 10%;}
+.yeartext{padding: 33% 0 0 23%;color: rgb(238, 238, 238);}
+
+.ldtitle{margin: 5% 0 0 7%;}
+.ldspot{background:#90ac28; border-radius:5px; width:8px; height:8px;margin-top: 4%;}
+.lddate{background: rgb(218, 230, 182);border-radius: 4px;width: 21%;height: 15%;text-align: center; color:#90ac28;margin:2% 0 0 4%; padding:3px;}
+/*----制作对话框 start----------*/
+.dhcontent {width:62%;position: relative;z-index: 1; margin-left: 4%;}
+.triangle-isosceles {position:relative;padding: 8px;/*margin:1em 0 3em;*/color:#ffffff;background:#a8c749;border-radius:5px;}
+.dhcontent a{ color:#ffffff;}
+.triangle-isosceles.left {margin-left: 5%;background:#a8c749;}
+.triangle-isosceles:after {content:"";position:absolute;left:20px;bottom:-15px;border-width:15px 15px 0;border-style:solid;border-color:#a8c749 transparent;display:block;width:0;}
+.triangle-isosceles.left:after {top: 25%;left: -7px;bottom: auto;border-width: 7px 7px 7px 0;border-color:transparent #a8c749;}
+/*----制作对话框 end----------*/
+.bgimgtext{/*width:78%; margin:5% 0 0 15%; background:#FFF; border:1px solid #d2d2d2;height:27.8%;;border-radius: 5px;*/}
+.imgtext{width:81%;margin: 1% auto;border-radius: 5px;border: 1px solid #d2d2d2;padding: 2px;background:#FFF;margin-left: 13%;}
+.imgtext img{border-radius: 5px; width:100%;}
+.ldconten{width:82%; margin-left:14%;}
+.ldmore{width:25%;margin-right: 2%; margin-top:1%;}
+/*---世界绿地 end----------*/
+
+/********************下拉区域样式 start*******************************/
+	.country{position: absolute;background:#ffffff;width: 30%; text-align:center;top:22%;left:3%;border: 1px solid #90ac28;border-radius: 5px;overflow: auto;height:350px;}
+	.country li{ margin:10% 0;}
+	.country_line{border-bottom:1px solid #ececec; width:100%; }
+	.zy_arrows{ width:14px; float: right;padding-top: 7%;}
+	
+	
+	.dpnone{ display:none;}
+	.dpblock{ display:block}
+
+	/*.pull-down1{position:absolute;top:22%;left:6%;z-index: 1987;width:87%; border:1px solid #eae9e9; display:none;}
+	.pull-down1 li{ width:50%;}*/
+	.pull-down{position:absolute;top:24%;left:3%;z-index: 1987;width:94%; border:1px solid #90ac28; display:none;}
+	.pull-down li{ width:50%;}
+	
+	.benteng{position:absolute;top:16%;right:1%;z-index: 1987;width:30%; float:right; color:Red; font-size:16px; }
+	.benteng a{color:#7B00FF;border-bottom:1px solid #7B00FF; }
+	
+	.pull-stair{background:#f4f4f4; width:100%; height:350px; overflow:auto;}
+	.pull-stair li{ text-align:center; width:100%; height:30px; line-height:30px; font-size:15px;}
+	.pull-second{background:#FFF; width:100%; height: 350px; overflow:auto;}
+	.pull-second li{text-align:center; width:100%; height:30px; line-height:30px;}
+	.qychoose{background:#FFF; color:#90ac28;}
+/********************下拉区域样式 end*******************************/
+
+/**返回的 start*/
+.backimg1{width:9%; position:absolute; top:3%; right:3%;}
+/**返回的 end*/
+
+/*绿地足球首页样式 start*/
+.anmenu{ width:96%; margin:0 auto;}
+.menubtn{ width:100%;}
+.menubtn li{ width:41%; margin: 3% 0 0 6%; float:left;}
+.menubtn li img{ width:100%;}
+.fgxina{border:1px solid #083256; width:88%; margin:2% auto 0;}
+.zqgame{margin:-5% auto 0; width:50%;}
+
+.new-panel .np-toplogo{ width:35%; margin:20px auto -30px;}
+.new-panel .np-toplogo img{ width:100%;}
+.np-box01{margin: -60% 0% 0 3%;}
+.np-box02{ height:200px; border:1px solid #231815; margin:5px; background:#766354;}
+#carousel{ height:200px; overflow:hidden; margin:0 auto;}
+#carousel a img{ width:35%;}
+/*绿地足球首页样式 end*
+
+/*绿地足球申花动态样式 start*/
+
+	.shdynamic{width:100%; position:absolute; top:25%; left:0%;}
+	.dynamic{width: 94%;border: 1px solid #044696;position: absolute;top: 36%;left: 3%; border-top-color:#126aff;}
+	.dynamic_dtl{ width: 94%; margin:5% auto 0;color:#FFF;}
+	.dynamic_dtl a{color:#FFF;}
+	.dynamic_tit{ width:100%; font-size:17px; text-align:center; font-weight:bold;}
+	.dynamic_txt{ width:60%; font-size:9px; margin-top:3%; line-height:15px; font-size:14px;}
+	.dynamic_img{ width:38%; margin-top:4.5%;}
+	.time_more{ margin-top:3%; font-size:15px;}
+	.dynamic_more{ background:#fda700; padding:2px; color:#000;}
+	.wire{border: 1px solid #044696; width:100%; margin-top:3%;}
+	.first_line{text-indent: 2em; line-height:20px;}
+/*绿地足球申花动态样式 end*/
+
+
+/*绿地足球中超赛事样式 start*/
+	.compet{width: 94%;border: 1px solid #044696;position: absolute;top:35%;left: 3%; border-top-color:#126aff;}
+	.compet_dtl{width: 94%; margin:5% auto 0;}
+	.compet_titel{ width:100%; font-size:12px; text-align:center; color:#2e64d2;}
+	.compet_site{ padding:3px;border: 1px solid #0e60ff;color:#95bcff; width:30%; text-align:center; margin:3% auto 3%;}
+	.compet_vie{ width:80%; margin:7% auto 0;}
+	
+	.team{width:30%;}
+	.team_logo{text-align:center; margin-top:5%; color:#478bff;}
+	.compet_vs{width:20%; margin: 13% 10% 0 10%;}
+	
+	.competition{width: 94%;border: 1px solid #0a345a;position: relative;top:19%;left: 3%; margin-top:3%; }
+	.com_dtl{width:94%; margin:0 auto; margin-bottom:5%; height:30px; border-spacing:0;border-top: 1px solid #04324e;}
+	.com_dtl tbody td{ border-top: 0;border-right: 1px solid #04324e;border-bottom: 1px solid #04324e;border-left: 0; height:30px; text-align:center;  }
+	
+	.com_dtl li{ float:left; border-right:1px solid #04324e;height:30px; line-height:30px;}
+/*绿地足球中超赛事样式 end*/
+
+/*绿地足球球队样式 start*/
+	/*设置字体 start*/
+	.font_text{font-family:"Baskerville Old face"; font-size:20px; font-weight:bold;}
+	@font-face { 
+	 font-family:"Baskerville Old face";
+	 src:url(images/Baskerville Old face.WOFF);
+	}
+	/*设置字体 end*/
+	.inplayer{width: 94%;border: 1px solid #044696;position:absolute;top:34%;left: 3%; border-top-color:#126aff;}
+	.inplayer_dtl{width: 94%; margin:5% auto 0;color:#FFF;}
+	.teamtit{ width:100%; font-size:17px; font-weight:bold; text-align:center;}
+	.teamtxt{width:100%; font-size:15px; margin-top:3%; line-height:22px; margin-bottom:5%; color:#abccff;}
+	.player{width: 94%;border: 1px solid #083256;position: relative;top:45%;left: 3%; margin-top:3%; }
+	.footballer{width: 94%;border: 1px solid #083256; margin:3% auto -3%;height:160px;}
+	.people{ width:44%;}
+	.intropp{ width: 40%;font-size:10px;margin: 2% 0% 0 4%;}
+	.intropp li{ margin-top:2%; color:#126aff;}
+	.indicate{ width:9.23%; border-left: 1px solid #083256; border-right:1px solid #083256; }
+	.line_between{border: 1px solid #126aff; width:70%;}
+	.jlbottom{margin-bottom:5%;}
+/*绿地足球球队样式 end*/

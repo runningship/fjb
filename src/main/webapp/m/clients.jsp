@@ -57,44 +57,13 @@ $(function(){
      <div id="top" style="text-align:center">
      	  <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
           <span class="s4"><a href="#">&lt;</a></span>
-          <span class="s5">个人中心</span>
+          <span class="s5">我的客户</span>
      </div>
      
      <div id="user">
      
-          <div class="name">
-          		<div style="width:120px;float:left;margin-left:5%;">
-          		<p>${user.tel }</p>
-               <p>${user.name }</p>
-               </div>
-               <div style="width:100px;float:right; position:relative;margin-right:1%;" >
-               		<span style="color:white;">总佣金</span>
-               		<a>
-               		<img src="../images/tj_yongjin.png" /><span style="position:absolute;margin-top:12px;font-size:14px;"> 1200</span>
-               		</a>
-               </div>
-               <div style="width:100px;float:right; position:relative;" >
-               		<span style="color:white;">推荐人数</span>
-               		<a>
-               		<img src="../images/tj_renshu.png" /><span style="position:absolute;margin-top:12px;font-size:14px;"> 12</span>
-               		</a>
-               </div>
-               
-          </div>
           
-          <div style="margin-top:5px;">
-          	<a href="houses.jsp"><img src="../images/tj_big.png" style="width:45%;margin-left:3%;" /></a>
-          	<a href="clients.jsp"><img src="../images/clients.png" style="width:45%;margin-right:3%;float:right"/></a>
-          	
-          </div>
-		  <div style="margin-top:5px;">
-		  	<a href="yongjin.jsp"><img src="../images/yongjin_big.png" style="width:45%;margin-left:3%;"/></a>
-          	<a href="#"><img src="../images/rule_big.png" style="width:45%;margin-right:3%;float:right"/></a>
-		  </div>          
-          <div class="litNav"><a href="#"><span class="curr">我的预约</span></a><a href="#"><span >我的收藏</span></a>
-          	<a href="#"><span >我的浏览</span></a>
-          </div>
-            <div class="orders">
+            <div class="orders" style="margin-top:30px;">
                         
                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				    <thead>

@@ -82,7 +82,7 @@ body {
 
 #Fanglist ul, #Fanglist ul li{ width:100%; display:inline-block;}
 
-#Fanglist ul li{ border-bottom:1px solid #eeeeee; padding:10px 0;}
+#Fanglist ul li{ border-bottom:1px solid #eeeeee; padding:10px 10px;}
 
 #Fanglist ul li div.img{ float:left; width:30%;}
 

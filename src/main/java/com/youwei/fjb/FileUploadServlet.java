@@ -82,8 +82,9 @@ public class FileUploadServlet extends HttpServlet {
 						
 						String imgDir = BaseFileDir+File.separator +request.getServletContext().getContextPath();
 						image.path=request.getServletContext().getContextPath()+  File.separator + estateId + File.separator + item.getName();
+						image.path = image.path.replace("#", "d");
 						FileUtils.copyInputStreamToFile(item.getInputStream(), new File(imgDir
-								+  File.separator + estateId + File.separator + item.getName()));
+								+  File.separator + estateId + File.separator + item.getName().replace("#", "d")));
 						LogUtil.info("uploading file "+ item.getName()+" to "+imgDir);
 					}
 				}

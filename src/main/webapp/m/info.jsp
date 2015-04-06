@@ -6,6 +6,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <jsp:include page="../header.jsp" />
+<link rel="stylesheet" href="css/public.css" type="text/css" />
+<script type="text/javascript" src="js/swipe.qq.min.js"></script>
+<script type="text/javascript"  src="js/home.min.js"></script>
+<script type="text/javascript">
+</script>
 </head>
 
 <body>
@@ -19,8 +24,15 @@
      
      </div>
      
-     <div id="banner"><img src="../${upload_path}/${main_img}" /></div>
-     
+<%--      <div id="banner"><img src="../${upload_path}/${main_img}" /></div> --%>
+     <div class="swipe" id="imgSwipe" style="visibility: visible;">
+   	  <div class="swipe-wrap" >
+           <div class="swipe_pic" data-index="0" ><img src="images/2014121918503264314694.jpg" width="100%"></div>
+           <div class="swipe_pic" data-index="1" ><img src="images/2014121918503936102507.jpg" width="100%"></div>
+           <div class="swipe_pic" data-index="2" ><img src="images/2014121918504973742715.jpg" width="100%"></div>
+       </div>
+      <ul class="swipe_num"><li class=""></li><li class=""></li><li class="active"></li></ul>
+	 </div>
      <div id="infoCon">
      
           <div class="line"><div class="coloReds">${estate.name}</div></div>
@@ -36,7 +48,7 @@
                <div class="line">${estate.yufu}抵${estate.shidi}</div>
                <div class="line">截止时间：<fmt:formatDate value="${estate.youhuiEndtime }" pattern="yyyy-MM-dd"/></div>
                
-               <div class="yuyue"><a href="order.jsp?estateId=${estate.id }">立即预约</a></div>
+               <div class="yuyue"><a href="order.jsp?estateId=${estate.id }">我要推荐</a></div>
           
           </div>
           

@@ -9,6 +9,7 @@ import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.GException;
 import org.bc.sdak.Page;
+import org.bc.sdak.Transactional;
 import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
@@ -57,11 +58,14 @@ public class HuXingService {
 	}
 	
 	@WebMethod
+	@Transactional
 	public ModelAndView delete(Integer id){
 		ModelAndView mv = new ModelAndView();
 		HuXing po = dao.get(HuXing.class, id);
 		if(po!=null){
 			dao.delete(po);
+			//删除户型图片
+			dao.execute("delete from HouseImage where huxingUUID=?", po.uuid);
 		}
 		return mv;
 	}
