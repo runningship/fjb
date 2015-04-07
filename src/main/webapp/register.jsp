@@ -5,41 +5,7 @@
 <head>
 <script type="text/javascript" src="${projectName}/js/validate.js"></script>
 <jsp:include page="header.jsp" />
-<script type="text/javascript">
-  
-function save(){
-  if(checkNotnullInput()==false){
-      return;
-  }
-  var a=$('form[name=form1]').serialize();
-    YW.ajax({
-      type: 'POST',
-      url: 'c/admin/user/doRegiste',
-      data:a,
-      mysuccess: function(data){
-          // $('#saveBtn').removeAttr('disabled');
-          //art.dialog.close();
-          infoAlert('注册成功,工作人员会第一时间与您联系，审核成功后即可登录');
-      },
-      error:function(data){
-    	  var json = JSON.parse(data.responseText);
-    	  alert(json.msg);
-    	  $('#yzm').click();
-      }
-  });
-}
 
-$(function(){
-	var province_reg = remote_ip_info['province'];
-	var city_reg = remote_ip_info['city']
-	var district_reg = remote_ip_info['district'];
-	$("#city_reg").citySelect({
-		prov: province_reg, 
-    	city: city_reg,
-    	dist: district_reg
-	});
-});
-</script>
 <style type="text/css">
 #city_reg select{height:30px;width:120px;margin-top: 20px;margin-bottom: 10px;}
 </style>
@@ -98,5 +64,47 @@ $(function(){
 
 <jsp:include page="foot.jsp"></jsp:include>
 
+<script type="text/javascript">
+  
+function save(){
+  if(checkNotnullInput()==false){
+      return;
+  }
+  var a=$('form[name=form1]').serialize();
+    YW.ajax({
+      type: 'POST',
+      url: 'c/admin/user/doRegiste',
+      data:a,
+      mysuccess: function(data){
+          // $('#saveBtn').removeAttr('disabled');
+          //art.dialog.close();
+          infoAlert('注册成功,工作人员会第一时间与您联系，审核成功后即可登录');
+      },
+      error:function(data){
+    	  var json = JSON.parse(data.responseText);
+    	  alert(json.msg);
+    	  $('#yzm').click();
+      }
+  });
+}
+
+$(function(){
+	var province_reg = remote_ip_info['province'];
+	var city_reg = remote_ip_info['city']
+	var district_reg = remote_ip_info['district'];
+	if(sessionProvince && sessionCity){
+		$("#city_reg").citySelect({
+			prov : sessionProvince, 
+	    	city : sessionCity
+		});
+	}else{
+		$("#city_reg").citySelect({
+			prov: province_reg, 
+	    	city: city_reg,
+	    	dist: district_reg
+		});
+	}
+});
+</script>
 </body>
 </html>

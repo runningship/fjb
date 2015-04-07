@@ -285,7 +285,6 @@ public class PageService {
 	public ModelAndView registe(){
 		ModelAndView mv = new ModelAndView();
 		Article article = dao.getUniqueByKeyValue(Article.class, "name", "registe");
-		//加入城市信息
 		mv.jspData.put("conts", article.conts);
 		return mv;
 	}

@@ -20,18 +20,10 @@ function smart_jump(obj){
 }
 
 function chooseImg(type){
-  //$('.swipe_pic').css('display','none');
-  //$('div[type="'+type+'"]').css('display','');
-  //$('.swipe_pic img[type="'+type+'"]').attr('show','true');
   filter_type = type;
   reSlide();
 }
 
-
-$(function(){
-  var a = $('.swipe_pic').length;
-  $('.swipe_num').text('1/'+a);
-})
 
 </script>
 <style text="text/css">
@@ -56,7 +48,7 @@ $(function(){
    	  		</c:forEach>
            
        </div>
-      <span class="swipe_num"></span>
+      <span class="swipe_num"><span id="nowNum">1</span>/<span id="totalNum"></span></span>
 	 </div>
 	 <div role="thumb" class="thumb">
            <c:if test="${huxing_img !=null }">
