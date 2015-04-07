@@ -50,10 +50,11 @@ function login(){
               <li><label style="width:70px; text-align:right;">用户名：</label><input type="text" id="tel" name="tel" placeholder="输入用户名"></li>
               <li>
                  <label style="width:70px; text-align:right;">密　码：</label>
-                 <input type="password" id="pwd" name="pwd" placeholder="输入正确的密码"></li>
-              <li><label style="width:70px; text-align:right; float:left;">验证码：</label>
-              <input type="text" name="yzm" id="yzm" placeholder="看右边图片" style="width:80px; float:left; margin-top:15px;"><div style=" float:left; margin-top:6px;">
-              <img alt="图片验证码" src="${projectName}/c/yzm" onclick="this.src='${projectName}/c/yzm?t='+(+new Date)"style="width: 102px;height: 50px;"></div></li>
+                 <input type="password" id="pwd" name="pwd" placeholder="输入正确的密码">
+              </li>
+<!--               <li><label style="width:70px; text-align:right; float:left;">验证码：</label> -->
+<!--               <input type="text" name="yzm" id="yzm" placeholder="看右边图片" style="width:80px; float:left; margin-top:15px;"><div style=" float:left; margin-top:6px;"> -->
+<%--               <img alt="图片验证码" src="${projectName}/c/yzm" onclick="this.src='${projectName}/c/yzm?t='+(+new Date)"style="width: 102px;height: 50px;"></div></li> --%>
           </ul>
           
           <div class="confirm">

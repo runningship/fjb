@@ -45,9 +45,7 @@ function more(){
 </form>
 <div class="main">
      <jsp:include page="top.jsp"></jsp:include>
-     <div id="top">
-          <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
-<!--           <span class="s2"><input type="text" class="searchBox" placeholder="楼盘名称" /></span> -->
+     <div id="top" style="padding:0px;">
      </div>
      
      <div id="banner"><img src="images/ad1.jpg" /></div>
@@ -84,7 +82,7 @@ function more(){
      <div id="Fanglist">
      
           <div class="tit"><i><img src="images/hot.png" /></i>推荐楼盘</div>
-          <div class="tit"><span class="c" style="float:left">本期共有<strong>${total }</strong>个楼盘，优惠幅度最大<strong>${maxYouhui }</strong></span></div>
+          <div class="tit"><span class="c" style="float:left;padding-left:10px;">本期共有<strong>${total }</strong>个楼盘，优惠幅度最大<strong>${maxYouhui }</strong></span></div>
           <ul>
           
               <li class="repeat" style="display:none">

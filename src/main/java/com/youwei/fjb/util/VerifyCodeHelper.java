@@ -13,6 +13,9 @@ public class VerifyCodeHelper {
 			yzm="";
 		}
 		String session_yzm = (String)ThreadSession.getHttpSession().getAttribute(FjbConstant.Session_Attr_YZM);
+		if(session_yzm==null){
+			return;
+		}
 		if(!yzm.toUpperCase().equals(session_yzm)){
 			throw new GException(PlatformExceptionType.BusinessException,"验证码不正确。");
 		}

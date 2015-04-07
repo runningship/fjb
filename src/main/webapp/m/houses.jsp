@@ -39,7 +39,7 @@ function more(){
 function setValueAndSearch(id, a){
 	if(!a){
 		$('#'+id).val('');
-		$('#'+id+'_btn').html('区域'+'<i></i>');
+		$('#'+id+'_btn').html('楼型'+'<i></i>');
 	}else{
 		$('#'+id).val($(a).text());
 		$('#'+id+'_btn').html($(a).text()+'<i></i>');
@@ -51,12 +51,10 @@ function setValueAndSearch(id, a){
 }
 
 function setJiageAndSearch(start,end , a){
-	if(start){
-		$('#jiageStart').val(start);
-	}
-	if(end){
-		$('#jiageEnd').val(end);
-	}
+
+	$('#jiageStart').val(start);
+	$('#jiageEnd').val(end);
+
 	if(!start && !end){
 		$('#jiage_btn').html('价格<i></i>');
 	}else{
@@ -97,7 +95,6 @@ function emptySearchResult(){
      
         <jsp:include page="top.jsp"></jsp:include>
      <div id="top">
-     	    <span class="s1" style="z-index:999"><a href="index.jsp"><img src="images/logo.png" /></a></span>
           <span class="s4"><a href="#">&lt;</a></span>
           <span class="s2"><div class="search"><input type="text" name="searchText" class="searchBox" placeholder="楼盘名称" /><button onclick="emptySearchResult();doSearch();">搜索</button></div></span>
      

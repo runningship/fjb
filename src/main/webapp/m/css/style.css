@@ -27,7 +27,7 @@ body {
 	font-family:"微软雅黑"; background-color:#f3f3f3;
 }
 
-.main{ width:100%; max-width:640px; min-width:320px; margin:0 auto; position:relative; padding-bottom:100px;}
+.main{ width:100%; max-width:640px; margin:0 auto; position:relative; }
 
 #top{ width:100%; padding:15px 0; min-height:20px; background-color:#de3031; overflow:hidden; position:relative; margin:0 auto; display:inline-block;}
 
@@ -82,13 +82,13 @@ body {
 
 #Fanglist ul, #Fanglist ul li{ width:100%; display:inline-block;}
 
-#Fanglist ul li{ border-bottom:1px solid #eeeeee; padding:10px 10px;}
+#Fanglist ul li{ border-bottom:1px solid #eeeeee; padding:0.2% 0px;}
 
 #Fanglist ul li div.img{ float:left; width:30%;}
 
 #Fanglist ul li div.img img{ width:100%; border:1px solid #dedee0; height:120px}
 
-#Fanglist ul li div.con{ float:left; width:65%; padding-left:5%;}
+#Fanglist ul li div.con{ float:left; width:65%; padding-left:3%;}
 
 #Fanglist ul li h2{ padding-right:25px; position:relative; font-size:1.1em; color:#333333;}
 
@@ -142,7 +142,7 @@ body {
 .SelectTit span div.hide{ display:none;}
 
 
-#infoCon{ width:100%; display:inline-block; background-color:#ffffff;}
+#infoCon{ width:100%; margin-top:-18px; background-color:#ffffff;}
 
 #infoCon .line{ width:96%; margin:2%; display:inline-block; font-size:1em; margin-top:10px;}
 

@@ -23,7 +23,9 @@ function doSearch(){
 	    	}else{
 	    		$('#FangMore').css('display','none');
 	    	}
-	        
+	    	if (json.page.totalCount<=10) {
+	    		$('#FangMore').css('display','none');
+	    	}
 	    }
 	  });
 }
@@ -55,7 +57,6 @@ $(function(){
 <div class="main">
      
      <div id="top" style="text-align:center">
-     	  <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
           <span class="s4"><a href="#">&lt;</a></span>
           <span class="s5">我的客户</span>
      </div>
@@ -70,14 +71,14 @@ $(function(){
 						  <tr>
 						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">姓名</td>
 						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约楼盘</td>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约时间</td>
+						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">手机号码</td>
 						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">状态</td>
 						  </tr>
 				    </thead>
-				  <tr style="display:none" class="buyer" ontouchend="view($[id])" >
+				  <tr style="display:none;height:50px;" class="buyer" onclick="view($[id])" >
 				    <td align="center" valign="middle" height="30">$[buyerName]</td>
 				    <td align="center" valign="middle" height="30">$[estateName]</td>
-				    <td align="center" valign="middle" height="30">$[addtime]</td>
+				    <td align="center" valign="middle" height="30">$[buyerTel]</td>
 				    <td align="center" valign="middle" height="30">$[status]</td>
 				  </tr>
 				</table>

@@ -8,8 +8,8 @@ public class EstateQuery{
 	
 	public String lxing;
 	
-	public Float jiageStart;
+	public String jiageStart;
 	
-	public Float jiageEnd;
+	public String jiageEnd;
 	
 }

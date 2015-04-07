@@ -279,7 +279,7 @@ img{ max-width:100%;}
 	 .swipe-wrap .swipe_pic{position:relative;overflow:hidden;width:100%;}
 	 .swipe-wrap .swipe_pic img{width:100%;}
 	
-	 .swipe_num{position: relative;left: 47%;bottom: 10px;}
+	 .swipe_num{position: relative;left: 49%;bottom: 20px;color:white}
 	 .swipe_num li{float:left;width:5px;height:5px;background:#959684; background-size:cover; margin-left:5px; border-radius:10px;}
 	 .swipe_num li.active{width:5px;height:5px;background:#dbdcd5; background-size:cover; margin-left:5px; border-radius:10px;}
 	.fclear{ clear:both;}

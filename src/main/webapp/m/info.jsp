@@ -10,57 +10,189 @@
 <script type="text/javascript" src="js/swipe.qq.min.js"></script>
 <script type="text/javascript"  src="js/home.min.js"></script>
 <script type="text/javascript">
+function smart_jump(obj){
+  var url=$(obj).attr('href').split('转')[0];
+  var wx_sign='#mp.weixin.qq.com';
+  if(anchor != wx_sign)
+  {
+      window.location=url + wx_sign;
+  }
+}
+
+function chooseImg(type){
+  //$('.swipe_pic').css('display','none');
+  //$('div[type="'+type+'"]').css('display','');
+  //$('.swipe_pic img[type="'+type+'"]').attr('show','true');
+  filter_type = type;
+  reSlide();
+}
+
+
+$(function(){
+  var a = $('.swipe_pic').length;
+  $('.swipe_num').text('1/'+a);
+})
+
 </script>
+<style text="text/css">
+.thumb-item{float:left;width:15%;margin-left:1%;margin-top:-15px;}
+</style>
 </head>
 
-<body>
+<body style="overflow-x:hidden">
 <jsp:include page="top.jsp"></jsp:include>
 <div class="main">
      
-     <div id="top">
-     
-          <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
+     <div id="top" style="text-align:center">
           <span class="s4"><a href="#"><i class="icon iconfont">&#xe601;</i></a></span>
-     
+     		<span class="s5">${estate.name}</span>
      </div>
      
 <%--      <div id="banner"><img src="../${upload_path}/${main_img}" /></div> --%>
      <div class="swipe" id="imgSwipe" style="visibility: visible;">
    	  <div class="swipe-wrap" >
-           <div class="swipe_pic" data-index="0" ><img src="images/2014121918503264314694.jpg" width="100%"></div>
-           <div class="swipe_pic" data-index="1" ><img src="images/2014121918503936102507.jpg" width="100%"></div>
-           <div class="swipe_pic" data-index="2" ><img src="images/2014121918504973742715.jpg" width="100%"></div>
+   	  		<c:forEach items="${images}"  var="image">
+   	  			<div class="swipe_pic "  type="${image.type }"><img src="../${upload_path}/${image.path }" /></div>
+   	  		</c:forEach>
+           
        </div>
-      <ul class="swipe_num"><li class=""></li><li class=""></li><li class="active"></li></ul>
+      <span class="swipe_num"></span>
 	 </div>
+	 <div role="thumb" class="thumb">
+           <c:if test="${huxing_img !=null }">
+           <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('huxing');return false;">
+               <img alt="" src="../${upload_path}/${huxing_img }">
+               <p class="cover-layer">户型图</p>
+               <span class="photo-frame"></span>
+           </a>
+           </c:if>
+           <c:if test="${xiaoguo_img !=null}">
+            <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('xiaoguo');return false;">
+                <img alt="" src="../${upload_path}/${xiaoguo_img }">
+                <p class="cover-layer">效果图</p>
+                <span class="photo-frame"></span>
+            </a>
+           </c:if>
+           
+           <c:if test="${shijing_img !=null}">
+           	<a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('shijing');return false;">
+                <img alt="" src="../${upload_path}/${shijing_img }">
+                <p class="cover-layer">实景图</p>
+                <span class="photo-frame"></span>
+            </a>
+           </c:if>
+           
+           <c:if test="${guihua_img !=null }">
+            <a role="thumbItem" class="thumb-item  last" href="#" onclick="chooseImg('guihua');return false;">
+                <img alt="" src="../${upload_path}/${guihua_img }">
+                <p class="cover-layer">规划图</p>
+                <span class="photo-frame"></span>
+            </a>
+           </c:if>
+         </div>
+                          
      <div id="infoCon">
      
-          <div class="line"><div class="coloReds">${estate.name}</div></div>
-          <div class="line"><div class="coloReds">均价${estate.junjia}元/平</div></div>
-          <div class="line">开盘：<fmt:formatDate value="${estate.opentime }" pattern="yyyy-MM-dd"/>开盘</div>
+          <div class="line"><div class="coloReds" style="font-size:1.6em">${estate.name}</div></div>
+          <div class="line"><div style="font-size:1.2em;color:black;">${estate.jieshao}</div></div>
           <div class="line">地址：${estate.addr }</div>
-          <div class="line">${estate.tese }</div>
+<%--           <div class="line">${estate.tese }</div> --%>
+          <div class="line"><a href="tel:${estate.tel}" onclick="smart_jump(this);return false;">详情请致电: ${estate.tel}<img style="width:24px;" src="images/tel.png" /></a></div>
+          <div>
           
+          </div>
           <div class="tehui">
                
-               <div class="tit"><i><img src="images/th.png" /></i>本站特惠</div>
-               <div class="line">可售：${leftCount }套 总价：${minTotalPrice}起</div>
-               <div class="line">${estate.yufu}抵${estate.shidi}</div>
+               <div class="tit line"><i></i>独家特惠: ${estate.youhuiPlan }</div>
+<%--                <div class="line">可售：${leftCount }套 总价：${minTotalPrice}起</div> --%>
+<%--                <div class="line">${estate.yufu}抵${estate.shidi}</div> --%>
                <div class="line">截止时间：<fmt:formatDate value="${estate.youhuiEndtime }" pattern="yyyy-MM-dd"/></div>
-               
                <div class="yuyue"><a href="order.jsp?estateId=${estate.id }">我要推荐</a></div>
-          
           </div>
           
           <div class="xiangxi">
-               <div class="tit">详细信息</div>
+               <div class="tit">基础信息</div>
+              <c:if test="${estate.mainHuxing!=null}">
+                <div class="line">主力户型：${estate.mainHuxing }</div>
+              </c:if>
+              <c:if test="${estate.zxiu!=null}">
                <div class="line">装修状态：${estate.zxiu}</div>
+              </c:if>
+              <c:if test="${estate.shouloubu!=null}">
+                <div class="line">售楼处地址：${estate.shouloubu }</div>
+              </c:if>
+              <c:if test="${estate.developer!=null}">
+                <div class="line">开发商：${estate.developer }</div>
+              </c:if>
+              <c:if test="${estate.gongjijin!=null}">
+                <div class="line">公积金贷款：${estate.gongjijin }</div>
+              </c:if>
+              <c:if test="${estate.daili!=null}">
+                <div class="line">代理商：${estate.daili }</div>
+              </c:if>
+              <c:if test="${estate.fukuang!=null}">
+                <div class="line">付款方式：${estate.fukuang }</div>
+              </c:if>
+              <c:if test="${estate.opentime!=null}">
+                <div class="line">开盘时间：<fmt:formatDate value="${estate.opentime}" pattern="yyyy-MM-dd"/></div>
+              </c:if>
+              <c:if test="${estate.hushu!=null}">
+                <div class="line">交房时间：<fmt:formatDate value="${estate.jiaofangDate}" pattern="yyyy-MM-dd"/></div>
+              </c:if>
+          </div>
+     
+          <div class="xiangxi">
+               <div class="tit">建筑信息</div>
+              <c:if test="${estate.chanquan!=null}">
+                <div class="line">土地年限：${estate.chanquan }年</div>
+              </c:if>
+              <c:if test="${estate.hushu!=null}">
+                <div class="line">规划户数：${estate.hushu }户</div>
+              </c:if>
+              <c:if test="${estate.guishu!=null}">
+                <div class="line">产证归属：${estate.guishu }</div>
+              </c:if>
+              <c:if test="${estate.ghmj!=null}">
+                <div class="line">规划面积：${estate.ghmj }平方</div>
+              </c:if>
+              <c:if test="${estate.jzmj!=null}">
+                <div class="line">建筑面积：${estate.jzmj }平方</div>
+              </c:if>
+              <c:if test="${estate.gongtan!=null}">
+                <div class="line">公摊面积：${estate.gongtan }%</div>
+              </c:if>
+              <c:if test="${estate.lxing!=null}">
+                <div class="line">建筑类别：${estate.lxing }</div>
+              </c:if>
+              <c:if test="${estate.tese!=null}">
+                <div class="line">项目特色：${estate.tese }</div>
+              </c:if>
+          </div>
+
+          <div class="xiangxi">
+               <div class="tit">物业信息</div>
+              <c:if test="${estate.jzmj!=null}">
+                <div class="line">物业类型：${estate.jzmj }</div>
+              </c:if>
+              <c:if test="${estate.rongji!=null}">
+                <div class="line">容积率：${estate.rongji }%</div>
+              </c:if>
+              <c:if test="${estate.lvhua!=null}">
+                <div class="line">绿化率：${estate.lvhua }%</div>
+              </c:if>
               <c:if test="${estate.wyfee!=null}">
                 <div class="line">物业费：${estate.wyfee }元/月/平米</div>
               </c:if>
-          
+              <c:if test="${estate.jzmj!=null}">
+                <div class="line">物业公司：${estate.jzmj }</div>
+              </c:if>
+              <c:if test="${estate.chewei!=null}">
+                <div class="line">车位：${estate.chewei }</div>
+              </c:if>
           </div>
-     
+     	
+          <div class="xiangxi">
+          </div>
      </div>
      
 

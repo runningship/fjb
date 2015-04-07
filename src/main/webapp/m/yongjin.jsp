@@ -23,7 +23,9 @@ function doSearch(){
 	    	}else{
 	    		$('#FangMore').css('display','none');
 	    	}
-	        
+	    	if (json.page.totalCount<=10) {
+	    		$('#FangMore').css('display','none');
+	    	}
 	    }
 	  });
 }
@@ -55,37 +57,44 @@ $(function(){
 <div class="main">
      
      <div id="top" style="text-align:center">
-     	  <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
+     	  
           <span class="s4"><a href="#">&lt;</a></span>
-          <span class="s5">我的客户</span>
+          <span class="s5">我的佣金</span>
      </div>
-     
+     <div style="text-align:center;color:white;margin-top:20px;">
+     	<div style="width:45%;margin-left:3%;height:110px;float:left;background:rgb(144, 172, 40);border-radius: 10px;position:relative">
+     		<div style="margin-top:18px;padding-bottom: 15px;  border-bottom: solid 1px gray"><img style="position:absolute;;margin-top:6px;height:18px;" src="images/money.png"/><span style="font-size:20px;margin-left:20px;">可结佣金</span></div>
+     		<div style="margin-top:20px;">${allYongjin }元 <span style="font-size:12px;">RMB</span> </div>
+     	</div>
+     	<div style="width:45%;margin-right:3%;height:110px;float:right;background:rgb(144, 172, 40);border-radius:10px;position:relative;">
+			<div style="margin-top:18px;padding-bottom: 15px;  border-bottom: solid 1px gray"><img style="position:absolute;;margin-top:6px;height:18px;" src="images/money.png"/><span style="font-size:20px;margin-left:20px;">已结佣金</span></div>
+			<div style="margin-top:20px;">${yongjin }元 <span style="font-size:12px;">RMB</span> </div>
+		</div>
+     </div>
      <div id="user">
      
-          
-            <div class="orders" style="margin-top:30px;">
+          	<div style="  color: rgb(173,173,173);  font-weight: bold;  margin-top: 20px;  border-bottom: 1px solid #ddd;padding-left:3%">账目明细</div>
+            <div class="orders" style="margin-top:20px;">
                         
                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				    <thead>
 						  <tr>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">姓名</td>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约楼盘</td>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约时间</td>
+						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">楼盘名称</td>
+						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">被推荐人</td>
+						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">奖励金额</td>
 						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">状态</td>
 						  </tr>
 				    </thead>
-				  <tr style="display:none" class="buyer" ontouchend="view($[id])" >
-				    <td align="center" valign="middle" height="30">$[buyerName]</td>
+				  <tr style="display:none;height:50px;" class="buyer" >
 				    <td align="center" valign="middle" height="30">$[estateName]</td>
-				    <td align="center" valign="middle" height="30">$[addtime]</td>
+				    <td align="center" valign="middle" height="30">$[buyerName]</td>
+				    <td align="center" valign="middle" height="30">$[yongjin]</td>
 				    <td align="center" valign="middle" height="30">$[status]</td>
 				  </tr>
 				</table>
 
                </div>
-          <div id="FangMore" onclick="more();">查看更多预约</div>
-<!--           <div class="litNav"><a href="#">我的收藏</a></div> -->
-<!--           <div class="litNav"><a href="#">我的浏览</a></div> -->
+          <div id="FangMore" onclick="more();">更多</div>
      
      </div>
      

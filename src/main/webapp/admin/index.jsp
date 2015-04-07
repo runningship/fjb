@@ -155,6 +155,10 @@
                                       id: 'service_tab',
                                       text: '服务申明',
                                       href: 'article/edit.jsp?pageName=shenming'
+                                  },{
+                                      id: 'service_rule',
+                                      text: '活动规则',
+                                      href: 'article/edit.jsp?pageName=rule'
                                   }
                              ]
                          }

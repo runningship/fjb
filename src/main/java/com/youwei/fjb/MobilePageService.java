@@ -16,6 +16,7 @@ import org.bc.web.WebMethod;
 
 import com.youwei.fjb.admin.EstateQuery;
 import com.youwei.fjb.admin.OrderQuery;
+import com.youwei.fjb.entity.Article;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
 import com.youwei.fjb.entity.HouseImage;
@@ -141,10 +142,26 @@ public class MobilePageService {
 		Estate po = dao.get(Estate.class, estateId);
 		mv.jspData.put("estate", po);
 		
-		HouseImage mainImg = dao.getUniqueByParams(HouseImage.class, new String[]{"estateUUID" ,"type"}, new Object[]{po.uuid , FjbConstant.Main});
-		if(mainImg!=null){
-			mv.jspData.put("main_img", mainImg.path);
+//		HouseImage mainImg = dao.getUniqueByParams(HouseImage.class, new String[]{"estateUUID" ,"type"}, new Object[]{po.uuid , FjbConstant.Main});
+//		if(mainImg!=null){
+//			mv.jspData.put("main_img", mainImg.path);
+//		}
+		//户型图
+		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where estateUUID=?", po.uuid);
+		for(HouseImage img : images){
+			if(FjbConstant.HuXing.equals(img.type)){
+				mv.jspData.put("huxing_img", img.path);
+			}else if(FjbConstant.XiaoGuo.equals(img.type)){
+				mv.jspData.put("xiaoguo_img", img.path);
+			}else if(FjbConstant.ShiJing.equals(img.type)){
+				mv.jspData.put("shijing_img", img.path);
+			}else if(FjbConstant.GuiHua.equals(img.type)){
+				mv.jspData.put("guihua_img", img.path);
+			}else if(FjbConstant.Main.equals(img.type)){
+				mv.jspData.put("main_img", img.path);
+			}
 		}
+		mv.jspData.put("images", images);
 		//在线剩余套数
 		long leftCount = dao.countHql("select count(*) from House where estateId=? and hasSold=0", estateId);
 		mv.jspData.put("leftCount", leftCount);
@@ -171,6 +188,10 @@ public class MobilePageService {
 		ModelAndView mv = new ModelAndView();
 		User u = ThreadSessionHelper.getUser();
 		mv.jspData.put("user", u);
+		List<Map> t1 = dao.listAsMap("select sum(yongjin) as allYongjin from HouseOrder where sellerId=? ", u.id);
+		long buyerCount = dao.countHql("select count(*) from HouseOrder where sellerId=? ", u.id );
+		mv.jspData.put("allYongjin", t1.get(0).get("allYongjin"));
+		mv.jspData.put("buyerCount", buyerCount);
 		return mv;
 	}
 	
@@ -194,11 +215,22 @@ public class MobilePageService {
 		return  mv;
 	}
 	
+	@WebMethod
+	public ModelAndView yongjin(){
+		ModelAndView mv = new ModelAndView();
+		User u = ThreadSessionHelper.getUser();
+		List<Map> t1 = dao.listAsMap("select sum(yongjin) as allYongjin from HouseOrder where sellerId=? ", u.id);
+		List<Map> t2 = dao.listAsMap("select sum(yongjin) as yongjin from HouseOrder where sellerId=? and status=?", u.id ,FjbConstant.HouseOrderDeal);
+		mv.jspData.put("allYongjin", t1.get(0).get("allYongjin"));
+		mv.jspData.put("yongjin", t2.get(0).get("yongjin")==null? Float.valueOf(0) : t2.get(0).get("yongjin"));
+		return mv;
+	}
 	
 	@WebMethod
 	public ModelAndView listOrder(Page<Map> page , Integer sellerId){
+		
 		ModelAndView mv = new ModelAndView();
-		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, order.buyerName as buyerName ,order.buyerTel as buyerTel,"
+		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, order.buyerName as buyerName ,order.buyerTel as buyerTel, order.yongjin  as  yongjin,"
 				+ " order.sellerName as sellerName , order.addtime as addtime, order.status as status from HouseOrder order, "
 				+ "Estate est where order.estateId=est.id and order.sellerId=?");
 		List<Object> params = new ArrayList<Object>();
@@ -220,6 +252,14 @@ public class MobilePageService {
 		House house = dao.get(House.class, order.hid);
 		mv.jspData.put("estate", estate);
 		mv.jspData.put("house", house);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView rule(){
+		ModelAndView mv = new ModelAndView();
+		Article article = dao.getUniqueByKeyValue(Article.class, "name", "rule");
+		mv.jspData.put("conts", article.conts);
 		return mv;
 	}
 }

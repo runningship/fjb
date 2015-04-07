@@ -21,12 +21,9 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
 
 <body>
 <div class="main" style="padding-bottom:0px;">
-     
-   <div id="top">
-   	  <jsp:include page="top.jsp"></jsp:include>
-   	  <div class="fl">
-        <a href="#"><i class="icon iconfont">&#xe601;</i></a>
-      </div>
+     <jsp:include page="top.jsp"></jsp:include>
+   <div id="top" style="padding-bottom:0px;">
+   	  
    </div>
 <%--    <jsp:include page="bottom.jsp" /> --%>
 </div>
@@ -40,8 +37,8 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
 <script type="text/javascript">
 // 百度地图API功能
   var mp = new BMap.Map("allmap");
-  //mp.centerAndZoom(new BMap.Point(117.246104,31.854113), 14);
-  mp.centerAndZoom(new BMap.Point(117.309, 31.837), 12);
+  mp.centerAndZoom(new BMap.Point(117.246104,31.854113), 12);
+  //mp.centerAndZoom(new BMap.Point(${estate.jingdu}, ${estate.weidu}), 12);
   //mp.setCurrentCity("${session_city}");
   mp.enableScrollWheelZoom();
   // 复杂的自定义覆盖物

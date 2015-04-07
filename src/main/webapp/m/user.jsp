@@ -8,37 +8,8 @@
 <jsp:include page="../header.jsp" />
 
 <script type="text/javascript">
-var currentPageNo=1;
-function doSearch(){
-	$('#currentPageNo').val(currentPageNo);
-	var a=$('form[name=form1]').serialize();
-	YW.ajax({
-	    type: 'get',
-	    url: '${projectName}/c/m/listOrder?sellerId=${user.id}',
-	    data: a,
-	    dataType:'json',
-	    mysuccess: function(json){
-	    	if(json.page.data.length>0){
-	    		buildHtmlWithJsonArray("buyer",json.page.data , false,true);
-	    	}else{
-	    		$('#FangMore').css('display','none');
-	    	}
-	        
-	    }
-	  });
-}
 
-function view(id){
-	window.location='ckyy.jsp?orderId='+id;
-}
-function more(){
-	currentPageNo++;
-	doSearch();
-}
 
-$(function(){
-	doSearch();
-});
 </script>
 
 <style type="text/css">
@@ -55,7 +26,6 @@ $(function(){
 <div class="main">
      
      <div id="top" style="text-align:center">
-     	  <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
           <span class="s4"><a href="#">&lt;</a></span>
           <span class="s5">个人中心</span>
      </div>
@@ -67,16 +37,16 @@ $(function(){
           		<p>${user.tel }</p>
                <p>${user.name }</p>
                </div>
-               <div style="width:100px;float:right; position:relative;margin-right:1%;" >
-               		<span style="color:white;">总佣金</span>
+               <div style="width:60px;float:right; position:relative;margin-right:5%;text-align:center" >
+               		<span style="color:white;font-size:14px;">总佣金</span>
                		<a>
-               		<img src="../images/tj_yongjin.png" /><span style="position:absolute;margin-top:12px;font-size:14px;"> 1200</span>
+               		<img src="../images/tj_yongjin.png" style="width:28px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${allYongjin }</span>
                		</a>
                </div>
-               <div style="width:100px;float:right; position:relative;" >
-               		<span style="color:white;">推荐人数</span>
+               <div style="width:60px;float:right; position:relative;margin-right:5%;text-align:center" >
+               		<span style="color:white;font-size:14px;">推荐人数</span>
                		<a>
-               		<img src="../images/tj_renshu.png" /><span style="position:absolute;margin-top:12px;font-size:14px;"> 12</span>
+               		<img src="../images/tj_renshu.png" style="width:30px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${buyerTotal }</span>
                		</a>
                </div>
                
@@ -89,35 +59,9 @@ $(function(){
           </div>
 		  <div style="margin-top:5px;">
 		  	<a href="yongjin.jsp"><img src="../images/yongjin_big.png" style="width:45%;margin-left:3%;"/></a>
-          	<a href="#"><img src="../images/rule_big.png" style="width:45%;margin-right:3%;float:right"/></a>
+          	<a href="rule.jsp"><img src="../images/rule_big.png" style="width:45%;margin-right:3%;float:right"/></a>
 		  </div>          
-          <div class="litNav"><a href="#"><span class="curr">我的预约</span></a><a href="#"><span >我的收藏</span></a>
-          	<a href="#"><span >我的浏览</span></a>
-          </div>
-            <div class="orders">
-                        
-                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-				    <thead>
-						  <tr>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">姓名</td>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约楼盘</td>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">预约时间</td>
-						    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">状态</td>
-						  </tr>
-				    </thead>
-				  <tr style="display:none" class="buyer" ontouchend="view($[id])" >
-				    <td align="center" valign="middle" height="30">$[buyerName]</td>
-				    <td align="center" valign="middle" height="30">$[estateName]</td>
-				    <td align="center" valign="middle" height="30">$[addtime]</td>
-				    <td align="center" valign="middle" height="30">$[status]</td>
-				  </tr>
-				</table>
-
-               </div>
-          <div id="FangMore" onclick="more();">查看更多预约</div>
-<!--           <div class="litNav"><a href="#">我的收藏</a></div> -->
-<!--           <div class="litNav"><a href="#">我的浏览</a></div> -->
-     
+          
      </div>
      
       <jsp:include page="bottom.jsp" />

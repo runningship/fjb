@@ -47,8 +47,7 @@ function more(){
 </form>
 <div class="main">
      <jsp:include page="top.jsp"></jsp:include>
-     <div id="top">
-     	  <span class="s1"><a href="index.jsp"><img src="images/logo.png" /></a></span>
+     <div id="top" style="padding:0px;">
           <span class="s4"><a href="#">&lt;</a></span>
      </div>
      

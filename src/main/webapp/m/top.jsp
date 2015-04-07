@@ -5,10 +5,12 @@
 <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 
      
-     <div class="main" style="padding-bottom:0px;height:23px;z-index:999999;background-color: rgb(222,48,49);">
+     <div class="main" style="padding-top:15px;padding-bottom:0px;height:30px;z-index:999999;background-color: rgb(222,48,49);">
+     		<span class="s1"><a href="index.jsp"><img src="images/logo.png" style="height:30px;margin-left:3%"/></a></span>
             <div id="city_1" style="display:inline-block;float:right;">
-		  		<select class="prov"  id="province" style="width:60pt;display:" ></select>
-		    	<select class="city" id="city" ></select>
+		  		<select class="prov"  id="province" style="width:60pt;height:30px;" ></select>
+		    	<select class="city" id="city"  style="height:30px;"></select>
+		    	<select class="dist" id="dist"  style="height:30px;"></select>
 		    </div>
      	<%
 			User user = (User)request.getSession().getAttribute("user");
@@ -48,6 +50,8 @@ $(function(){
 		$("#city_1").citySelect({
 			prov : sessionProvince, 
 	    	city : sessionCity,
+	    	dist : mydistrict,
+	    	required:false,
 	    	cityChange:changeCity
 		});
 	}else{
