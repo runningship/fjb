@@ -41,7 +41,7 @@ function save(){
 
 <body>
 <div class="main">
-     
+     <jsp:include page="top.jsp"></jsp:include>
      <div id="top" style="text-align:center">
      
           <span class="s4"><a href="#">&lt;</a></span>

@@ -94,6 +94,7 @@ function emptySearchResult(){
 <div class="main">
      
         <jsp:include page="top.jsp"></jsp:include>
+        <jsp:include page="city.jsp"></jsp:include>
      <div id="top">
           <span class="s4"><a href="#">&lt;</a></span>
           <span class="s2"><div class="search"><input type="text" name="searchText" class="searchBox" placeholder="楼盘名称" /><button onclick="emptySearchResult();doSearch();">搜索</button></div></span>
@@ -140,7 +141,7 @@ function emptySearchResult(){
           <ul>
           
               <li class="repeat" style="display:none">
-                  <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]" /></a></div>
+                  <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../../${upload_path}/$[img]" /></a></div>
                   <div class="con">
                   		<a href="order.jsp?estateId=$[id]"><img src="../images/tuijian.jpg"/ style="height:35px;cursor:pointer" /></a>
                        <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a></h2>

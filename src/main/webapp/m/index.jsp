@@ -45,8 +45,7 @@ function more(){
 </form>
 <div class="main">
      <jsp:include page="top.jsp"></jsp:include>
-     <div id="top" style="padding:0px;">
-     </div>
+<!--      <div id="top" style="padding:0px;"></div> -->
      
      <div id="banner"><img src="images/ad1.jpg" /></div>
      
@@ -86,7 +85,7 @@ function more(){
           <ul>
           
               <li class="repeat" style="display:none">
-                  <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../${upload_path}/$[img]"  style=""/></a></div>
+                  <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../../${upload_path}/$[img]"  style=""/></a></div>
                   <div class="con">
                   
                        <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a><em>在售</em></h2>

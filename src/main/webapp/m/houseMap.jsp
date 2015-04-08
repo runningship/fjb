@@ -20,12 +20,12 @@ html, body, .body {height: 100%;padding: 0;margin: 0;}
 </head>
 
 <body>
+<jsp:include page="top.jsp"></jsp:include>
 <div class="main" style="padding-bottom:0px;">
-     <jsp:include page="top.jsp"></jsp:include>
-   <div id="top" style="padding-bottom:0px;">
+     
+   <div id="top" style="padding-bottom:0px;min-height:0px;padding:0px;">
    	  
    </div>
-<%--    <jsp:include page="bottom.jsp" /> --%>
 </div>
 <div class="body">
 <div id="allmap" style="margin:0px auto;text-aglin:center;width:100%;height:100%;border:0px solid #666; text-align:center;"></div>

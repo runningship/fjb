@@ -31,7 +31,7 @@ function chooseImg(type){
 </style>
 </head>
 
-<body style="overflow-x:hidden">
+<body >
 <jsp:include page="top.jsp"></jsp:include>
 <div class="main">
      
@@ -85,7 +85,7 @@ function chooseImg(type){
                           
      <div id="infoCon">
      
-          <div class="line"><div class="coloReds" style="font-size:1.6em">${estate.name}</div></div>
+<%--           <div class="line"><div class="coloReds" style="font-size:1.6em">${estate.name}</div></div> --%>
           <div class="line"><div style="font-size:1.2em;color:black;">${estate.jieshao}</div></div>
           <div class="line">地址：${estate.addr }</div>
 <%--           <div class="line">${estate.tese }</div> --%>

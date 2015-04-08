@@ -47,9 +47,7 @@ function more(){
 </form>
 <div class="main">
      <jsp:include page="top.jsp"></jsp:include>
-     <div id="top" style="padding:0px;">
-          <span class="s4"><a href="#">&lt;</a></span>
-     </div>
+<!--      <div id="top" style="padding:0px;"></div> -->
      
      <div id="Fanglist">
      

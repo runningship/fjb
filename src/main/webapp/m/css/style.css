@@ -27,7 +27,7 @@ body {
 	font-family:"微软雅黑"; background-color:#f3f3f3;
 }
 
-.main{ width:100%; max-width:640px; margin:0 auto; position:relative; }
+.main{ width:100%; margin:0 auto;max-width:640px;  position:relative; }
 
 #top{ width:100%; padding:15px 0; min-height:20px; background-color:#de3031; overflow:hidden; position:relative; margin:0 auto; display:inline-block;}
 
@@ -35,11 +35,11 @@ body {
 
 #top span.s1 img{ max-width:80%;}
 
-#top span.s2{width: 50%; padding:12px 30%; position:absolute; z-index:10; top:0; left:0;}
+#top span.s2{width: 90%; padding:12px 3%; position:absolute; z-index:10; top:0; left:0;}
 
 #top .searchBox{ width:100%; padding:7px 7px; background-color:#ffffff; color:#666; border:none; border-radius:3px;}
 
-#top .search button{ padding:2px 4px; background-color:#de3031; color:#ffffff; position:absolute; border-radius:3px; top:16px; right:10%; border:none;}
+#top .search button{ padding:2px 4px; background-color:#de3031; color:#ffffff; position:absolute; border-radius:3px; top:16px; right:1%; border:none;}
 
 #top span.s3{ float:right; width:20%; padding-right:5%; color:#fff; text-align:right;}
 
@@ -70,7 +70,7 @@ body {
 #nav .nbox i{font-size:1.2em; margin-top:10px; display:inline-block;}
 
 
-#Fanglist{ width:100%; margin-top:15px; border-top:1px solid #eeeeee; display:inline-block; background-color:#ffffff;}
+#Fanglist{ width:100%; margin-top:0px; border-top:1px solid #eeeeee; display:inline-block; background-color:#ffffff;}
 
 #Fanglist .tit{ width:100%; border-bottom:1px solid #e2e2e2; color:#333333; height:41px; line-height:44px; font-size:1.1em;/* display:inline-block;*/}
 
@@ -144,7 +144,7 @@ body {
 
 #infoCon{ width:100%; margin-top:-18px; background-color:#ffffff;}
 
-#infoCon .line{ width:96%; margin:2%; display:inline-block; font-size:1em; margin-top:10px;}
+#infoCon .line{ width:90%; margin:2%; display:inline-block; font-size:1em; margin-top:10px;}
 
 #infoCon .line span{ display:inline-block; margin-right:10px; padding:3px 7px; margin-top:3px;}
 #infoCon .line span.s1{ border:1px solid #9cc4a1;}
@@ -155,7 +155,7 @@ body {
 #infoCon .coloReds{ color:#de2e2e; font-size:1.2em;}
 
 
-#infoCon .tehui{ width:100%; display:inline-block; border-top:1px solid #f3f3f3; margin-top:20px; position:relative;}
+#infoCon .tehui{ width:90%; display:inline-block; border-top:1px solid #f3f3f3; margin-top:20px; position:relative;}
 
 #infoCon .tehui .tit{ width:100%; display:inline-block; font-size:1.2em; margin-top:10px; margin-bottom:10px; line-height:28px; color:#fe5802;}
 
