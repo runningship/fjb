@@ -46,7 +46,7 @@ function more(){
 <div class="main">
      <jsp:include page="top.jsp"></jsp:include>
 <!--      <div id="top" style="padding:0px;"></div> -->
-     
+     <jsp:include page="city.jsp"></jsp:include>
      <div id="banner"><img src="images/ad1.jpg" /></div>
      
      

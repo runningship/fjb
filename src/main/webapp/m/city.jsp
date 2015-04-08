@@ -6,8 +6,8 @@
 <style type="text/css">
 #city_1 select{width:30.5%}
 </style>
-     <div class="main" style="padding-top:15px;padding-bottom:0px;height:30px;z-index:999999;background-color: rgb(222,48,49);">
-            <div id="city_1" style="display:inline-block;width:100%;margin-left:3%">
+     <div class="main" style="padding-top:15px;padding-bottom:10px;height:30px;z-index:999999;background-color: rgb(222,48,49);">
+            <div id="city_1" style="display:inline-block;width:97%;padding-left:3%">
 		  		<select class="prov"  id="province" style="height:30px;" ></select>
 		    	<select class="city" id="city"  style="height:30px;"></select>
 		    	<select class="dist" id="dist"  style="height:30px;"></select>

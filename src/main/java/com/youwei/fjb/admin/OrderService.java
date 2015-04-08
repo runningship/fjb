@@ -78,6 +78,7 @@ public class OrderService {
 		ModelAndView mv = new ModelAndView();
 		HouseOrder po = dao.get(HouseOrder.class, order.id);
 		po.status = order.status;
+		po.yongjin = order.yongjin;
 		dao.saveOrUpdate(po);
 		if(FjbConstant.HouseOrderDaiKan.equals(order.status)){
 			//同一个楼盘下面相同的客户的其他预约被锁定

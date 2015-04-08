@@ -45,10 +45,10 @@ function more(){
   <input type="hidden"  name="currentPageNo" id="currentPageNo"/>
     <button type="button" style="display:none" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
-<div class="main">
+<div class="main" style="width:99%">
      <jsp:include page="top.jsp"></jsp:include>
 <!--      <div id="top" style="padding:0px;"></div> -->
-     
+     <jsp:include page="city.jsp"></jsp:include>
      <div id="Fanglist">
      
           

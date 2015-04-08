@@ -47,7 +47,7 @@
     </tr>
     </c:if>
     <tr>
-        <td class="tableleft">经纪人姓名/电话</td>
+        <td class="tableleft">经纪人姓名</td>
         <td><span>${order.sellerName}</span>
         </td>
     </tr>
@@ -88,6 +88,12 @@
                 </c:forEach>
             </select>
         </td>
+    </tr>
+    <tr>
+	    <td class="tableleft">状态</td>
+	    <td>
+	    	<input name="yongjin" value="${order.yongjin }"/>
+	    </td>
     </tr>
     <tr>
         <td class="tableleft"></td>

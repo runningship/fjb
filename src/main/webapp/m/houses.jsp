@@ -91,11 +91,11 @@ function emptySearchResult(){
 	<input type="hidden"  name="jiageEnd" id="jiageEnd"/>
     <button type="button" style="display:none" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 
-<div class="main">
+<div class="main" style="width:99%">
      
         <jsp:include page="top.jsp"></jsp:include>
         <jsp:include page="city.jsp"></jsp:include>
-     <div id="top">
+     <div id="top" style="margin-top:-10px;">
           <span class="s4"><a href="#">&lt;</a></span>
           <span class="s2"><div class="search"><input type="text" name="searchText" class="searchBox" placeholder="楼盘名称" /><button onclick="emptySearchResult();doSearch();">搜索</button></div></span>
      

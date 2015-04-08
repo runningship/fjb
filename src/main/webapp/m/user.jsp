@@ -23,7 +23,7 @@
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
 	<input type="hidden"  name="currentPageNo" id="currentPageNo"/>
 </form>
-<div class="main">
+<div class="main" >
      
      <div id="top" style="text-align:center">
           <span class="s4"><a href="#">&lt;</a></span>
@@ -37,13 +37,13 @@
           		<p>${user.tel }</p>
                <p>${user.name }</p>
                </div>
-               <div style="width:60px;float:right; position:relative;margin-right:5%;text-align:center" >
+               <div style="width:60px;float:right; position:relative;margin-right:12%;text-align:center" >
                		<span style="color:white;font-size:14px;">总佣金</span>
                		<a>
                		<img src="../images/tj_yongjin.png" style="width:28px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${allYongjin }</span>
                		</a>
                </div>
-               <div style="width:60px;float:right; position:relative;margin-right:5%;text-align:center" >
+               <div style="width:60px;float:right; position:relative;margin-right:6%;text-align:center" >
                		<span style="color:white;font-size:14px;">推荐人数</span>
                		<a>
                		<img src="../images/tj_renshu.png" style="width:30px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${buyerTotal }</span>
