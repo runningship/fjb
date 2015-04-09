@@ -36,6 +36,18 @@ function more(){
   currentPageNo++;
   doSearch();
 }
+
+function emptySearchResult(){
+	currentPageNo=1;
+	var arr = $('#Fanglist li ');
+	for(var i=0;i<arr.length; i++){
+		var li = arr[i];
+		if($(li).hasClass('repeat')){
+			continue;
+		}
+		$(li).remove();
+	}
+}
 </script>
 </head>
 
@@ -43,6 +55,7 @@ function more(){
 
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="doSearch();return false;">
   <input type="hidden"  name="currentPageNo" id="currentPageNo"/>
+  <input type="hidden"  name="quyu" id="quyu"/>
     <button type="button" style="display:none" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
 </form>
 <div class="main" style="width:99%">

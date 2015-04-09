@@ -43,13 +43,15 @@ $(function(){
 	    	city : sessionCity,
 	    	dist : mydistrict,
 	    	required:false,
-	    	cityChange:changeCity
+	    	cityChange:changeCity,
+	    	distChange: changeDist
 		});
 	}else{
 		$("#city_1").citySelect({
 			prov:myprovince, 
 	    	city:mycity,
-	    	cityChange:changeCity
+	    	cityChange:changeCity,
+	    	distChange: changeDist
 		});
 		alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
 		setTimeout(changeCity,2000);
@@ -63,8 +65,17 @@ function changeCity(){
         data:'province='+$('#province').val()+'&city='+$('#city').val(),
         mysuccess: function(data){
             //alert('修改成功');
-            window.location.reload();
+            //window.location.reload();
+        	emptySearchResult();
+        	$('#quyu').val($('#dist').val());
+        	doSearch();
         }
     });
+}
+
+function changeDist(){
+	emptySearchResult();
+	$('#quyu').val($('#dist').val());
+	doSearch();
 }
 </script>

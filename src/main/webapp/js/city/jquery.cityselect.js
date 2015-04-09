@@ -86,7 +86,7 @@ required:必选项
 			};
 			
 			// 遍历赋值市级下拉列表
-			temp_html=select_prehtml;
+			temp_html="<option value=''>请选择</option>";
 			$.each(city_json.citylist[prov_id].c[city_id].a,function(i,dist){
 				temp_html+="<option value='"+dist.s+"'>"+dist.s+"</option>";
 			});
@@ -136,6 +136,13 @@ required:必选项
 				distStart();
 				if(settings.cityChange){
 					settings.cityChange();
+				}
+			});
+			
+			// 选择区域时
+			dist_obj.bind("change",function(){
+				if(settings.distChange){
+					settings.distChange();
 				}
 			});
 		};

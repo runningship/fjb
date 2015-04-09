@@ -49,15 +49,21 @@ public class MobilePageService {
 	}
 	
 	@WebMethod
-	public ModelAndView listIndexData(Page<Map> page){
+	public ModelAndView listIndexData(Page<Map> page , String quyu){
 		ModelAndView mv = new ModelAndView();
+		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu , est.addr as addr, est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
+				+ "est.tel as tel,img.path as img , est.yufu as yufu , est.shidi as shidi from Estate est,HouseImage img"
+				+ " where est.uuid=img.estateUUID and est.tuijian=1 and est.city=? and img.type='main'");
 		List<String> params = new ArrayList<String>();
+		params.add(ThreadSessionHelper.getCity());
+		if(StringUtils.isNotEmpty(quyu)){
+			hql.append(" and est.quyu=? ");
+			params.add(quyu);
+		}
 		page.setPageSize(10);
 		page.order="desc";
 		page.orderBy = "est.orderx";
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu , est.addr as addr, est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
-				+ "est.tel as tel,img.path as img , est.yufu as yufu , est.shidi as shidi from Estate est,HouseImage img"
-				+ " where est.uuid=img.estateUUID and est.tuijian=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
+		page = dao.findPage(page, hql.toString(), true, params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;
 	}
@@ -77,14 +83,21 @@ public class MobilePageService {
 	}
 	
 	@WebMethod
-	public ModelAndView listSalesData(Page<Map> page){
+	public ModelAndView listSalesData(Page<Map> page , String quyu){
 		ModelAndView mv = new ModelAndView();
+		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
+				+ " est.opentime as opendate, est.addr as addr ,est.youhuiEndtime as youhuiEndtime, img.path as img , est.yufu as yufu, est.shidi as shidi from Estate est,"
+				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'");
+		List<String> params = new ArrayList<String>();
+		params.add(ThreadSessionHelper.getCity());
+		if(StringUtils.isNotEmpty(quyu)){
+			hql.append(" and est.quyu=? ");
+			params.add(quyu);
+		}
 		page.setPageSize(10);
 		page.order="desc";
 		page.orderBy = "est.orderx";
-		page = dao.findPage(page, "select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.youhuiPlan as youhuiPlan,"
-				+ " est.opentime as opendate, est.addr as addr ,est.youhuiEndtime as youhuiEndtime, img.path as img , est.yufu as yufu, est.shidi as shidi from Estate est,"
-				+ "HouseImage img where est.uuid=img.estateUUID and est.tehui=1 and est.city=? and img.type='main'", true,new Object[]{ThreadSessionHelper.getCity()});
+		page = dao.findPage(page, hql.toString(), true,new Object[]{ThreadSessionHelper.getCity()});
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;
 	}
