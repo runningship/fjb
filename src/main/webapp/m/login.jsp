@@ -11,18 +11,14 @@
   
 function login(){
   var a=$('form[name=form1]').serialize();
-    $.ajax({
+    YW.ajax({
       type: 'POST',
       url: '${projectName}/c/admin/user/login',
       data:a,
       dataType:'json',
-      success: function(data){
+      mysuccess: function(data){
           alert('登陆成功');
           window.location = 'user.jsp';
-      },
-      error:function(data){
-        var json = JSON.parse(data.responseText);
-        alert(json.msg);
       }
   });
 }

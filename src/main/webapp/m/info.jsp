@@ -87,7 +87,7 @@ function chooseImg(type){
      
           <div class="line">
           	<div class="coloReds" style="font-size:25px;color:#868686;float:left;">${estate.name}</div>
-          	<a style="float:left" href="order.jsp?estateId=${estate.id }"><img src="../images/tuijian.jpg"/ style="height:35px;margin-left:20px" /></a>
+<%--           	<a style="float:left" href="order.jsp?estateId=${estate.id }"><img src="../images/tuijian.jpg"/ style="height:35px;margin-left:20px" /></a> --%>
           	
           </div>
           <div class="line" style="color:#868686">${estate.addr }</div>
@@ -99,18 +99,29 @@ function chooseImg(type){
 <%--                <div class="line">可售：${leftCount }套 总价：${minTotalPrice}起</div> --%>
 <%--                <div class="line">${estate.yufu}抵${estate.shidi}</div> --%>
 <%--                <div class="line">截止时间：<fmt:formatDate value="${estate.youhuiEndtime }" pattern="yyyy-MM-dd"/></div> --%>
+
+				<div class="line" style="width:295px;">
+					<div style="display:inline-block;  background-color: rgb(247,150,70);line-height:40px;height:40px;border-radius: 10px;padding: 0px 30px;">
+						<a style="color:red;font-size: 16px; font-weight: bold;" href="order.jsp?estateId=${estate.id }" >预约看房</a>
+					</div>
+					<div style="display:inline-block;  background-color: rgb(247,150,70);line-height:40px;height:40px;border-radius: 10px;padding: 0px 30px;float:right">
+						<a style="color:red;font-size: 16px; font-weight: bold;" href="#center_div" >项目介绍</a>
+					</div>
+				</div>
+				
 				<div class="line" style="">
-					<div style="display:inline-block;  background-color: rgb(247,150,70);line-height:40px;height:40px;border-radius: 10px;padding: 0px 10px;">
+					<div style="display:inline-block;  background-color: rgb(247,150,70);line-height:40px;height:40px;border-radius: 10px;padding: 0px 10px;width:275px">
 						<a style="color:red;font-size: 16px; font-weight: bold;" href="tel:${estate.tel}" onclick="smart_jump(this);return false;">
-						<img style="width:24px;padding: 0px 10px;" src="images/tel.png" /> 详情请致电: ${estate.tel} ${manager }</a>
+						<img style="width:24px;padding: 0px 10px;" src="images/tel.png" /> 详情请致电: 项目经理 ${estate.manager }</a>
 					</div>
 <!-- 					<div style="display:inline-block;background-color: rgb(247,150,70);line-height:40px;height:40px;width:40%"> -->
 <%-- 					<a style="color:red" href="order.jsp?estateId=${estate.id }">我要推荐</a> --%>
 <!-- 					</div> -->
 				</div>
+				
           </div>
           
-          <div class="xiangxi">
+          <div class="xiangxi" name="center_div" id="center_div">
                <div class="tit">基础信息</div>
               <c:if test="${estate.mainHuxing!=null}">
                 <div class="line">主力户型：${estate.mainHuxing }</div>
@@ -141,7 +152,7 @@ function chooseImg(type){
               </c:if>
           </div>
      
-          <div class="xiangxi">
+          <div class="xiangxi" >
                <div class="tit">建筑信息</div>
               <c:if test="${estate.chanquan!=null}">
                 <div class="line">土地年限：${estate.chanquan }年</div>

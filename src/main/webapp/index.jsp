@@ -53,6 +53,7 @@ $(function(){
                     
                         <a href="http://www.jinbaohouse.com/fjb/info.jsp?estateId=42" target="_blank"><li style="z-index:1; display:list-item; background:url(images/banner11.jpg) no-repeat center top;" ></li></a>
                         <a href="http://www.jinbaohouse.com/fjb/info.jsp?estateId=36" target="_blank"><li style="z-index:0; display:none; background:url(images/banner12.jpg) no-repeat center top;"></li></a>
+                        <a href="http://www.jinbaohouse.com/fjb/info.jsp?estateId=43" target="_blank"><li style="z-index:0; display:none; background:url(images/banner13.jpg) no-repeat center top;"></li></a>
 <!--                         <li style="z-index:0; display:none; background:url(images/banner3.jpg) no-repeat center top;"></li> -->
                     
                     </ul>

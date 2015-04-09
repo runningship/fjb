@@ -60,9 +60,9 @@ function save(){
               <li>
                  <label style="width:70px; text-align:right;">客户电话：</label>
                  <input id="buyerTel" name="buyerTel"></li>
-              <li><label style="width:70px; text-align:right; float:left;">验证码：</label>
-              <input type="text" name="yzm" id="yzm" placeholder="看右边图片" style="width:80px; float:left; margin-top:15px;"><div style=" float:left; margin-top:6px;">
-              <img alt="图片验证码" src="${projectName}/c/yzm" onclick="this.src='${projectName}/c/yzm?t='+(+new Date)"style="width: 102px;height: 50px;"></div></li>
+<!--               <li><label style="width:70px; text-align:right; float:left;">验证码：</label> -->
+<!--               <input type="text" name="yzm" id="yzm" placeholder="看右边图片" style="width:80px; float:left; margin-top:15px;"><div style=" float:left; margin-top:6px;"> -->
+<%--               <img alt="图片验证码" src="${projectName}/c/yzm" onclick="this.src='${projectName}/c/yzm?t='+(+new Date)"style="width: 102px;height: 50px;"></div></li> --%>
           </ul>
           
           <div class="confirm">
