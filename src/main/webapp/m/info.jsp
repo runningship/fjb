@@ -27,7 +27,8 @@ function chooseImg(type){
 
 </script>
 <style text="text/css">
-.thumb-item{float:left;width:15%;margin-left:1%;margin-top:-15px;}
+.thumb-item{float:left;width:15%;margin-left:1%;}
+.thumb-item img{height:55px;}
 </style>
 </head>
 
@@ -35,32 +36,31 @@ function chooseImg(type){
 <jsp:include page="top.jsp"></jsp:include>
 <div class="main">
      
-     <div id="top" style="text-align:center">
-          <span class="s4"><a href="#"><i class="icon iconfont">&#xe601;</i></a></span>
-     		<span class="s5">${estate.name}</span>
-     </div>
+<!--      <div id="top" style="text-align:center"> -->
+<%--      		<span class="s5">${estate.name}</span> --%>
+<!--      </div> -->
      
 <%--      <div id="banner"><img src="../${upload_path}/${main_img}" /></div> --%>
      <div class="swipe" id="imgSwipe" style="visibility: visible;">
    	  <div class="swipe-wrap" >
    	  		<c:forEach items="${images}"  var="image">
-   	  			<div class="swipe_pic "  type="${image.type }"><img src="../${upload_path}/${image.path }" /></div>
+   	  			<div class="swipe_pic "  type="${image.type }"><img src="../../${upload_path}/${image.path }"  style="max-height:395px;"/></div>
    	  		</c:forEach>
            
        </div>
       <span class="swipe_num"><span id="nowNum">1</span>/<span id="totalNum"></span></span>
 	 </div>
-	 <div role="thumb" class="thumb">
+	 <div role="thumb" class="thumb" style="height:90px;background:white;margin-top:-20px;padding-left:3%">
            <c:if test="${huxing_img !=null }">
            <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('huxing');return false;">
-               <img alt="" src="../${upload_path}/${huxing_img }">
+               <img alt="" src="../../${upload_path}/${huxing_img }">
                <p class="cover-layer">户型图</p>
                <span class="photo-frame"></span>
            </a>
            </c:if>
            <c:if test="${xiaoguo_img !=null}">
             <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('xiaoguo');return false;">
-                <img alt="" src="../${upload_path}/${xiaoguo_img }">
+                <img alt="" src="../../${upload_path}/${xiaoguo_img }">
                 <p class="cover-layer">效果图</p>
                 <span class="photo-frame"></span>
             </a>
@@ -68,7 +68,7 @@ function chooseImg(type){
            
            <c:if test="${shijing_img !=null}">
            	<a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('shijing');return false;">
-                <img alt="" src="../${upload_path}/${shijing_img }">
+                <img alt="" src="../../${upload_path}/${shijing_img }">
                 <p class="cover-layer">实景图</p>
                 <span class="photo-frame"></span>
             </a>
@@ -76,7 +76,7 @@ function chooseImg(type){
            
            <c:if test="${guihua_img !=null }">
             <a role="thumbItem" class="thumb-item  last" href="#" onclick="chooseImg('guihua');return false;">
-                <img alt="" src="../${upload_path}/${guihua_img }">
+                <img alt="" src="../../${upload_path}/${guihua_img }">
                 <p class="cover-layer">规划图</p>
                 <span class="photo-frame"></span>
             </a>
@@ -85,21 +85,29 @@ function chooseImg(type){
                           
      <div id="infoCon">
      
-<%--           <div class="line"><div class="coloReds" style="font-size:1.6em">${estate.name}</div></div> --%>
-          <div class="line"><div style="font-size:1.2em;color:black;">${estate.jieshao}</div></div>
-          <div class="line">地址：${estate.addr }</div>
-<%--           <div class="line">${estate.tese }</div> --%>
-          <div class="line"><a href="tel:${estate.tel}" onclick="smart_jump(this);return false;">详情请致电: ${estate.tel}<img style="width:24px;" src="images/tel.png" /></a></div>
-          <div>
-          
+          <div class="line">
+          	<div class="coloReds" style="font-size:25px;color:#868686;float:left;">${estate.name}</div>
+          	<a style="float:left" href="order.jsp?estateId=${estate.id }"><img src="../images/tuijian.jpg"/ style="height:35px;margin-left:20px" /></a>
+          	
           </div>
-          <div class="tehui">
+          <div class="line" style="color:#868686">${estate.addr }</div>
+<%--           <div class="line">${estate.tese }</div> --%>
+          <div class="tit line" style="margin: 5px 2%;"><i></i><span style="color:#868686">独家特惠:</span> <span style="color:#fe5802;font-size:25px">${estate.youhuiPlan }</span></div>
+          <div >
                
-               <div class="tit line"><i></i>独家特惠: ${estate.youhuiPlan }</div>
+               
 <%--                <div class="line">可售：${leftCount }套 总价：${minTotalPrice}起</div> --%>
 <%--                <div class="line">${estate.yufu}抵${estate.shidi}</div> --%>
-               <div class="line">截止时间：<fmt:formatDate value="${estate.youhuiEndtime }" pattern="yyyy-MM-dd"/></div>
-               <div class="yuyue"><a href="order.jsp?estateId=${estate.id }">我要推荐</a></div>
+<%--                <div class="line">截止时间：<fmt:formatDate value="${estate.youhuiEndtime }" pattern="yyyy-MM-dd"/></div> --%>
+				<div class="line" style="">
+					<div style="display:inline-block;  background-color: rgb(247,150,70);line-height:40px;height:40px;border-radius: 10px;padding: 0px 10px;">
+						<a style="color:red;font-size: 16px; font-weight: bold;" href="tel:${estate.tel}" onclick="smart_jump(this);return false;">
+						<img style="width:24px;padding: 0px 10px;" src="images/tel.png" /> 详情请致电: ${estate.tel} ${manager }</a>
+					</div>
+<!-- 					<div style="display:inline-block;background-color: rgb(247,150,70);line-height:40px;height:40px;width:40%"> -->
+<%-- 					<a style="color:red" href="order.jsp?estateId=${estate.id }">我要推荐</a> --%>
+<!-- 					</div> -->
+				</div>
           </div>
           
           <div class="xiangxi">

@@ -42,7 +42,7 @@ $(function(){
 			prov : sessionProvince, 
 	    	city : sessionCity,
 	    	dist : mydistrict,
-	    	required:false,
+	    	required: true,
 	    	cityChange:changeCity,
 	    	distChange: changeDist
 		});

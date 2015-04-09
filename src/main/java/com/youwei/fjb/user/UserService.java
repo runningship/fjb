@@ -31,6 +31,7 @@ public class UserService {
 	public ModelAndView login(User user , String yzm){
 		ModelAndView mv = new ModelAndView();
 		User po = null;
+		yzm = yzm.replace(String.valueOf((char)8198), "");
 		if("admin".equals(user.type)){
 			po = loginAsAdmin(user);
 		}else{

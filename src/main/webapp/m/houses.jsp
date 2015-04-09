@@ -146,7 +146,7 @@ function emptySearchResult(){
                   		<a href="order.jsp?estateId=$[id]"><img src="../images/tuijian.jpg"/ style="height:35px;cursor:pointer" /></a>
                        <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a></h2>
 <!--                        <p><i class="r">$[junjia]元/平</i></p> -->
-<!--                        <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p> -->
+                       <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p>
                        <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg" show="'$[youhuiPlan]'!=null">独家优惠: </span> <b>$[youhuiPlan]</b></p>
                        <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">抢购热线: </span> <b>$[tel]</b>&nbsp;</p>
                   </div>

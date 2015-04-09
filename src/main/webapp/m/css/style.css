@@ -70,7 +70,7 @@ body {
 #nav .nbox i{font-size:1.2em; margin-top:10px; display:inline-block;}
 
 
-#Fanglist{ width:100%; margin-top:0px; border-top:1px solid #eeeeee; display:inline-block; background-color:#ffffff;}
+#Fanglist{ width:100%; margin-top:0px; border-top:1px solid #eeeeee; display:inline-block; background-color:#ffffff;margin-bottom:40px;}
 
 #Fanglist .tit{ width:100%; border-bottom:1px solid #e2e2e2; color:#333333; height:41px; line-height:44px; font-size:1.1em;/* display:inline-block;*/}
 
@@ -82,11 +82,11 @@ body {
 
 #Fanglist ul, #Fanglist ul li{ width:100%; display:inline-block;}
 
-#Fanglist ul li{ border-bottom:1px solid #eeeeee; padding:0.2% 0px;}
+#Fanglist ul li{ border-bottom:1px solid #eeeeee; padding:1% 0px;}
 
-#Fanglist ul li div.img{ float:left; width:30%;}
+#Fanglist ul li div.img{ float:left; width:30%;padding-left:2%}
 
-#Fanglist ul li div.img img{ width:100%; border:1px solid #dedee0; height:120px}
+#Fanglist ul li div.img img{ width:100%; border:1px solid #dedee0; height:130px}
 
 #Fanglist ul li div.con{ float:left; width:65%; padding-left:3%;}
 
@@ -94,7 +94,7 @@ body {
 
 #Fanglist ul li h2 em{ position:absolute; right:5px; top:0; font-weight:normal; font-size:0.9em;}
 
-#Fanglist ul li p{ color:#7f7f7f; margin-top:10px;}
+#Fanglist ul li p{ color:#7f7f7f; margin-top:5px;}
 
 #Fanglist ul li p i.r{ float:right; font-weight:bold; color:#dc1b1e;}
 
@@ -142,11 +142,11 @@ body {
 .SelectTit span div.hide{ display:none;}
 
 
-#infoCon{ width:100%; margin-top:-18px; background-color:#ffffff;}
+#infoCon{ width:94%;  padding-left:3%;padding-right:3%;background-color:#ffffff;}
 
-#infoCon .line{ width:90%; margin:2%; display:inline-block; font-size:1em; margin-top:10px;}
+#infoCon .line{ width:99%; margin:2% 0px;margin-left:2%; display:inline-block; font-size:1em; margin-top:10px;}
 
-#infoCon .line span{ display:inline-block; margin-right:10px; padding:3px 7px; margin-top:3px;}
+#infoCon .line span{ display:inline-block; margin-right:10px; padding:0px; margin-top:3px;}
 #infoCon .line span.s1{ border:1px solid #9cc4a1;}
 #infoCon .line span.s2{ border:1px solid #f9ac9a;}
 #infoCon .line span.s3{ border:1px solid #b9b1fc;}

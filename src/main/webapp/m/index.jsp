@@ -94,15 +94,15 @@ function emptySearchResult(){
      <div id="Fanglist">
      
           <div class="tit"><i><img src="images/hot.png" /></i>推荐楼盘</div>
-          <div class="tit"><span class="c" style="float:left;padding-left:10px;">本期共有<strong>${total }</strong>个楼盘，优惠幅度最大<strong>${maxYouhui }</strong></span></div>
+<%--           <div class="tit"><span class="c" style="float:left;padding-left:10px;">本期共有<strong>${total }</strong>个楼盘，优惠幅度最大<strong>${maxYouhui }</strong></span></div> --%>
           <ul>
           
               <li class="repeat" style="display:none">
                   <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../../${upload_path}/$[img]"  style=""/></a></div>
                   <div class="con">
-                  
-                       <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a><em>在售</em></h2>
-                       <p><i class="r">$[junjia]元/平</i></p>
+                  	<a href="order.jsp?estateId=$[id]"><img src="../images/tuijian.jpg"/ style="height:35px;cursor:pointer" /></a>
+                       <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a></h2>
+<!--                        <p><i class="r">$[junjia]元/平</i></p> -->
                        <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p>
                        <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">独家优惠: </span> <b>$[youhuiPlan]</b>&nbsp;</p>
                   	   <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">抢购热线: </span> <b>$[tel]</b>&nbsp;</p>
