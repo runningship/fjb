@@ -19,7 +19,9 @@ function smart_jump(obj){
   }
 }
 
-function chooseImg(type){
+function chooseImg(type,obj){
+  $('.thumb-item').removeClass('thumb-selected');
+  $(obj).addClass('thumb-selected ');
   filter_type = type;
   reSlide();
 }
@@ -29,6 +31,7 @@ function chooseImg(type){
 <style text="text/css">
 .thumb-item{float:left;width:15%;margin-left:1%;}
 .thumb-item img{height:55px;}
+.thumb-selected img{border: 1px solid;border-color: red;}
 </style>
 </head>
 
@@ -52,14 +55,14 @@ function chooseImg(type){
 	 </div>
 	 <div role="thumb" class="thumb" style="height:90px;background:white;margin-top:-20px;padding-left:3%">
            <c:if test="${huxing_img !=null }">
-           <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('huxing');return false;">
+           <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('huxing',this);return false;">
                <img alt="" src="../../${upload_path}/${huxing_img }">
                <p class="cover-layer">户型图</p>
                <span class="photo-frame"></span>
            </a>
            </c:if>
            <c:if test="${xiaoguo_img !=null}">
-            <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('xiaoguo');return false;">
+            <a role="thumbItem" class="thumb-item " href="#" onclick="chooseImg('xiaoguo',this);return false;">
                 <img alt="" src="../../${upload_path}/${xiaoguo_img }">
                 <p class="cover-layer">效果图</p>
                 <span class="photo-frame"></span>
@@ -67,7 +70,7 @@ function chooseImg(type){
            </c:if>
            
            <c:if test="${shijing_img !=null}">
-           	<a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('shijing');return false;">
+           	<a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('shijing',this);return false;">
                 <img alt="" src="../../${upload_path}/${shijing_img }">
                 <p class="cover-layer">实景图</p>
                 <span class="photo-frame"></span>
@@ -75,7 +78,7 @@ function chooseImg(type){
            </c:if>
            
            <c:if test="${guihua_img !=null }">
-            <a role="thumbItem" class="thumb-item  last" href="#" onclick="chooseImg('guihua');return false;">
+            <a role="thumbItem" class="thumb-item  last" href="#" onclick="chooseImg('guihua',this);return false;">
                 <img alt="" src="../../${upload_path}/${guihua_img }">
                 <p class="cover-layer">规划图</p>
                 <span class="photo-frame"></span>

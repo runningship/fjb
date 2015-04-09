@@ -99,13 +99,13 @@ function emptySearchResult(){
           
               <li class="repeat" style="display:none">
                   <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../../${upload_path}/$[img]"  style=""/></a></div>
-                  <div class="con">
-                  	<a href="order.jsp?estateId=$[id]"><img src="../images/tuijian.jpg"/ style="height:35px;cursor:pointer" /></a>
+                  <div class="con" style="font-size:14px;">
+                  	<a href="order.jsp?estateId=$[id]"><img src="../images/tuijian.jpg"/ style="height:30px;cursor:pointer" /></a>
                        <h2><a href="info.jsp?estateId=$[id]" style="color:black;">$[name]</a></h2>
 <!--                        <p><i class="r">$[junjia]元/平</i></p> -->
-                       <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p>
-                       <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">独家优惠: </span> <b>$[youhuiPlan]</b>&nbsp;</p>
-                  	   <p style="  color: #dc1b1e; font-size: 18px;"><span class="yhBg">抢购热线: </span> <b>$[tel]</b>&nbsp;</p>
+<!--                        <p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">$[addr]</p> -->
+                       <p style="  color: #dc1b1e; white-space: nowrap;overflow: hidden;  text-overflow: ellipsis;"><span class="yhBg">独家优惠: </span> <b>$[youhuiPlan]</b>&nbsp;</p>
+                  	   <p style="  color: #dc1b1e; "><span class="yhBg">抢购热线: </span> <b>$[tel]</b>&nbsp;</p>
                   </div>
               </li>
           
