@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript" src="../js/city/jquery.cityselect.js"></script>
-<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script type="text/javascript" src="../js/city/jquery.cityselect.js?23232"></script>
+<!-- <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script> -->
 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0"></script>
+<script type="text/javascript" src="../js/city/convertor.js"></script>
 <style type="text/css">
 #city_1 select{width:30.5%}
 </style>
@@ -34,27 +36,22 @@ var mycity;
 var sessionCity;
 var sessionProvince;
 $(function(){
-	var myprovince = remote_ip_info['province'];
-	mycity = remote_ip_info['city']
-	var mydistrict = remote_ip_info['district'];
+	// var myprovince = remote_ip_info['province'];
+	// mycity = remote_ip_info['city']
+	// var mydistrict = remote_ip_info['district'];
 	if(sessionProvince && sessionCity){
 		$("#city_1").citySelect({
 			prov : sessionProvince, 
 	    	city : sessionCity,
-	    	dist : mydistrict,
 	    	required: true,
 	    	cityChange:changeCity,
 	    	distChange: changeDist
 		});
 	}else{
-		$("#city_1").citySelect({
-			prov:myprovince, 
-	    	city:mycity,
-	    	cityChange:changeCity,
-	    	distChange: changeDist
-		});
-		alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
-		setTimeout(changeCity,2000);
+		// alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
+		alert('正在定位...');
+		window.navigator.geolocation.getCurrentPosition(handleSuccess,handleError);
+		//setTimeout(changeCity,2000);
 	}
 });
 
@@ -77,5 +74,64 @@ function changeDist(){
 	emptySearchResult();
 	$('#quyu').val($('#dist').val());
 	doSearch();
+}
+
+function handleSuccess(position){
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
+  try{
+      // 百度地图API功能
+    //GPS坐标
+    var xx = lon;
+    var yy = lat;
+    var gpsPoint = new BMap.Point(xx, yy);
+    //地图初始化
+    //坐标转换完之后的回调函数
+    translateCallback = function (point) {
+        lat = point.lat;
+        lon = point.lng;
+        var point = new BMap.Point(point.lng, point.lat);
+        var gc = new BMap.Geocoder();
+        gc.getLocation(point, function (rs) {
+            
+            var myprov = rs.addressComponents.province;
+            myprov = myprov.replace("省","").replace("市","");
+            var mycity = rs.addressComponents.city;
+            mycity = mycity.replace("市","");
+            //infoAlert(xx);
+            // var addComp = rs.addressComponents;
+            // var citystr = addComp.district;
+            // alert(prov+city);
+            $("#city_1").citySelect({
+				prov:myprov, 
+		    	city:mycity,
+		    	cityChange:changeCity,
+		    	distChange: changeDist
+			});
+			setTimeout(changeCity,1000);
+        });
+    }
+    BMap.Convertor.translate(gpsPoint, 0, translateCallback);     //真实经纬度转成百度坐标
+  }catch(e){
+    alert(e);
+  }
+  
+}
+
+function handleError(error){
+  switch (error.code) {
+        case 0:
+            alert("浏览器无法确定您的位置！");
+            break;
+        case 1:
+            alert("您设置了阻止该页面获取位置信息！");
+            break;
+        case 2:
+            alert("浏览器无法确定您的位置！");
+            break;
+        case 3:
+            alert("浏览器无法确定您的位置！");
+            break;
+    }
 }
 </script>

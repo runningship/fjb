@@ -29,8 +29,8 @@ function chooseImg(type,obj){
 
 </script>
 <style text="text/css">
-.thumb-item{float:left;width:15%;margin-left:1%;}
-.thumb-item img{height:55px;}
+.thumb-item{float:left;width:21%;margin-left:3%;}
+.thumb-item img{height:65px;width:100%;}
 .thumb-selected img{border: 1px solid;border-color: red;}
 </style>
 </head>
@@ -45,9 +45,9 @@ function chooseImg(type,obj){
      
 <%--      <div id="banner"><img src="../${upload_path}/${main_img}" /></div> --%>
      <div class="swipe" id="imgSwipe" style="visibility: visible;">
-   	  <div class="swipe-wrap" >
+   	  <div class="swipe-wrap" style="height:190px;">
    	  		<c:forEach items="${images}"  var="image">
-   	  			<div class="swipe_pic "  type="${image.type }"><img src="../../${upload_path}/${image.path }"  style="max-height:395px;"/></div>
+   	  			<div style="" class="swipe_pic "  type="${image.type }"><img src="../../${upload_path}/${image.path }"  style="max-height:395px;"/></div>
    	  		</c:forEach>
            
        </div>

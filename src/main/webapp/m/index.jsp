@@ -5,12 +5,44 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <jsp:include page="../header.jsp" />
+
 <script type="text/javascript" >
 var currentPageNo=1;
 $(function(){
 	doSearch();
+	window.navigator.geolocation.getCurrentPosition(handleSuccess,handleError);
 });
 
+function handleSuccess(position){
+	lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    
+    
+ // 百度地图API功能
+    //GPS坐标
+    var xx = lon;
+    var yy = lat;
+    var gpsPoint = new BMap.Point(xx, yy);
+    //地图初始化
+    //坐标转换完之后的回调函数
+    translateCallback = function (point) {
+        lat = point.lat;
+        lon = point.lng;
+        
+        var point = new BMap.Point(point.lng, point.lat);
+        var gc = new BMap.Geocoder();
+        gc.getLocation(point, function (rs) {
+            var addComp = rs.addressComponents;
+            citystr = addComp.district;
+			alert(cityStr);
+        });
+    }
+    BMap.Convertor.translate(gpsPoint, 0, translateCallback);     //真实经纬度转成百度坐标
+}
+
+function handleError(error){
+	alert(error.code);
+}
 function doSearch(){
 	$('#currentPageNo').val(currentPageNo);
 	var a=$('form[name=form1]').serialize();
