@@ -29,9 +29,10 @@ function chooseImg(type,obj){
 
 </script>
 <style text="text/css">
-.thumb-item{float:left;width:21%;margin-left:3%;}
+.thumb-item{float:left;width:21%;margin-left:3%;position:relative}
 .thumb-item img{height:65px;width:100%;}
 .thumb-selected img{border: 1px solid;border-color: red;}
+.cover-layer{  position: absolute;  left: 0px;  bottom: 0px;  color: white;  width: 100%;  background: #444;  text-align: center;opacity:0.9}
 </style>
 </head>
 
@@ -53,19 +54,16 @@ function chooseImg(type,obj){
        </div>
       <span class="swipe_num"><span id="nowNum">1</span>/<span id="totalNum"></span></span>
 	 </div>
-	 <div role="thumb" class="thumb" style="height:90px;background:white;margin-top:-20px;padding-left:3%">
+	 <div role="thumb" class="thumb" style="height:90px;background:white;margin-top:-15px;padding-left:3%">
            <c:if test="${huxing_img !=null }">
            <a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('huxing',this);return false;">
                <img alt="" src="../../${upload_path}/${huxing_img }">
-               <p class="cover-layer">户型图</p>
-               <span class="photo-frame"></span>
+               <span class="cover-layer">户型图</span>
            </a>
            </c:if>
            <c:if test="${xiaoguo_img !=null}">
             <a role="thumbItem" class="thumb-item " href="#" onclick="chooseImg('xiaoguo',this);return false;">
-                <img alt="" src="../../${upload_path}/${xiaoguo_img }">
-                <p class="cover-layer">效果图</p>
-                <span class="photo-frame"></span>
+                <img alt="" src="../../${upload_path}/${xiaoguo_img }"><span class="cover-layer">效果图</span></img>
             </a>
            </c:if>
            
@@ -73,7 +71,6 @@ function chooseImg(type,obj){
            	<a role="thumbItem" class="thumb-item  " href="#" onclick="chooseImg('shijing',this);return false;">
                 <img alt="" src="../../${upload_path}/${shijing_img }">
                 <p class="cover-layer">实景图</p>
-                <span class="photo-frame"></span>
             </a>
            </c:if>
            
@@ -81,7 +78,6 @@ function chooseImg(type,obj){
             <a role="thumbItem" class="thumb-item  last" href="#" onclick="chooseImg('guihua',this);return false;">
                 <img alt="" src="../../${upload_path}/${guihua_img }">
                 <p class="cover-layer">规划图</p>
-                <span class="photo-frame"></span>
             </a>
            </c:if>
          </div>
