@@ -48,6 +48,11 @@ public class EstateService {
 		Estate po = dao.get(Estate.class, id);
 		mv = ConfigHelper.queryItems(mv);
 		mv.jspData.put("estate", po);
+		List<String> lxings = new ArrayList<String>();
+		for(String str : po.lxing.split(",")){
+			lxings.add(str);
+		}
+		mv.jspData.put("myLxings", lxings);
 		return mv;
 	}
 	
@@ -174,6 +179,7 @@ public class EstateService {
 		}
 		List<HouseImage> images = dao.listByParams(HouseImage.class, hql.toString(), params.toArray());
 		mv.data.put("images", JSONHelper.toJSONArray(images));
+		mv.data.put("imgType", imgType);
 		return mv;
 	}
 	

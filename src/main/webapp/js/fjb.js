@@ -16,11 +16,11 @@ function getImgList(estateUUID , imgType , huxingUUID){
         url: window.top.projectName+'/c/admin/estate/listImage?estateUUID='+estateUUID+'&imgType='+imgType+'&huxingUUID='+huxingUUID,
         dataType:'json',
         mysuccess: function(data){
-        	$('#'+imgType+'_img_container').empty();
+        	$('#'+data.imgType+'_img_container').empty();
         	for(var i=0;i<data.images.length;i++){
         		var img = '<span id="del_btn_'+data.images[i].id+'" style="position: absolute;margin-left: 108px;color:red;cursor:pointer" onclick="delImg('+data.images[i].id+')">╳</span>';
         		img += '<img id="image_'+data.images[i].id+'" style="width:120px;height:80px;" src="'+window.top.upload_path+data.images[i].path+'" />';
-            	$('#'+imgType+'_img_container').append(img);
+            	$('#'+data.imgType+'_img_container').append(img);
         	}
         }
     });
