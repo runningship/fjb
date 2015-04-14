@@ -11,11 +11,9 @@ import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
-import org.bc.web.ThreadSession;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.admin.EstateQuery;
-import com.youwei.fjb.admin.OrderQuery;
 import com.youwei.fjb.entity.Article;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.House;
