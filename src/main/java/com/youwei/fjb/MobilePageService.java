@@ -121,6 +121,8 @@ public class MobilePageService {
 		List<Object> params = new ArrayList<Object>();
 		params.add(ThreadSessionHelper.getCity());
 		page.setPageSize(10);
+		page.order="desc";
+		page.orderBy = "est.id";
 		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu ,est.tejia as tejia , est.junjia as junjia , est.tel as tel, est.youhuiPlan as youhuiPlan,"
 				+ "  est.opentime as opendate, est.addr as addr,  est.yufu as yufu, est.shidi as shidi , img.path as img from Estate est,"
 				+ "HouseImage img where est.uuid=img.estateUUID and est.city=? and img.type='main'");
@@ -185,6 +187,15 @@ public class MobilePageService {
 		if(!page.getResult().isEmpty()){
 			mv.jspData.put("minTotalPrice", page.getResult().get(0).get("totalPrice"));
 		}
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView seePic(Integer estateId){
+		ModelAndView mv = new ModelAndView();
+		Estate po = dao.get(Estate.class, estateId);
+		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where estateUUID=?", po.uuid);
+		mv.jspData.put("images", images);
 		return mv;
 	}
 	

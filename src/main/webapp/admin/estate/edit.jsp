@@ -6,8 +6,8 @@
 <html>
 <head>
 <jsp:include page="../header.jsp" />
-<!-- <script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script> -->
-<!-- <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script> -->
+<script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
+<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 <script type="text/javascript">
 
 $(function(){

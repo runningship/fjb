@@ -26,6 +26,9 @@ function chooseImg(type,obj){
   reSlide();
 }
 
+function SeePic(){
+  window.location="seePic.jsp?estateId=${estate.id}";
+}
 
 </script>
 <style text="text/css">
@@ -48,7 +51,7 @@ function chooseImg(type,obj){
      <div class="swipe" id="imgSwipe" style="visibility: visible;">
    	  <div class="swipe-wrap" style="height:190px;">
    	  		<c:forEach items="${images}"  var="image">
-   	  			<div style="" class="swipe_pic "  type="${image.type }"><img src="../../${upload_path}/${image.path }"  style="max-height:395px;"/></div>
+   	  			<div style="" class="swipe_pic "  type="${image.type }"><img src="../${upload_path}/${image.path }" onclick="SeePic();return false"  style="max-height:395px;"/></div>
    	  		</c:forEach>
            
        </div>
@@ -200,6 +203,13 @@ function chooseImg(type,obj){
                 <div class="line">车位：${estate.chewei }</div>
               </c:if>
           </div>
+
+          <c:if test="${estate.jieshao!=null}">
+            <div class="xiangxi">
+                 <div class="tit">介绍</div>
+                  <div class="line">${estate.jieshao }</div>
+            </div>
+          </c:if>
      	
           <div class="xiangxi">
           </div>

@@ -10,6 +10,7 @@ import org.bc.sdak.GException;
 import org.bc.sdak.Page;
 import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
+import org.bc.sdak.utils.LogUtil;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
 import org.bc.web.PlatformExceptionType;
@@ -30,6 +31,7 @@ public class UserService {
 	@WebMethod
 	public ModelAndView login(User user , String yzm){
 		ModelAndView mv = new ModelAndView();
+		LogUtil.info("username:"+user.tel+",password="+user.pwd);
 		User po = null;
 		yzm = yzm.replace(String.valueOf((char)8198), "");
 		if("admin".equals(user.type)){
