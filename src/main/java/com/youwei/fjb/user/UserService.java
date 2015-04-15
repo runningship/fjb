@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.GException;
@@ -38,14 +40,17 @@ public class UserService {
 			po = loginAsAdmin(user);
 		}else{
 			VerifyCodeHelper.verify(yzm);
-			po = loginAsSeller(user);
+			po = loginAsSeller(user , false);
 		}
 		ThreadSession.getHttpSession().setAttribute("user", po);
 		return mv;
 	}
 	
-	public User loginAsSeller(User user){
-		String pwd = SecurityHelper.Md5(user.pwd);
+	public User loginAsSeller(User user , boolean isMD5){
+		String pwd = user.pwd;
+		if(!isMD5){
+			pwd = SecurityHelper.Md5(user.pwd);
+		}
 		User po = dao.getUniqueByParams(User.class, new String[]{"tel" , "pwd" , "type"}, new Object[]{user.tel  , pwd , "seller"});
 		if(po==null){
 			throw new GException(PlatformExceptionType.BusinessException,"用户名或密码不正确。");

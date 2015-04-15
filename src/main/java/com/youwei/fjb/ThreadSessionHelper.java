@@ -21,6 +21,9 @@ public class ThreadSessionHelper {
     	User u = (User)session.getAttribute("user");
     	if(u==null){
     		Cookie[] cookies = ThreadSession.HttpServletRequest.get().getCookies();
+    		if(cookies==null){
+    			throw new GException(PlatformExceptionType.UserOfflineException , "");
+    		}
     		User seller = new User();
     		for(Cookie cookie : cookies){
     			if("tel".equals(cookie.getName())){
@@ -32,7 +35,7 @@ public class ThreadSessionHelper {
     		}
     		UserService us = new UserService();
     		try{
-    			User po = us.loginAsSeller(seller);
+    			User po = us.loginAsSeller(seller , true);
     			ThreadSession.getHttpSession().setAttribute("user", po);
     			return po;
     		}catch(Exception ex){

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+
 import org.apache.commons.lang.StringUtils;
 import org.bc.sdak.CommonDaoService;
 import org.bc.sdak.Page;
@@ -11,6 +13,7 @@ import org.bc.sdak.TransactionalServiceHelper;
 import org.bc.sdak.utils.JSONHelper;
 import org.bc.web.ModelAndView;
 import org.bc.web.Module;
+import org.bc.web.ThreadSession;
 import org.bc.web.WebMethod;
 
 import com.youwei.fjb.admin.EstateQuery;
@@ -214,6 +217,12 @@ public class MobilePageService {
 		long buyerCount = dao.countHql("select count(*) from HouseOrder where sellerId=? ", u.id );
 		mv.jspData.put("allYongjin", t1.get(0).get("allYongjin"));
 		mv.jspData.put("buyerCount", buyerCount);
+		Cookie tel = new Cookie("tel" , u.tel);
+		tel.setMaxAge(3600*24*30);
+		Cookie pwd = new Cookie("pwd" , u.pwd);
+		pwd.setMaxAge(3600*24*30);
+		ThreadSession.getHttpservletresponse().addCookie(tel);
+		ThreadSession.getHttpservletresponse().addCookie(pwd);
 		return mv;
 	}
 	
