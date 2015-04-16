@@ -82,10 +82,10 @@ function doSearch(){
 		    	</div>
       <div style="display:inline-block;margin-left:20px;display: inline;" id="adminName">
         <span>经纪服务人员</span>
-        <select style="height:22px;">
-          <option name="adminName" value="">所有</option>
+        <select style="height:22px;" name="adminId" >
+          <option value="">所有</option>
         <c:forEach items="${admins}" var="admin">
-          <option name="adminId" <c:if test="${admin.name==seller.adminName}"> select="selected" </c:if> value="${admin.id}"> ${admin.name}</option>
+          <option <c:if test="${admin.name==seller.adminName}"> select="selected" </c:if> value="${admin.id}"> ${admin.name}</option>
         </c:forEach>
         </select>
       </div>

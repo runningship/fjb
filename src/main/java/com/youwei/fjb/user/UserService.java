@@ -206,6 +206,8 @@ public class UserService {
 			hql.append(" and adminId = ?");
 			params.add(adminId);
 		}
+		page.order="desc";
+		page.orderBy="id";
 		page = dao.findPage(page, hql.toString(), params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;
