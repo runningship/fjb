@@ -35,10 +35,10 @@ public class Estate {
 	public String wylx;
 	
 	//建筑面积
-	public Float jzmj;
+	public String jzmj;
 	
 	//规划面积
-	public Float ghmj;
+	public String ghmj;
 	
 	//容积率
 	public Float rongji;
@@ -46,7 +46,7 @@ public class Estate {
 	//绿化率
 	public Float lvhua;
 	
-	public Integer chewei;
+	public String chewei;
 	
 	//户数
 	public Integer hushu;
@@ -108,7 +108,7 @@ public class Estate {
 	public Float gongtan;
 	
 	//产权,土地年限
-	public Integer chanquan;
+	public String chanquan;
 	
 	//售楼部地址
 	public String shouloubu;

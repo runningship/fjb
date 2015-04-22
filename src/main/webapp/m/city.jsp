@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="../js/city/jquery.cityselect.js?23232"></script>
-<!-- <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script> -->
+<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0"></script>
 <script type="text/javascript" src="../js/city/convertor.js"></script>
@@ -36,23 +36,48 @@ var mycity;
 var sessionCity;
 var sessionProvince;
 $(function(){
-	// var myprovince = remote_ip_info['province'];
-	// mycity = remote_ip_info['city']
-	// var mydistrict = remote_ip_info['district'];
-	if(sessionProvince && sessionCity){
-		$("#city_1").citySelect({
-			prov : sessionProvince, 
-	    	city : sessionCity,
-	    	required: true,
-	    	cityChange:changeCity,
-	    	distChange: changeDist
-		});
-	}else{
-		// alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
-		alert('正在定位...');
-		window.navigator.geolocation.getCurrentPosition(handleSuccess,handleError);
-		//setTimeout(changeCity,2000);
-	}
+	
+  if(window.navigator.userAgent.indexOf('MicroMessenger')>-1){
+    //weixin
+    if(sessionProvince && sessionCity){
+      $("#city_1").citySelect({
+        prov : sessionProvince, 
+          city : sessionCity,
+          required: true,
+          cityChange:changeCity,
+          distChange: changeDist
+      });
+    }else{
+      // alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
+      alert('正在定位...');
+      window.navigator.geolocation.getCurrentPosition(handleSuccess,handleError);
+      //setTimeout(changeCity,2000);
+    }
+  }else{
+    var myprovince = remote_ip_info['province'];
+    mycity = remote_ip_info['city']
+    var mydistrict = remote_ip_info['district'];
+    if(sessionProvince && sessionCity){
+      $("#city_1").citySelect({
+        prov : sessionProvince, 
+        city : sessionCity,
+        required: true,
+        cityChange:changeCity,
+        distChange: changeDist
+      });
+    }else{
+      $("#city_1").citySelect({
+        prov : myprovince, 
+        city : mycity,
+        required: true,
+        cityChange:changeCity,
+        distChange: changeDist
+      });
+      alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
+      setTimeout(changeCity,2000);
+    }
+    }
+	
 });
 
 function changeCity(){

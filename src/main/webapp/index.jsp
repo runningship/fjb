@@ -11,6 +11,7 @@
 <jsp:include page="nav.jsp"></jsp:include>
 <script type="text/javascript" src="js/kxbdSuperMarquee.js"></script>
 <script type="text/javascript">
+/*
 var system = { win: false, mac: false, xll: false };
 //检测平台      
 var p = navigator.platform;
@@ -22,7 +23,7 @@ if (system.win || system.mac || system.xll) {            }
 else {
     window.location.href = "m/index.jsp";
 }   
-    
+*/
 $(function(){
   //一次横向滚动一个
   $('#marquee1').kxbdSuperMarquee({

@@ -49,8 +49,10 @@ public class EstateService {
 		mv = ConfigHelper.queryItems(mv);
 		mv.jspData.put("estate", po);
 		List<String> lxings = new ArrayList<String>();
-		for(String str : po.lxing.split(",")){
-			lxings.add(str);
+		if(po.lxing!=null){
+			for(String str : po.lxing.split(",")){
+				lxings.add(str);
+			}
 		}
 		mv.jspData.put("myLxings", lxings);
 		return mv;
@@ -159,8 +161,9 @@ public class EstateService {
 			hql.append(" and city like ?");
 			params.add("%"+city+"%");
 		}
-		page.order = "desc";
-		page.orderBy="orderx";
+		hql.append(" order by orderx desc,id desc");
+//		page.order = "desc";
+//		page.orderBy="orderx";
 		page = dao.findPage(page, hql.toString(), params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;

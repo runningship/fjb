@@ -88,7 +88,7 @@ function changeQuYu(city){
         <td class="tableleft">物业公司</td>
         <td><input type="text" name="wyComp"/></td>
         <td class="tableleft">物业费</td>
-        <td><input type="text" name="wyfee"/>元/平方*月</td>
+        <td><input type="text" name="wyfee"/></td>
         <td class="tableleft">绿化率</td>
         <td><input type="text" name="lvhua" style="width:90%;"/>%</td>
     </tr>
@@ -110,9 +110,9 @@ function changeQuYu(city){
     </tr>
     <tr>
         <td class="tableleft">建筑面积</td>
-        <td><input type="text" name="jzmj"/>平方</td>
+        <td><input type="text" name="jzmj"/></td>
         <td class="tableleft">规划面积</td>
-        <td><input type="text" name="ghmj"/>平方</td>
+        <td><input type="text" name="ghmj"/></td>
         <td class="tableleft">装修</td>
         <td><select  class="sortSelect" name="zxiu">
                 <option value="" >所有</option>

@@ -83,7 +83,7 @@ function order_success(){
                    
                     <span class="hYPrice"><em>市场价  ${youhui.junjia}</em></span>
                     <span class="hYPrice" style="margin-bottom:10px;">
-                    	<c:if test="${youhui.tejia != null}">独家特惠: ${youhui.youhuiPlan}</c:if>
+                    	<c:if test="${youhui.youhuiPlan != null}">独家特惠: ${youhui.youhuiPlan}</c:if>
 <%--                     	<c:if test="${youhui.yufu != null && youhui.shidi !=null}">${youhui.yufu}享${youhui.shidi }</c:if> --%>
                     </span>
                     <span class="liaojie">

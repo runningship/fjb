@@ -88,7 +88,7 @@ function save(){
         <td class="tableleft">物业公司</td>
         <td><input type="text" name="wyComp" value="${estate.wyComp }"/></td>
         <td class="tableleft">物业费</td>
-        <td><input type="text" name="wyfee" value="${estate.wyfee }"/>元/平方*月</td>
+        <td><input type="text" name="wyfee" value="${estate.wyfee }"/></td>
         <td class="tableleft">绿化率</td>
         <td><input type="text" name="lvhua" value="${estate.lvhua }" style="width:90%;"/>%</td>
     </tr>
@@ -110,9 +110,9 @@ function save(){
     </tr>
     <tr>
         <td class="tableleft">建筑面积</td>
-        <td><input type="text" name="jzmj" value="${estate.jzmj }"/>平方</td>
+        <td><input type="text" name="jzmj" value="${estate.jzmj }"/></td>
         <td class="tableleft">规划面积</td>
-        <td><input type="text" name="ghmj" value="${estate.ghmj }"/>平方</td>
+        <td><input type="text" name="ghmj" value="${estate.ghmj }"/></td>
         <td class="tableleft">装修</td>
         <td><select  class="sortSelect" name="zxiu">
                 <option value="" >所有</option>

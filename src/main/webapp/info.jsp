@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -79,7 +80,7 @@ function order_success(){
                                 	<c:if test="${estate.yufu != null && estate.shidi !=null}"></c:if>
                                 </p>
                                 <p class="yh_price">
-                                	<c:if test="${estate.tejia != null}"><span>独家优惠：</span><em>${estate.tejia}</em></c:if>
+                                	<c:if test="${estate.youhuiPlan != null}"><span>独家优惠：</span><em>${estate.youhuiPlan}</em></c:if>
 <%--                                 	<em>${estate.yufu}</em><span>享</span><em>${estate.shidi }</em> --%>
                                 </p>
                                 <p style="margin-bottom:23px;color:grey;font-size:15px;"><em style="color:red;font-size:22px;"></em><img src="images/tel_400.jpg" /></p>
@@ -215,8 +216,8 @@ function order_success(){
                         <tr>
                             <th>主力户型</th>
                             <td style="width:35%;">${estate.mainHuxing}</td>
-                            <th>规划户数</th>
-                            <td>${estate.hushu}<c:if test="${estate.hushu!=null}" >户</c:if></td>
+                            <th>开盘时间</th>
+                            <td><fmt:formatDate value="${estate.opentime}" pattern="yyyy-MM-dd"/></td>
                         </tr>
                         <tr>
                             <th>装修情况</th>
@@ -246,7 +247,7 @@ function order_success(){
                             <th>公积金贷款</th>
                             <td>${estate.gongjijin}</td>
                             <th>交房时间</th>
-                            <td>${estate.jiaofangDate}</td>
+                            <td><fmt:formatDate value="${estate.jiaofangDate}" pattern="yyyy-MM-dd"/></td>
                         </tr>
                     </tbody></table>
                     <h3 class="hd">建筑信息</h3>
@@ -261,11 +262,11 @@ function order_success(){
                             <th>产证归属</th>
                             <td>${estate.guishu }</td>
                             <th>建筑面积</th>
-                            <td>${estate.jzmj }<c:if test="${estate.jzmj!=null}" >㎡</c:if></td>
+                            <td>${estate.jzmj }<c:if test="${estate.jzmj!=null}" ></c:if></td>
                         </tr>
                         <tr>
                             <th>规划面积</th>
-                            <td>${estate.ghmj}<c:if test="${estate.ghmj!=null}" >㎡</c:if></td>
+                            <td>${estate.ghmj}<c:if test="${estate.ghmj!=null}" ></c:if></td>
                             <th>公摊面积</th>
                             <td>${estate.gongtan}<c:if test="${estate.gongtan!=null}" >%</c:if></td>
                         </tr>
@@ -286,7 +287,7 @@ function order_success(){
                         </tr>
                         <tr>
                             <th>物业费</th>
-                            <td>${estate.wyfee }<c:if test="${estate.wyfee!=null}" >元/平方*月</c:if></td>
+                            <td>${estate.wyfee }<c:if test="${estate.wyfee!=null}" ></c:if></td>
                             <th>绿化率</th>
                             <td>${estate.lvhua }<c:if test="${estate.lvhua!=null}" >%</c:if></td>
                         </tr>

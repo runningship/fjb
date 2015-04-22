@@ -30,7 +30,7 @@
           <span class="s5">活动规则</span>
      </div>
      
-     <div>
+     <div style="padding-bottom:40px;">
           ${conts }
      </div>
      
