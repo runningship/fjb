@@ -5,6 +5,12 @@
 <head>
 <jsp:include page="header.jsp" />
 <link rel="stylesheet" type="text/css" href="style/user.css" />
+<style type="text/css">
+.user_inforight div{
+margin-top:10px;
+}
+.user_inforight{margin-top:5px;}
+</style>
 </head>
 
 <body>
@@ -21,7 +27,6 @@
                     
                     <h2>${seller.name }</h2>
                     
-                    
                     <div><a href="#" class="sel">个人资料</a></div>
                     <div><a href="estateYongJin.jsp">楼盘佣金</a></div>
                     <div><a href="estateOrder.jsp">楼盘预约</a></div>
@@ -33,9 +38,12 @@
                     <div class="tit"><a href="#">我的房金宝</a> > <span>个人资料</span></div>
                     
                     <div class="con">
+                    	<div><img /></div>
                         <div class="user_inforight">
-                        姓名：${seller.name }&#12288;<br>
-                        手机号码：${seller.tel }&#12288;&#12288;
+	                        <div> 姓名：${seller.name }&#12288;</div>
+	                        <div>手机号码：${seller.tel }&#12288;&#12288;</div>
+	                        <div>所属经纪公司：${seller.compName }</div>
+	                        <div>所属门店：${seller.deptName }</div>
                         </div>
                         
                         <div class="user_moreinfo">
@@ -43,7 +51,7 @@
                             <h2>账户安全</h2>
 			
 			
-                            <div class="table">
+                            <div class="table" style="margin-left:10px;">
                                 <table width="600">
                                     <tbody><tr>
                                         <td width="20%"><img src="images/user_icon1.png"> 认证手机</td>

@@ -53,8 +53,14 @@ $(function(){
       window.navigator.geolocation.getCurrentPosition(handleSuccess,handleError);
       //setTimeout(changeCity,2000);
     }
-  }else{
-    var myprovince = remote_ip_info['province'];
+  }else{  
+    locateBySina();
+  }
+	
+});
+
+function locateBySina(){
+  var myprovince = remote_ip_info['province'];
     mycity = remote_ip_info['city']
     var mydistrict = remote_ip_info['district'];
     if(sessionProvince && sessionCity){
@@ -76,10 +82,7 @@ $(function(){
       alert('正在为您切换到'+myprovince+'省'+mycity+'市...');
       setTimeout(changeCity,2000);
     }
-    }
-	
-});
-
+}
 function changeCity(){
 	YW.ajax({
         type: 'POST',
@@ -150,6 +153,7 @@ function handleError(error){
             break;
         case 1:
             alert("您设置了阻止该页面获取位置信息！");
+            locateBySina();
             break;
         case 2:
             alert("浏览器无法确定您的位置！");
