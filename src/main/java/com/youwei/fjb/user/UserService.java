@@ -3,6 +3,7 @@ package com.youwei.fjb.user;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 
@@ -70,6 +71,39 @@ public class UserService {
 	}
 	
 	@WebMethod
+	public ModelAndView adminAdd(){
+		ModelAndView mv = new ModelAndView();
+		mv.jspData.put("roles", Role.toList());
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView adminList(){
+		ModelAndView mv = new ModelAndView();
+		mv.jspData.put("me", ThreadSessionHelper.getUser());
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView adminEdit(Integer id){
+		ModelAndView mv = new ModelAndView();
+		User po = dao.get(User.class, id);
+		mv.jspData.put("user", po);
+		mv.jspData.put("roles", Role.toList());
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView adminChange(Integer id){
+		ModelAndView mv = new ModelAndView();
+		User seller = dao.get(User.class, id);
+		mv.jspData.put("seller", seller);
+		List<User> admins = dao.listByParams(User.class, "from User where type=?", "admin");
+		mv.jspData.put("admins", admins);
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView logout(){
 		ModelAndView mv = new ModelAndView();
 		ThreadSession.getHttpSession().removeAttribute("user");
@@ -87,6 +121,23 @@ public class UserService {
 		}
 		po.pwd = SecurityHelper.Md5(newPwd);
 		dao.saveOrUpdate(po);
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView updateAdmin(User admin){
+		ModelAndView mv = new ModelAndView();
+		User po = dao.get(User.class, admin.id);
+		po.account = admin.account;
+		po.role = admin.role;
+		po.tel = admin.tel;
+		po.email = admin.email;
+		dao.saveOrUpdate(po);
+		User me = ThreadSessionHelper.getUser();
+		if(me.id.equals(po.id)){
+			//更新session
+			ThreadSession.getHttpSession().setAttribute("user", po);
+		}
 		return mv;
 	}
 	
@@ -114,10 +165,34 @@ public class UserService {
 	}
 	
 	@WebMethod
+	public ModelAndView setAdminForSeller(Integer adminId, String sellerIds){
+		ModelAndView mv = new ModelAndView();
+		if(StringUtils.isEmpty(sellerIds)){
+			return mv;
+		}
+		User admin = dao.get(User.class, adminId);
+		for(String id: sellerIds.split(",")){
+			User seller = dao.get(User.class, Integer.valueOf(id));
+			seller.adminId = adminId;
+			seller.adminName = admin.name;
+			seller.valid = 1;
+			dao.saveOrUpdate(seller);
+		}
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView sellerList(){
 		ModelAndView mv = new ModelAndView();
 		List<User> admins = dao.listByParams(User.class, "from User where type=?", "admin");
 		mv.jspData.put("admins", admins);
+		//公司数量
+		List<Map> comps = dao.listAsMap("select compName from User where type='seller' group by compName");
+		List<Map> depts = dao.listAsMap("select deptName from User where type='seller' group by compName, deptName");
+		mv.jspData.put("compCount", comps.size());
+		mv.jspData.put("deptCount", depts.size());
+		//门店数量
+		mv.jspData.put("me", ThreadSessionHelper.getUser());
 		return mv;
 	}
 	
@@ -161,6 +236,7 @@ public class UserService {
 		return mv;
 	}
 	
+	
 	@WebMethod
 	public ModelAndView active(User user){
 		ModelAndView mv = new ModelAndView();
@@ -186,7 +262,7 @@ public class UserService {
 	}
 	
 	@WebMethod
-	public ModelAndView listData(Page<House> page , String type , String city , String quyu , Integer adminId){
+	public ModelAndView listData(Page<House> page , String type , String city , String quyu , Integer adminId , String compName , String deptName){
 		ModelAndView mv = new ModelAndView();
 		StringBuilder hql = new StringBuilder("from User where 1=1 ");
 		List<Object> params = new ArrayList<Object>();
@@ -202,10 +278,26 @@ public class UserService {
 			hql.append(" and quyu = ?");
 			params.add(quyu);
 		}
+		if(StringUtils.isNotEmpty(compName)){
+			hql.append(" and compName like ?");
+			params.add("%"+compName+"%");
+		}
+		if(StringUtils.isNotEmpty(deptName)){
+			hql.append(" and deptName like ?");
+			params.add("%"+deptName+"%");
+		}
 		if(adminId!=null){
 			hql.append(" and adminId = ?");
 			params.add(adminId);
 		}
+		User me = ThreadSessionHelper.getUser();
+		if("seller".equals(type)){
+			if(Role.市场专员.toString().equals(me.role)){
+				hql.append(" and adminId = ?");
+				params.add(me.id);
+			}
+		}
+		
 		page.order="desc";
 		page.orderBy="id";
 		page = dao.findPage(page, hql.toString(), params.toArray());

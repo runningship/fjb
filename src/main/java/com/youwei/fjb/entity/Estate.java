@@ -142,4 +142,6 @@ public class Estate {
 	public String manager;
 	
 	public int orderx;
+	
+	public String yongjin;
 }

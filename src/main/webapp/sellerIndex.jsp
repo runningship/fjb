@@ -23,6 +23,7 @@
                     
                     
                     <div><a href="#" class="sel">个人资料</a></div>
+                    <div><a href="estateYongJin.jsp">楼盘佣金</a></div>
                     <div><a href="estateOrder.jsp">楼盘预约</a></div>
                		<div><a href="houseOrder.jsp">房源预约</a></div>
                </div>

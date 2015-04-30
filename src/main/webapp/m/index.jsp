@@ -99,6 +99,7 @@ function emptySearchResult(){
                         <a href="info.jsp?estateId=42" target="_blank"><li style="z-index:1; display:list-item;" ><img src="../images/banner11.jpg"/></li></a>
                         <a href="info.jsp?estateId=36" target="_blank"><li style="z-index:0; display:none; "><img src="../images/banner12.jpg"/></li></a>
                         <a href="info.jsp?estateId=43" target="_blank"><li style="z-index:0; display:none;"><img src="../images/banner13.jpg"/></li></a>
+                        <a href="info.jsp?estateId=53" target="_blank"><li style="z-index:0; display:none;"><img src="../images/banner14.jpg"/></li></a>
                     
                     </ul>
                		<ul id="litPic"></ul>

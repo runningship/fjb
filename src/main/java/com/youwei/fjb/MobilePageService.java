@@ -192,10 +192,17 @@ public class MobilePageService {
 	}
 	
 	@WebMethod
-	public ModelAndView seePic(Integer estateId){
+	public ModelAndView seePic(Integer estateId ,String type){
 		ModelAndView mv = new ModelAndView();
 		Estate po = dao.get(Estate.class, estateId);
-		List<HouseImage> images = dao.listByParams(HouseImage.class, "from HouseImage where estateUUID=?", po.uuid);
+		StringBuilder hql = new StringBuilder("from HouseImage where estateUUID=?");
+		List<Object> params = new ArrayList<Object>();
+		params.add(po.uuid);
+		if(StringUtils.isNotEmpty(type)){
+			hql.append(" and type=?");
+			params.add(type);
+		}
+		List<HouseImage> images = dao.listByParams(HouseImage.class, hql.toString(), params.toArray());
 		mv.jspData.put("images", images);
 		return mv;
 	}

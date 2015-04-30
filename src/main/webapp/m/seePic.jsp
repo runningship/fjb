@@ -35,7 +35,7 @@ function smart_jump(obj){
      <div class="swipe" id="imgSwipe" style="visibility: visible;margin-top:5%">
    	  <div class="swipe-wrap" >
    	  		<c:forEach items="${images}"  var="image">
-   	  			<div style="" class="swipe_pic "  type="${image.type }"><img src="../${upload_path}/${image.path }" style="height:auto;"/></div>
+   	  			<div style="" class="swipe_pic "  type="${image.type }"><img src="../../${upload_path}/${image.path }" style="height:auto;"/></div>
    	  		</c:forEach>
            
        </div>

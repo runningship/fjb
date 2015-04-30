@@ -40,30 +40,36 @@ function doSearch(){
 </head>
 <body>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
-    <button onclick="window.location.href='adminAdd.jsp'" type="button"  class="btn btn-success ">添加</button>
+    <c:if test="${me.role eq '销售总监' }">
+    	<button onclick="window.location.href='adminAdd.jsp'" type="button"  class="btn btn-success ">添加</button>
+    </c:if>
 </form>
 
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
     	<th>编号</th>
-    	<th>账号</th>
-        <th>姓名</th>
-        <th>电话</th>
+    	<th>登录账号</th>
+        <th>手机号码</th>
+        <th>职位</th>
+        <th>固定号码</th>
         <th>邮箱</th>
-        <th>操作</th>
+        <c:if test="${me.role eq '销售总监' }"><th>操作</th></c:if>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
     			<td>$[id]</td>
     			<td>$[account]</td>
-                <td>$[name]</td>
-                <td>$[tel]</td>
+    			<td>$[tel]</td>
+                <td>$[role]</td>
+                <td>$[landlineTel]</td>
                 <td>$[email]</td>
-                <td>
+                <c:if test="${me.role eq '销售总监' }"><td>
+                    <a href="adminEdit.jsp?id=$[id]">编辑</a>
                     <a href="#" onclick="del($[id])">删除</a>
                 </td>
+                </c:if>
             </tr>
     </tbody>
 	</table>

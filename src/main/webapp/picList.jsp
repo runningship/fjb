@@ -11,7 +11,7 @@ function filterImg(type,obj){
   $(obj).attr('class','tabs-item current');
 	$('#keyFilterList li').hide();
 	$('li[key="'+type+'"]').show();
-  if (type=="") {
+  if (type=='all') {
     $('#keyFilterList li').show();
   };
 }
@@ -81,7 +81,7 @@ $(function () {
     <div class="content">
       
       <div id="keyFilterTabs" class="tabs">
-        <a tabkey="all" href="#" onclick="filterImg('',this);" class="tabs-item current">所有图片(${all })</a><span class="sep">|</span>
+        <a tabkey="all" id="all" href="#" onclick="filterImg('all',this);" class="tabs-item current">所有图片(${all })</a><span class="sep">|</span>
       <c:forEach items="${fenleiList}" var="fenlei">
             <c:choose>
               <c:when test="${fenlei.name==\"huxing\" }">
@@ -107,6 +107,9 @@ $(function () {
           <li key="${image.type}" class="list-item">
             <img alt="" onclick="showImg(this);return false;" src="${upload_path}/${image.path}">
             <c:choose>
+              <c:when test="${image.type==\"main\" }">
+                <p class="title">主图片</p>
+              </c:when>
             	<c:when test="${image.type==\"huxing\" }">
             		<p class="title">户型图</p>
             	</c:when>

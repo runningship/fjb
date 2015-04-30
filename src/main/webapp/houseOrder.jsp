@@ -57,6 +57,7 @@ function delOrder(id){
                     
                     
                     <div><a href="sellerIndex.jsp">个人资料</a></div>
+                    <div><a href="estateYongJin.jsp">楼盘佣金</a></div>
                     <div><a href="estateOrder.jsp">楼盘预约</a></div>
                		<div><a href="houseOrder.jsp" class="sel">房源预约</a></div>
                

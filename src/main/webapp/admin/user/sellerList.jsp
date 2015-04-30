@@ -7,6 +7,8 @@
 <script type="text/javascript" src="../../js/city/jquery.cityselect.js"></script>
 <script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
 <script type="text/javascript">
+var Ids=[];
+var ids=""; 
 function doSearch(){
 	var a=$('form[name=form1]').serialize();
 	YW.ajax({
@@ -20,6 +22,19 @@ function doSearch(){
 	    }
 	  });
 }
+
+function saveJinJ(adminId){
+    YW.ajax({
+      type: 'POST',
+      url: '${projectName}/c/admin/user/setAdminForSeller?sellerIds='+ids+'&adminId='+adminId,
+      data:'',
+      mysuccess: function(data){
+        doSearch();
+        alert('保存成功');
+      }
+  });
+}
+
 	function del(id){
 		art.dialog.confirm('删除后不可恢复，确定要删除吗？', function () {
 		    YW.ajax({
@@ -34,14 +49,40 @@ function doSearch(){
 		  },function(){},'warning');
 	}
 
-	function edi(id){
-  		art.dialog.open("${projectName}/admin/user/sellerEdit.jsp?id="+id,{
-  			id:'edit_seller',
-  			title:  '修改经纪人',
-  			width:  440,
-  			height: 400
-  		})
-	}
+  function edi(id){
+      art.dialog.open("${projectName}/admin/user/sellerEdit.jsp?id="+id,{
+        id:'edit_seller',
+        title:  '修改经纪人',
+        width:  440,
+        height: 400
+      })
+  }
+
+function jiancha(a,id){
+  if (a.checked) {
+    Ids.push(id);
+  }else {
+    for(var i=0;i<Ids.length ;i++){
+      if (Ids[i]==id) {
+        Ids.splice(i,1);
+      };
+    }
+  }
+}
+
+  function openJinJ(){
+    ids = Ids.toString();
+    if (ids=="") {
+      alert('请勾选所要修改的经纪人');
+      return;
+    };
+    art.dialog.open("${projectName}/admin/user/adminChange.jsp",{
+      id:'edit_admin',
+      title:  '修改经纪服务人员',
+      width:  200,
+      height: 150,
+    })
+  }
 
 	function toggleShenhe(id){
 		YW.ajax({
@@ -80,36 +121,42 @@ function doSearch(){
 			    	<select class="city" name="city"></select>
 			    	<select class="dist"  name="quyu"></select>
 		    	</div>
-      <div style="display:inline-block;margin-left:20px;display: inline;" id="adminName">
-        <span>经纪服务人员</span>
-        <select style="height:22px;" name="adminId" >
-          <option value="">所有</option>
-        <c:forEach items="${admins}" var="admin">
-          <option <c:if test="${admin.name==seller.adminName}"> select="selected" </c:if> value="${admin.id}"> ${admin.name}</option>
-        </c:forEach>
-        </select>
-      </div>
+    	<c:if test="${me.role ne '市场专员' }">
+		      <div style="display:inline-block;margin-left:20px;display: inline;" id="adminName">
+		        <span>经纪服务人员</span>
+		        <select style="height:22px;" name="adminId" >
+		          <option value="">所有</option>
+		        <c:forEach items="${admins}" var="admin">
+		          <option <c:if test="${admin.name==seller.adminName}"> select="selected" </c:if> value="${admin.id}"> ${admin.name}</option>
+		        </c:forEach>
+		        </select>
+		      </div>
+      </c:if>
+      公司名称<input type="text" name="compName" style="width:150px;margin-right:10px;height:18px;" />
+     门店名称<input type="text" name="deptName" style="width:150px;margin-right:10px;height:18px;"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
+  <button type="button" class="btn btn-success jinji" onclick="openJinJ();return false;">修改经纪服务人员</button>
+    <div>共有公司${compCount }家，门店${deptCount }家</div>
 </form>
 
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-    	<th>经纪人ID</th>
+    	<th style="width:60px;">经纪人ID</th>
         <th>电话号码</th>
         <th>真实姓名</th>
-        <th>城市</th>
-        <th>区域</th>
-        <th>所属公司</th>
-        <th>所属门店</th>
-        <th>经纪服务人员</th>
-        <th>状态</th>
-        <th>操作</th>
+        <th style="width:50px;">城市</th>
+        <th style="width:50px;">区域</th>
+        <th >所属公司</th>
+        <th >所属门店</th>
+        <th style="width:100px;">经纪服务人员</th>
+        <th style="width:50px;">状态</th>
+        <th style="width:70px;">操作</th>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
-    			<td>$[id]</td>
+    			<td><input type="checkbox" name="ids" onclick="jiancha(this,$[id])">$[id]</td>
                 <td>$[tel]</td>
                 <td>$[name]</td>
                 <td>$[city]</td>

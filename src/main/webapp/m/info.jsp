@@ -27,7 +27,10 @@ function chooseImg(type,obj){
 }
 
 function SeePic(){
-  window.location="seePic.jsp?estateId=${estate.id}";
+ 	if(!filter_type){
+ 		filter_type='';
+ 	}
+  	window.location="seePic.jsp?estateId=${estate.id}&type="+filter_type;
 }
 
 </script>
@@ -51,7 +54,7 @@ function SeePic(){
      <div class="swipe" id="imgSwipe" style="visibility: visible;">
    	  <div class="swipe-wrap" style="height:190px;">
    	  		<c:forEach items="${images}"  var="image">
-   	  			<div style="" class="swipe_pic "  type="${image.type }"><img src="../${upload_path}/${image.path }" onclick="SeePic();return false"  style="max-height:395px;"/></div>
+   	  			<div style="" class="swipe_pic "  type="${image.type }"><img src="../../${upload_path}/${image.path }" onclick="SeePic();return false"  style="max-height:395px;"/></div>
    	  		</c:forEach>
            
        </div>

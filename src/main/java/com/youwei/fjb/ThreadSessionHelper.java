@@ -20,6 +20,9 @@ public class ThreadSessionHelper {
     	}
     	User u = (User)session.getAttribute("user");
     	if(u==null){
+    		if(ThreadSession.HttpServletRequest.get()==null){
+    			throw new GException(PlatformExceptionType.UserOfflineException , "");
+    		}
     		Cookie[] cookies = ThreadSession.HttpServletRequest.get().getCookies();
     		if(cookies==null){
     			throw new GException(PlatformExceptionType.UserOfflineException , "");

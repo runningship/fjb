@@ -15,6 +15,7 @@ import org.bc.web.Module;
 import org.bc.web.PlatformExceptionType;
 import org.bc.web.WebMethod;
 
+import com.youwei.fjb.ThreadSessionHelper;
 import com.youwei.fjb.entity.Config;
 import com.youwei.fjb.entity.Estate;
 import com.youwei.fjb.entity.HouseImage;
@@ -39,6 +40,7 @@ public class EstateService {
 		mv.jspData.put("estateUUID", UUID.randomUUID().toString());
 		List<Config> list = dao.listByParams(Config.class, "from Config where type=?", "city");
 		mv.jspData.put("citys", list);
+		mv.jspData.put("me", ThreadSessionHelper.getUser());
 		return mv;
 	}
 	
@@ -55,6 +57,7 @@ public class EstateService {
 			}
 		}
 		mv.jspData.put("myLxings", lxings);
+		mv.jspData.put("me", ThreadSessionHelper.getUser());
 		return mv;
 	}
 	
@@ -107,6 +110,7 @@ public class EstateService {
 		po.manager = estate.manager;
 		po.orderx = estate.orderx;
 		po.youhuiPlan = estate.youhuiPlan;
+		po.yongjin = estate.yongjin;
 		dao.saveOrUpdate(po);
 		return mv;
 	}

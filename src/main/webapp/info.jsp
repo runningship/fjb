@@ -102,7 +102,7 @@ function order_success(){
 
                     <!-- 相册 -->
                     <div class="photos">
-                                                <a class="pic" target="_blank" href="picList.jsp?estateId=${estate.id }&type==''">
+                                                <a class="pic" target="_blank" href="picList.jsp?estateId=${estate.id }&type=all">
                             <img style="width:100%;height:100%" alt="楼盘图片" src="${upload_path}/${main_img }">
                         </a>
                                                 <!-- 列表分页 -->

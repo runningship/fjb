@@ -35,6 +35,8 @@ public class User {
 	//seller(经纪人),admin(房金宝用户)
 	public String type;
 	
+	public String role;
+	
 	public String email;
 	
 	//是否通过审核
@@ -55,5 +57,8 @@ public class User {
 	public Integer adminId;
 	
 	public String adminName;
+	
+	//固定电话
+	public String landlineTel;
 	
 }

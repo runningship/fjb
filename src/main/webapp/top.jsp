@@ -110,8 +110,18 @@ function changeCity(){
         url: '${projectName}/c/setCity',
         data:'province='+$('#province').val()+'&city='+$('#city').val(),
         mysuccess: function(data){
-            //alert('修改成功');
-            window.location.reload();
+        	if(window.location.pathname.indexOf('sale.jsp')>-1
+                    || window.location.pathname.indexOf('index.jsp')>-1
+                    || window.location.pathname.indexOf('houses.jsp')>-1
+                    || window.location.pathname.indexOf('houseMap.jsp')>-1
+                    || window.location.pathname.indexOf('estateYongJin.jsp')>-1
+                    || window.location.pathname.indexOf('sellerIndex.jsp')>-1
+                    || window.location.pathname.indexOf('estateOrder.jsp')>-1
+                    || window.location.pathname.indexOf('houseOrder.jsp')>-1){
+                    window.location.reload();
+             }else{
+               window.location='/fjb/index.jsp';
+             }
         }
     });
 }

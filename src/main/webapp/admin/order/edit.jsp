@@ -90,9 +90,9 @@
         </td>
     </tr>
     <tr>
-	    <td class="tableleft">状态</td>
+	    <td class="tableleft">佣金</td>
 	    <td>
-	    	<input name="yongjin" value="${order.yongjin }"/>
+	    	<input name="yongjin" value="${order.yongjin }"/>元
 	    </td>
     </tr>
     <tr>

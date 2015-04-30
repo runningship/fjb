@@ -177,6 +177,12 @@ function changeQuYu(city){
         <td class="tableleft">排序</td>
         <td><input type="text" name="orderx"/></td>
     </tr>
+    <c:if test="${me.role eq '销售总监' }">
+    <tr>
+        <td class="tableleft">佣金</td>
+        <td ><input type="text" name="yongjin"/></td>
+    </tr>
+    </c:if>
     <tr>
         <td class="tableleft">项目介绍</td>
         <td colspan="5"><textarea name="jieshao" style="width:90%;height:100%" ></textarea></td>

@@ -16,10 +16,10 @@ function save(){
     var a=$('form[name=form1]').serialize();
     YW.ajax({
         type: 'POST',
-        url: '${projectName}/c/admin/user/doSave',
+        url: '${projectName}/c/admin/user/updateAdmin',
         data:a,
         mysuccess: function(data){
-            alert('添加成功');
+            alert('修改成功');
             window.location = 'adminList.jsp';
         }
     });
@@ -30,36 +30,33 @@ function save(){
 <body>
 <form name="form1" method="post" class="definewidth m20">
 <input type="hidden" name="type" value="admin"/>
+    <input type="hidden" name="id"  value="${user.id}"/>
 <table class="table table-bordered table-hover m10">
 	<tr>
         <td class="tableleft">登录账号</td>
-        <td><input type="text" name="account" not-null="true"/></td>
+        <td><input type="text" name="account" not-null="true" value="${user.account}"/></td>
     </tr>
     <tr>
         <td class="tableleft">职位</td>
         <td>
-        	<select name="role">
-        	<c:forEach items="${ roles}" var="role">
-        	<option value="${role.name }" name="role">${role.name }</option>
-        	</c:forEach>
-        	</select>
+            <select name="role">
+            <c:forEach items="${roles}" var="role">
+            <option value="${role.name }" <c:if test="${role.name == user.role}">selected="selected"</c:if> >${role.name }</option>
+            </c:forEach>
+            </select>
         </td>
     </tr>
     <tr>
         <td class="tableleft">手机号码</td>
-        <td><input type="text" name="tel" not-null="true"/></td>
+        <td><input type="text" name="tel" not-null="true" value="${user.tel}"/></td>
     </tr>
     <tr>
         <td class="tableleft">固定电话</td>
-        <td><input type="text" name="landlineTel" /></td>
+        <td><input type="text" name="landlineTel" value="${user.landlineTel }"/></td>
     </tr>
     <tr>
         <td class="tableleft">邮箱</td>
-        <td><input type="text" name="email"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">密码</td>
-        <td><input type="password" name="pwd" not-null="true"/></td>
+        <td><input type="text" name="email" value="${user.email}"/></td>
     </tr>
     <tr>
         <td class="tableleft"></td>
