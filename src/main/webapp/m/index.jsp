@@ -140,7 +140,7 @@ function emptySearchResult(){
 <%--           <div class="tit"><span class="c" style="float:left;padding-left:10px;">本期共有<strong>${total }</strong>个楼盘，优惠幅度最大<strong>${maxYouhui }</strong></span></div> --%>
           <ul>
           
-              <li class="repeat" style="display:none">
+              <li class="repeat" style="display:none" onclick="window.location='info.jsp?estateId=$[id]'">
                   <div class="img"><a href="info.jsp?estateId=$[id]"><img src="../../${upload_path}/$[img]"  style=""/></a></div>
                   <div class="con" style="font-size:14px;">
                   	<a href="order.jsp?estateId=$[id]"><img src="../images/tuijian.jpg"/ style="height:30px;cursor:pointer" /></a>
