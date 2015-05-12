@@ -61,12 +61,30 @@ function saveJinJ(adminId){
 function jiancha(a,id){
   if (a.checked) {
     Ids.push(id);
+    if (Ids.length==15) {
+      $('.all').prop('checked',true);
+    };
   }else {
+    $('.all').prop('checked',false);
     for(var i=0;i<Ids.length ;i++){
       if (Ids[i]==id) {
         Ids.splice(i,1);
       };
     }
+  }
+}
+
+function SelectAll(a){
+  if (a.checked) {
+    $('.ids').prop('checked',true);
+    $('.ids').each(function(i){ 
+      if ($(this).val()!='$[id]') {
+        Ids[i-1] = $(this).val(); 
+      }
+    })
+  }else {
+    $('.ids').prop('checked',false);
+    Ids=[];
   }
 }
 
@@ -142,21 +160,23 @@ function jiancha(a,id){
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
+      <th style="width:40px;color:blue"><input type="checkbox" class="all" onclick="SelectAll(this)">全选</th>
     	<th style="width:60px;">经纪人ID</th>
-        <th>电话号码</th>
-        <th>真实姓名</th>
+        <th style="width:100px;">电话号码</th>
+        <th style="width:80px;">真实姓名</th>
         <th style="width:50px;">城市</th>
-        <th style="width:50px;">区域</th>
+        <th style="width:60px;">区域</th>
         <th >所属公司</th>
         <th >所属门店</th>
-        <th style="width:100px;">经纪服务人员</th>
+        <th style="width:80px;">经纪服务人员</th>
         <th style="width:50px;">状态</th>
         <th style="width:70px;">操作</th>
     </tr>
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
-    			<td><input type="checkbox" name="ids" onclick="jiancha(this,$[id])">$[id]</td>
+          <td><input type="checkbox" class="ids" name="ids" onclick="jiancha(this,$[id])" value="$[id]"></td>
+                <td>$[id]</td>
                 <td>$[tel]</td>
                 <td>$[name]</td>
                 <td>$[city]</td>

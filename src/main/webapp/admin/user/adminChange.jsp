@@ -34,7 +34,7 @@ $(function(){
         <select  name="adminId" id="adminId" style="width:150px;">
           <option name="adminId" value="">请选择</option>
 	        <c:forEach items="${admins}" var="admin">
-	          <option value="${admin.id}"> ${admin.name}</option>
+	          <option value="${admin.id}"> ${admin.account}</option>
 	        </c:forEach>
         </select>
       </div>

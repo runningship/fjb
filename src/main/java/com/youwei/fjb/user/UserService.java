@@ -174,7 +174,7 @@ public class UserService {
 		for(String id: sellerIds.split(",")){
 			User seller = dao.get(User.class, Integer.valueOf(id));
 			seller.adminId = adminId;
-			seller.adminName = admin.name;
+			seller.adminName = admin.account;
 			seller.valid = 1;
 			dao.saveOrUpdate(seller);
 		}

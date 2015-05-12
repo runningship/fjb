@@ -89,7 +89,7 @@ $(function(){
         <select  name="adminId" >
           <option name="adminName" value="">请选择</option>
 	        <c:forEach items="${admins}" var="admin">
-	          <option <c:if test="${admin.name==seller.adminName}"> selected="selected" </c:if> value="${admin.id}"> ${admin.name}</option>
+	          <option <c:if test="${admin.account==seller.adminName}"> selected="selected" </c:if> value="${admin.id}"> ${admin.account}</option>
 	        </c:forEach>
         </select>
       </div>
