@@ -82,7 +82,7 @@ function changeQuYu(city){
         <td class="tableleft">销售许可证</td>
         <td><input type="text" name="xukezheng"/></td>
         <td class="tableleft">容积率</td>
-        <td><input type="text" name="rongji" style="width:90%;"/>%</td>
+        <td><input type="text" name="rongji" style="width:90%;"/></td>
     </tr>
     <tr>
         <td class="tableleft">物业公司</td>

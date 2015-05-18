@@ -191,7 +191,7 @@ function SeePic(){
                 <div class="line">物业类型：${estate.jzmj }</div>
               </c:if>
               <c:if test="${estate.rongji!=null}">
-                <div class="line">容积率：${estate.rongji }%</div>
+                <div class="line">容积率：${estate.rongji }</div>
               </c:if>
               <c:if test="${estate.lvhua!=null}">
                 <div class="line">绿化率：${estate.lvhua }%</div>

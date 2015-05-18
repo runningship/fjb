@@ -283,7 +283,7 @@ function order_success(){
                             <th>物业类型</th>
                             <td style="width:35%;">${estate.wylx }</td>
                             <th>容积率</th>
-                            <td>${estate.rongji }<c:if test="${estate.rongji!=null}" >%</c:if></td>
+                            <td>${estate.rongji }</td>
                         </tr>
                         <tr>
                             <th>物业费</th>

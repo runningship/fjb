@@ -66,13 +66,14 @@ function delOrder(id){
                
                <div class="userRight">
                
-                    <div class="tit"><a href="#">我的好屋</a> > <span>楼盘佣金</span></div>
+                    <div class="tit"><span>楼盘佣金</span></div>
                     
                     <div class="con">
                     
                         <h2></h2>
                         
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="doSearch();return false;">
     <thead>
 		  <tr>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">区域</td>
