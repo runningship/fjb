@@ -70,7 +70,7 @@ body {
 #nav .nbox i{font-size:1.1em; margin-top:10px; display:inline-block;}
 
 
-#Fanglist{ width:100%; margin-top:0px; border-top:1px solid #eeeeee; display:inline-block; background-color:#ffffff;margin-bottom:40px;}
+#Fanglist{ width:100%; margin-top:0px; border-top:1px solid #eeeeee; display:inline-block; background-color:#ffffff;margin-bottom:35px;}
 
 #Fanglist .tit{ width:100%; border-bottom:1px solid #e2e2e2; color:#333333; height:41px; line-height:44px; font-size:1.1em;/* display:inline-block;*/}
 
@@ -102,7 +102,7 @@ body {
 
 
 
-#FangMore{ width:100%; margin-top:15px; height:35px; line-height:35px; text-align:center; color:#9c9c9c; border:1px solid #dedede; display:inline-block; background-color:#ffffff;}
+#FangMore{ width:100%; margin-top:2px;margin-bottom:40px; height:35px; line-height:35px; text-align:center; color:#9c9c9c; border:1px solid #dedede; display:inline-block; background-color:#ffffff;}
 
 
 
@@ -218,14 +218,14 @@ body {
 
 .banner{ height:180px; position:relative;}
 
-.bigBgImg{ width:100%; height:180px; float:left; overflow:hidden; position:relative;}
+.bigBgImg{ width:100%; height:160px; float:left; overflow:hidden; position:relative;}
 
 
-#bigPic{ width:100%; height:180px; overflow:hidden; position:relative; float:left;}
+#bigPic{ width:100%; height:160px; overflow:hidden; position:relative; float:left;}
 
 #bigPic li{ position:absolute; top:0; left:0; z-index:0; width:100%; text-align:center; display:inline-block; width:100%; height:180px;}
 
-#bigPic li img{ width:100%; height:180px;}
+#bigPic li img{ width:100%; height:160px;}
 
 #litPic{ width:100%; text-align:center; height:10px; position:absolute; z-index:101; bottom:0;}
 

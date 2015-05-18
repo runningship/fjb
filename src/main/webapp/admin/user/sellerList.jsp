@@ -141,7 +141,7 @@ function SelectAll(a){
 		    	</div>
     	<c:if test="${me.role ne '市场专员' }">
 		      <div style="display:inline-block;margin-left:20px;display: inline;" id="adminName">
-		        <span>经纪服务人员</span>
+		        <span>经纪专员</span>
 		        <select style="height:22px;" name="adminId" >
 		          <option value="">所有</option>
 		        <c:forEach items="${admins}" var="admin">
@@ -153,14 +153,14 @@ function SelectAll(a){
       公司名称<input type="text" name="compName" style="width:150px;margin-right:10px;height:18px;" />
      门店名称<input type="text" name="deptName" style="width:150px;margin-right:10px;height:18px;"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
-  <button type="button" class="btn btn-success jinji" onclick="openJinJ();return false;">修改经纪服务人员</button>
+  <button type="button" class="btn btn-success jinji" onclick="openJinJ();return false;">修改经纪专员</button>
     <div>共有公司${compCount }家，门店${deptCount }家</div>
 </form>
 
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-      <th style="width:40px;color:blue"><input type="checkbox" class="all" onclick="SelectAll(this)">全选</th>
+      <th style="width:50px;color:blue"><input type="checkbox" class="all" onclick="SelectAll(this)">全选</th>
     	<th style="width:60px;">经纪人ID</th>
         <th style="width:100px;">电话号码</th>
         <th style="width:80px;">真实姓名</th>
@@ -168,7 +168,7 @@ function SelectAll(a){
         <th style="width:60px;">区域</th>
         <th >所属公司</th>
         <th >所属门店</th>
-        <th style="width:80px;">经纪服务人员</th>
+        <th style="width:55px;">经纪专员</th>
         <th style="width:50px;">状态</th>
         <th style="width:70px;">操作</th>
     </tr>

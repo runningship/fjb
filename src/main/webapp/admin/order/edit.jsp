@@ -48,7 +48,13 @@
     </c:if>
     <tr>
         <td class="tableleft">经纪人姓名</td>
-        <td><span>${order.sellerName}</span>
+        <td>
+        	<select  class="sortSelect" name="sellerId">
+                <c:forEach items="${sellerList}" var="seller">
+                  <option tel="${seller.tel }" <c:if test="${order.sellerId eq seller.id }">selected="selected"</c:if> value="${seller.id}">${seller.account}</option>
+                </c:forEach>
+            </select>
+<%--         	<span>${order.sellerName}</span> --%>
         </td>
     </tr>
      <tr>

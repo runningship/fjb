@@ -21,7 +21,7 @@ function doSearch(){
 	  });
 }
 
-function delPost(id){
+function deleteOrder(id){
 	art.dialog.confirm('删除后不可恢复，确定要删除吗？', function () {
 	    YW.ajax({
 	        type: 'POST',
@@ -49,6 +49,41 @@ $(function () {
 	doSearch();
 });
 
+function triggerAll(box){
+	if(box.checked){
+		$('.checkbox').each(function(){
+			this.checked=true;
+		});
+	}else{
+		$('.checkbox').each(function(){
+			this.checked=false;
+		});
+	}
+}
+
+function deleteAll(){
+	var ids= [];
+	$('.checkbox').each(function(){
+		if(this.checked){
+			ids.push($(this).attr('orderId'));
+		}
+	});
+	if(ids.length==0){
+		alert('请先选择要删除的数据');
+		return;	
+	}
+	art.dialog.confirm('删除后不可恢复，确定要删除吗？', function () {
+	    YW.ajax({
+	        type: 'POST',
+	        url: '${projectName}/c/admin/order/deleteAll?ids='+ids.join(),
+	        data:'',
+	        mysuccess: function(data){
+                doSearch();
+	            alert('删除成功');
+	        }
+	      });
+	  },function(){},'warning');
+}
 </script>
 <style type="text/css">
 #city_reg select{height:22px;width:90px;}
@@ -74,10 +109,11 @@ $(function () {
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
+    	<th style="width:50px;"><input type="checkbox" onclick="triggerAll(this)"/> <a href="#" onclick="deleteAll()">删除</a></th>
     	<th>编号</th>
     	<th>楼盘</th>
         <th>客户</th>
-        <th>客户电话</th>
+        <th style="width:120px;">客户电话</th>
         <th>经纪人</th>
         <th>预约时间</th>
         <th>状态</th>
@@ -86,6 +122,8 @@ $(function () {
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
+    			
+    			<td ><input orderId="$[id]" class="checkbox" type="checkbox" /></td>
     			<td>$[id]</td>
                 <td>$[estateName]</td>
                 <td>$[buyerName]</td>
@@ -95,6 +133,7 @@ $(function () {
                 <td>$[status]</td>
                 <td>
                     <a href="#" onclick="addTab('edit_yy','查看预约','order/edit.jsp?id=$[id]')">查看</a>
+                    <a href="#" onclick="deleteOrder($[id])">删除</a>
                 </td>
             </tr>
     </tbody>

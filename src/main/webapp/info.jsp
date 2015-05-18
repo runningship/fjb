@@ -183,7 +183,7 @@ function order_success(){
                                             <c:if test="${seller!=null}"><th>$[yongjin]</th></c:if>
                                             <td title="折扣">$[youhuiPlan]</td>
                                             <td title="折后总价">$[totalPrice]</td>
-                                            <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]' ,'400px');" href="javascript:;" class="btn-choose btn-order ">预定此房</a>
+                                            <td><a onclick="openNewWin('house_order','预约看房','yykf.jsp?estateId=${estate.id}&hid=$[id]' ,'400px');" href="javascript:;" class="btn-choose btn-order ">预约此房</a>
                                             </td>
                                      </tr>
     

@@ -69,6 +69,8 @@ public class OrderService {
 		
 		List<OrderGenJin> genjiList = dao.listByParams(OrderGenJin.class, "from OrderGenJin where orderId=?", id);
 		mv.jspData.put("genjiList", genjiList);
+		List<User> sellerList = dao.listByParams(User.class, "from User where type=? ", "seller");
+		mv.jspData.put("sellerList", sellerList);
 		return mv;
 	}
 	
@@ -79,6 +81,11 @@ public class OrderService {
 		HouseOrder po = dao.get(HouseOrder.class, order.id);
 		po.status = order.status;
 		po.yongjin = order.yongjin;
+		po.sellerId = order.sellerId;
+		User seller = dao.get(User.class, order.sellerId);
+		if(seller!=null){
+			po.sellerName = seller.account;
+		}
 		dao.saveOrUpdate(po);
 		if(FjbConstant.HouseOrderDaiKan.equals(order.status)){
 			//同一个楼盘下面相同的客户的其他预约被锁定
@@ -138,6 +145,14 @@ public class OrderService {
 		if(po!=null){
 			dao.delete(po);
 		}
+		return mv;
+	}
+	
+	@WebMethod
+	public ModelAndView deleteAll(String ids){
+		ModelAndView mv = new ModelAndView();
+		StringBuilder hql = new StringBuilder("delete from HouseOrder where id in (").append(ids).append(")");
+		dao.execute(hql.toString());
 		return mv;
 	}
 	
