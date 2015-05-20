@@ -153,7 +153,9 @@ function SelectAll(a){
       公司名称<input type="text" name="compName" style="width:150px;margin-right:10px;height:18px;" />
      门店名称<input type="text" name="deptName" style="width:150px;margin-right:10px;height:18px;"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button>
-  <button type="button" class="btn btn-success jinji" onclick="openJinJ();return false;">修改经纪专员</button>
+    <c:if test="${me.role ne '市场专员' }">
+	  <button type="button" class="btn btn-success jinji" onclick="openJinJ();return false;">修改经纪专员</button>
+	  </c:if>
     <div>共有公司${compCount }家，门店${deptCount }家</div>
 </form>
 
@@ -188,13 +190,25 @@ function SelectAll(a){
                 	<d href="#" show="$[valid]==0">未分配</d>
                 </td>
                 <td>
+                	<c:if test="${me.role eq '销售总监' }">
                 	<a href="#"  show="$[valid]==1" onclick="toggleShenhe($[id])">已审核</a>
                 	<a href="#"  show="$[valid]==0" onclick="toggleShenhe($[id])">未审核</a>
+                	</c:if>
+                	<c:if test="${me.role eq '市场专员' }">
+                	<span show="$[valid]==1" >已审核</span>
+                	<span show="$[valid]==0">未审核</span>
+                	</c:if>
                 </td>
-                <td>
+                
+               	
+                	<td>
                 	<a href="#" onclick="edi($[id]);">编辑</a>
+                	<c:if test="${me.role eq '销售总监' }">
                     <a href="#" onclick="del($[id])">删除</a>
-                </td>
+                    </c:if>
+                    </td>
+                
+                
             </tr>
     </tbody>
 	</table>

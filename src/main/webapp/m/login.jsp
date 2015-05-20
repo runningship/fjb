@@ -17,8 +17,8 @@ function login(){
       data:a,
       dataType:'json',
       mysuccess: function(data){
-    	  //document.cookie="tel="+$('#tel').val();
-          //document.cookie="pwd="+$('#pwd').val();
+    	  document.cookie="tel="+$('#tel').val();
+          document.cookie="pwd="+$('#pwd').val();
           alert('登陆成功');
           window.location = 'user.jsp';
       }

@@ -76,6 +76,7 @@ function delOrder(id){
                                 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="doSearch();return false;">
     <thead>
 		  <tr>
+		  	<td align="center" valign="middle" bgcolor="#eeeeee" height="35">城市</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">区域</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">名称</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">地址</td>
@@ -83,6 +84,7 @@ function delOrder(id){
 		  </tr>
     </thead>
 						  <tr style="display:none" class="buyer">
+						  	<td align="center" valign="middle" height="30">$[city]</td>
 						    <td align="center" valign="middle" height="30">$[quyu]</td>
 						    <td align="center" valign="middle" height="30">$[name]</td>
 						    <td align="center" valign="middle" height="30">$[addr]</td>
@@ -93,7 +95,7 @@ function delOrder(id){
                  </div>
                     
   				<div class="footer" style="margin-top:5px;margin-left:35px;">
-        			<div class="maxHW mainCont ymx_page foot_page_box"></div>
+        			<div class="foot_page_box" ></div>
                
                </div>
                

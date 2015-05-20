@@ -56,18 +56,15 @@ $(function(){
 </form>
 <div class="main">
      
-     <div id="top" style="text-align:center">
-     	  
-          <span class="s4"><a href="#">&lt;</a></span>
-          <span class="s5">我的佣金</span>
+     <div id="top" style="text-align:center;height:0px;padding:5px 0px;">
      </div>
-     <div style="text-align:center;color:white;margin-top:20px;">
-     	<div style="width:45%;margin-left:3%;height:110px;float:left;background:rgb(144, 172, 40);border-radius: 10px;position:relative">
-     		<div style="margin-top:18px;padding-bottom: 15px;  border-bottom: solid 1px gray"><img style="position:absolute;;margin-top:6px;height:18px;" src="images/money.png"/><span style="font-size:20px;margin-left:20px;">可结佣金</span></div>
+     <div style="text-align:center;color:white;margin-top:10px;">
+     	<div style="width:48%;height:142px;float:left;background:rgb(211, 128, 60);border-radius: 0px;position:relative">
+     		<div style="margin-top:25px;padding-bottom: 15px;  border-bottom: solid 1px gray"><img style="position:absolute;;margin-top:6px;height:18px;" src="images/money.png"/><span style="font-size:1.5em;margin-left:20px;;">可结佣金</span></div>
      		<div style="margin-top:20px;">${allYongjin }元 <span style="font-size:12px;">RMB</span> </div>
      	</div>
-     	<div style="width:45%;margin-right:3%;height:110px;float:right;background:rgb(144, 172, 40);border-radius:10px;position:relative;">
-			<div style="margin-top:18px;padding-bottom: 15px;  border-bottom: solid 1px gray"><img style="position:absolute;;margin-top:6px;height:18px;" src="images/money.png"/><span style="font-size:20px;margin-left:20px;">已结佣金</span></div>
+     	<div style="width:48%;height:142px;float:right;background:rgb(211, 128, 60);border-radius:0px;position:relative;">
+			<div style="margin-top:25px;padding-bottom: 15px;  border-bottom: solid 1px gray"><img style="position:absolute;;margin-top:6px;height:18px;" src="images/money.png"/><span style="font-size:1.5em;margin-left:20px;">已结佣金</span></div>
 			<div style="margin-top:20px;">${yongjin }元 <span style="font-size:12px;">RMB</span> </div>
 		</div>
      </div>

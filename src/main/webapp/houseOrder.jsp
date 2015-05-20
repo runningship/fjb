@@ -97,7 +97,6 @@ function delOrder(id){
 						    <td align="center" valign="middle" height="30">$[status]</td>
 						    <td align="center" valign="middle" height="30">
 						    	<a href="javascript:" show="'$[protect]'==0" onclick="openNewWin('bookroom','预约信息反馈','xxfk.jsp?orderId=$[id]');">查看</a>
-						    	<a href="javascript:" show="'$[protect]'==0" onclick="delOrder($[id])">删除</a>
 						    </td>
 						  </tr>
 						</table>

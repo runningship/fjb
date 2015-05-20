@@ -218,14 +218,14 @@ body {
 
 .banner{ height:180px; position:relative;}
 
-.bigBgImg{ width:100%; height:160px; float:left; overflow:hidden; position:relative;}
+.bigBgImg{ width:100%; height:140px; float:left; overflow:hidden; position:relative;}
 
 
-#bigPic{ width:100%; height:160px; overflow:hidden; position:relative; float:left;}
+#bigPic{ width:100%; height:140px; overflow:hidden; position:relative; float:left;}
 
 #bigPic li{ position:absolute; top:0; left:0; z-index:0; width:100%; text-align:center; display:inline-block; width:100%; height:180px;}
 
-#bigPic li img{ width:100%; height:160px;}
+#bigPic li img{ width:100%; height:140px;}
 
 #litPic{ width:100%; text-align:center; height:10px; position:absolute; z-index:101; bottom:0;}
 

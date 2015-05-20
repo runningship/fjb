@@ -2,7 +2,7 @@
 
 #user{ width:100%; display:inline-block;}
 
-#user .name{ width:100%; padding:10px 0; display:inline-block; background:url(../images/userBg.jpg) repeat-y;}
+#user .name{ width:100%; padding:10px 0; display:inline-block; background-color: rgb(210,128,60);}
 
 #user .name p{ font-size:1em; color:#ffffff; margin:0 5%; line-height:2em;}
 

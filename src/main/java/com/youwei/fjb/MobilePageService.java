@@ -230,6 +230,7 @@ public class MobilePageService {
 		pwd.setMaxAge(3600*24*30);
 		ThreadSession.getHttpservletresponse().addCookie(tel);
 		ThreadSession.getHttpservletresponse().addCookie(pwd);
+		mv.jspData.put("title", "<span style='color: #ffffff; font-size: 1.3em;'>个人中心</span>");
 		return mv;
 	}
 	
@@ -261,6 +262,7 @@ public class MobilePageService {
 		List<Map> t2 = dao.listAsMap("select sum(yongjin) as yongjin from HouseOrder where sellerId=? and status=?", u.id ,FjbConstant.HouseOrderDeal);
 		mv.jspData.put("allYongjin", t1.get(0).get("allYongjin"));
 		mv.jspData.put("yongjin", t2.get(0).get("yongjin")==null? Float.valueOf(0) : t2.get(0).get("yongjin"));
+		mv.jspData.put("title", "<span style='color: #ffffff; font-size: 1.3em;'>我的佣金</span>");
 		return mv;
 	}
 	

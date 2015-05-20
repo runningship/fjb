@@ -25,12 +25,10 @@
 </form>
 <div class="main" >
      
-     <div id="top" style="text-align:center">
-          <span class="s4"><a href="#">&lt;</a></span>
-          <span class="s5">个人中心</span>
+     <div id="top" style="height:0px;padding:5px 0px;">
      </div>
      
-     <div id="user">
+     <div id="user" >
      
           <div class="name">
           		<div style="width:120px;float:left;margin-left:5%;">
@@ -40,7 +38,7 @@
                <div style="width:60px;float:right; position:relative;margin-right:12%;text-align:center" >
                		<span style="color:white;font-size:14px;">总佣金</span>
                		<a>
-               		<img src="../images/tj_yongjin.png" style="width:28px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${allYongjin }</span>
+               		<img src="../images/tj_yongjin.png" style="width:30px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${allYongjin }</span>
                		</a>
                </div>
                <div style="width:60px;float:right; position:relative;margin-right:6%;text-align:center" >
@@ -53,13 +51,13 @@
           </div>
           
           <div style="margin-top:5px;">
-          	<a href="houses.jsp"><img src="../images/tj_big.png" style="width:45%;margin-left:3%;" /></a>
-          	<a href="clients.jsp"><img src="../images/clients.png" style="width:45%;margin-right:3%;float:right"/></a>
+          	<a href="houses.jsp"><img src="../images/tj_big.png" style="width:48%;" /></a>
+          	<a href="clients.jsp"><img src="../images/clients.png" style="width:48%;;float:right"/></a>
           	
           </div>
 		  <div style="margin-top:5px;">
-		  	<a href="yongjin.jsp"><img src="../images/yongjin_big.png" style="width:45%;margin-left:3%;"/></a>
-          	<a href="rule.jsp"><img src="../images/rule_big.png" style="width:45%;margin-right:3%;float:right"/></a>
+		  	<a href="yongjin.jsp"><img src="../images/yongjin_big.png" style="width:48%;"/></a>
+          	<a href="rule.jsp"><img src="../images/rule_big.png" style="width:48%;float:right"/></a>
 		  </div>          
           
      </div>
