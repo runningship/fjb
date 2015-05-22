@@ -92,6 +92,7 @@ function deleteAll(){
 </style>
 </head>
 <body>
+<jsp:include page="../top.jsp"></jsp:include>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
     客户姓名<input type="text" name="buyerName" style="width:100px;margin-right:10px;"/>
     客户电话<input type="text" name="buyerTel" style="width:120px;margin-right:10px;height:18px;"/>
@@ -109,7 +110,11 @@ function deleteAll(){
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-    	<th style="width:50px;"><input type="checkbox" onclick="triggerAll(this)"/> <a href="#" onclick="deleteAll()">删除</a></th>
+    	<c:if test="${me.role eq '销售总监' }">
+    	<th style="width:50px;">
+    		<input type="checkbox" onclick="triggerAll(this)"/> <a href="#" onclick="deleteAll()">删除</a>
+    	</th>
+    	</c:if>
     	<th>编号</th>
     	<th>楼盘</th>
         <th>客户</th>
@@ -122,8 +127,9 @@ function deleteAll(){
     </thead>
     <tbody>
     	<tr style="display:none" class="repeat">
-    			
+    			<c:if test="${me.role eq '销售总监' }">
     			<td ><input orderId="$[id]" class="checkbox" type="checkbox" /></td>
+    			</c:if>
     			<td>$[id]</td>
                 <td>$[estateName]</td>
                 <td>$[buyerName]</td>
@@ -133,7 +139,9 @@ function deleteAll(){
                 <td>$[status]</td>
                 <td>
                     <a href="#" onclick="addTab('edit_yy','查看预约','order/edit.jsp?id=$[id]')">查看</a>
+                    <c:if test="${me.role eq '销售总监' }">
                     <a href="#" onclick="deleteOrder($[id])">删除</a>
+                    </c:if>
                 </td>
             </tr>
     </tbody>

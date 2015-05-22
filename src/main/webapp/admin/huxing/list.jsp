@@ -48,6 +48,7 @@ function doSearch(){
 </script>
 </head>
 <body>
+<jsp:include page="../top.jsp"></jsp:include>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
     <a class="Search">楼盘名称：<input type="text" name="name"/>
     <button type="button" class="btn btn-success btn_subnmit" onclick="doSearch();return false;">搜索</button></a>
@@ -69,8 +70,10 @@ function doSearch(){
                 <td>$[name]</td>
                 <td>$[estateName]</td>
                 <td>
+                	<c:if test="${me.role eq '销售总监' }">
                     <a href="edit.jsp?id=$[id]">编辑</a>
                     <a href="#" onclick="delPost($[id])">删除</a>
+                    </c:if>
                 </td>
             </tr>
     </tbody>

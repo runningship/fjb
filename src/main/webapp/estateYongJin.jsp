@@ -47,6 +47,9 @@ function delOrder(id){
 	  },function(){},'warning');
 }
 </script>
+<style type="text/css">
+  .btn-default{padding:5px;margin:0;height: 25px;}
+</style>
 <div class="warp">
 
      <div class="main">
@@ -95,7 +98,7 @@ function delOrder(id){
                  </div>
                     
   				<div class="footer" style="margin-top:5px;margin-left:35px;">
-        			<div class="foot_page_box" ></div>
+        			<div class="maxHW mainCont ymx_page foot_page_box"></div>
                
                </div>
                

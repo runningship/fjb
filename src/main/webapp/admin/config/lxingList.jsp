@@ -50,6 +50,7 @@ function doSearch(){
 </script>
 </head>
 <body>
+<jsp:include page="../top.jsp"></jsp:include>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
     <button onclick="window.location.href='lxingAdd.jsp'" type="button"  class="btn btn-success ">添加</button>
 </form>
@@ -66,7 +67,9 @@ function doSearch(){
     			<td>$[id]</td>
                 <td>$[value]</td>
                 <td>
+                	<c:if test="${me.role eq '销售总监' }">
                     <a href="#" onclick="del($[id])">删除</a>
+                    </c:if>
                 </td>
             </tr>
     </tbody>

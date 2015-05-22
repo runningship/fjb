@@ -62,6 +62,23 @@ public class EstateService {
 	}
 	
 	@WebMethod
+	public ModelAndView view(Integer id){
+		ModelAndView mv = new ModelAndView();
+		Estate po = dao.get(Estate.class, id);
+		mv = ConfigHelper.queryItems(mv);
+		mv.jspData.put("estate", po);
+		List<String> lxings = new ArrayList<String>();
+		if(po.lxing!=null){
+			for(String str : po.lxing.split(",")){
+				lxings.add(str);
+			}
+		}
+		mv.jspData.put("myLxings", lxings);
+		mv.jspData.put("me", ThreadSessionHelper.getUser());
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView update(Estate estate){
 		ModelAndView mv = new ModelAndView();
 		checkEstate(estate);

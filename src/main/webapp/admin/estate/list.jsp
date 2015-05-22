@@ -54,6 +54,7 @@ function doSearch(){
 </style>
 </head>
 <body>
+<jsp:include page="../top.jsp"></jsp:include>
 <form class="form-inline definewidth m20" name="form1"  method="get" onsubmit="return false;">
     楼盘名称：<input style="height:18px;width:200px;margin-right:10px;" type="text" name="name"/>
                <div id="city_wrap" style="display:inline-block;display: inline;">
@@ -97,6 +98,7 @@ function doSearch(){
                 <td >$[opentime]</td>
                 <td><a onclick="addTab('house_list','房源信息','house/list.jsp?estateId=$[id]')" href="#">房源</a>
                     <a onclick="addTab('huxing_list','户型','huxing/list.jsp?estateId=$[id]')" href="#">户型</a>
+                    <c:if test="${me.role ne '销售总监' }"><a href="view.jsp?id=$[id]">查看</a></c:if>
                     <c:if test="${me.role eq '销售总监' }">
                     <a href="edit.jsp?id=$[id]">编辑</a>
                     <a href="#" onclick="delPost($[id])">删除</a>

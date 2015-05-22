@@ -7,7 +7,7 @@ function addTab(id,title,url){
 	top.topManager.openPage(config);
 }
 
-function getImgList(estateUUID , imgType , huxingUUID){
+function getImgList(estateUUID , imgType , huxingUUID , noDel){
 	if(!huxingUUID){
 		huxingUUID="";
 	}
@@ -18,7 +18,10 @@ function getImgList(estateUUID , imgType , huxingUUID){
         mysuccess: function(data){
         	$('#'+data.imgType+'_img_container').empty();
         	for(var i=0;i<data.images.length;i++){
-        		var img = '<span id="del_btn_'+data.images[i].id+'" style="position: absolute;margin-left: 108px;color:red;cursor:pointer" onclick="delImg('+data.images[i].id+')">╳</span>';
+        		var img = "";
+        		if(!noDel){
+        			img = '<span id="del_btn_'+data.images[i].id+'" style="position: absolute;margin-left: 108px;color:red;cursor:pointer" onclick="delImg('+data.images[i].id+')">╳</span>';
+        		}
         		img += '<img id="image_'+data.images[i].id+'" style="width:120px;height:80px;" src="'+window.top.upload_path+data.images[i].path+'" />';
             	$('#'+data.imgType+'_img_container').append(img);
         	}

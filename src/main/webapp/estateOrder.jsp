@@ -46,6 +46,9 @@ function delOrder(id){
 	  },function(){},'warning');
 }
 </script>
+<style type="text/css">
+  .btn-default{padding:5px;margin:0;height: 25px;}
+</style>
 <div class="warp">
 
      <div class="main">

@@ -112,13 +112,13 @@ var Page={
         // this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list">'+ (this.p-4) +'</button>';
         // this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list">'+ (this.p-3) +'</button>';
         for(var i=pshow-2;i>0;i--){
-          this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list hand" style="padding:10;">'+ (this.p-i) +'</button>';  
+          this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list hand">'+ (this.p-i) +'</button>';  
         }
         // this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list">'+ (this.p-2) +'</button>';
         // this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list">'+ (this.p-1) +'</button>';
-        this.pageHtml+='<button type="button" action="page" style="padding:10;" class="btn btn-default btn_p_list hand'+this.btn_css+'">'+this.p+'</button>';
+        this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list hand'+this.btn_css+'">'+this.p+'</button>';
         for(var i = this.p+1;i<=this.pn;i++){
-            this.pageHtml+='<button type="button" action="page" style="padding:10;" class="btn btn-default btn_p_list hand">'+i+'</button>';
+            this.pageHtml+='<button type="button" action="page" class="btn btn-default btn_p_list hand">'+i+'</button>';
         }
       }
     }
@@ -126,8 +126,8 @@ var Page={
 
       var pageInfoStrs=''+
       '<div class="btn-group page_btn_group" style="display:inline-block;float:left">'+
-      '  <button type="button" class="btn btn-default" title="总条数" style="padding:10;">'+this.ln+'</button>'+
-      '  <button type="button" class="btn btn-default" title="当前页码/总页码" style="padding:10;">'+this.p+'/'+this.pn+'</button>'+
+      '  <button type="button" class="btn btn-default" title="总条数">'+this.ln+'</button>'+
+      '  <button type="button" class="btn btn-default" title="当前页码/总页码">'+this.p+'/'+this.pn+'</button>'+
       '</div>'+
       '<div class="btn-group" style="display:inline-block;">';
       pageInfoStrs=pageInfoStrs+
