@@ -50,6 +50,15 @@ public class MobilePageService {
 	}
 	
 	@WebMethod
+	public ModelAndView sellerIndex(){
+		ModelAndView mv = new ModelAndView();
+		User seller = ThreadSessionHelper.getUser();
+		HouseImage img = dao.getUniqueByParams(HouseImage.class, new String[]{"estateUUID" , "type"}, new Object[]{seller.id.toString() , "touxiang"});
+		mv.jspData.put("touxiang", img==null ? "" : img.path);
+		return mv;
+	}
+	
+	@WebMethod
 	public ModelAndView listIndexData(Page<Map> page , String quyu){
 		ModelAndView mv = new ModelAndView();
 		StringBuilder hql = new StringBuilder("select est.id as id, est.name as name , est.quyu as quyu , est.addr as addr, est.junjia as junjia , est.youhuiPlan as youhuiPlan,"

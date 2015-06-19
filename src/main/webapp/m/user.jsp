@@ -7,7 +7,14 @@
 <link rel="stylesheet" type="text/css" href="css/user.css" />
 <jsp:include page="../header.jsp" />
 
+<script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
+<script type="text/javascript" src="${projectName}/js/fjb.js"></script>
 <script type="text/javascript">
+$(function(){
+    setTimeout(function(){
+        initPortrait('ChangePortrait' , ${user.id});
+    },100)
+})
 
 
 </script>
@@ -27,27 +34,31 @@
      
      <div id="top" style="height:0px;padding:5px 0px;">
      </div>
-     
+     <!-- <div style="float:right;"><input id="ChangePortrait" /></div> -->
      <div id="user" >
      
-          <div class="name">
-          		<div style="width:120px;float:left;margin-left:5%;">
-          		<p>${user.tel }</p>
-               <p>${user.name }</p>
+          <div class="name" style="height:120px">
+               <div>
+                    <img style="width:25%;" src="${projectName }/images/touxiang0.png" />
+                    <a title="修改密码" style="position: absolute;margin-left: -22%;margin-top: 100px;" href="xgmm.jsp?id=${user.id}">&nbsp;&nbsp;更改密码</a>
                </div>
-               <div style="width:60px;float:right; position:relative;margin-right:12%;text-align:center" >
-               		<span style="color:white;font-size:14px;">总佣金</span>
-               		<a>
-               		<img src="../images/tj_yongjin.png" style="width:30px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${allYongjin }</span>
-               		</a>
+                        
+          	<div style="width:65%;text-align:center;margin-left:10%;margin-top: -80px;float:none">
+                    <p>${user.name }</p>
+          		<p style="position: absolute;margin-left:160px;margin-top: -31px;">${user.tel }</p>
                </div>
-               <div style="width:60px;float:right; position:relative;margin-right:6%;text-align:center" >
-               		<span style="color:white;font-size:14px;">推荐人数</span>
-               		<a>
-               		<img src="../images/tj_renshu.png" style="width:30px;"/><span style="position:absolute;margin-top:6px;font-size:14px;"> ${buyerTotal }</span>
-               		</a>
+               <div style="width:65%;float:right; text-align:center;margin-top: 5%;">
+          		<span style="color:white;font-size:14px;margin-left:-25%">总佣金</span>
+          		<span style="color:white;font-size:14px;margin-left:25%">推荐人数</span>
                </div>
-               
+               <div style="width:65%;float:right; text-align:center;">
+                         <a style="margin-left:-42%">
+                         <img src="../images/tj_yongjin.png" style="width:30px;"/><span style="font-size:14px;"> ${allYongjin }</span>
+                         </a>
+                         <a style="margin-left:20%">
+                         <img src="../images/tj_renshu.png" style="width:30px;"/><span style="font-size:14px;"> ${buyerTotal }</span>
+                         </a>
+                    </div>
           </div>
           
           <div style="margin-top:5px;">

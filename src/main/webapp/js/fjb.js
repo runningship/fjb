@@ -40,6 +40,7 @@ function delImg(imgId){
         }
     });
 }
+
 function initUploadHouseImage(id , imgType , estateUUID , huxingUUID){
   $('#'+id).uploadify({
       'swf'      : window.top.projectName+'/js/uploadify/uploadify.swf',
@@ -59,7 +60,7 @@ function initUploadHouseImage(id , imgType , estateUUID , huxingUUID){
           $('#' + file.id).find('.data').html('-图片上传失败,'+json['msg']);
         }else{
            alert('图片上传成功');
-        	 getImgList(estateUUID , imgType , huxingUUID);
+           getImgList(estateUUID , imgType , huxingUUID);
         }
       },
       'onQueueComplete' : function(queueData) {
@@ -68,3 +69,32 @@ function initUploadHouseImage(id , imgType , estateUUID , huxingUUID){
       // Put your options here
   });
 }
+
+function initPortrait(id , sellerId){
+  $('#'+id).uploadify({
+      'swf'      : '/fjb/js/uploadify/uploadify.swf',
+      'uploader' : '/fjb/file/upload?imgType=touxiang&estateId='+sellerId,
+      'buttonText': '更改头像',
+      'removeTimeout': 0.1,
+      'fileSizeLimit' : '5MB',
+      'onUploadError' : function(file, errorCode, errorMsg, errorString){
+          //console.log('The file ' + file.name + ' could not be uploaded: ' + errorString);
+      },
+      'onUploadComplete':function(file){
+          //console.log('finish:'+file);
+      },
+      'onUploadSuccess' : function(file, data, response) {
+        var json = JSON.parse(data);
+        if(json['result']!=0){
+          alert('头像上传失败');
+        }else{
+           alert('头像上传成功');
+        }
+      },
+      'onQueueComplete' : function(queueData) {
+        //console.log(queueData);
+      }
+      // Put your options here
+  });
+}
+

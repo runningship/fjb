@@ -46,6 +46,20 @@ function delOrder(id){
 	      });
 	  },function(){},'warning');
 }
+
+function order_success(){
+	var info = $('#success_info');
+	var left = ($(document).width()-info.width())/2 +50;
+    var height = $(document).scrollTop()+(window.screen.height-info.height())/2 -150;
+	info.css({top:height,left:left});
+	info.css('display','');
+	
+	setTimeout(function(){
+		info.css('display','none');	
+	},2000);
+	//alert(11);
+}
+
 </script>
 <style type="text/css">
   .btn-default{padding:5px;margin:0;height: 25px;}
@@ -81,16 +95,16 @@ function delOrder(id){
 		  <tr>
 		  	<td align="center" valign="middle" bgcolor="#eeeeee" height="35">城市</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">区域</td>
-		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">名称</td>
-		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">地址</td>
+		    <td align="left" valign="middle" bgcolor="#eeeeee" height="35">项目推荐</td>
+		    <td align="left" valign="middle" bgcolor="#eeeeee" height="35">项目地址</td>
 		    <td align="center" valign="middle" bgcolor="#eeeeee" height="35">佣金</td>
 		  </tr>
     </thead>
 						  <tr style="display:none" class="buyer">
 						  	<td align="center" valign="middle" height="30">$[city]</td>
 						    <td align="center" valign="middle" height="30">$[quyu]</td>
-						    <td align="center" valign="middle" height="30">$[name]</td>
-						    <td align="center" valign="middle" height="30">$[addr]</td>
+						    <td align="left" valign="middle" height="30"><a href="javascript:void(0)" onclick="openNewWin('estate_order', '预约看房 ','yykf.jsp?estateId=$[id]', '400px');">$[name]</a></td>
+						    <td align="left" valign="middle" height="30">$[addr]</td>
 						    <td align="center" valign="middle" height="30">$[yongjin]</td>
 						  </tr>
 						</table>
@@ -108,6 +122,7 @@ function delOrder(id){
 
 </div>
 </div>
+<img id="success_info" src="images/success_info.png" style="display:none;position:absolute;border:1px solid #999"/>
 <jsp:include page="foot.jsp"></jsp:include>
 
 </body>

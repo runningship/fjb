@@ -167,6 +167,9 @@ public class PageService {
 		ModelAndView mv = new ModelAndView();
 		User seller = ThreadSessionHelper.getUser();
 		mv.jspData.put("seller", seller);
+		
+		HouseImage img = dao.getUniqueByParams(HouseImage.class, new String[]{"estateUUID" , "type"}, new Object[]{seller.id.toString() , "touxiang"});
+		mv.jspData.put("touxiang", img==null ? "" : img.path);
 		return mv;
 	}
 	

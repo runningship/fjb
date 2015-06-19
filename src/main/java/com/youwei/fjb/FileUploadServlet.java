@@ -76,6 +76,10 @@ public class FileUploadServlet extends HttpServlet {
 						//主图片只有一张
 						SimpDaoTool.getGlobalCommonDaoService().execute("delete from HouseImage where estateUUID=? and type='main'" , estateId);
 					}
+					if("touxiang".equals(type)){
+						//头像只有一张
+						SimpDaoTool.getGlobalCommonDaoService().execute("delete from HouseImage where estateUUID=? and type='touxiang'" , estateId);
+					}
 					if(item.getSize()>=MAX_SIZE){
 						throw new RuntimeException("file size exceed 5M");
 					}else{

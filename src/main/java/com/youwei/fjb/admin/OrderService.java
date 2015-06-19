@@ -161,7 +161,7 @@ public class OrderService {
 		ModelAndView mv = new ModelAndView();
 		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, house.dhao as dhao , house.unit as unit,house.fhao as fhao,order.protect as protect "
 				+ ",order.sellerName as sellerName ,  order.buyerName as buyerName ,order.buyerTel as buyerTel ,order.addtime as addtime, order.status as status from HouseOrder order, "
-				+ "Estate est,House house where order.estateId=est.id and order.hid=house.id ");
+				+ "Estate est,House house where order.estateId=est.id and order.hid=house.id order by order.addtime desc");
 		List<Object> params = new ArrayList<Object>();
 		setQuery(hql, params , query);
 		page = dao.findPage(page, hql.toString(), true,params.toArray());
@@ -174,9 +174,11 @@ public class OrderService {
 		ModelAndView mv = new ModelAndView();
 		StringBuilder hql = new StringBuilder("select  order.id as id, est.name as estateName, order.buyerName as buyerName ,order.buyerTel as buyerTel,order.protect as protect,"
 				+ " order.sellerName as sellerName , order.addtime as addtime, order.status as status from HouseOrder order, "
-				+ "Estate est where order.estateId=est.id  and order.hid is null");
+				+ "Estate est where order.estateId=est.id  and order.hid is null order by order.addtime desc");
 		List<Object> params = new ArrayList<Object>();
 		setQuery(hql, params , query);
+//		page.order="desc";
+//		page.order = "order.addtime";
 		page = dao.findPage(page, hql.toString(), true,params.toArray());
 		mv.data.put("page", JSONHelper.toJSON(page , DataHelper.dateSdf.toPattern()));
 		return mv;

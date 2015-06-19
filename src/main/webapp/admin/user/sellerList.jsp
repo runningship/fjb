@@ -145,7 +145,7 @@ function SelectAll(a){
 		        <select style="height:22px;" name="adminId" >
 		          <option value="">所有</option>
 		        <c:forEach items="${admins}" var="admin">
-		          <option <c:if test="${admin.name==seller.adminName}"> select="selected" </c:if> value="${admin.id}"> ${admin.name}</option>
+		          <option <c:if test="${admin.account==seller.adminName}"> select="selected" </c:if> value="${admin.id}"> ${admin.account}</option>
 		        </c:forEach>
 		        </select>
 		      </div>
@@ -187,7 +187,7 @@ function SelectAll(a){
                 <td>$[deptName]</td>
                 <td>
                 	<d href="#" show="$[valid]==1">$[adminName]</d>
-                	<d href="#" show="$[valid]==0">未分配</d>
+<!--                 	<d href="#" show="$[valid]==0">未分配</d> -->
                 </td>
                 <td>
                 	<c:if test="${me.role eq '销售总监' }">

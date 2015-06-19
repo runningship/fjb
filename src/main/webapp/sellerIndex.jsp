@@ -5,11 +5,26 @@
 <head>
 <jsp:include page="header.jsp" />
 <link rel="stylesheet" type="text/css" href="style/user.css" />
+<script type="text/javascript" src="${projectName}/js/uploadify/jquery.uploadify.js"></script>
+<script type="text/javascript" src="${projectName}/js/fjb.js"></script>
+<script type="text/javascript">
+$(function(){
+    setTimeout(function(){
+        initPortrait('ChangePortrait' , ${seller.id});
+    },100)
+})
+
+</script>
 <style type="text/css">
+.user_inforight{margin-top:5px;}
+
 .user_inforight div{
 margin-top:10px;
 }
-.user_inforight{margin-top:5px;}
+
+.user_pic{margin-top: -43px;}
+.user_pic img{height:145px;margin-left: 57%;border: 2px solid #c3c3c3;}
+
 </style>
 </head>
 
@@ -45,7 +60,15 @@ margin-top:10px;
 	                        <div>所属经纪公司：${seller.compName }</div>
 	                        <div>所属门店：${seller.deptName }</div>
                         </div>
-                        
+                        <div class="user_pic" >
+                        	<c:if test="${touxiang ne '' }">
+                        		<img src="${upload_path }/${touxiang}" />
+                        	</c:if>
+                            <c:if test="${touxiang eq '' }">
+                        		<img src="${projectName }/images/touxiang0.png" />
+                        	</c:if>
+                        </div>
+                        <div style="float:right;"><input id="ChangePortrait" /></div>
                         <div class="user_moreinfo">
                              
                             <h2>账户安全</h2>
