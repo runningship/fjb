@@ -51,6 +51,9 @@ $(function(){
 });
 
 </script>
+<style type="text/css">
+#city_reg select{height:30px;width:100px;}
+</style>
 </head>
 
 <script type="text/javascript" src="${projectName}/js/city/jquery.cityselect.js"></script>
