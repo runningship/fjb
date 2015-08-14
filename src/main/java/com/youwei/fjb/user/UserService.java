@@ -52,7 +52,11 @@ public class UserService {
 		if(!isMD5){
 			pwd = SecurityHelper.Md5(user.pwd);
 		}
-		User po = dao.getUniqueByParams(User.class, new String[]{"tel" , "pwd" , "type"}, new Object[]{user.tel  , pwd , "seller"});
+		List<User> list = dao.listByParams(User.class, "from User where tel=? and pwd=? and type=?", user.tel , pwd , user.type);
+		User po = null;
+		if(list!=null && list.size()>0){
+			po = list.get(0);
+		}
 		if(po==null){
 			throw new GException(PlatformExceptionType.BusinessException,"用户名或密码不正确。");
 		}
@@ -223,17 +227,17 @@ public class UserService {
 	
 	@WebMethod
 	public ModelAndView doRegiste(User user , String yzm){
-		ModelAndView mv = new ModelAndView();
-		User po = dao.getUniqueByParams(User.class, new String[]{"type" , "tel"}, new Object[]{"seller" , user.tel});
-		if(po!=null){
-			throw new GException(PlatformExceptionType.BusinessException,"该手机号码已经被注册");
-		}
-		VerifyCodeHelper.verify(yzm);
-		user.pwd = SecurityHelper.Md5(user.pwd);
-		//经纪人
 		if(StringUtils.isEmpty(user.type)){
 			user.type = "seller";
 		}
+		ModelAndView mv = new ModelAndView();
+		User po = dao.getUniqueByParams(User.class, new String[]{"type" , "tel"}, new Object[]{user.type , user.tel});
+		if(po!=null){
+			throw new GException(PlatformExceptionType.BusinessException,"该手机号码已经被注册");
+		}
+//		VerifyCodeHelper.verify(yzm);
+		user.pwd = SecurityHelper.Md5(user.pwd);
+		//经纪人
 		user.addtime = new Date();
 		user.valid = 0;
 		dao.saveOrUpdate(user);

@@ -20,6 +20,7 @@
       
       
 <form name="form1" role="form" onsubmit="save();return false">
+	<input name="type" type="hidden" value="seller"/>
       <div class="main">
       
            <div class="fr loginLeft" style="margin-top:140px;"><img src="images/tu.png" /></div>

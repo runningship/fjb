@@ -27,6 +27,9 @@ function login(){
 
 
 </script>
+<style type="text/css">
+select{height:30px;width:100px;}
+</style>
 </head>
 
 <body>
@@ -43,6 +46,13 @@ function login(){
                  <label style="width:70px; text-align:right;">密　码：</label>
                  <input type="password" id="pwd" name="pwd" placeholder="输入正确的密码">
               </li>
+              <li>
+                 <label style="width:70px; text-align:right;">我　是：</label>
+                 <select name="type">
+                 		<option value="seller">经纪人</option>
+                 		<option value="sellerman">销房员</option>
+                 </select>
+              </li>
               <li><label style="width:70px; text-align:right; float:left;">验证码：</label>
               <input type="text" name="yzm" id="yzm" placeholder="看右边图片" style="width:80px; float:left; margin-top:15px;"><div style=" float:left; margin-top:6px;">
               <img alt="图片验证码" src="${projectName}/c/yzm" onclick="this.src='${projectName}/c/yzm?t='+(+new Date)"style="width: 102px;height: 50px;"></div></li>
@@ -53,7 +63,7 @@ function login(){
                  <a href="javascript:void(0)" onclick="login();return false;">登陆</a>
           </div>
           
-          <p style="margin:25px;"><a href="register.jsp">您还没有账号？立即注册</a></p>
+          <p style="margin:25px;">您还没有账号？立即 <a href="register.jsp">注册经纪人</a> <a href="xfyregister.jsp">注册销房员</a></p>
      
      </div>
      
