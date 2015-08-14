@@ -49,11 +49,6 @@
                <p><label for="captcha">分店名称</label><span class="form-tips">请输入您的分店名称</span></p>
                <input type="text" placeholder="分店" class="name" name="deptName" not-null="true">
                
-               <p><label for="captcha">请输入图片验证码</label><span class="form-tips">验证码错误</span></p>
-              <div class="form-field">
-               <input type="text" placeholder="请输入图片验证码" class="captcha" name="yzm">
-          			<img id="yzm" alt="图片验证码" src="c/yzm" onclick="this.src='c/yzm?t='+(+new Date)" style="cursor: pointer;width:100px;">
-               </div>
                <input type="submit" class="btn-login" value="注册" style="cursor:pointer" />
            
            </div>

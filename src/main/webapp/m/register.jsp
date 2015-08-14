@@ -49,9 +49,6 @@ function save(){
               <li><label style="width:70px; text-align:right;">密码：</label><input type="password" name="pwd" id="pwd" placeholder="设置您的密码"></li>
               <li><label style="width:70px; text-align:right;">确认密码：</label><input type="password" name="mm1" id="mm1" placeholder="确认您的密码"></li>
               <li><label style="width:70px; text-align:right;">姓名：</label><input type="text" name="name" id="name" placeholder="输入您的姓名"></li>
-              <li><label style="width:70px; text-align:right; float:left;">验证码：</label>
-              <input type="text" name="yzm" id="yzm" placeholder="看右边图片" style="width:80px; float:left; margin-top:15px;"><div style=" float:left; margin-top:6px;">
-              <img alt="图片验证码" src="${projectName}/c/yzm" onclick="this.src='${projectName}/c/yzm?t='+(+new Date)" style="width: 102px;height: 50px;"></div></li>
          </ul>
           
           <div class="confirm">
