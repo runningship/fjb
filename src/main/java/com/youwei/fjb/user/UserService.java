@@ -195,6 +195,21 @@ public class UserService {
 		mv.jspData.put("me", ThreadSessionHelper.getUser());
 		return mv;
 	}
+
+	@WebMethod
+	public ModelAndView sellermenList(){
+		ModelAndView mv = new ModelAndView();
+		List<User> admins = dao.listByParams(User.class, "from User where type=?", "admin");
+		mv.jspData.put("admins", admins);
+		//公司数量
+		List<Map> comps = dao.listAsMap("select compName from User where type='sellermen' group by compName");
+		List<Map> depts = dao.listAsMap("select deptName from User where type='sellermen' group by compName, deptName");
+		mv.jspData.put("compCount", comps.size());
+		mv.jspData.put("deptCount", depts.size());
+		//门店数量
+		mv.jspData.put("me", ThreadSessionHelper.getUser());
+		return mv;
+	}
 	
 	@WebMethod
 	public ModelAndView sellerEdit(Integer id){
@@ -216,7 +231,9 @@ public class UserService {
 		VerifyCodeHelper.verify(yzm);
 		user.pwd = SecurityHelper.Md5(user.pwd);
 		//经纪人
-		user.type = "seller";
+		if(StringUtils.isEmpty(user.type)){
+			user.type = "seller";
+		}
 		user.addtime = new Date();
 		user.valid = 0;
 		dao.saveOrUpdate(user);

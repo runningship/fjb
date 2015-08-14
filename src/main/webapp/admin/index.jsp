@@ -90,6 +90,10 @@
                                      text: '经纪人',
                                      href: 'user/sellerList.jsp'
                                  },{
+                                     id: 'sellermen_list',
+                                     text: '销房员',
+                                     href: 'user/sellermenList.jsp'
+                                 },{
                                      id: 'admin_list',
                                      text: '系统用户',
                                      href: 'user/adminList.jsp'
